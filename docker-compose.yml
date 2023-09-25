@@ -3,4 +3,6 @@ services:
   web:
     image: tubes-1:latest
     ports:
-      - 8008:80
+      - 8080:80
+    volumes:
+      - ./src:/var/www/html

@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+    /*Color*/
+    --black: #000000;
+    --black-red: #3E0001;
+    --maroon: #7C0000;
+    --red: #F80000;
+    --blue:#0090F8;
+    --green: #33BF30;
+    --white:#FFFFFF;
+    /*Font*/
+    font-family: 'Inter', sans-serif;
+    /*Text Styles*/
+    --heading1: 4rem;
+    --heading2:2.25rem;
+    --heading3:1.5rem;
+    --heading4:1rem;
+    --paragraph:1rem;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    color: var(--black);
+}
+
+p, label, a, button {
+    letter-spacing: 0.05rem;
+}
+
+.text{
+    font-size: var(--paragraph);
+    letter-spacing: 0.01rem;
+}
+
+.button-text{
+    font-size: var(--paragraph);
+    font-weight: bold;
+}
+
+.field-text {
+    font-size: var(--paragraph);
+    font-weight: bold;
+}
+
+button {
+    border: none;
+    outline: none;
+}
+
+.button-red {
+    background-color: var(--red);
+    padding: 0.625rem 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+    color: var(--white);    
+}
+
+.button-white {
+    background-color: var(--white);
+    padding: 0.625rem 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+    color: var(--black);    
+}
+
+.button-blue {
+    background-color: var(--blue);
+    padding: 0.625rem 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+    color: var(--white);    
+}
+
+.button-green {
+    background-color: var(--green);
+    padding: 0.625rem 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+    color: var(--white);    
+}
+
+.red-glow{
+    box-shadow: 2px 2px 20px 5px rgba(248, 0, 0, 0.75);
+}
+
+.red-extra-glow{
+    box-shadow: 0px 0px 50px 20px rgba(248, 0, 0, 0.75);
+}
+
+.white-dim-glow{
+    box-shadow: 0px 3px 10px 0px rgba(255, 255, 255, 0.50);
+}
+
+.white-glow{
+    box-shadow: 0px 0px 50px 10px rgba(255, 255, 255, 0.75);
+}
