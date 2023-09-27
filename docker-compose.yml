@@ -13,7 +13,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - "./db:/var/lib/postgresql/data"
+      - ./postgres:/var/lib/postgres
 
 networks:
   web-postgres:
