@@ -9,6 +9,7 @@
     --blue:#0090F8;
     --green: #33BF30;
     --white:#FFFFFF;
+    --grey: #D9D9D9;
     /*Font*/
     font-family: 'Inter', sans-serif;
     /*Text Styles*/
@@ -36,6 +37,34 @@ p, label, a, button {
     letter-spacing: 0.01rem;
 }
 
+h1{
+    font-size: var(--heading1);
+}
+
+h2{
+    font-size: var(--heading2);
+}
+
+h3{
+    font-size: var(--heading3);
+}
+
+h4{
+    font-size: var(--heading4);
+}
+
+.text-white{
+    color: var(--white);
+}
+
+.text-black{
+    color: var(--black);
+}
+
+.text-red{
+    color: var(--red);
+}
+
 .button-text{
     font-size: var(--paragraph);
     font-weight: bold;
@@ -49,41 +78,29 @@ p, label, a, button {
 button {
     border: none;
     outline: none;
+    width: 70%;
+    height: 2.8125rem;
+    align-items: center;
+    border-radius: 0.625rem;
 }
 
 .button-red {
     background-color: var(--red);
-    padding: 0.625rem 3rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.625rem;
     color: var(--white);    
 }
 
 .button-white {
     background-color: var(--white);
-    padding: 0.625rem 3rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.625rem;
     color: var(--black);    
 }
 
 .button-blue {
     background-color: var(--blue);
-    padding: 0.625rem 3rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.625rem;
     color: var(--white);    
 }
 
 .button-green {
     background-color: var(--green);
-    padding: 0.625rem 3rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.625rem;
     color: var(--white);    
 }
 
@@ -101,4 +118,50 @@ button {
 
 .white-glow{
     box-shadow: 0px 0px 50px 10px rgba(255, 255, 255, 0.75);
+}
+
+input{
+    height: 2.5rem;
+    width: 20rem;
+    background-color: var(--white);
+    color:var(--black);
+    border-radius: 0.625rem;
+    font-size: medium;
+    border: none;
+}
+
+iput:focus{
+    background-color: var(--red);
+}
+
+input::placeholder{
+    color: var(--grey);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+input:required{
+    border-color: var(--red);
+    border-width: 0.5rem;
+}
+
+.description-input{
+    height: 10rem;
+}
+.req {
+    color: var(--red);
+    padding: 0.2rem;
+}
+
+.button-pagination{
+    height: 2.8125rem;
+    width: 2.8125rem;
+    border-radius: 0.625rem;
+    background-color: var(--white);
+    color: var(--black);
+    font-weight: bold;
+    font-size: larger;
+    font-family: 'Inter', sans-serif;
 }
