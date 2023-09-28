@@ -37,6 +37,7 @@ class parserrouting{
         foreach ($this->path as $key=>$value){
             if($this->matchURL($key, $path)){
                 if (!isset($value[$method])){
+                    http_response_code(405);
                     return null; //eror 405
                 }
                 return $value[$method];
@@ -48,11 +49,24 @@ class parserrouting{
     public function call($path, $method){
         $result = $this->checkURL($path, $method);
         
-        $result = explode("@", $result);
-        $controllerName = $result[0];
-        $methodName = $result[1];
-        require_once __DIR__ . "/../controller/" . $controllerName . ".php";
-        $controller = new $controllerName();
-        $controller->$methodName();
+        if ($result === null) {
+            if (http_response_code() === 405) {
+                $controllerName = "MethodNotAllowedController";
+                $methodName = "showMethodNotAllowedPage";
+            } else {
+                $controllerName = "NotFoundController";
+                $methodName = "showNotFoundPage";
+            }
+            require_once __DIR__ . "/../controller/" . $controllerName . ".php";
+            $controller = new $controllerName();
+            $controller->$methodName();
+        } else {
+            $result = explode("@", $result);
+            $controllerName = $result[0];
+            $methodName = $result[1];
+            require_once __DIR__ . "/../controller/" . $controllerName . ".php";
+            $controller = new $controllerName();
+            $controller->$methodName();
+        }
     }
 }
