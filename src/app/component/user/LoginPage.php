@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
         <!---Title--->
-        <title>Notflix</title>
+        <title>Login</title>
         <!---Icon--->
         <link rel="icon" href="images/icon/logo.ico">
         <!---Global CSS--->
-        <link rel="stylesheet" type="text/css" href="../../../public/styles/template/globals.css">
-        <link rel="stylesheet" type="text/css" href="../../../public/styles/template/navbar.css">
+        <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
+        <link rel="stylesheet" type="text/css"href="styles/template/Navbar.css">
         <!---Page specify CSS--->
-        <link rel="stylesheet" type="text/css" href="../../../public/styles/user/login.css">
+        <link rel="stylesheet" type="text/css" href="styles/template/login.css">
 </head>
 
 <body>
-    <?php include("../template/navbar.php"); ?>
+    <?php include(dirname(__DIR__) . "/template/NavbarUser.php");?>
     <div class="login">
         <h1>Login</h1>
         <form action="login.php" method="post">
