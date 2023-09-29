@@ -41,7 +41,7 @@ class Database
             $this->conn->exec(
                 "CREATE TABLE IF NOT EXISTS genre (
                     genre_id SERIAL PRIMARY KEY,
-                    name VARCHAR(256) NOT NULL
+                    name VARCHAR(256) UNIQUE NOT NULL
                 );"
             );
 
