@@ -78,8 +78,7 @@ h4{
 button {
     border: none;
     outline: none;
-    width: 70%;
-    height: 2.8125rem;
+    padding: 0.625rem 3rem;
     align-items: center;
     border-radius: 0.625rem;
 }
