@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
         <link rel="stylesheet" type="text/css"href="styles/template/Navbar.css">
         <!---Page specify CSS--->
-        <link rel="stylesheet" type="text/css" href="styles/template/login.css">
+        <link rel="stylesheet" type="text/css" href="styles/user/login.css">
 </head>
 
 <body>
