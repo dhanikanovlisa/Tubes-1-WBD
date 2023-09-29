@@ -9,9 +9,14 @@ class UserModel{
     {
         $this->db = new Database;
     }
-
     /**Get All User */
-    /**Get user by admin/customer */
-    /**Get user by name */
-    /**Get User by  */
+    public function getAllUser(){
+        $this->db->callQuery('SELECT * FROM ' . $this->table);
+        return $this->db->fetchAllResult();
+    }
+    /**Get user by ID*/
+    public function getUserByID($id){
+        $this->db->callQuery('SELECT * FROM ' . $this->table . ' WHERE user_id = ' . $id);
+        return $this->db->fetchResult();
+    }
 }

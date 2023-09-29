@@ -77,7 +77,7 @@ class Database
     public function callQuery($query)
     {
         try {
-            $this->stmt = $this->conn->prepare($query);
+            $this->stmt = $this->conn->query($query);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage(); //perbaikin errornya
         }
