@@ -9,4 +9,6 @@ $route = [
     '/watchlist' => ["GET" => "WatchListPageController@showWatchListPage"],
     '/manage-film' => ["GET" => "ManageFilmController@showManageFilmPage"],
     '/manage-user' => ["GET" => "ManageUserController@showManageUserPage"],
+    '/detail-film' => ["GET" => "ManageUserController@showManageUserPage"],
+    '/detail-user' => ["GET" => "ManageUserController@showManageUserPage"],
 ];
