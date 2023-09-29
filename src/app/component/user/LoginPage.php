@@ -9,7 +9,7 @@
         <link rel="icon" href="images/icon/logo.ico">
         <!---Global CSS--->
         <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
-        <link rel="stylesheet" type="text/css"href="styles/template/Navbar.css">
+        <link rel="stylesheet" type="text/css"href="styles/template/navbar.css">
         <!---Page specify CSS--->
         <link rel="stylesheet" type="text/css" href="styles/user/login.css">
 </head>
