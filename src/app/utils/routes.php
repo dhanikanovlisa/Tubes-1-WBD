@@ -1,7 +1,7 @@
 <?php
 
 $route = [
-    '/' => ["GET" => "/"],
+    '/' => ["GET" => "HomePageController@showHomePage"],
     '/login' => ["GET" => "LoginController@showLoginPage"],
     '/registation' => ["GET" => "RegistrationController@showRegistrationPage"],
     '/home' => ["GET" => "HomePageController@showHomePage"],
