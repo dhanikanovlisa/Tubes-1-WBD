@@ -16,7 +16,7 @@
 
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php");?>
-    <div class="login">
+    <div class="auth-page">
         <h1>Login</h1>
         <form action="login.php" method="post">
             <div class="container">

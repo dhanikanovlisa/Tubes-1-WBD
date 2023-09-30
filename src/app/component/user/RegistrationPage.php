@@ -11,14 +11,15 @@
         <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
         <link rel="stylesheet" type="text/css"href="styles/template/navbar.css">
         <!---Page specify CSS--->
-        <link rel="stylesheet" type="text/css" href="styles/user/register.css">
-        <script type="text/javascript" src="javascript/user/register.js" defer></script>
-        <!-- <script src="javascript/user/register.js"></script> -->
+        <link rel="stylesheet" type="text/css" href="styles/user/login.css">
+        <!---Page specify JS--->
+        <!-- <script type="text/javascript" src="javascript/user/register.js"></script> -->
 </head>
 
 <body>
+    <script src="javascript/user/register.js" defer></script>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php");?>
-    <div class="login">
+    <div class="auth-page">
         <h1>Sign Up</h1>
         <form id="registration-form">
             <div class="container">
