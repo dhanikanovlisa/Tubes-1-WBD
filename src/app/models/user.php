@@ -26,4 +26,10 @@ class UserModel{
         $this->db->bind('username', $username);
         return $this->db->fetchResult();
     }
+
+    /*Insert new user*/
+    public function addUser($username, $email, $phone, $password){
+        $this->db->callQuery("INSERT INTO users(username, first_name, last_name, email, password, phone_number, is_admin) VALUES('$username', '', '', '$email', '$password', '$phone', false)");
+        $this->db->execute();
+    }
 }

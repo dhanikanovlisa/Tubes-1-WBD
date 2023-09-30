@@ -71,8 +71,8 @@ confirmPasswordInput && confirmPasswordInput.addEventListener('keyup', () => {
 registrationForm && registrationForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     console.log('submit');
-    // const xhr = new XMLHttpRequest();
-    // xhr.open('POST', '/public/user/register');
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/public/user/register');
 
     const formData = new FormData();
     formData.append('username', usernameInput.value);
@@ -80,13 +80,13 @@ registrationForm && registrationForm.addEventListener('submit', async (e) => {
     formData.append('phone', phoneInput.value);
     formData.append('password', passwordInput.value);
 
-    // xhr.send(formData);
-    // xhr.onreadystatechange = () => {
-    //     if (xhr.readyState === 4 && xhr.status === 200) {
-    //         console.log("dsa");
-    //         console.log(xhr.responseText);
-    //         const response = JSON.parse(xhr.responseText);
-    //         location.replace(response.redirect_url);
-    //     }
-    // }
+    xhr.send(formData);
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("dsa");
+            // console.log(xhr.responseText);
+            // const response = JSON.parse(xhr.responseText);
+            // location.replace(response.redirect_url);
+        }
+    }
 });
