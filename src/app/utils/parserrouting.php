@@ -1,71 +1,82 @@
 <?php
 
-class parserrouting{
+class ParserRouting {
 
     private $path;
 
-    public function __construct($path)
-    {
+    public function __construct($path) {
         $this->path = $path;
     }
 
-    public function matchURL($path, $pathBrowser){
-
-        $path = trim($path, '/');
-        $pathBrowser = trim($pathBrowser, '/');
-
-        $path = explode('/', $path);
-        $pathBrowser = explode('/', $pathBrowser);
-
-        if(count($path) != count($pathBrowser)){
-            return false;  
+    public function matchURL($route, $url) {
+        $route = trim($route, '/');
+        $url = trim($url, '/');
+    
+        $routeSegments = explode('/', $route);
+        $urlSegments = explode('/', $url);
+    
+        if (count($routeSegments) != count($urlSegments)) {
+            return false;
         }
-
-        for ($i = 0; $i < count($path); $i++){
-            if($path[$i] == $pathBrowser[$i] || substr($path[$i], 0, 1) == ":"){
+    
+        $params = [];
+        for ($i = 0; $i < count($routeSegments); $i++) {
+            if ($routeSegments[$i] == $urlSegments[$i]) {
                 continue;
-            }
-            else {
+            } elseif (strpos($routeSegments[$i], ':') !== false) {
+                if (isset($urlSegments[$i]) && $urlSegments[$i] !== '') {
+                    $paramName = ltrim($routeSegments[$i], ':');
+                    $params[$paramName] = $urlSegments[$i];
+                }
+            } else {
                 return false;
             }
         }
-
-        return true;
+        return $params;
     }
 
-    public function checkURL($path, $method){
-        foreach ($this->path as $key=>$value){
-            if($this->matchURL($key, $path)){
-                if (!isset($value[$method])){
+    public function checkURL($path, $method) {
+
+        foreach ($this->path as $key => $value) {
+            $routeParams = $this->matchURL($key, $path);
+            if ($routeParams !== false) {
+                if (!isset($value[$method])) {
                     http_response_code(405);
-                    return null; //eror 405
+                    return null; // Error 405
                 }
-                return $value[$method];
+
+                return [
+                    'controller' => $value[$method],
+                    'params' => $routeParams
+                ];
             }
         }
-        return null; //ini page 404
+
+        return null; // Page not found
     }
 
-    public function call($path, $method){
+    public function call($path, $method) {
         $result = $this->checkURL($path, $method);
-        
-        if ($result === null) {
-            if (http_response_code() === 405) {
-                $controllerName = "MethodNotAllowedController";
-                $methodName = "showMethodNotAllowedPage";
-            } else {
-                $controllerName = "NotFoundController";
-                $methodName = "showNotFoundPage";
-            }
-            require_once __DIR__ . "/../controller/" . $controllerName . ".php";
-            $controller = new $controllerName();
-            $controller->$methodName();
+        if (!isset($result)) {
+            $controllerName = "not-found/NotFoundController";
+            $methodName = "showNotFoundPage";
+        } elseif (http_response_code() === 405) {
+            $controllerName = "MethodNotAllowedController";
+            $methodName = "showMethodNotAllowedPage";
         } else {
-            $result = explode("@", $result);
-            $controllerName = $result[0];
-            $methodName = $result[1];
-            require_once __DIR__ . "/../controller/" . $controllerName . ".php";
-            $controller = new $controllerName();
+            $controller = explode("@", $result['controller']);
+            $controllerName = $controller[0];
+            $methodName = $controller[1];
+            $routeParams = $result['params'];
+        }
+
+        require_once DIRECTORY . "/../controller/" . $controllerName . ".php";
+        $controllerCall = explode('/', $controllerName);
+        $controller = new $controllerCall[1]();
+        
+        if (isset($routeParams)) {
+            $controller->$methodName($routeParams);
+        } else {
             $controller->$methodName();
         }
     }
