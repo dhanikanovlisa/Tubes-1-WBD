@@ -18,3 +18,7 @@ for (var i = 0; i < 10; i++) {
 
 addCardItem(arr);
 console.log(arr);
+
+document.addEventListener('DOMContentLoaded', function()){
+    const films = documnet.querySelectorAll('');
+}

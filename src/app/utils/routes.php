@@ -1,14 +1,13 @@
 <?php
 
 $route = [
-    '/' => ["GET" => "HomePageController@showHomePage"],
-    '/login' => ["GET" => "LoginController@showLoginPage"],
-    '/registation' => ["GET" => "RegistrationController@showRegistrationPage"],
-    '/home' => ["GET" => "HomePageController@showHomePage"],
-    '/search' => ["GET" => "SearchPageController@showSearchPage"],
-    '/watchlist' => ["GET" => "WatchListPageController@showWatchListPage"],
-    '/manage-film' => ["GET" => "ManageFilmController@showManageFilmPage"],
-    '/manage-user' => ["GET" => "ManageUserController@showManageUserPage"],
-    '/detail-film' => ["GET" => "ManageUserController@showManageUserPage"],
-    '/detail-user' => ["GET" => "ManageUserController@showManageUserPage"],
+    '/' => ["GET" => "home/HomePageController@showHomePage"],
+    '/login' => ["GET" => "login/LoginController@showLoginPage"],
+    '/registation' => ["GET" => "registration/RegistrationController@showRegistrationPage"],
+    '/home' => ["GET" => "home/HomePageController@showHomePage"],
+    '/search' => ["GET" => "search/SearchPageController@showSearchPage"],
+    '/watchlist' => ["GET" => "watchlist/WatchListPageController@showWatchListPage"],
+    '/manage-film' => ["GET" => "film/ManageFilmController@showManageFilmPage"],
+    '/manage-user' => ["GET" => "user/ManageUserController@showManageUserPage"],
+    '/user-detail/:username' => ["GET" => "user/UserDetailController@showUserDetailPage"],
 ];

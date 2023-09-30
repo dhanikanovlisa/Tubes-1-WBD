@@ -18,19 +18,17 @@
 
 <body>
     <?php
-    // Ganti Query
-    $userData = [
-        ["name" => 'Dhanika Novlisariyanti', "role" => 'Admin'],
-        ["name" => 'Diaaam', "role" => 'User'],
-    ];
+    require_once DIRECTORY . '/../controller/user/ManageUserController.php';
+    $user = new ManageUserController();
+    $result = $user->getAllUser();
     ?>
     <div class="container">
-    <?php foreach ($userData as $user) {
-        include(dirname(__DIR__) . "/template/cardUser.php");
+    <?php foreach ($result as $user) {
+        include(DIRECTORY . "/../component/template/cardUser.php");
     }?> 
     </div>
     <script>
-        const userData = <?php echo json_encode($userData); ?>;
+        const userData = <?php echo json_encode($result); ?>;
     </script>
 </body>
 

@@ -1,8 +1,8 @@
 <?php
 
-require_once '../utils/database.php';
+require_once DIRECTORY . '/../utils/database.php';
 class UserModel{
-    private $table = 'user';
+    private $table = 'users';
     private $db;
 
     public function __construct()
@@ -17,6 +17,13 @@ class UserModel{
     /**Get user by ID*/
     public function getUserByID($id){
         $this->db->callQuery('SELECT * FROM ' . $this->table . ' WHERE user_id = ' . $id);
+        return $this->db->fetchResult();
+    }
+
+    /**Get user by username*/
+    public function getUserByUsername($username){
+        $this->db->callQuery('SELECT * FROM users WHERE username = :username');
+        $this->db->bind('username', $username);
         return $this->db->fetchResult();
     }
 }

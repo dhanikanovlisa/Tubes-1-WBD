@@ -77,7 +77,7 @@ class Database
     public function callQuery($query)
     {
         try {
-            $this->stmt = $this->conn->query($query);
+            $this->stmt = $this->conn->prepare($query);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage(); //perbaikin errornya
         }
@@ -102,4 +102,34 @@ class Database
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /**To Bind data for Query */
+    public function bind($param, $value, $type = null)
+    {
+      if (is_null($type)) {
+        switch (true) {
+          case is_int($value):
+            $type = PDO::PARAM_INT;
+            break;
+          case is_bool($value):
+            $type = PDO::PARAM_BOOL;
+            break;
+          case is_null($value):
+            $type = PDO::PARAM_NULL;
+            break;
+          default:
+            $type = PDO::PARAM_STR;
+            break;
+        }
+      }
+      $this->stmt->bindParam($param, $value, $type);
+    }
+
+    
+    /**Return Row Count */
+    public function rowCount()
+    {
+      return $this->stmt->rowCount();
+    }
+  
 }

@@ -10,13 +10,13 @@
         <!---Global CSS--->
         <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
         <link rel="stylesheet" type="text/css"href="styles/template/navbar.css">
-        <link rel="stylesheet" type="text/css"href="styles/template/card.css">
-        <link rel="stylesheet" type="text/css" href="styles/user/homepage.css">
+        <link rel="stylesheet" type="text/css"href="styles/template/cardMovie.css">
         <!---Page specify CSS--->
+        <link rel="stylesheet" type="text/css" href="styles/user/homepage.css">
 </head>
 
 <body>
-    <?php include(dirname(__DIR__) . "/template/NavbarUser.php");?>
+    <?php include(DIRECTORY . "/template/NavbarUser.php");?>
 
     <div class="img-header">
             <img src="images/assets/movie-poster-sample.jpg"/>
@@ -31,64 +31,8 @@
                 </div>
             </div>
         </div>
-
-        <?php include(dirname(__DIR__) . "/template/Card.php");?>
-    <!-- <div class="cards">
-            <!-- <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div>
-            <div class="card">
-                <img src="images/assets/movie-poster-sample.jpg"/>
-            </div> -->
-        </div> -->
+        <?php include(dirname(__DIR__) . "/template/cardMovie.php");?>
+        </div>
 </body>
 
 </html>
