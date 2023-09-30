@@ -11,11 +11,17 @@
         <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
         <link rel="stylesheet" type="text/css"href="styles/template/Navbar.css">
         <!---Page specify CSS--->
+        <link rel="stylesheet" type="text/css"href="styles/not-found/notFound.css">
 </head>
 
 <body>
-    <?php include(dirname(__DIR__) . "/template/NavbarUser.php");?>
-    <h1>Not Found</h1>
+    <div class="container">
+        <h1 class="text-red">404</h1>
+        <h2>Page Not Found</h2>
+        <a href="/home">
+            <button class="button-red button-text">Back to Home</button>
+        </a>
+    </div>
 </body>
 
 </html>

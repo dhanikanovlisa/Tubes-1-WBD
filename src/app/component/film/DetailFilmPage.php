@@ -25,7 +25,7 @@
         $filmID = $test[1];
     }
 
-    $filmDetail = new DetailFilmController();
+    $filmDetail = new FilmController();
     $filmData = $filmDetail->getFilmData($filmID);
     $totalRow = count($filmData);
 

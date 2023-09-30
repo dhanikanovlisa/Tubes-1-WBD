@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
     <?php
     require_once DIRECTORY . '/../controller/user/ManageUserController.php';
     $user = new ManageUserController();
