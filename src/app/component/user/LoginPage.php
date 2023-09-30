@@ -12,23 +12,31 @@
         <link rel="stylesheet" type="text/css"href="styles/template/navbar.css">
         <!---Page specify CSS--->
         <link rel="stylesheet" type="text/css" href="styles/user/login.css">
+        <!--Page JS-->
+        <script type="text/javascript" src="javascript/user/login.js" defer></script>
+
+        <script type="text/javascript" defer>
+            const CSRF_TOKEN = "<?= $_SESSION['csrf_token'] ?? '' ?>";
+        </script>
 </head>
 
 <body>
+    <!-- <script src="javascript/user/login.js" defer></script> -->
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php");?>
     <div class="auth-page">
         <h1>Login</h1>
-        <form action="login.php" method="post">
+        <form id="login-form">
             <div class="container">
                 <label for="username">Username</label>
-                <input type="text" name="username" required>
+                <input type="text" name="username" id="username" required/>
     
                 <label for="password">Password</label>
-                <input type="password" name="password"  required>
+                <input type="password" name="password" id="password" required/>
     
                 <button class="button-red" type="submit" name="login">Login</button>
-                <p>Don't have an account? <a href="/registration">Register</a></p>
+                <p>Already have an account? <a href="/registration">Register</a></p>
             </div>
+        </form>
     </div>
 </body>
 

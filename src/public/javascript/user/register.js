@@ -16,6 +16,7 @@ let passwordConfirmedValid = false;
 
 usernameInput && usernameInput.addEventListener('keyup', () => {
     const username = usernameInput.value;
+
     if (!usernameRegex.test(username)) {
         usernameInput.className = 'red-glow';
     }
@@ -83,10 +84,9 @@ registrationForm && registrationForm.addEventListener('submit', async (e) => {
     xhr.send(formData);
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log("dsa");
-            // console.log(xhr.responseText);
-            // const response = JSON.parse(xhr.responseText);
-            // location.replace(response.redirect_url);
+            console.log(xhr.responseText);
+            const response = JSON.parse(xhr.responseText);
+            location.replace(response.redirect_url);
         }
     }
 });
