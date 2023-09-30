@@ -4,4 +4,5 @@ COPY src/public/index.php .
 RUN apt-get update && \
     apt-get install -y libpq-dev && \
     docker-php-ext-install pdo pdo_pgsql pgsql
+RUN a2enmod rewrite
 EXPOSE 80
