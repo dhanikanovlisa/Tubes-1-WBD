@@ -1,4 +1,3 @@
-// cardUser.js
 document.addEventListener('DOMContentLoaded', function () {
     const cards = document.querySelectorAll('.card-box');
 
@@ -12,6 +11,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Assuming userData is already defined in your PHP
     fillCard(userData);
 });

@@ -15,11 +15,7 @@ class UserDetailController{
         return $this->userModel->getUserByUsername($param);
     }
 
-    
-    
-
-
     public function showUserDetailPage($params = []){
-        require_once dirname(dirname(__DIR__)) . "/component/admin/UserDetailPage.php";
+        require_once dirname(dirname(__DIR__)) . "/component/user/UserDetailPage.php";
     }
 }

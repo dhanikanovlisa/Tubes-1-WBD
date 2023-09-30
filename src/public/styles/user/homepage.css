@@ -36,3 +36,12 @@
     padding: 0 60px 15px;
     z-index: 0;
 }
+
+.cards {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    row-gap: 40px;
+    padding: 100px;
+ }

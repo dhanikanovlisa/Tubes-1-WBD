@@ -1,6 +1,6 @@
 <?php
 
-require_once '../utils/database.php';
+require_once DIRECTORY . '/../utils/database.php';
 
 class FilmsModel
 {

@@ -1,24 +1,12 @@
-function addCardItem(item){
-    var cards = document.getElementById("cards");
-    for (var i = 0; i < item.length; i++) {
-        cards.innerHTML += `
-        <div class="card">
-            <img src="${item[i]}"">
-        </div>
-        `;
+document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.cards');
+
+    const fillCard = (dataUser) => {
+        dataUser.forEach((user, index) => {
+            const photo = cards[index].querySelector("img");
+            photo.setAttribute("src", user.photo);
+        });
     }
-}
 
-
-//test doang
-var arr = [];
-for (var i = 0; i < 10; i++) {
-    arr.push("images/assets/movie-poster-sample.jpg");
-}
-
-addCardItem(arr);
-console.log(arr);
-
-document.addEventListener('DOMContentLoaded', function()){
-    const films = documnet.querySelectorAll('');
-}
+    fillCard(userData);
+});
