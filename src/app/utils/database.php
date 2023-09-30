@@ -48,14 +48,12 @@ class Database
             $this->conn->exec(
                 "CREATE TABLE IF NOT EXISTS film (
                     film_id SERIAL PRIMARY KEY, 
-                    genre_id INTEGER,
                     title VARCHAR(256) NOT NULL,
                     description TEXT,
                     film_path VARCHAR(256) NOT NULL,
                     film_poster VARCHAR(256) NOT NULL,
                     date_release DATE NOT NULL,
-                    duration INTEGER NOT NULL,
-                    CONSTRAINT fk_genre FOREIGN KEY(genre_id) REFERENCES genre(genre_id)
+                    duration INTEGER NOT NULL
                 );"
             );
 
@@ -66,6 +64,15 @@ class Database
                     film_id INTEGER,
                     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users (user_id),
                     CONSTRAINT fk_film FOREIGN KEY (film_id) REFERENCES film (film_id)
+                );"
+            );
+
+            $this->conn->exec(
+                "CREATE TABLE IF NOT EXISTS film_genre (
+                    film_id INTEGER,
+                    genre_id INTEGER,
+                    CONSTRAINT fk_film_genre_film FOREIGN KEY (film_id) REFERENCES film (film_id),
+                    CONSTRAINT fk_film_genre_genre FOREIGN KEY (genre_id) REFERENCES genre (genre_id)
                 );"
             );
         } catch (PDOException $e) {
