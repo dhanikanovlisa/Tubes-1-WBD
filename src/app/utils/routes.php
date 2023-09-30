@@ -11,7 +11,7 @@ $route = [
     '/manage-user' => ["GET" => "user/ManageUserController@showManageUserPage"],
     '/user-detail/:username' => ["GET" => "user/UserDetailController@showUserDetailPage"],
     '/watch/:id' => ["GET" => "film/FilmController@showDetailFilmPage"],
-    '/add-movie' => ["GET" => "film/FilmController@showAddFilmPage"],
-    '/edit-movie' => ["GET" => "film/FilmController@showEditFilmPage"],
+    '/add-film' => ["GET" => "film/FilmController@showAddFilmPage"],
+    '/edit-film' => ["GET" => "film/FilmController@showEditFilmPage"],
 
 ];

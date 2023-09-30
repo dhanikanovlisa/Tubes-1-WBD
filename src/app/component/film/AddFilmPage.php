@@ -13,6 +13,8 @@
     <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/film/addFilm.css">
+
+    <script src="javascript/film/addFilm.js"></script>
 </head>
 
 <body>
@@ -24,7 +26,7 @@
                 <div class="card">
                     <img src="images/assets/placeholder-image.webp" />
                 </div>
-                <button class="text-black button-text">Change Poster</button>
+                <button class="text-black button-text" onclick="openFile()">Change Poster</button>
             </div>
             <div class="detail-container">
                 <form>

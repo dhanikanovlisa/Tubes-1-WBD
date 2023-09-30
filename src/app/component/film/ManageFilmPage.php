@@ -27,7 +27,7 @@
         <div>
             <div class="upper-container">
                 <input type="text" placeholder="Search Movie">
-                <a href='/add-movie'>
+                <a href='/add-film'>
                     <button class="button-white button-text">Add New Movie</button>
                 </a>
             </div>
