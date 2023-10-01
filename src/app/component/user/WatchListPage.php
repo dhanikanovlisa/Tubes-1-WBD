@@ -33,24 +33,8 @@
     </section>
 
     <section class='pagination'>
-        <?php
-            $target='<';
-            include(DIRECTORY.'/../component/template/paginationButton.php');
-        ?>
-        
         <?php 
-            $target=1;
-            include(DIRECTORY.'/../component/template/paginationButton.php');
-        ?>
-
-        <?php
-            $target=2;
-            include(DIRECTORY.'/../component/template/paginationButton.php');
-        ?>
-
-        <?php 
-            $target='>';
-            include(DIRECTORY.'/../component/template/paginationButton.php');
+            $watchListPageController->generatePagination();
         ?>
     </section>
 </body>
