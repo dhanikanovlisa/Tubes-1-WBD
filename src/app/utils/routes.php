@@ -22,5 +22,6 @@ $route = [
     '/add-film/add-film' => ["POST" => "film/FilmController@addFilm"],
 
     'edit-film/:id' => ["GET" => "film/FilmController@showEditFilmPage"],
-    '/edit-film/:id' => ["POST" => "film/FilmController@editFilm"],
+    '/edit-film/edit-film' => ["POST" => "film/FilmController@editFilm"],
+    '/edit-film/delete-film' => ["DELETE" => "film/FilmController@deleteFilm"],
 ];

@@ -17,7 +17,15 @@
 </head>
 
 <body>
-    <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
+    <?php include(dirname(__DIR__) . "/template/NavbarUser.php");
+    require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
+    require_once dirname(dirname(__DIR__)) . '/utils/date.php';
+    $year = listofYear();
+    $month = listofMonth();
+    $date = listofDate();
+    $minutes = listofMinutes();
+    $hours = listofHour();
+    ?>
     <div class='container'>
         <h2>Add Film</h2>
         <div class="whole-container">
@@ -60,8 +68,7 @@
                                 <div class="custom-select">
                                     <select id="filmHourDuration" name="filmHourDuration">
                                         <?php
-                                        require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
-                                        $hours = listofHour();
+
                                         foreach ($hours as $h) {
                                         ?>
                                             <option value="<?php echo $h; ?>"><?php echo $h; ?></option>
@@ -73,8 +80,7 @@
                                 <label for="filmMinuteDuration">Minute<span class="req">*</span></label>
                                 <select id="filmMinuteDuration" name="filmMinuteDuration">
                                     <?php
-                                    require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
-                                    $minutes = listofMinutes();
+
                                     foreach ($minutes as $m) {
                                     ?>
                                         <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
@@ -88,8 +94,7 @@
                                 <div class="custom-select">
                                     <select id="date" name="date">
                                         <?php
-                                        require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-                                        $date = listofDate();
+
                                         foreach ($date as $d) {
                                         ?>
                                             <option value="<?php echo $d; ?>"><?php echo $d; ?></option>
@@ -102,8 +107,7 @@
                                 <div class="custom-select">
                                     <select id="month" name="month">
                                         <?php
-                                        require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-                                        $month = listofMonth();
+
                                         foreach ($month as $m) {
                                         ?>
                                             <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
@@ -116,8 +120,7 @@
                                 <div class="custom-select">
                                     <select id="year" name="year">
                                         <?php
-                                        require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-                                        $year = listofYear();
+
                                         foreach ($year as $y) {
                                         ?>
                                             <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
@@ -127,14 +130,26 @@
                             </div>
                         </div>
                         <div class="button-container">
-                            <button type="submit" class="button-red button-text">Cancel</button>
-                            <button type ="submit" class="button-white button-text">Save</button>
+                            <a href="/manage-film">
+                                <button id="cancel" type="submit" class="button-red button-text">Cancel</button>
+                            </a>
+                            <button type="submit" class="button-white button-text">Save</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('cancel').addEventListener('click', function(event) {
+            if (document.getElementById('addFilmForm').checkValidity()) {
+                return confirm('Are you sure you want to cancel?');
+            }
+        });
+        window.addEventListener('beforeunload', function(event) {
+            event.returnValue = '';
+        });
+    </script>
 </body>
 
 </html>

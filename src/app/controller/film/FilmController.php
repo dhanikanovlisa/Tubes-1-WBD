@@ -42,7 +42,14 @@ class FilmController{
 
     /**Edit Film */
     public function editFilm(){
+
     }
+
+    /**Delete Film */
+    public function deleteFilm(){
+        
+    }
+
     /**Show Pages */
     public function showWatchFilmPage($params=[]){
         require_once DIRECTORY . "/../component/film/WatchFilmPage.php";

@@ -74,7 +74,15 @@ class FilmsModel
     /**Delete Film */
     public function deleteFilm($id)
     {
-
+        /**Delete from watchlist */
+        $this->db->callQuery('DELETE FROM watchlist WHERE film_id = ' . $id);
+        $this->db->execute();
+        /**Delete film genre */
+        $this->db->callQuery('DELETE FROM film_genre WHERE film_id = ' . $id);
+        $this->db->execute();
+        /**Delete film */
+        $this->db->callQuery('DELETE FROM ' . $this->table . ' WHERE film_id = ' . $id);
+        $this->db->execute();
     }
 
     /**Edit Film by IDFilm*/
