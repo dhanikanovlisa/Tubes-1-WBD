@@ -9,6 +9,11 @@ class HomePageController{
         $this->filmModel = new FilmsModel();    
     }
 
+    public function middleware($middleware){
+        require_once DIRECTORY . '/../middlewares/' . $middleware . '.php';
+        return new $middleware();
+    }
+
     public function getAllFilm(){
         $filmData = $this->filmModel->getAllFilm();
         $result = [];
@@ -22,6 +27,11 @@ class HomePageController{
         return $result;
     }
     public function showHomePage(){
-        require_once DIRECTORY . "/../component/user/HomePage.php";
+        $authMiddleware = $this->middleware('AuthenticationMiddleware');
+        if ($authMiddleware->isAuthenticated()){
+            require_once DIRECTORY . "/../component/user/HomePage.php";
+        } else {
+            header("Location: /login");
+        }
     }
 }

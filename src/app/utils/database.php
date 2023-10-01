@@ -132,7 +132,6 @@ class Database
       $this->stmt->bindParam($param, $value, $type);
     }
 
-    
     /**Return Row Count */
     public function rowCount()
     {
