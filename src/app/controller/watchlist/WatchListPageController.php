@@ -23,16 +23,11 @@ class WatchListPageController{
         return $films;
     }
 
-    public function generateCards(): string{
+    public function generateCards(){
         $lf = $this->getWatchListFilms();
-        $res = "";
         foreach($lf as $film){
-            $html = "<div class='card'>
-                        <img src='storage/" . $film['film_poster'] . "' alt='" . $film['film_poster'] . "'>
-                    </div>";
-            $res = $res . $html;
+            include(DIRECTORY . "/../component/template/cardMovie.php");
         }
-        return $res;
     }
 
     public function showWatchListPage(){
