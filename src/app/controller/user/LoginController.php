@@ -20,7 +20,7 @@ class LoginController{
 
     public function login(){
         $tokenMiddleware = $this->middleware('TokenMiddleware');
-        $tokenMiddleware->checkToken();
+        // $tokenMiddleware->checkToken();
 
         $user_id = $this->userModel->login($_POST['username'], $_POST['password']);
 

@@ -1,71 +1,125 @@
-const usernameInput = document.querySelector('#username');
-const emailInput = document.querySelector('#email');
-const phoneInput = document.querySelector('#phone-number');
-const passwordInput = document.querySelector('#password');
-const confirmPasswordInput = document.querySelector('#confirm-password');
-const registrationForm = document.querySelector('#registration-form');
+const usernameInput = document.getElementById('username');
+const emailInput = document.getElementById('email');
+const phoneInput = document.getElementById('phone-number');
+const firstNameInput = document.getElementById('first-name');
+const lastNameInput = document.getElementById('last-name');
+const passwordInput = document.getElementById('password');
+const confirmPasswordInput = document.getElementById('confirm-password');
+const registrationForm = document.getElementById('registration-form');
+
+const usernameAlert = document.getElementById('username-alert');
+const emailAlert = document.getElementById('email-alert');
+const phoneAlert = document.getElementById('phone-alert');
+const nameAlert = document.getElementById('name-alert');
+const passwordAlert = document.getElementById('password-alert');
+const confirmPasswordAlert = document.getElementById('confirm-password-alert');
+
+function setErrorWarning(input, desc, message){
+    input.className += ' error-input';
+    desc.innerText = message;
+    desc.style.display = 'block';
+}
+
+function removeErrorWarning(input, desc){
+    input.className = '';
+    desc.innerText = '';
+    desc.style.display = 'none';
+}
 
 const usernameRegex = /^[a-zA-Z0-9]+$/;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const phoneRegex = /^[0-9]+$/;
+const nameRegex = /^[a-z ,.'-]+$/i;
 
 let usernameValid = false;
 let emailValid = false;
 let passwordValid = false;
 let passwordConfirmedValid = false;
 
+function setErrorWarning(input, desc, message){
+    input.className += ' error-input';
+    desc.innerText = message;
+    desc.style.display = 'block';
+}
+
+function removeErrorWarning(input, desc){
+    input.className = '';
+    desc.innerText = '';
+    desc.style.display = 'none';
+}
+
 usernameInput && usernameInput.addEventListener('keyup', () => {
     const username = usernameInput.value;
 
     if (!usernameRegex.test(username)) {
-        usernameInput.className = 'red-glow';
+        setErrorWarning(usernameInput, usernameAlert, 'Username format is incorrect');
     }
     else {
         usernameValid = true;
-        usernameInput.className = '';
+        removeErrorWarning(usernameInput, usernameAlert);
     }
 });
 
 emailInput && emailInput.addEventListener('keyup', () => {
     const email = emailInput.value;
     if (!emailRegex.test(email)) {
-        emailInput.className = 'red-glow';
+        setErrorWarning(emailInput, emailAlert, 'Email format is incorrect');
     }
     else {
         emailValid = true;
-        emailInput.className = '';
+        removeErrorWarning(emailInput, emailAlert);
     }
 });
 
 phoneInput && phoneInput.addEventListener('keyup', () => {
     const phone = phoneInput.value;
     if (!phoneRegex.test(phone)) {
-        phoneInput.className = 'red-glow';
+        setErrorWarning(phoneInput, phoneAlert, 'Phone number format is incorrect');
     }
     else {
-        phoneInput.className = '';
+        removeErrorWarning(phoneInput, phoneAlert);
+    }
+});
+
+firstNameInput && firstNameInput.addEventListener('keyup', () => {
+    const firstName = firstNameInput.value;
+    if (!nameRegex.test(firstName)) {
+        setErrorWarning(firstNameInput, nameAlert, 'First name format is incorrect');
+    }
+    else {
+        removeErrorWarning(firstNameInput, nameAlert);
+    }
+});
+
+lastNameInput && lastNameInput.addEventListener('keyup', () => {
+    const lastName = lastNameInput.value;
+    if (!nameRegex.test(lastName)) {
+        setErrorWarning(lastNameInput, nameAlert, 'Last name format is incorrect');
+    }
+    else {
+        removeErrorWarning(lastNameInput, nameAlert);
     }
 });
 
 passwordInput && passwordInput.addEventListener('keyup', () => {
     const password = passwordInput.value;
     if (password.length < 6) {
-        passwordInput.className = 'red-glow';
+        setErrorWarning(passwordInput, passwordAlert, 'Password must be at least 6 characters');
     }
     else {
         passwordValid = true;
-        passwordInput.className = '';
+        removeErrorWarning(passwordInput, passwordAlert);
     }
 });
 
 confirmPasswordInput && confirmPasswordInput.addEventListener('keyup', () => {
     const confirmPassword = confirmPasswordInput.value;
     if (confirmPassword !== passwordInput.value) {
-        confirmPasswordInput.className = 'red-glow';
+        setErrorWarning(confirmPasswordInput, confirmPasswordAlert, 'Password does not match');
     }
     else {
         passwordConfirmedValid = true;
-        confirmPasswordInput.className = '';
+        removeErrorWarning(confirmPasswordInput, confirmPasswordAlert);
     }
 });
 

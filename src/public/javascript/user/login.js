@@ -1,10 +1,8 @@
 const usernameInput = document.querySelector('#username');
 const passwordInput = document.querySelector('#password');
 const loginForm = document.querySelector('#login-form');
-const username_alert = document.getElementById('username-alert');
-const password_alert = document.getElementById('password-alert');
-
-const usernameRegex = /^[a-zA-Z0-9]+$/;
+const usernameAlert = document.getElementById('username-alert');
+const passwordAlert = document.getElementById('password-alert');
 
 function setErrorWarning(input, desc, message){
     input.className += ' error-input';
@@ -18,6 +16,8 @@ function removeErrorWarning(input, desc){
     desc.style.display = 'none';
 }
 
+const usernameRegex = /^[a-zA-Z0-9]+$/;
+
 loginForm && loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -29,10 +29,9 @@ loginForm && loginForm.addEventListener('submit', async (e) => {
         if (xhr_uname.readyState === XMLHttpRequest.DONE){
             const response = JSON.parse(xhr_uname.responseText);
             if (!response.isValid){
-                setErrorWarning(usernameInput, username_alert, 'Username is not available');
+                setErrorWarning(usernameInput, usernameAlert, 'Username is not available');
             } else {
-                usernameValid = true;
-                removeErrorWarning(usernameInput, username_alert);
+                removeErrorWarning(usernameInput, usernameAlert);
                 const xhr_pass = new XMLHttpRequest();
                 xhr_pass.open('POST', '/login/login');
             
@@ -44,9 +43,8 @@ loginForm && loginForm.addEventListener('submit', async (e) => {
                 xhr_pass.send(formData);
                 xhr_pass.onreadystatechange = () => {
                     if (xhr_pass.readyState === XMLHttpRequest.DONE) {
-                        console.log(xhr_pass.responseText);
                         if (xhr_pass.status === 400){
-                            setErrorWarning(passwordInput, password_alert, 'Username or password is incorrect');
+                            setErrorWarning(passwordInput, passwordAlert, 'Username or password is incorrect');
                             return;
                         }
                         const response = JSON.parse(xhr_pass.responseText);
@@ -63,19 +61,18 @@ usernameInput && usernameInput.addEventListener('keyup', () => {
 
     if (!usernameRegex.test(username)) {
         console.log('username invalid');
-        setErrorWarning(usernameInput, username_alert, 'Username format is invalid');
+        setErrorWarning(usernameInput, usernameAlert, 'Username format is invalid');
     }
     else {
-        usernameValid = true;
-        removeErrorWarning(usernameInput, username_alert);
+        removeErrorWarning(usernameInput, usernameAlert);
     }
 });
 
 passwordInput && passwordInput.addEventListener('keyup', () => {
     const password = passwordInput.value;
     if (password.length < 6) {
-        setErrorWarning(passwordInput, password_alert, 'Password must be at least 6 characters');
+        setErrorWarning(passwordInput, passwordAlert, 'Password must be at least 6 characters');
     } else {
-        removeErrorWarning(passwordInput, password_alert);
+        removeErrorWarning(passwordInput, passwordAlert);
     }
 });

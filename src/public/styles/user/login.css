@@ -41,7 +41,8 @@ button {
     color: var(--red);
     font-size: 0.8rem;
     text-align: left;
-    display: none;
+    display: block;
+    width:100%;
 }
 
 .error-input {
@@ -57,7 +58,7 @@ label {
     display: block;
     width:100%;
     text-align: left;
-    margin-top: 7px;
+    margin-top: 5px;
 }
 
 .half-container {
@@ -65,7 +66,7 @@ label {
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .one-half {
