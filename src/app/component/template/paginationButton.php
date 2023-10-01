@@ -1,17 +1,24 @@
 <a href=<?php
     $url = $_SERVER['REQUEST_URI'];
+
+    if(isset($_GET['page'])) $page=$_GET['page'];
+    else $page=1;
+
+    if($target==='<'){
+        $goto = $page-1;
+    } elseif($target==='>'){
+        $goto = $page+1;
+    } else{
+        $goto = $target;
+    }
+
     if(isset($_GET['page'])){
-        if($target=='<'){
-            $goto = $_GET['page']-1;
-        } elseif($target=='>'){
-            $goto = $_GET['page']+1;
-        }
         $url = str_replace('page='.$_GET['page'], 'page='.$goto, $url);
     } else {
         $url = $url . (strpos($url, '?')===false ? '?page='.$goto : '&page='.$goto);
     }
     echo '"'.$url.'"';
-?>>
+?> <?php echo $goto>0 ? "":"hidden" ?>>
     <div class='button-pagination'>
         <?php echo $target; ?>
     </div>
