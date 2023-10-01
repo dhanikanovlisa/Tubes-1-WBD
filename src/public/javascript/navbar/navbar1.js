@@ -8,10 +8,8 @@ function navbar(){
 }
 
 function logout(){
-    console.log("logout1");
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/public/user/logout');
-    console.log(sessionStorage.getItem('user_id'));
+    xhr.open('GET', '/logout');
     xhr.send();
     xhr.onreadystatechange = () => {
         console.log("logout");

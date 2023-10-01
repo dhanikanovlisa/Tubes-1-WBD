@@ -2,7 +2,7 @@
             const CSRF_TOKEN_N = "<?= $_SESSION['csrf_token'] ?? '' ?>";
 </script>
 <nav class="navbar">
-    <script type="text/javascript" src="javascript/navbar/navbas.js" defer>
+    <script type="text/javascript" src="javascript/navbar/navbar1.js" defer>
     </script>
     <a href="/home">
         <img src="/images/assets/logo_navbar.svg" class="logo">

@@ -73,13 +73,14 @@ registrationForm && registrationForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     console.log('submit');
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/public/user/register');
+    xhr.open('POST', '/register/register');
 
     const formData = new FormData();
     formData.append('username', usernameInput.value);
     formData.append('email', emailInput.value);
     formData.append('phone', phoneInput.value);
     formData.append('password', passwordInput.value);
+    formData.append('csrf-token', CSRF_TOKEN);
 
     xhr.send(formData);
     xhr.onreadystatechange = () => {
