@@ -22,7 +22,9 @@
         $watchListPageController = new WatchListPageController();
         $watchListPageController->setUserID(1);
     ?>
-    <h1>Watch List</h1>
+    <header>
+        <h2>Your Watchlist</h2>
+    </header>
     <section class='cards'>
         <?php 
             $watchListPageController->generateCards();
