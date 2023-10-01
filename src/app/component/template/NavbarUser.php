@@ -2,7 +2,7 @@
             const CSRF_TOKEN_N = "<?= $_SESSION['csrf_token'] ?? '' ?>";
 </script>
 <nav class="navbar">
-    <script type="text/javascript" src="javascript/navbar/navbar1.js" defer>
+    <script type="text/javascript" src="javascript/navbar/navbar4.js" defer>
     </script>
     <a href="/home">
         <img src="/images/assets/logo_navbar.svg" class="logo">
@@ -11,11 +11,9 @@
         <a href="/home">Home</a>
         <a href="/search">Search</a>
         <a href="/watchlist">Watchlist</a>
-        <a>
-            <button class="button-red" onClick="logout()">Logout</button>
-        </a>
+        <button class="button-red" onClick="logout()">Logout</button>
     </div>
     <button class="burger-bar" onClick="navbar()">
-        <img src="images/assets/Burger bar.svg" />
+        <img class="burger-bar" src="images/assets/Burger bar.svg" />
     </button>
 </nav>

@@ -18,3 +18,17 @@ function logout(){
         }
     }
 }
+
+let responsive_navbar = document.getElementById("navbar-link");
+window.onclick = function(e){
+    console.log("click4");
+    console.log(e.target);
+    console.log(e.target.className);
+    if (responsive_navbar.className === "navbar-link responsive" ){
+        if (e.target.className != "burger-bar" && e.target.className != "navbar-link responsive"){
+            console.log("clicks");
+            console.log(e.target.className);
+            responsive_navbar.className = "navbar-link";
+        }
+    }
+}
