@@ -24,7 +24,7 @@ class WatchListModel{
     public function getWatchListFilmsCount($userID){
         $this->db->callQuery('SELECT COUNT(film_id) FROM ' . $this->table .
                                 ' NATURAL INNER JOIN film WHERE user_id = ' . $userID . 
-                                ' GROUP BY film_id');
+                                ' GROUP BY user_id');
         return $this->db->fetchResult();
     }
     /**Add new film to watchlist */
