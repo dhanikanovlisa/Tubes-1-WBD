@@ -21,7 +21,7 @@ usernameInput && usernameInput.addEventListener('keyup', () => {
 
     const formData = new FormData();
     formData.append('username', usernameInput.value);
-
+    
     xhr.send(formData);
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE){
@@ -50,18 +50,18 @@ passwordInput && passwordInput.addEventListener('keyup', () => {
 
 loginForm && loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    console.log('submits');
+    console.log('submita');
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/public/user/login');
+    xhr.open('POST', '/public/user/login');
 
     const formData = new FormData();
     formData.append('username', usernameInput.value);
     formData.append('password', passwordInput.value);
+    formData.append('csrf_token', CSRF_TOKEN);
 
     xhr.send(formData);
     xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log("dsa");
+        if (xhr.readyState === XMLHttpRequest.DONE) {
             console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
             location.replace(response.redirect_url);

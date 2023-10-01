@@ -38,5 +38,10 @@ class UserModel{
         return $this->db->fetchResult();
     }
 
+    public function login($username, $password){
+        $this->db->callQuery("SELECT user_id FROM users WHERE username = '$username' AND password = '$password'");
+        return $this->db->fetchResult();
+    }
+
     
 }

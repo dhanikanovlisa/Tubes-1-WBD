@@ -14,14 +14,16 @@ class AuthenticationMiddleware
     public function isAuthenticated()
     {
         if (!isset($_SESSION['user_id'])) {
-            throw new Exception;
+            return false;
         }
 
         $user = $this->userModel->getUserByID($_SESSION['user_id']);
 
         if (!$user) {
-            throw new Exception;
+            return false;
         }
+
+        return true;
     }
 
     public function isAdmin()

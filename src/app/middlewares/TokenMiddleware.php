@@ -9,10 +9,9 @@ class TokenMiddleware
     }
 
     public function checkToken(){
-        $token = $_REQUEST['csrf_token'];
-
+        $token = $_POST['csrf_token'];
         if (!$token || $token !== $_SESSION['csrf_token']) {
-
+            throw new Exception("Invalid token");
         }
     }
 }

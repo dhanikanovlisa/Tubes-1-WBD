@@ -33,17 +33,18 @@ class ManageUserController{
     }
 
     public function checkUsername($username){
-        $username2 = ltrim($username['username'],':');
+        $username = ltrim($username['username'],':');
         $tokenMiddleware = $this->middleware('TokenMiddleware');
         $tokenMiddleware->putToken();
-        $user = $this->userModel->getUserByUsername($username2);
+
+        $username = $this->userModel->getUserByUsername($username);
         $isValid = false;
-        if (!$user) {
+        if ($username) {
             $isValid = true;
         }
 
         header('Content-Type: application/json');
-        http_response_code(200);
+        http_response_code(201);
         echo json_encode(["isValid" => $isValid]);
     }
 }
