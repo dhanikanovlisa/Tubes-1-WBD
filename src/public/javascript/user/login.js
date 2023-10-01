@@ -16,16 +16,11 @@ usernameInput && usernameInput.addEventListener('keyup', () => {
     }
 
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/public/user/check/:' + usernameInput.value);
-    xhr.setRequestHeader("x-csrf-token", CSRF_TOKEN);
-
-    const formData = new FormData();
-    formData.append('username', usernameInput.value);
+    xhr.open('GET', '/check/username/:' + usernameInput.value);
     
-    xhr.send(formData);
+    xhr.send();
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE){
-            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
             if (!response.isValid){
                 usernameInput.className = 'red-glow';
@@ -50,9 +45,8 @@ passwordInput && passwordInput.addEventListener('keyup', () => {
 
 loginForm && loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    console.log('submita');
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/public/user/login');
+    xhr.open('POST', '/login/login');
 
     const formData = new FormData();
     formData.append('username', usernameInput.value);

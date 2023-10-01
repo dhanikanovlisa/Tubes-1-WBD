@@ -17,11 +17,6 @@ class LoginController{
         require_once DIRECTORY . '/../middlewares/' . $middleware . '.php';
         return new $middleware();
     }
-    // public function login(){
-    //     header('Content-Type: application/json');
-    //     http_response_code(201);
-    //     echo json_encode(["redirect_url" => "/"]);
-    // }
 
     public function login(){
         $tokenMiddleware = $this->middleware('TokenMiddleware');

@@ -12,12 +12,14 @@
         <link rel="stylesheet" type="text/css"href="styles/template/navbar.css">
         <!---Page specify CSS--->
         <link rel="stylesheet" type="text/css" href="styles/user/login.css">
-        <!---Page specify JS--->
-        <!-- <script type="text/javascript" src="javascript/user/register.js"></script> -->
+        <!---JS--->
+        <script type="text/javascript" src="javascript/user/register.js" defer></script>
+        <script type="text/javascript" defer>
+            let CSRF_TOKEN = "<?= $_SESSION['csrf_token'] ?? '' ?>";
+        </script>
 </head>
 
 <body>
-    <script src="javascript/user/register.js" defer></script>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php");?>
     <div class="auth-page">
         <h1>Sign Up</h1>

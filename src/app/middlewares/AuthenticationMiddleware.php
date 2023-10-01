@@ -11,8 +11,7 @@ class AuthenticationMiddleware
         $this->userModel = new UserModel();
     }
 
-    public function isAuthenticated()
-    {
+    public function isAuthenticated(){
         if (!isset($_SESSION['user_id'])) {
             return false;
         }
@@ -26,8 +25,7 @@ class AuthenticationMiddleware
         return true;
     }
 
-    public function isAdmin()
-    {
+    public function isAdmin(){
         if (!isset($_SESSION['user_id'])) {
             return false;
         }
