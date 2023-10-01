@@ -20,6 +20,7 @@ class ParserRouting {
         }
     
         $params = [];
+
         for ($i = 0; $i < count($routeSegments); $i++) {
             if ($routeSegments[$i] == $urlSegments[$i]) {
                 continue;
@@ -28,7 +29,11 @@ class ParserRouting {
                     $paramName = ltrim($routeSegments[$i], ':');
                     $params[$paramName] = $urlSegments[$i];
                 }
-            } else {
+            } elseif (str_starts_with($urlSegments[$i], $routeSegments[$i].'?')){
+                continue;
+            }
+            
+            else {
                 return false;
             }
         }
