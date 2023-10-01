@@ -1,3 +1,6 @@
+<!--
+    @target
+-->
 <a href=<?php
     $url = $_SERVER['REQUEST_URI'];
 
@@ -18,7 +21,7 @@
         $url = $url . (strpos($url, '?')===false ? '?page='.$goto : '&page='.$goto);
     }
     echo '"'.$url.'"';
-?> <?php echo $goto>0 ? "":"hidden" ?>>
+?>>
     <div class='button-pagination'>
         <?php echo $target; ?>
     </div>
