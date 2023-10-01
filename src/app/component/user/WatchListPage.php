@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
         <link rel="stylesheet" type="text/css"href="styles/template/Navbar.css">
         <link rel="stylesheet" type="text/css"href="styles/template/cardMovie.css">
+        <link rel="stylesheet" type="text/css"href="styles/template/pagination.css">
         <!---Page specify CSS--->
         <link rel="stylesheet" type="text/css"href="styles/user/watchlist.css">
 </head>
@@ -32,12 +33,25 @@
     </section>
 
     <section class='pagination'>
-        <div class='button-pagination'>
-            <
-        </div>
-        <div class='button-pagination'>
-            1
-        </div>
+        <?php
+            $target='<';
+            include(DIRECTORY.'/../component/template/paginationButton.php');
+        ?>
+        
+        <?php 
+            $target=1;
+            include(DIRECTORY.'/../component/template/paginationButton.php');
+        ?>
+
+        <?php
+            $target=2;
+            include(DIRECTORY.'/../component/template/paginationButton.php');
+        ?>
+
+        <?php 
+            $target='>';
+            include(DIRECTORY.'/../component/template/paginationButton.php');
+        ?>
     </section>
 </body>
 
