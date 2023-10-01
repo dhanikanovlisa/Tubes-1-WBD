@@ -14,7 +14,6 @@
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/user/homepage.css">
 </head>
-
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
     <?php
