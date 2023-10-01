@@ -28,10 +28,15 @@
     color: var(--white);
 }
 
-p, label, a, button {
+p, a, button {
     letter-spacing: 0.05rem;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
+.label-font{
+    font-size: 0.5rem;
+}
 .text{
     font-size: var(--paragraph);
     letter-spacing: 0.01rem;
@@ -163,4 +168,21 @@ input:required{
     font-weight: bold;
     font-size: larger;
     font-family: 'Inter', sans-serif;
+}
+
+input[type="checkbox"] {
+    background-color: var(--white);
+    margin: 0;
+    font: inherit;
+    color: var(--white);
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid var(--white);
+    border-radius: 0.15em;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--red);
+    color: var(--white);
+    border-color: var(--red);
 }

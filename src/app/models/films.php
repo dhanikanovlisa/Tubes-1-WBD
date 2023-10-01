@@ -45,10 +45,13 @@ class FilmsModel
     }
 
     /**Get Film by Genre*/
-    public function getFilmByGenre($genreID)
+    public function getFilmGenre($id)
     {
-        $this->db->callQuery('SELECT * FROM ' . $this->table . ' WHERE genre_id = ' . $genreID);
-        return $this->db->fetchResult();
+        $this->db->callQuery("SELECT genre.name
+        FROM genre JOIN film_genre ON genre.genre_id = film_genre.genre_id
+        JOIN film ON film_genre.film_id = film.film_id WHERE film.film_id = :filmid;");
+        $this->db->bind('filmid', $id);
+        return $this->db->fetchAllResult();
     }
 
     /**Insert Film */

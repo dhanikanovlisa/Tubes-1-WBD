@@ -10,8 +10,8 @@ $route = [
     '/manage-film' => ["GET" => "film/FilmController@showManageFilmPage"],
     '/manage-user' => ["GET" => "user/ManageUserController@showManageUserPage"],
     '/user-detail/:username' => ["GET" => "user/UserDetailController@showUserDetailPage"],
-    '/watch/:id' => ["GET" => "film/FilmController@showDetailFilmPage"],
+    '/watch/:id' => ["GET" => "film/FilmController@showWatchFilmPage"],
     '/add-film' => ["GET" => "film/FilmController@showAddFilmPage"],
-    '/edit-film' => ["GET" => "film/FilmController@showEditFilmPage"],
-
+    '/detail-film/:id' => ["GET" => "film/FilmController@showDetailFilmPage"],
+    'edit-film/:id' => ["GET" => "film/FilmController@showEditFilmPage"],
 ];

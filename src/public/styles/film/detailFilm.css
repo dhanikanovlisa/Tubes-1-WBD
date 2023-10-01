@@ -1,0 +1,50 @@
+.container{
+    padding-top:7rem ;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+.title-container{
+    padding-bottom:1rem;
+    border: 1px solid white;
+}
+.whole-container{
+    display: flex;
+    border: 1px solid white;
+    gap:2rem;
+}
+.image-container{
+    display: flex;
+    border: 1px solid white;
+    gap:3rem;
+}
+
+.field-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    gap:0.5rem;
+    padding-bottom: 5rem;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    gap:0.5rem;
+}
+.button-container{
+    display: flex;
+    gap: 2rem;
+}
+.card {
+    width: 150px;
+    height: 225px;
+    box-shadow: 2px 2px 20px 5px rgba(248, 0, 0, 0.6);
+    border-radius: 7px;
+ }
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 4px;
+}  

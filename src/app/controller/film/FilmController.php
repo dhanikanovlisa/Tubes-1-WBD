@@ -12,15 +12,21 @@ class FilmController{
     public function getFilmData($param){
         return $this->filmModel->getFilmByID($param);
     }
+
+    public function getFilmGenre($param){
+        return $this->filmModel->getFilmGenre($param);
+    }
+    public function showWatchFilmPage($params=[]){
+        require_once DIRECTORY . "/../component/film/WatchFilmPage.php";
+    }
     public function showDetailFilmPage($params=[]){
         require_once DIRECTORY . "/../component/film/DetailFilmPage.php";
     }
-
     public function showAddFilmPage(){
         require_once DIRECTORY . "/../component/film/AddFilmPage.php";
     }
 
-    public function showEditFilmPage(){
+    public function showEditFilmPage($params=[]){
         require_once DIRECTORY . "/../component/film/EditFilmPage.php";
     }
     public function showManageFilmPage(){
