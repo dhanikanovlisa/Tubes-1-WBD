@@ -15,8 +15,10 @@ class WatchListModel{
         $this->db->callQuery('SELECT film_id FROM ' . $this->table . ' WHERE user_id = ' . $userID);
         return $this->db->fetchAllResult();
     }
-    public function getWatchListFilms($userID){
-        $this->db->callQuery('SELECT * FROM ' . $this->table . ' NATURAL INNER JOIN film WHERE user_id = ' . $userID);
+    public function getWatchListFilms($userID, $limit, $offset){
+        $this->db->callQuery('SELECT * FROM ' . $this->table .
+                                ' NATURAL INNER JOIN film WHERE user_id = ' . $userID .
+                                ' LIMIT ' . $limit . ' OFFSET ' . $offset);
         return $this->db->fetchAllResult();
     }
     /**Add new film to watchlist */

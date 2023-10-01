@@ -18,13 +18,13 @@ class WatchListPageController{
         $this->userID = $userID;
     }
 
-    private function getWatchListFilms(): array{
-        $films = $this->watchListModel->getWatchListFilms($this->userID);
+    private function getWatchListFilms(int $limit=100, int $offset=0): array{
+        $films = $this->watchListModel->getWatchListFilms($this->userID, $limit, $offset);
         return $films;
     }
 
     public function generateCards(){
-        $lf = $this->getWatchListFilms();
+        $lf = $this->getWatchListFilms(10,0);
         foreach($lf as $film){
             include(DIRECTORY . "/../component/template/cardMovie.php");
         }
