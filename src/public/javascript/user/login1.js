@@ -63,6 +63,10 @@ loginForm && loginForm.addEventListener('submit', async (e) => {
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             console.log(xhr.responseText);
+            if (xhr.status === 400){
+                alert('Wrong password');
+                return;
+            }
             const response = JSON.parse(xhr.responseText);
             location.replace(response.redirect_url);
         }
