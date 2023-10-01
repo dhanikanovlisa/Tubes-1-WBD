@@ -12,7 +12,7 @@
             <a href="/home">Home</a>
             <a href="/search">Search</a>
             <a href="/watchlist">Watchlist</a>
-            <button class="button-red" onClick="logout()">Logout</button>
+            <a href="/login"><button class="button-red">Login</button></a>
         <?php else: ?>
             <a href="/home">Home</a>
             <a href="/search">Search</a>

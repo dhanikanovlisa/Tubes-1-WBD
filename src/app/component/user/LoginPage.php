@@ -13,7 +13,7 @@
         <!---Page specify CSS--->
         <link rel="stylesheet" type="text/css" href="styles/user/login.css">
         <!--JS-->
-        <script type="text/javascript" src="javascript/user/login.js" defer></script>
+        <script type="text/javascript" src="javascript/user/login1.js" defer></script>
         <script type="text/javascript" defer>
             let CSRF_TOKEN = "<?= $_SESSION['csrf_token'] ?? '' ?>";
         </script>
@@ -25,15 +25,17 @@
         <h1>Login</h1>
         <form id="login-form">
             <div class="container">
-                <label for="username">Username</label>
+                <label for="username">Username<span class="req">*</span></label>
                 <input type="text" name="username" id="username" required/>
+                <div class="error" id="username-alert"></div>
     
-                <label for="password">Password</label>
+                <label for="password">Password<span class="req">*</span></label>
                 <input type="password" name="password" id="password" required/>
-    
-                <button class="button-red" type="submit" name="login">Login</button>
-                <p>Already have an account? <a href="/registration">Register</a></p>
+                <div class="error" id="password-alert"></div>
+
+                <button class="button-red red-glow button-text" type="submit" name="login"><h4>Login<h4></button>
             </div>
+            <p>Already have an account? <a href="/registration">Register</a></p>
         </form>
     </div>
 </body>

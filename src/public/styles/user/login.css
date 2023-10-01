@@ -3,18 +3,18 @@
     top       : 50%;
     position  : absolute;
     transform : translate(-50%, -50%);
-    padding-top: 70px;
+    padding-top: 50px;
     text-align: center;
 }
 
 .container {
     max-width: 350px;
     padding: 20px;
-    margin-top: 10px;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 
     row-gap: 5px;
 }
@@ -28,10 +28,58 @@ input {
     outline: none;
 }
 
-label {
-    text-align: left;
+button {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    width: 150px;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
-button {
-    margin: 20px 0;
+.error{
+    color: var(--red);
+    font-size: 0.8rem;
+    text-align: left;
+    display: none;
+}
+
+.error-input {
+    border: 3px red solid;
+}
+
+p, a, button {
+    letter-spacing: 0.05rem;
+    text-align: center;
+}
+
+label {
+    display: block;
+    width:100%;
+    text-align: left;
+    margin-top: 7px;
+}
+
+.half-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.one-half {
+    width: 48%;
+}
+
+.two-half {
+    width: 48%;
+}
+
+.one-half input {
+    margin-top: 5px;
+}
+
+.two-half input {
+    margin-top: 5px;
 }

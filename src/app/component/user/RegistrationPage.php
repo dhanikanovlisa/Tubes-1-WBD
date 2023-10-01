@@ -25,25 +25,43 @@
         <h1>Sign Up</h1>
         <form id="registration-form">
             <div class="container">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" required/>
+                <label class="one" for="username">Username</label>
+                <input class="one" type="text" name="username" id="username" required/>
+                <div class="error" id="username-alert"></div>
 
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email" required/>
+                <div class="error" id="email-alert"></div>
 
                 <label for="phone-number">Phone Number</label>
                 <input type="text" name="phone-number" id="phone-number" required/>
+                <div class="error" id="phone-alert"></div>
+
+                <div class="half-container">
+                    <div class="one-half">
+                    <label for="first-name">First Name</label>
+                    <input type="text" name="first-name" id="first-name" required/>
+                    </div>
+
+                    <div class="two-half">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" name="last-name" id="last-name" required/>
+                    </div>
+                </div>
+                <div class="error" id="name-alert"></div>
     
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" required/>
+                <div class="error" id="password-alert"></div>
 
                 <label for="confirm-password">Confirm Password</label>
                 <input type="password" name="confirm-password" id="confirm-password" required/>
-    
-                <button class="button-red" type="submit" name="login">Sign Up</button>
-                <p>Already have an account? <a href="/login">Login</a></p>
+                <div class="error" id="confirm-password-alert"></div>
+
+                <button class="button-red red-glow button-text" type="submit" name="login">Sign Up</button>
             </div>
         </form>
+        <p>Already have an account? <a href="/login">Login</a></p>
     </div>
 </body>
 

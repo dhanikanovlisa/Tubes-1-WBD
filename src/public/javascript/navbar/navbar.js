@@ -5,12 +5,12 @@ const usermenu = document.querySelector("#user-menu")
 function navbar(){
     if (navbar_link.className === "navbar-link") {
         navbar_link.className += " responsive";
-        photo_profile.className += " resp-mode";
-        usermenu.style.display = 'none';
+        if(photo_profile) photo_profile.className += " resp-mode";
+        if(usermenu) usermenu.style.display = 'none';
         
     } else {
         navbar_link.className = "navbar-link";
-        photo_profile.className = "photo-profile";
+        if(photo_profile) photo_profile.className = "photo-profile";
     }
 }
 
@@ -37,15 +37,10 @@ function userMenu(){
 }
 
 window.onclick = function(e){
-    console.log("click4");
-    console.log(e.target);
-    console.log(e.target.className);
-    if (navbar_link.className === "navbar-link responsive" ){
+    if (navbar_link && navbar_link.className === "navbar-link responsive"){
         if (e.target.className != "burger-bar" && e.target.className != "navbar-link responsive"){
-            console.log("clicks");
-            console.log(e.target.className);
             navbar_link.className = "navbar-link";
-            photo_profile.className = "photo-profile";
+            if(photo_profile) photo_profile.className = "photo-profile";
         }
     }
 
