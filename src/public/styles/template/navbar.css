@@ -17,7 +17,12 @@
     margin-left: 60px;
 }
 .navbar-link a{
+    background-color: transparent;
     text-decoration: none;
+}
+
+.navbar-link a:hover{
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
 }
 
 .navbar-link {
@@ -26,7 +31,7 @@
     display : flex;
     align-items: center;
     justify-content: space-between;
-    margin-left: 30px;
+    margin-left: 60px;
     margin-right: 60px;
 }
 
@@ -35,10 +40,63 @@
     background-color: transparent;
 }
 
+.photo-profile {
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+}
+
+.photo-profile:hover {
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+}
+
+.hidden-link {
+    display: none;
+}
+
+.user-menu .hidden-link{
+    color: var(--black);
+    display: block;
+}
+
+.user-menu .hidden-link:hover{
+    text-shadow: 0px 0px 20px rgb(0, 0, 0);
+}
+.user-menu {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    position: absolute;
+    right: 60px;
+    top: 80px;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+}
+
 @media screen and (max-width: 650px) {
 
     .navbar-link {
         display: none;
+    }
+
+    .photo-profile {
+        display: none;
+    }
+
+    .user-menu {
+        display: hidden;
+    }
+    .navbar-link a:hover{
+        text-shadow: 0px 0px 20px rgb(0, 0, 0);
+    }
+
+    .hidden-link {
+        display: block;
+    }
+
+    .photo-profile:hover {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
     }
 
     .burger-bar {

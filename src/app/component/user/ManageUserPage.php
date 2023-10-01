@@ -13,10 +13,11 @@
     <!-- Page-specific CSS -->
     <link rel="stylesheet" type="text/css" href="styles/user/manageUser.css">
     <!-- Include the external JavaScript file -->
-    <script src="javascript/cardUser.js"></script>
+    <script src="javascript/component/cardUser.js"></script>
 </head>
 
 <body>
+    <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
     <?php
     require_once DIRECTORY . '/../controller/user/ManageUserController.php';
     $user = new ManageUserController();

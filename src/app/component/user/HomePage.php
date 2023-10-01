@@ -14,11 +14,10 @@
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/user/homepage.css">
 </head>
-
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
     <?php
-    require_once DIRECTORY . '/../controller/home/HomePageController.php';
+    require_once DIRECTORY . '/../controller/user/HomePageController.php';
     $film = new HomePageController();
     $result = $film->getAllFilm();
     ?>
