@@ -70,6 +70,10 @@ h4{
     color: var(--red);
 }
 
+.text-gray{
+    color: var(--grey);
+}
+
 .button-text{
     font-size: var(--paragraph);
     font-weight: bold;
@@ -145,6 +149,8 @@ textarea {
     color:var(--black);
     font-size: 16px;
     resize: none;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 
@@ -153,6 +159,8 @@ textarea::placeholder{
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 
@@ -209,6 +217,7 @@ input[type="checkbox"]:checked {
     border-color: var(--red);
 }
 
+
 select {
     appearance: none;
     outline: 10px red;
@@ -216,9 +225,8 @@ select {
     box-shadow: none;
     flex: 1;
     padding: 0 1em;
-    color: #fff;
     background-color: var(--white);
-    color: #000000;
+    color: var(--grey);
     background-image: none;
     cursor: pointer;
     border-radius: 0.4rem;
@@ -229,3 +237,20 @@ select {
     font-size: larger;
     font-family: 'Inter', sans-serif;
 }
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 50%; 
+    right: 10px;
+    margin-top: -1px; /* Adjust this value to center the arrow more accurately */
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: red; /* Change this color to the desired color */
+}
+
+option{
+    color: var(--black);
+}
+  

@@ -52,13 +52,15 @@
 }
 .duration-select-container{
     display:flex;
-    gap:5rem;
+    flex-direction: column;
+    gap:1rem;
 }
 
-date-select-container{
+.border{
     display:flex;
     gap:5rem;
 }
+
 
 .select-container{
     display: flex;

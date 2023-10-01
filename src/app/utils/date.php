@@ -22,3 +22,18 @@ function listofYear(){
     }
     return $minutes;
 }
+
+function parseDate($date){
+    $date = str_replace("'", '', $date);
+    $date = explode("-", $date);
+
+    if (count($date) === 3) {
+        return [
+            "year" => $date[0],
+            "month" => $date[1],
+            "date" => $date[2],
+        ];
+    } else {
+        return null;
+    }
+}

@@ -16,8 +16,12 @@
 </head>
 
 <body>
-    <?php include(dirname(__DIR__) . "/template/NavbarUser.php");
+    <?php
+
+
+ include(dirname(__DIR__) . "/template/NavbarUser.php");
     require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
+    require_once dirname(dirname(__DIR__)) . '/utils/date.php';
     $hours = listofHour();
     $minutes = listofMinutes();
 
@@ -33,6 +37,7 @@
     $filmData = $filmDetail->getFilmData($filmID);
     $filmGenre = $filmDetail->getFilmGenre($filmID);
     $hourFilm = turnToHourAndMinute($filmData["duration"]);
+    $release = parseDate($filmData["date_release"]);
     $totalRow = count($filmData);
     ?>
     <div class='container'>
@@ -86,73 +91,85 @@
                                 </div>
                             </div>
                             <div class="duration-select-container">
-                                <div class="select-container">
-                                    <label for="filmHourDuration">Hour<span class="req">*</span></label>
-
-                                    <div class="custom-select">
+                                <div class="title-container">
+                                    <h3>Duration</h3>
+                                </div>
+                                <div class="border">
+                                    <div class="select-container">
+                                        <label for="filmHourDuration">Hour<span class="req">*</span></label>
                                         <select id="filmHourDuration" name="filmHourDuration">
+                                            <option value="" disabled selected><?php echo $hourFilm["hour"]?></option>
                                             <?php
-                                            
+
                                             foreach ($hours as $h) {
                                             ?>
-                                                <option placeholder="<?php echo $filmHour[0] ?>"value="<?php echo $h; ?>"><?php echo $h; ?></option>
+                                                <option placeholder="<?php echo $filmHour[0] ?>" value="<?php echo $h; ?>"><?php echo $h; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="select-container">
-                                    <label for="filmMinuteDuration">Minute<span class="req">*</span></label>
-                                    <select id="filmMinuteDuration" name="filmMinuteDuration">
-                                        <?php
-                                        
-                                        foreach ($minutes as $m) {
-                                        ?>
-                                            <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="date-select-container">
-                                <div class="select-container">
-                                    <label for="date">Date<span class="req">*</span></label>
-                                    <div class="custom-select">
-                                        <select id="date" name="date">
+                                    <div class="select-container">
+                                        <label for="filmMinuteDuration">Minute<span class="req">*</span></label>
+                                        <select id="filmMinuteDuration" name="filmMinuteDuration">
+                                        <option value="" disabled selected><?php echo $hourFilm["minute"]?></option>
                                             <?php
-                                            require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-                                            $date = listofDate();
-                                            foreach ($date as $d) {
-                                            ?>
-                                                <option value="<?php echo $d; ?>"><?php echo $d; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="select-container">
-                                    <label for="month">Month<span class="req">*</span></label>
-                                    <div class="custom-select">
-                                        <select id="month" name="month">
-                                            <?php
-                                            require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-                                            $month = listofMonth();
-                                            foreach ($month as $m) {
+
+                                            foreach ($minutes as $m) {
                                             ?>
                                                 <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="select-container">
-                                    <label for="year">Year<span class="req">*</span></label>
-                                    <div class="custom-select">
-                                        <select id="year" name="year">
-                                            <?php
-                                            require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-                                            $year = listofYear();
-                                            foreach ($year as $y) {
-                                            ?>
-                                                <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
-                                            <?php } ?>
-                                        </select>
+                            </div>
+                            <div class="duration-select-container">
+                            <div class="title-container">
+                                    <h3>Release Date</h3>
+                                </div>
+                                <div class="border">
+                                    <div class="select-container">
+                                        <label for="date">Date<span class="req">*</span></label>
+                                        <div class="custom-select">
+                                            <select id="date" name="date">
+                                                <option value="" disabled selected><?php echo $release["date"]?></option>
+                                                <?php
+                                                require_once dirname(dirname(__DIR__)) . '/utils/date.php';
+                                                $date = listofDate();
+                                                foreach ($date as $d) {
+                                                ?>
+                                                    <option value="<?php echo $d; ?>"><?php echo $d; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="select-container">
+                                        <label for="month">Month<span class="req">*</span></label>
+                                        <div class="custom-select">
+                                            <select id="month" name="month">
+                                                <option value="" disabled selected><?php echo $release["month"]?></option>
+                                                <?php
+                                                require_once dirname(dirname(__DIR__)) . '/utils/date.php';
+                                                $month = listofMonth();
+                                                foreach ($month as $m) {
+                                                ?>
+                                                    <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="select-container">
+                                        <label for="year">Year<span class="req">*</span></label>
+                                        <div class="custom-select">
+                                            <select id="year" name="year">
+                                                <option value="" disabled selected><?php echo $release["year"]?></option>
+                                                <?php
+                                                require_once dirname(dirname(__DIR__)) . '/utils/date.php';
+                                                $year = listofYear();
+                                                foreach ($year as $y) {
+                                                ?>
+                                                    <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -10,6 +10,7 @@ class FilmGenreModel{
         $this->db = new Database;
     }
 
+
     public function insertFilmGenre($film_id, $genre_id){
         $this->db->callQuery("INSERT INTO film_genre(film_id, genre_id) VALUES (:filmid, :genreid);");
         $this->db->bind('filmid', $film_id);

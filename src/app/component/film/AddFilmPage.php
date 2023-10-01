@@ -62,70 +62,81 @@
                             </div>
                         </div>
                         <div class="duration-select-container">
-                            <div class="select-container">
-                                <label for="filmHourDuration">Hour<span class="req">*</span></label>
-
-                                <div class="custom-select">
-                                    <select id="filmHourDuration" name="filmHourDuration">
+                            <div class="title-container">
+                                <h3>Duration</h3>
+                            </div>
+                            <div class="border">
+                                <div class="select-container">
+                                    <label for="filmHourDuration">Hour<span class="req">*</span></label>
+                                    <select class="dropd" id="filmHourDuration" name="filmHourDuration">
+                                        <option value="" disabled selected>HH</option>
                                         <?php
-
                                         foreach ($hours as $h) {
                                         ?>
                                             <option value="<?php echo $h; ?>"><?php echo $h; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="select-container">
-                                <label for="filmMinuteDuration">Minute<span class="req">*</span></label>
-                                <select id="filmMinuteDuration" name="filmMinuteDuration">
-                                    <?php
-
-                                    foreach ($minutes as $m) {
-                                    ?>
-                                        <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="date-select-container">
-                            <div class="select-container">
-                                <label for="date">Date<span class="req">*</span></label>
-                                <div class="custom-select">
-                                    <select id="date" name="date">
+                                <div class="select-container">
+                                    <label for="filmMinuteDuration">Minute<span class="req">*</span></label>
+                                    <select id="filmMinuteDuration" name="filmMinuteDuration">
+                                        <option value="" disabled selected>MM</option>
                                         <?php
 
-                                        foreach ($date as $d) {
-                                        ?>
-                                            <option value="<?php echo $d; ?>"><?php echo $d; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="select-container">
-                                <label for="month">Month<span class="req">*</span></label>
-                                <div class="custom-select">
-                                    <select id="month" name="month">
-                                        <?php
-
-                                        foreach ($month as $m) {
+                                        foreach ($minutes as $m) {
                                         ?>
                                             <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="select-container">
-                                <label for="year">Year<span class="req">*</span></label>
-                                <div class="custom-select">
-                                    <select id="year" name="year">
-                                        <?php
-
-                                        foreach ($year as $y) {
-                                        ?>
-                                            <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
-                                        <?php } ?>
-                                    </select>
+                        </div>
+                        <div class="duration-select-container">
+                        <div class="title-container">
+                                <h3>Release Date</h3>
+                            </div>
+                            <div class="border">
+                                <div class="select-container">
+                                    <label for="date">Date<span class="req">*</span></label>
+                                    <div class="custom-select">
+                                        <select id="date" name="date">
+                                            <option value="" disabled selected>DD</option>
+                                            <?php
+    
+                                            foreach ($date as $d) {
+                                            ?>
+                                                <option value="<?php echo $d; ?>"><?php echo $d; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="select-container">
+                                    <label for="month">Month<span class="req">*</span></label>
+                                    <div class="custom-select">
+                                        <select id="month" name="month">
+                                            <option value="" disabled selected>MM</option>
+                                            <?php
+    
+                                            foreach ($month as $m) {
+                                            ?>
+                                                <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="select-container">
+                                    <label for="year">Year<span class="req">*</span></label>
+                                    <div class="custom-select">
+                                        <select id="year" name="year">
+                                            <option value="" disabled selected>YYYY</option>
+                                            <?php
+    
+                                            foreach ($year as $y) {
+                                            ?>
+                                                <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
