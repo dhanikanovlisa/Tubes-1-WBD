@@ -29,13 +29,15 @@ class AuthenticationMiddleware
     public function isAdmin()
     {
         if (!isset($_SESSION['user_id'])) {
-            throw new Exception;
+            return false;
         }
 
         $is_admin = $this->userModel->isAdmin($_SESSION['user_id']);
 
         if (!$is_admin) {
-            throw new Exception;
+            return false;
         }
+
+        return true;
     }
 }
