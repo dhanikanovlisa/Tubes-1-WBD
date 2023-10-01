@@ -55,10 +55,21 @@ class FilmsModel
     }
 
     /**Insert Film */
-    public function insertFilm($genre_id, $title, $description, $film_path, $film_poster, $date_release, $duration)
+    public function insertFilm($title, $description, $film_path, $film_poster, $date_release, $duration)
     {
+        $this->db->callQuery("INSERT INTO film(title, description, film_path, film_poster, date_release, duration)
+            VALUES (:title, :description, :film_path, :film_poster, :date_release, :duration);");
         
+        $this->db->bind('title', $title);
+        $this->db->bind('description', $description);
+        $this->db->bind('film_path', $film_path);
+        $this->db->bind('film_poster', $film_poster);
+        $this->db->bind('date_release', $date_release);
+        $this->db->bind('duration', $duration);
+        
+        $this->db->execute();
     }
+    
 
     /**Delete Film */
     public function deleteFilm($id)
@@ -70,5 +81,9 @@ class FilmsModel
     public function editFilm($genre_id, $title, $description, $film_path, $film_poster, $date_release, $duration)
     {
       
+    }
+
+    public function getLastIDFilm(){
+        return $this->db->lastInsertID();
     }
 }

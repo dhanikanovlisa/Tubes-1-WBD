@@ -134,8 +134,30 @@ input{
     border: none;
 }
 
-iput:focus{
-    background-color: var(--red);
+textarea {
+    width: 75%;
+    height: 10rem;
+    padding:1rem;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 0.625rem;
+    background-color: var(--white);
+    color:var(--black);
+    font-size: 16px;
+    resize: none;
+}
+
+
+textarea::placeholder{
+    color: var(--grey);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+
+
+input:focus{
+    border-color: var(--red);
 }
 
 input::placeholder{
@@ -143,7 +165,7 @@ input::placeholder{
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
-    padding: 0.5rem;
+    padding: 1rem;
 }
 
 input:required{
@@ -178,11 +200,32 @@ input[type="checkbox"] {
     width: 1.15em;
     height: 1.15em;
     border: 0.15em solid var(--white);
-    border-radius: 0.15em;
+    border-radius: 0.4em;
 }
 
 input[type="checkbox"]:checked {
     background-color: var(--red);
     color: var(--white);
     border-color: var(--red);
+}
+
+select {
+    appearance: none;
+    outline: 10px red;
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1em;
+    color: #fff;
+    background-color: var(--white);
+    color: #000000;
+    background-image: none;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    height: 2.5125rem;
+    width: 5rem;
+    padding: 0.6875rem 0.75rem;
+    font-weight: bold;
+    font-size: larger;
+    font-family: 'Inter', sans-serif;
 }

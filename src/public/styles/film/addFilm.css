@@ -3,9 +3,14 @@
     padding-left: 4rem;
     padding-right: 4rem;
 }
+.title-container{
+    padding-bottom:1rem;
+    border: 1px solid white;
+}
+
 .whole-container{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     border: 1px solid white;
     gap:2rem;
 }
@@ -17,6 +22,12 @@
     border: 1px solid white;
     gap:3rem;
 }
+.input-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    gap:0.5rem;
+}
 .field-container{
     display: flex;
     flex-direction: column;
@@ -24,22 +35,36 @@
     gap:0.5rem;
     padding-bottom: 5rem;
 }
-.input-container{
+.checkbox-container {
     display: flex;
-    border: 1px solid white;
-    gap:0.5rem;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
 }
 
-.checkbox-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.checkbox-item {
+    flex-basis: 48%;
+    margin-bottom: 10px; 
 }
 .button-container{
+    padding-top: 3rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 2rem;
+}
+.duration-select-container{
+    display:flex;
+    gap:5rem;
+}
+
+date-select-container{
+    display:flex;
+    gap:5rem;
+}
+
+.select-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    gap:0.5rem;
 }
 .card {
     width: 150px;
