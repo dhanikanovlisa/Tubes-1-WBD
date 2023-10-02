@@ -19,7 +19,7 @@
             <a href="/watchlist">Watchlist</a>
             <a class="hidden-link" href="/settings/<?php echo $_SESSION['user_id'];?>">Settings</a>
             <a class="hidden-link" onCLick="logout()">Logout</a>
-            <img id="photo-profile" class="photo-profile" src="images/assets/profile-placeholder.png" onClick="userMenu()"/>
+            <img id="photo-profile" class="photo-profile" src="/images/assets/profile-placeholder.png" onClick="userMenu()"/>
             <div class="user-menu" id="user-menu">
                 <a class="hidden-link" href="/settings/<?php echo $_SESSION['user_id'];?>">Settings</a>
                 <a class="hidden-link" onClick="logout()">Logout</a>
