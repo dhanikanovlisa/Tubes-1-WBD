@@ -22,7 +22,6 @@
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php");
 
     $filmID = $params['id'];
-    $_GET["filmID"] = $filmID;
     /**IF someone tries to access URL */
     if (!isset($filmID)) {
         $test = trim('/', $_SERVER["REQUEST_URI"]);
@@ -78,7 +77,7 @@
 
                         </div>
                         <div class="button-container">
-                            <button id="deleteButton" class="button-red button-text" onClick="popModal()">Delete</button>
+                            <button id="deleteButton" class="button-red button-text" onclick="popModal()">Delete</button>
                             <div id="confModal" class="modal red-glow">
                                 <div class="modal-content red-glow">
                                     <div class="whole">
@@ -87,7 +86,7 @@
                                             <p class="text-black" id="description-message">This will be gone</p>
                                         </div>
                                         <div class="button-container">
-                                            <button id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
+                                            <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
                                             <button id="ok" class="button-green button-text" onclick="deleteSong(<?php echo $filmID; ?>)">OK</button>
                                         </div>
                                     </div>

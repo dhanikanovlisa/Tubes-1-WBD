@@ -26,6 +26,7 @@ class UserController
         $result = [];
         foreach ($userData as $user) {
             $data = [];
+            $data["user_id"] = $user['user_id'];
             $data["username"] = $user['username'];
             $data["name"] = $user['first_name'] . ' ' . $user['last_name'];
             $data["role"] = $user['is_admin'] ? 'Admin' : 'User';
@@ -84,6 +85,15 @@ class UserController
         } else {
             header("Location: /page-not-found");
         }
+    }
+
+    /**Delete User */
+    public function deleteUser(){
+        header('Content-Type: application/json');
+        http_response_code(200);
+        
+        $this->userModel->deleteUser($_POST['user_id']);
+        echo json_encode(["redirect_url" => "/manage-user"]);
     }
 
     public function showUserDetailPage($params = []){

@@ -21,6 +21,7 @@
     <?php 
         require_once DIRECTORY . '/../controller/watchlist/WatchListPageController.php';
         $watchListPageController = new WatchListPageController();
+        // $_SESSION['user_id']=5;
         $watchListPageController->setUserID($_SESSION['user_id']);
     ?>
     <header>
@@ -32,11 +33,9 @@
         ?>
     </section>
 
-    <div class='pagination'>
-        <?php 
-            $watchListPageController->generatePagination();
-        ?>
-    </div>
+    <?php 
+        $watchListPageController->generatePagination();
+    ?>
 </body>
 
 </html>

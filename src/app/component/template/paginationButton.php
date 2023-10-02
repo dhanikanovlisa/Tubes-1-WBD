@@ -23,7 +23,7 @@
     }
     echo '"'.$url.'"';
 ?>>
-    <div class='button-pagination <?php echo ($is_active ? 'button-pagination-active':'')?>'>
+    <div class='button-pagination <?php echo ($is_active ? 'button-red':'button-white')?>' value=<?php echo $goto?>>
         <?php echo $target; ?>
     </div>
 </a>

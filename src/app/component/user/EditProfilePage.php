@@ -10,8 +10,10 @@
     <!---Global CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <!---Page specify CSS--->
-    <link rel="stylesheet" type="text/css" href="/styles/user/profilesetting.css">
+    <link rel="stylesheet" type="text/css" href="/styles/user/editprofile.css">
+    <script type="text/javascript" src="/javascript/user/editProfile.js" defer></script>
 </head>
 
 <body>
@@ -39,32 +41,54 @@
                     <div class="profile">
                         <img src="/images/assets/profile-placeholder.png" />
                     </div>
-
                     <div class="detail-container">
                         <form id="editProfile">
                             <div class="container">
-                                <label class="one" for="username">Username</label>
-                                <input class="one" type="text" name="username" id="username" required />
-                                <div class="error" id="username-alert"></div>
-
-                                <label for="email">Email</label>
-                                <input type="text" name="email" id="email" required />
-                                <div class="error" id="email-alert"></div>
-
-                                <label for="phone-number">Phone Number</label>
-                                <input type="text" name="phone-number" id="phone-number" required />
-                                <div class="error" id="phone-alert"></div>
+                                <div class="field-contain">
+                                    <label class="one" for="username">Username</label>
+                                    <input class="one" type="text" name="username" id="username" placeholder="<?php echo $userData["username"] ?>" />
+                                </div>
 
                                 <div class="half-container">
                                     <div class="one-half">
                                         <label for="first-name">First Name</label>
-                                        <input type="text" name="first-name" id="first-name" required />
+                                        <input type="text" name="first-name" id="first-name" placeholder="<?php echo $userData["first_name"] ?>" />
                                     </div>
 
                                     <div class="two-half">
                                         <label for="last-name">Last Name</label>
-                                        <input type="text" name="last-name" id="last-name" required />
+                                        <input type="text" name="last-name" id="last-name" placeholder="<?php echo $userData["last_name"] ?>" />
                                     </div>
+                                </div>
+
+                                <div class="field-contain">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" id="email" placeholder="<?php echo $userData["email"] ?>" />
+                                </div>
+
+                                <div class="field-contain">
+                                    <label for="phone-number">Phone Number</label>
+                                    <input type="text" name="phone-number" id="phone-number" placeholder="<?php echo $userData["phone_number"] ?>" />
+                                </div>
+                                <div class="btn-contain">
+                                    <div>
+                                    <button class="button-red button-text" onClick="popModal()">Cancel</button>
+                                    <div id="confModal" class="modal red-glow">
+                                        <div class="modal-content red-glow">
+                                            <div class="whole">
+                                                <div class="title-container">
+                                                    <h3 class="text-black" id="main-message">Are you sure you want to Delete This?</h3>
+                                                    <p class="text-black" id="description-message">This will be gone</p>
+                                                </div>
+                                                <div class="button-container">
+                                                    <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
+                                                    <button id="ok" class="button-green button-text" onClick="closePage(<?php echo $userData['user_id']; ?>)">OK</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <button class="button-white button-text">Save</button>
                                 </div>
                         </form>
                     </div>
