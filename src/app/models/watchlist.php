@@ -28,10 +28,12 @@ class WatchListModel{
         return $this->db->fetchResult();
     }
     /**Add new film to watchlist */
-    public function addFilmToWatchList($userID){
+    public function addFilmToWatchList($userID, $film_id){
+        $this->db->callQuery('INSERT INTO '.$this->table.'(user_id, film_id) VALUES('.$userID.','.$film_id.')');
+        return $this->db->execute();
     }
     /**Delete/remove film in watchlist */
-    public function deleteFilmFromWatchList($userID){
-        
+    public function deleteFilmFromWatchList($userID, $film_id){
+        $this->db->callQuery('DELETE FROM '.$this->table.' WHERE user_id='.$userID.' AND film_id='.$film_id);
     }
 }
