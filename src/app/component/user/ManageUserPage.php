@@ -21,13 +21,16 @@
     <?php
     require_once DIRECTORY . '/../controller/user/UserController.php';
     $user = new UserController();
+    $id = $_SESSION["user_id"];
     $result = $user->getAllUser();
     ?>
     <div class="container">
     <h2>Users</h2>
         <div class="cards">
         <?php foreach ($result as $user) {
-            include(DIRECTORY . "/../component/template/cardUser.php");
+            if($user['user_id'] != $id) {
+                include(DIRECTORY . "/../component/template/cardUser.php");
+            }
         } ?>
         </div>
     </div>
