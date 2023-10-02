@@ -2,22 +2,24 @@
 
 require_once  DIRECTORY . '/../utils/database.php';
 require_once  DIRECTORY . '/../models/user.php';
+require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
 
 class LoginController{ 
     private $userModel;
-    
+    private $middleware;
     public function __construct(){
         $this->userModel = new UserModel();
+        $this->middleware = new AuthenticationMiddleware();
     }
     public function showLoginPage(){
-        require_once DIRECTORY . "/../component/user/LoginPage.php";
+        if ($this->middleware->isAdmin()) {
+            header("Location: /manage-film");
+        } else if ($this->middleware->isAuthenticated()) {
+            header("Location: /home");
+        } else {
+            require_once DIRECTORY . "/../component/user/LoginPage.php";
+        }
     }
-
-    public function middleware($middleware){
-        require_once DIRECTORY . '/../middlewares/' . $middleware . '.php';
-        return new $middleware();
-    }
-
     public function login(){
         $login = $this->userModel->login($_POST['username'], $_POST['password']);
 
