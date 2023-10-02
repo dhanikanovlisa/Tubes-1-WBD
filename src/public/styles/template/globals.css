@@ -178,7 +178,6 @@ input::placeholder{
 
 input:required{
     border-color: var(--red);
-    border-width: 0.5rem;
 }
 
 .description-input{
