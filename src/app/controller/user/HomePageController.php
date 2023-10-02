@@ -26,12 +26,12 @@ class HomePageController{
         return $result;
     }
     public function showHomePage(){
-        if ($this->middleware->isAuthenticated()) {
+        if ($this->middleware->isAdmin()) {
+            header("Location: /restrictAdmin");
+        } else if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/user/HomePage.php";
-        } else if ($this->middleware->isAdmin()) {
-            header("Location: /restrict");
         } else {
-            header("Location: /login");
+            header("Location: /page-not-found");
         }
     }
 }

@@ -11,10 +11,12 @@ class WatchListPageController
     
     public function showWatchListPage()
     {
-        if ($this->middleware->isAuthenticated()) {
+        if ($this->middleware->isAdmin()) {
+            header("Location: /restrictAdmin");
+        } else if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/user/WatchListPage.php";
         } else {
-            header("Location: /login");
+            header("Location: /page-not-found");
         }
     }
 }

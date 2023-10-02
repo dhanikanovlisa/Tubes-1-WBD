@@ -8,13 +8,12 @@ class SearchPageController{
         $this->middleware = new AuthenticationMiddleware();
     }
     public function showSearchPage(){
-        if ($this->middleware->isAuthenticated()){
+        if ($this->middleware->isAdmin()) {
+            header("Location: /restrictAdmin");
+        } else if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/user/SearchPage.php";
-        } else if($this->middleware->isAdmin()){
-            header("Location: /restrict");
-        } 
-        else {
-            header("Location: /login");
+        } else {
+            header("Location: /page-not-found");
         }
     }
 }
