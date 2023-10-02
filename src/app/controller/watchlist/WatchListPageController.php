@@ -30,10 +30,12 @@ class WatchListPageController{
         foreach($lf as $film){
             include(DIRECTORY . "/../component/template/cardMovie.php");
         }
+        if(empty($lf)) echo "Your watchlist is empty";
     }
 
     public function generatePagination(){
-        $totalrecords = $this->watchListModel->getWatchListFilmsCount($this->userID)['count'];
+        $totalrecords = $this->watchListModel->getWatchListFilmsCount($this->userID);
+        if($totalrecords) $totalrecords=$totalrecords['count'];
         $itemsperpage = $this->limit;
 
         $totalpages = ceil($totalrecords/$itemsperpage);
