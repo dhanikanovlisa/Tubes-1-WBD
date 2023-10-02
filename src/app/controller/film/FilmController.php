@@ -148,7 +148,7 @@ class FilmController
     public function showWatchFilmPage($params = [])
     {
         if ($this->middleware->isAdmin()) {
-            header("Location: /restrict");
+            header("Location: /restrictAdmin");
         } else if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/film/WatchFilmPage.php";
         } else {
@@ -160,7 +160,7 @@ class FilmController
         if ($this->middleware->isAdmin()) {
             require_once DIRECTORY . "/../component/film/DetailFilmPage.php";
         } else if ($this->middleware->isAuthenticated()) {
-            header("Location: /restrictAdmin");
+            header("Location: /restrict");
         } else {
             header("Location: /page-not-found");
         }
@@ -170,7 +170,7 @@ class FilmController
         if ($this->middleware->isAdmin()) {
             require_once DIRECTORY . "/../component/film/AddFilmPage.php";
         } else if ($this->middleware->isAuthenticated()) {
-            header("Location: /restrictAdmin");
+            header("Location: /restrict");
         } else {
             header("Location: /page-not-found");
         }
@@ -181,7 +181,7 @@ class FilmController
         if ($this->middleware->isAdmin()) {
             require_once DIRECTORY . "/../component/film/EditFilmPage.php";
         } else if ($this->middleware->isAuthenticated()) {
-            header("Location: /restrictAdmin");
+            header("Location: /restrict");
         } else {
             header("Location: /page-not-found");
         }
@@ -191,7 +191,7 @@ class FilmController
         if ($this->middleware->isAdmin()) {
             require_once DIRECTORY . "/../component/film/ManageFilmPage.php";
         } else if ($this->middleware->isAuthenticated()) {
-            header("Location: /restrictAdmin");
+            header("Location: /restrict");
         } else {
             header("Location: /page-not-found");
         }
