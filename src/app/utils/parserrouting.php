@@ -63,7 +63,7 @@ class ParserRouting {
     public function call($path, $method) {
         $result = $this->checkURL($path, $method);
         if (!isset($result)) {
-            $controllerName = "not-found/NotFoundController";
+            $controllerName = "conditional/NotFoundController";
             $methodName = "showNotFoundPage";
         } elseif (http_response_code() === 405) {
             $controllerName = "MethodNotAllowedController";

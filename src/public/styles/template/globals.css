@@ -13,7 +13,7 @@
     /*Font*/
     font-family: 'Inter', sans-serif;
     /*Text Styles*/
-    --heading1: 4rem;
+    --heading1: 3rem;
     --heading2:2.25rem;
     --heading3:1.5rem;
     --heading4:1rem;
@@ -28,10 +28,15 @@
     color: var(--white);
 }
 
-p, label, a, button {
+p, a, button {
     letter-spacing: 0.05rem;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
+.label-font{
+    font-size: 0.5rem;
+}
 .text{
     font-size: var(--paragraph);
     letter-spacing: 0.01rem;
@@ -63,6 +68,10 @@ h4{
 
 .text-red{
     color: var(--red);
+}
+
+.text-gray{
+    color: var(--grey);
 }
 
 .button-text{
@@ -129,8 +138,34 @@ input{
     border: none;
 }
 
+textarea {
+    width: 75%;
+    height: 10rem;
+    padding:1rem;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 0.625rem;
+    background-color: var(--white);
+    color:var(--black);
+    font-size: 16px;
+    resize: none;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
+textarea::placeholder{
+    color: var(--grey);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
 input:focus{
-    background-color: var(--red);
+    border-color: var(--red);
 }
 
 input::placeholder{
@@ -138,12 +173,11 @@ input::placeholder{
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
-    padding: 0.5rem;
+    padding: 1rem;
 }
 
 input:required{
     border-color: var(--red);
-    border-width: 0.5rem;
 }
 
 .description-input{
@@ -153,3 +187,69 @@ input:required{
     color: var(--red);
     padding: 0.2rem;
 }
+
+.button-pagination{
+    height: 2.8125rem;
+    width: 2.8125rem;
+    border-radius: 0.625rem;
+    background-color: var(--white);
+    color: var(--black);
+    font-weight: bold;
+    font-size: larger;
+    font-family: 'Inter', sans-serif;
+}
+
+input[type="checkbox"] {
+    background-color: var(--white);
+    margin: 0;
+    font: inherit;
+    color: var(--white);
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid var(--white);
+    border-radius: 0.4em;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--red);
+    color: var(--white);
+    border-color: var(--red);
+}
+
+
+select {
+    appearance: none;
+    outline: 10px red;
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1em;
+    background-color: var(--white);
+    color: var(--grey);
+    background-image: none;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    height: 2.5125rem;
+    width: 5rem;
+    padding: 0.6875rem 0.75rem;
+    font-weight: bold;
+    font-size: larger;
+    font-family: 'Inter', sans-serif;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 50%; 
+    right: 10px;
+    margin-top: -1px; /* Adjust this value to center the arrow more accurately */
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: red; /* Change this color to the desired color */
+}
+
+option{
+    color: var(--black);
+}
+  
