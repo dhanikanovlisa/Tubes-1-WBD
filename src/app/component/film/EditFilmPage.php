@@ -13,12 +13,11 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/cardMovie.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/editFilm.css">
+    <script type="text/javascript" src="/javascript/film/editFilm.js" defer></script>
 </head>
 
 <body>
     <?php
-
-
     include(dirname(__DIR__) . "/template/NavbarUser.php");
     require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
     require_once dirname(dirname(__DIR__)) . '/utils/date.php';
@@ -66,15 +65,15 @@
                         <div class="field-container">
                             <div class="input-container">
                                 <label for="filmName">Film Name<span class="req">*</span></label>
-                                <input type="text" id="filmName" name="filmName" placeholder="<?php echo $filmData["title"] ?>" required />
+                                <input type="text" id="filmName" name="filmName" placeholder="<?php echo $filmData["title"] ?>" />
                                 <label for="filmPoster">Film Poster<span class="req">*</span></label>
-                                <input type="file" id="filmPoster" name="filmPoster" accept="image/*" required />
+                                <input type="file" id="filmPoster" name="filmPoster" accept="image/*" />
                                 <label for="filmVideo">Film Video<span class="req">*</span></label>
-                                <input type="file" id="filmPoster" name="filmVideo" accept="video/*" required />
+                                <input type="file" id="filmPoster" name="filmVideo" accept="video/*" />
                             </div>
                             <div class="input-container">
                                 <label for="filmDescriptsion">Description<span class="req">*</span></label>
-                                <textarea id="filmDescription" name="filmDescription" placeholder="<?php echo $filmData["description"] ?>" required></textarea>
+                                <textarea id="filmDescription" name="filmDescription" placeholder="<?php echo $filmData["description"] ?>"></textarea>
                             </div>
                             <div class="input-container">
                                 <h3>Genre<span class="req">*</span></h3>
@@ -180,7 +179,7 @@
                                 <a href="/manage-film">
                                     <button id="cancel" type="submit" class="button-red button-text">Cancel</button>
                                 </a>
-                                <button type="submit" class="button-white button-text">Save</button>
+                                <button type="submit" class="button-white button-text" onclick="editFilm(<?php echo $filmID?>)">Save</button>
                             </div>
                         </div>
                     </form>

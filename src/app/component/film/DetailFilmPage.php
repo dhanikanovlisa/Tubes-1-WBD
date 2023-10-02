@@ -93,7 +93,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <a href="/edit-film/<?php echo $filmID; ?>">
                                 <button class="button-white button-text">Edit</button>
                             </a>

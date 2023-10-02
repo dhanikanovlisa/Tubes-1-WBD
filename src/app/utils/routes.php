@@ -29,6 +29,7 @@ $route = [
 
     '/edit-film/:id' => ["GET" => "film/FilmController@showEditFilmPage"],
     '/delete-film' => ["POST" => "film/FilmController@deleteFilm"],
+    '/edit-film/edit' => ["POST" => "film/FilmController@editFilm"],
 
     '/page-not-found' => ["GET" => "conditional/NotFoundController@showNotFoundPage"],
     '/restrict' => ["GET" => "conditional/RestrictedController@showRestrictedPage"],
