@@ -33,7 +33,7 @@ class AuthenticationMiddleware
 
         $is_admin = $this->userModel->isAdmin($_SESSION['user_id']);
 
-        if ($is_admin["is_admin"]) {
+        if (!$is_admin["is_admin"]) {
             return false;
         }
 

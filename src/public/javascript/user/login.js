@@ -23,11 +23,10 @@ loginForm && loginForm.addEventListener('submit', async (e) => {
 
     const xhr_uname = new XMLHttpRequest();
     xhr_uname.open('GET', '/check/username/:' + usernameInput.value);
-    console.log("masuk submit");
+    
     xhr_uname.send();
     xhr_uname.onreadystatechange = () => {
         if (xhr_uname.readyState === XMLHttpRequest.DONE){
-            console.log(xhr_uname.responseText);
             const response = JSON.parse(xhr_uname.responseText);
             if (!response.isValid){
                 setErrorWarning(usernameInput, usernameAlert, 'Username is not available');
@@ -49,9 +48,7 @@ loginForm && loginForm.addEventListener('submit', async (e) => {
                             return;
                         }
                         const response = JSON.parse(xhr_pass.responseText);
-                        console.log(response);
                         location.replace(response.redirect_url);
-                        
                     }
                 }
             }

@@ -19,18 +19,21 @@ class LoginController{
     }
 
     public function login(){
+
+
         $user_id = $this->userModel->login($_POST['username'], $_POST['password']);
         $userData = $this->userModel->getUserByID($user_id['user_id']);
-        $is_admin = $userData['is_admin'];
-        $userData = $this->userModel->getUserByID($user_id['user_id']);
-        $id_user = $userData['is_admin'];
+        $is_user = $userData['is_admin'];
 
         header('Content-Type: application/json');
         if ($user_id) {
-            $tokenMiddleware->putToken();
             $_SESSION['user_id'] = $user_id['user_id'];
-            http_response_code(201);
-            echo json_encode(["redirect_url" => "/", "message" => "Login success"]);
+            http_response_code(200);
+            if($is_user == 1){
+                echo json_encode(["redirect_url" => "/manage-film", "message" => "Login success"]);
+            } else {
+                echo json_encode(["redirect_url" => "/home", "message" => "Login success"]);
+            }
         } else {
             http_response_code(401);
             echo json_encode(["message" => "Username or password is incorrect"]);
