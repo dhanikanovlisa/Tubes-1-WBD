@@ -54,6 +54,13 @@
     gap:1rem;
 }
 
+.btn-contain{
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    gap: 2rem;
+}
+
 .half-container {
     display: flex;
     justify-content: space-between;
@@ -61,7 +68,11 @@
     text-align: left;
     margin-top: 5px;
 }
-
+.field-contain{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 .one-half {
     width: 48%;
 }
