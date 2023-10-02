@@ -1,17 +1,16 @@
 <?php
 require_once  DIRECTORY . '/../utils/database.php';
 require_once  DIRECTORY . '/../models/films.php';
+require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
 class HomePageController{ 
     private $filmModel;
+    private $middleware;
+    
 
     public function __construct()
     {
         $this->filmModel = new FilmsModel();    
-    }
-
-    public function middleware($middleware){
-        require_once DIRECTORY . '/../middlewares/' . $middleware . '.php';
-        return new $middleware();
+        $this->middleware = new AuthenticationMiddleware();
     }
 
     public function getAllFilm(){
@@ -27,9 +26,10 @@ class HomePageController{
         return $result;
     }
     public function showHomePage(){
-        $authMiddleware = $this->middleware('AuthenticationMiddleware');
-        if ($authMiddleware->isAuthenticated()){
+        if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/user/HomePage.php";
+        } else if ($this->middleware->isAdmin()) {
+            header("Location: /restrict");
         } else {
             header("Location: /login");
         }

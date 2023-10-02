@@ -69,6 +69,11 @@ class FilmsModel
         
         $this->db->execute();
     }
+
+    /**Update Film */
+    public function updateFilm(){
+        
+    }
     
 
     /**Delete Film */

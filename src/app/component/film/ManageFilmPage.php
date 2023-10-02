@@ -18,8 +18,8 @@
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
     <?php
-    require_once DIRECTORY . '/../controller/home/HomePageController.php';
-    $film = new HomePageController();
+    require_once DIRECTORY . '/../controller/film/FilmController.php';
+    $film = new FilmController();
     $result = $film->getAllFilm();
     ?>
     <div class='container'>
