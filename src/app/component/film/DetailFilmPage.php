@@ -11,8 +11,12 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/cardMovie.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/detailFilm.css">
+
+    <script type="text/javascript" src="/javascript/film/deleteFilm.js" defer>
+    </script>
 
 </head>
 
@@ -75,7 +79,15 @@
 
                         </div>
                         <div class="button-container">
-                            <button class="button-red button-text">Delete</button>
+                            <button id="deleteButton" class="button-red button-text" onClick="popModal()">Delete</button>
+                                <div id="confModal" class="modal red-glow">
+                                    <?php
+                                    $message = "Are you sure you want to delete this?";
+                                    $description = "This action cannot be undone.";
+                                    include(DIRECTORY . "/../component/template/confirmationModal.php");
+                                    ?>
+                                </div>
+                            
                             <a href="/edit-film/<?php echo $filmID; ?>">
                                 <button class="button-white button-text">Edit</button>
                             </a>
