@@ -23,13 +23,19 @@ class LoginController{
         // $tokenMiddleware->checkToken();
 
         $user_id = $this->userModel->login($_POST['username'], $_POST['password']);
+        $userData = $this->userModel->getUserByID($user_id['user_id']);
+        $id_user = $userData['is_admin'];
 
         header('Content-Type: application/json');
         if ($user_id) {
             $tokenMiddleware->putToken();
             $_SESSION['user_id'] = $user_id['user_id'];
             http_response_code(200);
-            echo json_encode(["redirect_url" => "/", "message" => "Login success"]);
+            if($id_user == 1){
+                echo json_encode(["redirect_url" => "/manage-film", "message" => "Login success"]);
+            } else {
+                echo json_encode(["redirect_url" => "/home", "message" => "Login success"]);
+            }
         } else {
             http_response_code(400);
             echo json_encode(["message" => "Username or password is incorrect"]);

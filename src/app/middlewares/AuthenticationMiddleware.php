@@ -18,7 +18,7 @@ class AuthenticationMiddleware
 
         $user = $this->userModel->getUserByID($_SESSION['user_id']);
 
-        if (!$user['is_admin']) {
+        if ($user['is_admin']) {
             return false;
         }
 

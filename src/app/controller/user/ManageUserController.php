@@ -35,7 +35,12 @@ class ManageUserController{
     public function checkUsername($username){
         $username = ltrim($username['username'],':');
         $tokenMiddleware = $this->middleware('TokenMiddleware');
-        $tokenMiddleware->putToken();
+        $tokenMiddleware->
+        
+        
+        
+        
+        n();
 
         $username = $this->userModel->getUserByUsername($username);
         $isValid = false;
