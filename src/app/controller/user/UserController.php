@@ -35,8 +35,6 @@ class UserController
         }
         return $result;
     }
-
-
     public function checkUsername($username)
     {
         $username = ltrim($username['username'], ':');
@@ -44,14 +42,29 @@ class UserController
         $tokenMiddleware->putToken();
 
         $username = $this->userModel->getUserByUsername($username);
-        $isValid = false;
+        $isExist = false;
         if ($username) {
-            $isValid = true;
+            $isExist = true;
         }
 
         header('Content-Type: application/json');
         http_response_code(201);
-        echo json_encode(["isValid" => $isValid]);
+        echo json_encode(["isExist" => $isExist]);
+    }
+
+    public function checkEmail($email)
+    {
+        $email = ltrim($email['email'], ':');
+
+        $email = $this->userModel->getUserByEmail($email);
+        $isExist = false;
+        if ($email) {
+            $isExist = true;
+        }
+
+        header('Content-Type: application/json');
+        http_response_code(201);
+        echo json_encode(["isExist" => $isExist]);
     }
 
     /**USER */

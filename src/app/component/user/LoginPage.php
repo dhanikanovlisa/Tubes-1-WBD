@@ -27,16 +27,16 @@
             <div class="container">
                 <label for="username">Username<span class="req">*</span></label>
                 <input type="text" name="username" id="username" required/>
-                <div class="error" id="username-alert"></div>
     
                 <label for="password">Password<span class="req">*</span></label>
                 <input type="password" name="password" id="password" required/>
-                <div class="error" id="password-alert"></div>
+                <div class="error login" id="login-alert"></div>
 
-                <div>
+                <div class="submit">
                     <button class="button-red red-glow button-text" type="submit" name="login"><h4>Login<h4></button>
+                </div>
             </div>
-            <p>Already have an account? <a href="/registration">Register</a></p>
+            <div class="small-text">Already have an account? <a href="/registration">Register</a></p></div>
         </form>
     </div>
 </body>

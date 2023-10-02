@@ -58,12 +58,12 @@
                 <input type="password" name="confirm-password" id="confirm-password" required/>
                 <div class="error" id="confirm-password-alert"></div>
 
-                <div>
+                <div class="submit">
                     <button class="button-red red-glow button-text" type="submit" name="login">Sign Up</button>
                 </div>
             </div>
         </form>
-        <p>Already have an account? <a href="/login">Login</a></p>
+        <div class="small-text">Already have an account? <a href="/login">Login</a></div>
     </div>
 </body>
 

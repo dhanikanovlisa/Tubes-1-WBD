@@ -48,27 +48,55 @@ function removeErrorWarning(input, desc){
     desc.style.display = 'none';
 }
 
-usernameInput && usernameInput.addEventListener('keyup', () => {
+usernameInput && usernameInput.addEventListener('keyup', async(e) => {
     const username = usernameInput.value;
 
     if (!usernameRegex.test(username)) {
         setErrorWarning(usernameInput, usernameAlert, 'Username format is incorrect');
+        return;
     }
     else {
-        usernameValid = true;
+        e.preventDefault();
+        const xhr_uname = new XMLHttpRequest();
+        xhr_uname.open('GET', '/check/username/:' + username);
+        
+        xhr_uname.send();
+        xhr_uname.onreadystatechange = () => {
+            if (xhr_uname.readyState === XMLHttpRequest.DONE){
+                const response = JSON.parse(xhr_uname.responseText);
+                if (response.isExist){
+                    setErrorWarning(usernameInput, usernameAlert, 'Username is not available');
+                    return;
+                }
+            }
+        }
         removeErrorWarning(usernameInput, usernameAlert);
     }
 });
 
-emailInput && emailInput.addEventListener('keyup', () => {
+emailInput && emailInput.addEventListener('keyup', async (e) => {
     const email = emailInput.value;
     if (!emailRegex.test(email)) {
         setErrorWarning(emailInput, emailAlert, 'Email format is incorrect');
+        return;
     }
     else {
-        emailValid = true;
-        removeErrorWarning(emailInput, emailAlert);
+        e.preventDefault();
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/check/email/:' + email);
+        
+        xhr.send();
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE){
+                const response = JSON.parse(xhr.responseText);
+                if (response.isExist){
+                    setErrorWarning(emailInput, emailAlert, 'Email is already registered');
+                    return;
+                }
+            }
+        }
     }
+    removeErrorWarning(emailInput, emailAlert);
 });
 
 phoneInput && phoneInput.addEventListener('keyup', () => {
@@ -133,8 +161,9 @@ registrationForm && registrationForm.addEventListener('submit', async (e) => {
     formData.append('username', usernameInput.value);
     formData.append('email', emailInput.value);
     formData.append('phone', phoneInput.value);
+    formData.append('firstName', firstNameInput.value);
+    formData.append('lastName', lastNameInput.value);
     formData.append('password', passwordInput.value);
-    formData.append('csrf-token', CSRF_TOKEN);
 
     xhr.send(formData);
     xhr.onreadystatechange = () => {

@@ -26,9 +26,15 @@ class UserModel{
         return $this->db->fetchResult();
     }
 
+    /**Get user by email*/
+    public function getUserByEmail($email){
+        $this->db->callQuery("SELECT * FROM users WHERE email = '$email'");
+        return $this->db->fetchResult();
+    }
+
     /*Insert new user*/
-    public function addUser($username, $email, $phone, $password){
-        $this->db->callQuery("INSERT INTO users(username, first_name, last_name, email, password, phone_number, is_admin) VALUES('$username', '', '', '$email', '$password', '$phone', FALSE)");
+    public function addUser($username, $email, $phone, $firstName, $lastName, $password){
+        $this->db->callQuery("INSERT INTO users(username, first_name, last_name, email, password, phone_number, is_admin) VALUES('$username', '$firstName', '$lastName', '$email', '$password', '$phone', FALSE)");
         $this->db->execute();
     }
 
@@ -42,6 +48,5 @@ class UserModel{
         $this->db->callQuery("SELECT user_id FROM users WHERE username = '$username' AND password = '$password'");
         return $this->db->fetchResult();
     }
-
     
 }

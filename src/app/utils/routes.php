@@ -14,6 +14,7 @@ $route = [
     '/register/register' => ["POST" => "user/RegistrationController@register"],
     '/login/login' => ["POST" => "user/LoginController@login"],
     '/check/username/:username' => ["GET" => "user/UserController@checkUsername"],
+    '/check/email/:email' => ["GET" => "user/UserController@checkEmail"],
     '/logout' => ["GET" => "user/LoginController@logout"],
     
     '/manage-user' => ["GET" => "user/UserController@showManageUserPage"],

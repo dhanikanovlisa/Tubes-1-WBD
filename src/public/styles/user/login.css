@@ -8,7 +8,7 @@
 }
 
 .container {
-    max-width: 350px;
+    max-width: 14rem;
     padding: 20px;
 
     display: flex;
@@ -28,12 +28,8 @@ input {
     outline: none;
 }
 
-button {
-    padding-left: 0px;
-    padding-right: 0px;
-    text-align: center;
-    width: 150px;
-    margin-top: 20px;
+.submit button {
+    margin-top: 2rem;
     margin-bottom: 0px;
 }
 
@@ -84,3 +80,8 @@ label {
 .two-half input {
     margin-top: 5px;
 }
+
+.small-text {
+    font-size: 0.8rem;
+}
+
