@@ -19,7 +19,8 @@ $route = [
     '/logout' => ["GET" => "user/LoginController@logout"],
     
     '/manage-user' => ["GET" => "user/UserController@showManageUserPage"],
-    '/user-detail/:username' => ["GET" => "user/UserController@showUserDetailPage"],
+    '/user-detail/:id' => ["GET" => "user/UserController@showUserDetailPage"],
+    '/delete-user' => ["POST" => "user/UserController@deleteUser"],
     
     '/manage-film' => ["GET" => "film/FilmController@showManageFilmPage"],
     '/detail-film/:id' => ["GET" => "film/FilmController@showDetailFilmPage"],

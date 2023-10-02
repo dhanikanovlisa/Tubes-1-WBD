@@ -1,4 +1,4 @@
-<a class="card-link" href="user-detail/<?php echo $user['username']; ?>">
+<a class="card-link" href="user-detail/<?php echo $user['user_id']; ?>">
     <div class="card-box red-glow">
         <div class="profile-shape">
         </div>

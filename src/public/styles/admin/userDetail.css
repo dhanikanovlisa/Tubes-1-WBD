@@ -9,13 +9,6 @@
     padding-bottom:2rem;
 }
 
-.picture-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .whole-container{
     display: flex;
     flex-direction: row;
