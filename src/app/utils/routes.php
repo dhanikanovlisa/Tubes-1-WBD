@@ -10,6 +10,7 @@ $route = [
     '/watch/:id' => ["GET" => "film/FilmController@showWatchFilmPage"],
     
     '/settings/:id' => ["GET" => "user/UserController@showProfileSettingsPage"],
+    '/edit-profile/:id' => ["GET" => "user/UserController@showEditProfilePage"],
 
     '/register/register' => ["POST" => "user/RegistrationController@register"],
     '/login/login' => ["POST" => "user/LoginController@login"],

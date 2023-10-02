@@ -7,11 +7,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .profile-shape {
-    width: 8.6875rem;
-    height: 8.6875rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     background-color: red;
 }
@@ -23,3 +24,11 @@
     text-align: center;
 }
 
+.card-link {
+    text-decoration: none;
+    color: inherit; 
+}
+
+.card-link:focus, .card-link:hover {
+    outline: none;
+}
