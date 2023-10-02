@@ -30,24 +30,20 @@ class WatchListPageController{
         foreach($lf as $film){
             include(DIRECTORY . "/../component/template/cardMovie.php");
         }
-        if(empty($lf)) echo "Your watchlist is empty";
+        if(empty($lf) && $this->page==1) echo "Your watchlist is empty";
     }
 
     public function generatePagination(){
-        $totalrecords = $this->watchListModel->getWatchListFilmsCount($this->userID);
-        if($totalrecords) $totalrecords=$totalrecords['count'];
-        $itemsperpage = $this->limit;
+        $total_records = $this->watchListModel->getWatchListFilmsCount($this->userID);
+        $items_per_page = 15;
+        $current_page = $this->page;
 
-        $totalpages = ceil($totalrecords/$itemsperpage);
-        
-        for($i=1; $i<=$totalpages; $i++){
-            $target = $i;
-            include(DIRECTORY . "/../component/template/paginationButton.php");
-        }
+        include(DIRECTORY . "/../component/template/pagination.php");
     }
 
     public function showWatchListPage()
     {
+        // require_once DIRECTORY . "/../component/user/WatchListPage.php";
         if ($this->middleware->isAdmin()) {
             header("Location: /restrictAdmin");
         } else if ($this->middleware->isAuthenticated()) {
