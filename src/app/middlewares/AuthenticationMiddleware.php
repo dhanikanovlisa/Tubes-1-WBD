@@ -20,7 +20,6 @@ class AuthenticationMiddleware
 
     public function isAdmin(){
         if (!isset($_SESSION['user_id'])) {
-            print_r($_SESSION['user_id']);
             return false;
         }
 
