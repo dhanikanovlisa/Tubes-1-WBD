@@ -9,7 +9,7 @@
     overflow: auto; 
     background-color: rgba(0,0,0,0.6);
   }
-.whole-container{
+.whole{
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -29,13 +29,12 @@
     flex-direction: row;
     justify-content: space-between;
     padding-top: 2rem; 
+
 }
   .modal-content {
     background-color: #fefefe;
     color: black;
     padding: 5rem;
-    width: 20rem;
-    height: 10rem;
     border-radius: 0.625rem;
     position: absolute;
     top: 50%;

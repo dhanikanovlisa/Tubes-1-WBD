@@ -15,15 +15,14 @@
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/detailFilm.css">
 
-    <script type="text/javascript" src="/javascript/film/deleteFilm.js" defer>
-    </script>
-
+    <script type="text/javascript" src="/javascript/film/deleteFilm.js" defer></script>
 </head>
 
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php");
 
     $filmID = $params['id'];
+    $_GET["filmID"] = $filmID;
     /**IF someone tries to access URL */
     if (!isset($filmID)) {
         $test = trim('/', $_SERVER["REQUEST_URI"]);
@@ -37,7 +36,7 @@
     // print_r($filmGenre);
     $totalRow = count($filmData);
     ?>
-    <div class='container'>
+    <div id="" class='container'>
         <?php
         if ($totalRow == 0) {
             require_once dirname(dirname(__DIR__)) . '/component/conditional/NotFound.php';
@@ -80,14 +79,21 @@
                         </div>
                         <div class="button-container">
                             <button id="deleteButton" class="button-red button-text" onClick="popModal()">Delete</button>
-                                <div id="confModal" class="modal red-glow">
-                                    <?php
-                                    $message = "Are you sure you want to delete this?";
-                                    $description = "This action cannot be undone.";
-                                    include(DIRECTORY . "/../component/template/confirmationModal.php");
-                                    ?>
+                            <div id="confModal" class="modal red-glow">
+                                <div class="modal-content red-glow">
+                                    <div class="whole">
+                                        <div class="title-container">
+                                            <h3 class="text-black" id="main-message">Are you sure you want to Delete This?</h3>
+                                            <p class="text-black" id="description-message">This will be gone</p>
+                                        </div>
+                                        <div class="button-container">
+                                            <button id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
+                                            <button id="ok" class="button-green button-text" onclick="deleteSong(<?php echo $filmID; ?>)">OK</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            
+                            </div>
+
                             <a href="/edit-film/<?php echo $filmID; ?>">
                                 <button class="button-white button-text">Edit</button>
                             </a>
