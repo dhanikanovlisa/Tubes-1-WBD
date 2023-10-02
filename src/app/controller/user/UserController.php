@@ -2,25 +2,23 @@
 
 require_once  DIRECTORY . '/../utils/database.php';
 require_once  DIRECTORY . '/../models/user.php';
+require_once DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
 
 class UserController
 {
     private $userModel;
+    private $middleware;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->middleware = new AuthenticationMiddleware();
     }
 
     public function getUserByID($param){
         return $this->userModel->getUserByID($param);
     }
 
-    public function middleware($middleware)
-    {
-        require_once DIRECTORY . '/../middlewares/' . $middleware . '.php';
-        return new $middleware();
-    }
 
     public function getAllUser()
     {
@@ -40,9 +38,6 @@ class UserController
     public function checkUsername($username)
     {
         $username = ltrim($username['username'], ':');
-        $tokenMiddleware = $this->middleware('TokenMiddleware');
-        $tokenMiddleware->putToken();
-
         $username = $this->userModel->getUserByUsername($username);
         $isValid = false;
         if ($username) {
@@ -57,17 +52,46 @@ class UserController
     /**USER */
     public function showProfileSettingsPage($params = [])
     {
-        require_once dirname(dirname(__DIR__)) . "/component/user/ProfileSettingsPage.php";
+        if ($this->middleware->isAdmin()) {
+            header("Location: /restrictAdmin");
+        } else if ($this->middleware->isAuthenticated()) {
+            require_once dirname(dirname(__DIR__)) . "/component/user/ProfileSettingsPage.php";
+        } else {
+            header("Location: /page-not-found");
+        }
+    }
+
+        public function showEditProfilePage($params = [])
+    {
+        if ($this->middleware->isAdmin()) {
+            header("Location: /restrictAdmin");
+        } else if ($this->middleware->isAuthenticated()) {
+            require_once dirname(dirname(__DIR__)) . "/component/user/EditProfilePage.php";
+        } else {
+            header("Location: /page-not-found");
+        }
     }
 
     /**ADMIN */
     /**Manage ALL User */
     public function showManageUserPage()
     {
-        require_once DIRECTORY . "/../component/user/UserPage.php";
+        if ($this->middleware->isAdmin()) {
+            require_once DIRECTORY . "/../component/user/UserPage.php";
+        } else if ($this->middleware->isAuthenticated()) {
+            header("Location: /restrict");
+        } else {
+            header("Location: /page-not-found");
+        }
     }
 
     public function showUserDetailPage($params = []){
-        require_once dirname(dirname(__DIR__)) . "/component/user/UserDetailPage.php";
+        if ($this->middleware->isAdmin()) {
+            require_once dirname(dirname(__DIR__)) . "/component/user/UserDetailPage.php";
+        } else if ($this->middleware->isAuthenticated()) {
+            header("Location: /restrict");
+        } else {
+            header("Location: /page-not-found");
+        }
     }
 }

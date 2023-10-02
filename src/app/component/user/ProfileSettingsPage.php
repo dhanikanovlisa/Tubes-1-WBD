@@ -59,7 +59,9 @@
                             <p><?php echo $userData['phone_number'] ?></p>
                         </div>
                         <div class="field-container">
-                            <button class="button-white button-text">Edit Profile</button>
+                            <a href="/edit-profile/<?php echo $id?>">
+                                <button class="button-white button-text">Edit Profile</button>
+                            </a>
                         </div>
 
                     </div>
