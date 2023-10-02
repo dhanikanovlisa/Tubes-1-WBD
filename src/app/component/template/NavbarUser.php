@@ -22,7 +22,7 @@
             <img id="photo-profile" class="photo-profile" src="images/assets/profile-placeholder.png" onClick="userMenu()"/>
             <div class="user-menu" id="user-menu">
                 <a class="hidden-link" href="/settings">Settings</a>
-                <a class="hidden-link" onCLick="logout()">Logout</a>
+                <a class="hidden-link" onClick="logout()">Logout</a>
             </div>
         <?php endif; ?>
     </div>

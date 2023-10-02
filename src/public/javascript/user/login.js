@@ -16,7 +16,7 @@ function removeErrorWarning(input, desc){
     desc.style.display = 'none';
 }
 
-const usernameRegex = /^[a-zA-Z0-9]+$/;
+const usernameRegex = /^[a-z0-9_\.]+$/;
 
 loginForm && loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();

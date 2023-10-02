@@ -37,7 +37,7 @@ class LoginController{
                 echo json_encode(["redirect_url" => "/home", "message" => "Login success"]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(401);
             echo json_encode(["message" => "Username or password is incorrect"]);
         }
     }
