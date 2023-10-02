@@ -7,19 +7,23 @@ $route = [
     '/home' => ["GET" => "user/HomePageController@showHomePage"],
     '/search' => ["GET" => "search/SearchPageController@showSearchPage"],
     '/watchlist' => ["GET" => "watchlist/WatchListPageController@showWatchListPage"],
-    '/manage-film' => ["GET" => "film/FilmController@showManageFilmPage"],
-    '/manage-user' => ["GET" => "user/ManageUserController@showManageUserPage"],
-    '/user-detail/:username' => ["GET" => "user/UserDetailController@showUserDetailPage"],
     '/watch/:id' => ["GET" => "film/FilmController@showWatchFilmPage"],
-    '/detail-film/:id' => ["GET" => "film/FilmController@showDetailFilmPage"],
     
+    '/settings/:id' => ["GET" => "user/UserController@showProfileSettingsPage"],
+
     '/register/register' => ["POST" => "user/RegistrationController@register"],
     '/login/login' => ["POST" => "user/LoginController@login"],
-    '/check/username/:username' => ["GET" => "user/manageUserController@checkUsername"],
+    '/check/username/:username' => ["GET" => "user/UserController@checkUsername"],
     '/logout' => ["GET" => "user/LoginController@logout"],
     
-    '/add-film' => ["GET" => "film/FilmController@showAddFilmPage"],
+    '/manage-user' => ["GET" => "user/UserController@showManageUserPage"],
+    '/user-detail/:username' => ["GET" => "user/UserController@showUserDetailPage"],
+    
+    '/manage-film' => ["GET" => "film/FilmController@showManageFilmPage"],
+    '/detail-film/:id' => ["GET" => "film/FilmController@showDetailFilmPage"],
+    
     '/add-film/add-film' => ["POST" => "film/FilmController@addFilm"],
+    '/add-film' => ["GET" => "film/FilmController@showAddFilmPage"],
 
     'edit-film/:id' => ["GET" => "film/FilmController@showEditFilmPage"],
     '/edit-film/:id' => ["PUT" => "film/FilmController@editFilm"],
