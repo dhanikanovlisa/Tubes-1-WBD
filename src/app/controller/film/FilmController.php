@@ -112,6 +112,11 @@ class FilmController
     /**Delete Film */
     public function deleteFilm()
     {
+        header('Content-Type: application/json');
+        http_response_code(200);
+        
+        $this->filmModel->deleteFilm($_POST['film_id']);
+        echo json_encode(["redirect_url" => "/manage-film"]);
     }
 
     public function validateData()
