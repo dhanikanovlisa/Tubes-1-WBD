@@ -32,18 +32,18 @@
     justify-content: center;
 }
 .profile {
-   width: 8rem;
-   height: 8rem;
+   width: 10rem;
+   height: 10rem;
     border-radius: 8rem;
     background-color: red;
 }
 
 .profile img {
     border-radius: 10rem; 
+    width: 10rem;
+    height: 10rem;
     display: block; 
     margin: 0 auto;
-    width: 8rem;
-    height: 8rem;
     border-radius: 8rem;
     background-color: red; 
 }

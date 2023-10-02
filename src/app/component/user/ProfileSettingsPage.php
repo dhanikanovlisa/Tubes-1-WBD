@@ -37,7 +37,7 @@
                 </div>
                 <div class="whole-container">
                     <div class="profile">
-                        <img src="/images/assets/profile-placeholder.png" />
+                        <img src="/storage/profile/<?php echo $userData['photo_profile']?>" />
                     </div>
 
                     <div class="detail-container">
