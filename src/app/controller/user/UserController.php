@@ -70,13 +70,7 @@ class UserController
 
         public function showEditProfilePage($params = [])
     {
-        if ($this->middleware->isAdmin()) {
-            header("Location: /restrictAdmin");
-        } else if ($this->middleware->isAuthenticated()) {
-            require_once dirname(dirname(__DIR__)) . "/component/user/EditProfilePage.php";
-        } else {
-            header("Location: /page-not-found");
-        }
+        require_once dirname(dirname(__DIR__)) . "/component/user/EditProfilePage.php";
     }
 
     /**ADMIN */
