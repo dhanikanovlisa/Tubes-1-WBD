@@ -23,7 +23,7 @@ loginForm && loginForm.addEventListener('submit', async (e) => {
     xhr_uname.onreadystatechange = () => {
         if (xhr_uname.readyState === XMLHttpRequest.DONE){
             const response = JSON.parse(xhr_uname.responseText);
-            if (!response.isValid){
+            if (!response.isExist){
                 setErrorWarning(loginAlert, 'Username is not available');
                 return;
             } else {
@@ -37,6 +37,7 @@ loginForm && loginForm.addEventListener('submit', async (e) => {
                 xhr_pass.send(formData);
                 xhr_pass.onreadystatechange = () => {
                     if (xhr_pass.readyState === XMLHttpRequest.DONE) {
+                        console.log(xhr_pass.responseText);
                         if (xhr_pass.status === 401){
                             setErrorWarning(loginAlert, 'Username or password is incorrect');
                             return;

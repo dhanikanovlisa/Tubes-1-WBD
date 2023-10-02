@@ -12,17 +12,10 @@ class AuthenticationMiddleware
     }
 
     public function isAuthenticated(){
-        if (!isset($_SESSION['user_id'])) {
-            return false;
+        if (isset($_SESSION['user_id'])) {
+            return true;
         }
-
-        $user = $this->userModel->getUserByID($_SESSION['user_id']);
-
-        if ($user['is_admin']) {
-            return false;
-        }
-
-        return true;
+        return false;
     }
 
     public function isAdmin(){

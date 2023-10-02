@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     $current_time = time();
     $_SESSION['created_at'] = $current_time;
-
+    // print_r(!isset($_SESSION['user_id']));
 }
 
 $router = new parserrouting($route);
