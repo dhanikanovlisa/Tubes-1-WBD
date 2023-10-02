@@ -17,9 +17,9 @@
 <body>
     <div class="container">
         <h1 class="text-red">Oops!</h1>
-        <h2>You Do Not Have Access</h2>
-        <a href="/home">
-            <button class="button-red button-text red">Back to Home</button>
+        <h2>You Are in Admin Mde</h2>
+        <a href="/manage-film">
+            <button class="button-red button-text red">Go Back</button>
         </a>
     </div>
 </body>

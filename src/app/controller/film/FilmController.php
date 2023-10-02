@@ -147,26 +147,51 @@ class FilmController
     /**Show Pages */
     public function showWatchFilmPage($params = [])
     {
+        if ($this->middleware->isAdmin()) {
+            header("Location: /restrict");
+        } else if ($this->middleware->isAuthenticated()) {
+            require_once DIRECTORY . "/../component/film/WatchFilmPage.php";
+        } else {
+            header("Location: /page-not-found");
+        }
     }
     public function showDetailFilmPage($params = [])
     {
-        require_once DIRECTORY . "/../component/film/DetailFilmPage.php";
+        if ($this->middleware->isAdmin()) {
+            require_once DIRECTORY . "/../component/film/DetailFilmPage.php";
+        } else if ($this->middleware->isAuthenticated()) {
+            header("Location: /restrictAdmin");
+        } else {
+            header("Location: /page-not-found");
+        }
     }
     public function showAddFilmPage()
     {
-        require_once DIRECTORY . "/../component/film/AddFilmPage.php";
+        if ($this->middleware->isAdmin()) {
+            require_once DIRECTORY . "/../component/film/AddFilmPage.php";
+        } else if ($this->middleware->isAuthenticated()) {
+            header("Location: /restrictAdmin");
+        } else {
+            header("Location: /page-not-found");
+        }
     }
 
     public function showEditFilmPage($params = [])
     {
-        require_once DIRECTORY . "/../component/film/EditFilmPage.php";
+        if ($this->middleware->isAdmin()) {
+            require_once DIRECTORY . "/../component/film/EditFilmPage.php";
+        } else if ($this->middleware->isAuthenticated()) {
+            header("Location: /restrictAdmin");
+        } else {
+            header("Location: /page-not-found");
+        }
     }
     public function showManageFilmPage()
     {
         if ($this->middleware->isAdmin()) {
             require_once DIRECTORY . "/../component/film/ManageFilmPage.php";
         } else if ($this->middleware->isAuthenticated()) {
-            header("Location: /restrict");
+            header("Location: /restrictAdmin");
         } else {
             header("Location: /page-not-found");
         }
