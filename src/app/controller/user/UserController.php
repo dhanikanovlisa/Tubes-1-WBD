@@ -3,19 +3,27 @@
 require_once  DIRECTORY . '/../utils/database.php';
 require_once  DIRECTORY . '/../models/user.php';
 
-class ManageUserController{ 
+class UserController
+{
     private $userModel;
-    
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->userModel = new UserModel();
     }
 
-    public function middleware($middleware){
+    public function getUserByID($param){
+        return $this->userModel->getUserByID($param);
+    }
+
+    public function middleware($middleware)
+    {
         require_once DIRECTORY . '/../middlewares/' . $middleware . '.php';
         return new $middleware();
     }
 
-    public function getAllUser(){
+    public function getAllUser()
+    {
         $userData = $this->userModel->getAllUser();
         $result = [];
         foreach ($userData as $user) {
@@ -27,13 +35,11 @@ class ManageUserController{
         }
         return $result;
     }
-    
-    public function showManageUserPage(){
-        require_once DIRECTORY . "/../component/user/ManageUserPage.php";
-    }
 
-    public function checkUsername($username){
-        $username = ltrim($username['username'],':');
+
+    public function checkUsername($username)
+    {
+        $username = ltrim($username['username'], ':');
         $tokenMiddleware = $this->middleware('TokenMiddleware');
         $tokenMiddleware->putToken();
 
@@ -46,5 +52,22 @@ class ManageUserController{
         header('Content-Type: application/json');
         http_response_code(201);
         echo json_encode(["isValid" => $isValid]);
+    }
+
+    /**USER */
+    public function showProfileSettingsPage($params = [])
+    {
+        require_once dirname(dirname(__DIR__)) . "/component/user/ProfileSettingsPage.php";
+    }
+
+    /**ADMIN */
+    /**Manage ALL User */
+    public function showManageUserPage()
+    {
+        require_once DIRECTORY . "/../component/user/UserPage.php";
+    }
+
+    public function showUserDetailPage($params = []){
+        require_once dirname(dirname(__DIR__)) . "/component/user/UserDetailPage.php";
     }
 }
