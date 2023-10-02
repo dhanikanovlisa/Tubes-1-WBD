@@ -28,10 +28,10 @@ class LoginController{
         if ($user_id) {
             $tokenMiddleware->putToken();
             $_SESSION['user_id'] = $user_id['user_id'];
-            http_response_code(200);
+            http_response_code(201);
             echo json_encode(["redirect_url" => "/", "message" => "Login success"]);
         } else {
-            http_response_code(400);
+            http_response_code(401);
             echo json_encode(["message" => "Username or password is incorrect"]);
         }
     }
