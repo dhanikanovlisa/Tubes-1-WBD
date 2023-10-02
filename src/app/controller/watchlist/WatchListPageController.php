@@ -1,7 +1,22 @@
 <?php
+require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
+class WatchListPageController
+{
+    private $middleware;
 
-class WatchListPageController{ 
-    public function showWatchListPage(){
-        require_once DIRECTORY . "/../component/user/WatchListPage.php";
+    public function __construct()
+    {
+        $this->middleware = new AuthenticationMiddleware();
+    }
+    
+    public function showWatchListPage()
+    {
+        if ($this->middleware->isAdmin()) {
+            header("Location: /restrictAdmin");
+        } else if ($this->middleware->isAuthenticated()) {
+            require_once DIRECTORY . "/../component/user/WatchListPage.php";
+        } else {
+            header("Location: /page-not-found");
+        }
     }
 }

@@ -19,15 +19,17 @@ class LoginController{
     }
 
     public function login(){
+
+
         $user_id = $this->userModel->login($_POST['username'], $_POST['password']);
         $userData = $this->userModel->getUserByID($user_id['user_id']);
-        $is_admin = $userData['is_admin'];
+        $is_user = $userData['is_admin'];
 
         header('Content-Type: application/json');
         if ($user_id) {
             $_SESSION['user_id'] = $user_id['user_id'];
             http_response_code(200);
-            if($is_admin == 1){
+            if($is_user == 1){
                 echo json_encode(["redirect_url" => "/manage-film", "message" => "Login success"]);
             } else {
                 echo json_encode(["redirect_url" => "/home", "message" => "Login success"]);

@@ -19,7 +19,7 @@
     <?php
 
 
- include(dirname(__DIR__) . "/template/NavbarUser.php");
+    include(dirname(__DIR__) . "/template/NavbarUser.php");
     require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
     require_once dirname(dirname(__DIR__)) . '/utils/date.php';
     $hours = listofHour();
@@ -67,7 +67,10 @@
                             <div class="input-container">
                                 <label for="filmName">Film Name<span class="req">*</span></label>
                                 <input type="text" id="filmName" name="filmName" placeholder="<?php echo $filmData["title"] ?>" required />
-
+                                <label for="filmPoster">Film Poster<span class="req">*</span></label>
+                                <input type="file" id="filmPoster" name="filmPoster" accept="image/*" required />
+                                <label for="filmVideo">Film Video<span class="req">*</span></label>
+                                <input type="file" id="filmPoster" name="filmVideo" accept="video/*" required />
                             </div>
                             <div class="input-container">
                                 <label for="filmDescriptsion">Description<span class="req">*</span></label>
@@ -98,7 +101,7 @@
                                     <div class="select-container">
                                         <label for="filmHourDuration">Hour<span class="req">*</span></label>
                                         <select id="filmHourDuration" name="filmHourDuration">
-                                            <option value="" disabled selected><?php echo $hourFilm["hour"]?></option>
+                                            <option value="" disabled selected><?php echo $hourFilm["hour"] ?></option>
                                             <?php
 
                                             foreach ($hours as $h) {
@@ -110,7 +113,7 @@
                                     <div class="select-container">
                                         <label for="filmMinuteDuration">Minute<span class="req">*</span></label>
                                         <select id="filmMinuteDuration" name="filmMinuteDuration">
-                                        <option value="" disabled selected><?php echo $hourFilm["minute"]?></option>
+                                            <option value="" disabled selected><?php echo $hourFilm["minute"] ?></option>
                                             <?php
 
                                             foreach ($minutes as $m) {
@@ -122,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="duration-select-container">
-                            <div class="title-container">
+                                <div class="title-container">
                                     <h3>Release Date</h3>
                                 </div>
                                 <div class="border">
@@ -130,7 +133,7 @@
                                         <label for="date">Date<span class="req">*</span></label>
                                         <div class="custom-select">
                                             <select id="date" name="date">
-                                                <option value="" disabled selected><?php echo $release["date"]?></option>
+                                                <option value="" disabled selected><?php echo $release["date"] ?></option>
                                                 <?php
                                                 require_once dirname(dirname(__DIR__)) . '/utils/date.php';
                                                 $date = listofDate();
@@ -145,7 +148,7 @@
                                         <label for="month">Month<span class="req">*</span></label>
                                         <div class="custom-select">
                                             <select id="month" name="month">
-                                                <option value="" disabled selected><?php echo $release["month"]?></option>
+                                                <option value="" disabled selected><?php echo $release["month"] ?></option>
                                                 <?php
                                                 require_once dirname(dirname(__DIR__)) . '/utils/date.php';
                                                 $month = listofMonth();
@@ -160,7 +163,7 @@
                                         <label for="year">Year<span class="req">*</span></label>
                                         <div class="custom-select">
                                             <select id="year" name="year">
-                                                <option value="" disabled selected><?php echo $release["year"]?></option>
+                                                <option value="" disabled selected><?php echo $release["year"] ?></option>
                                                 <?php
                                                 require_once dirname(dirname(__DIR__)) . '/utils/date.php';
                                                 $year = listofYear();

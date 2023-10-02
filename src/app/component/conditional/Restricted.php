@@ -16,10 +16,10 @@
 
 <body>
     <div class="container">
-        <h1 class="text-red">404</h1>
-        <h2>Page Not Found</h2>
+        <h1 class="text-red">Oops!</h1>
+        <h2>You Do Not Have Access</h2>
         <a href="/home">
-            <button class="button-red button-text red-glow">Back to Home</button>
+            <button class="button-red button-text red">Back to Home</button>
         </a>
     </div>
 </body>
