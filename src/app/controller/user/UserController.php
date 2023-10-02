@@ -52,13 +52,7 @@ class UserController
     /**USER */
     public function showProfileSettingsPage($params = [])
     {
-        if ($this->middleware->isAdmin()) {
-            header("Location: /restrictAdmin");
-        } else if ($this->middleware->isAuthenticated()) {
-            require_once dirname(dirname(__DIR__)) . "/component/user/ProfileSettingsPage.php";
-        } else {
-            header("Location: /page-not-found");
-        }
+        require_once dirname(dirname(__DIR__)) . "/component/user/ProfileSettingsPage.php";
     }
 
         public function showEditProfilePage($params = [])
@@ -77,7 +71,7 @@ class UserController
     public function showManageUserPage()
     {
         if ($this->middleware->isAdmin()) {
-            require_once DIRECTORY . "/../component/user/UserPage.php";
+            require_once DIRECTORY . "/../component/user/ManageUserPage.php";
         } else if ($this->middleware->isAuthenticated()) {
             header("Location: /restrict");
         } else {
