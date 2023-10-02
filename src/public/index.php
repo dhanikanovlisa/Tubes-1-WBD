@@ -19,11 +19,11 @@ $router->call($uri, $method);
 
 
 // $db = new Database();
-// // $db->callQuery("INSERT INTO users(username, first_name, last_name, email, password, phone_number, is_admin) VALUES('qwe', '','','aaaa@email.com', 'qwertyui',123456789,false); ");
+// $db->callQuery("INSERT INTO users(username, first_name, last_name, email, password, phone_number, is_admin) VALUES('qwe', '','','aaaa@email.com', 'qwertyui',123456789,true); ");
 // $db->callQuery("SELECT * FROM users");
 // $db->execute();
 // print_r($db->fetchAllResult());
 
 // $db->callQuery("SELECT * FROM users WHERE username = 'itb16521007';");
 // $db->execute();
-// print_r($db->fetchResult());
+// print_r($db->fetchAllResult());
