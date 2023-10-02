@@ -28,7 +28,7 @@ class LoginController{
 
         header('Content-Type: application/json');
         if ($user_id) {
-            $tokenMiddleware->putToken();
+            // $tokenMiddleware->putToken();
             $_SESSION['user_id'] = $user_id['user_id'];
             http_response_code(200);
             if($id_user == 1){
