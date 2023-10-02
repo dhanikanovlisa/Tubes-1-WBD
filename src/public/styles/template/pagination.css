@@ -20,3 +20,7 @@
     font-size: larger;
     font-family: 'Inter', sans-serif;
 }
+
+.button-pagination-active{
+    background-color: var(--red);
+}

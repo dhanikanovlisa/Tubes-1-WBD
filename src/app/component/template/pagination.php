@@ -22,6 +22,8 @@
         }
         for($i=$start; $i<=$bound; $i++){
             $target = $i;
+            $is_active=false;
+            if($target==$current_page) $is_active=true;
             include(DIRECTORY . "/../component/template/paginationButton.php");
         }
         if($current_page!=$totalpages){

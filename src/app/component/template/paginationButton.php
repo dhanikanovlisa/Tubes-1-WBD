@@ -1,5 +1,6 @@
 <!--
     @target
+    @is_active
 -->
 <a href=<?php
     $url = $_SERVER['REQUEST_URI'];
@@ -22,7 +23,7 @@
     }
     echo '"'.$url.'"';
 ?>>
-    <div class='button-pagination'>
+    <div class='button-pagination <?php echo ($is_active ? 'button-pagination-active':'')?>'>
         <?php echo $target; ?>
     </div>
 </a>
