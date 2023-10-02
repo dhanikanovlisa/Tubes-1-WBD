@@ -1,6 +1,3 @@
-<script type="text/javascript" defer>
-            const CSRF_TOKEN_N = "<?= $_SESSION['csrf_token'] ?? '' ?>";
-</script>
 <nav class="navbar">
     <script type="text/javascript" src="javascript/navbar/navbar.js" defer>
     </script>

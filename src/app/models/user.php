@@ -38,6 +38,16 @@ class UserModel{
         $this->db->execute();
     }
 
+    /**Delete user */
+    public function deleteUser($id){
+        /**Delete from watchlist */
+        $this->db->callQuery('DELETE FROM watchlist WHERE user_id = ' . $id);
+        $this->db->execute();
+        /**Delete film users */
+        $this->db->callQuery('DELETE FROM users WHERE user_id = ' . $id);
+        $this->db->execute();
+    }
+
     public function isAdmin($user_id){
         $this->db->callQuery("SELECT is_admin FROM users where user_id = :user_id;");
         $this->db->bind('user_id', $user_id);
