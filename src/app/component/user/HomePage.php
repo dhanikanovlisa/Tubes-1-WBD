@@ -11,10 +11,12 @@
     <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="styles/template/navbar.css">
     <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
+    <link rel="stylesheet" type="text/css" href="styles/template/toast.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/user/homepage.css">
     <link rel="stylesheet" type="text/css" href="styles/template/pagination.css">
     <!-- JS --->
+    <script type="text/javascript" src="javascript/user/home.js" defer></script>
 </head>
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
@@ -39,12 +41,12 @@
             <h1><?php echo $title?></h1>
             <h4><?php echo $release?></h4>
             <p><?php echo $desc?></p>
-            <div>
+            <div class="buttons">
                 <button class="button-white button-text">Watch Now</button>
-                <button class="button-white button-text" onClick="watchListButton()" id="watchlist">
+                <button class="button-white button-text watchlist" onClick="watchListButton()" id="watchlist">
                     <?php
                         if ($isOnWatchList){
-                            echo "✔";
+                            echo "&#10004";
                         } else {
                             echo "+";
                         }
@@ -62,9 +64,7 @@
             <?php $home->generatePagination()?>
         </div>
     </div>
-    <!-- <script>
-        const filmData = <?php echo json_encode($result); ?>;
-    </script> -->
+    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
 </body>
 
 </html>

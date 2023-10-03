@@ -49,3 +49,18 @@
     margin-bottom: 3rem;
     padding: 0px 0px !important;
 }
+
+.buttons {
+    display: flex;
+    column-gap: 10px;
+}
+
+.button-white {
+    height: 40px !important;
+}
+
+.watchlist {
+    width: 40px;
+    padding: 0 !important;
+    text-align: center !important;
+}
