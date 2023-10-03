@@ -17,8 +17,7 @@ const deleteSong = (id) => {
     const formData = new FormData();
     formData.append('film_id', id);
    
-    xhr.send(formData);
-
+    
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
             console.log(xhr.responseText);
@@ -26,4 +25,5 @@ const deleteSong = (id) => {
             location.replace(response.redirect_url);
         }
     }
+    xhr.send(formData);
 }
