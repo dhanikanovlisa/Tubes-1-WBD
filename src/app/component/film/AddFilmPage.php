@@ -33,12 +33,15 @@
                 <form id="addFilmForm">
                     <div class="field-container">
                         <div class="input-container">
+                            <!--Film Name-->
                             <label for="filmName">Film Name<span class="req">*</span></label>
                             <input type="text" id="filmName" name="filmName" placeholder="Title" required />
+                             <!--Film Poster-->
                             <label for="filmPoster">Film Poster<span class="req">*</span></label>
                             <input type="file" id="filmPoster" name="filmPoster" accept="image/*" required />
+                             <!--Film Video-->
                             <label for="filmVideo">Film Video<span class="req">*</span></label>
-                            <input type="file" id="filmPoster" name="filmVideo" accept="video/*" required />
+                            <input type="file" id="filmVideo" name="filmVideo" accept="video/*" required />
                         </div>
                         <div class="input-container">
                             <label for="filmDescriptsion">Description<span class="req">*</span></label>
@@ -92,53 +95,10 @@
                             </div>
                         </div>
                         <div class="duration-select-container">
-                        <div class="title-container">
+                            <div class="title-container">
                                 <h3>Release Date</h3>
                             </div>
-                            <div class="border">
-                                <div class="select-container">
-                                    <label for="date">Date<span class="req">*</span></label>
-                                    <div class="custom-select">
-                                        <select id="date" name="date">
-                                            <option value="" disabled selected>DD</option>
-                                            <?php
-    
-                                            foreach ($date as $d) {
-                                            ?>
-                                                <option value="<?php echo $d; ?>"><?php echo $d; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="select-container">
-                                    <label for="month">Month<span class="req">*</span></label>
-                                    <div class="custom-select">
-                                        <select id="month" name="month">
-                                            <option value="" disabled selected>MM</option>
-                                            <?php
-    
-                                            foreach ($month as $m) {
-                                            ?>
-                                                <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="select-container">
-                                    <label for="year">Year<span class="req">*</span></label>
-                                    <div class="custom-select">
-                                        <select id="year" name="year">
-                                            <option value="" disabled selected>YYYY</option>
-                                            <?php
-    
-                                            foreach ($year as $y) {
-                                            ?>
-                                                <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                            <input type="date" id="filmDate" name="filmDate" value="" min="1950-01-01" max="2024-12-31" pattern="\d{4}-\d{2}-\d{2}" />
                         </div>
                         <div class="button-container">
                             <a href="/manage-film">

@@ -49,7 +49,6 @@ class FilmController
     {
         header('Content-Type: application/json');
         http_response_code(200);
-        echo json_encode(["redirect_url" => "/manage-film"]);
         $convert = turnIntoMinute($_POST['filmHourDuration'], $_POST['filmMinuteDuration']);
         $this->filmModel->insertFilm(
             $_POST['title'],
@@ -59,13 +58,14 @@ class FilmController
             $_POST['date_release'],
             $convert
         );
-
+        
         $filmID = $this->filmModel->getLastIDFilm();
-
+        
         foreach ($_POST['filmGenre'] as $genre) {
             $genre = intval($genre);
             $this->filmGenreModel->insertFilmGenre($filmID, $genre);
         }
+        echo json_encode(["redirect_url" => "/manage-film"]);
     }
 
     public function editFilm()
@@ -173,7 +173,7 @@ class FilmController
         } else if ($this->middleware->isAuthenticated()) {
             header("Location: /restrict");
         } else {
-            header("Location: /page-not-found");
+            header("Location: /login");
         }
     }
 }

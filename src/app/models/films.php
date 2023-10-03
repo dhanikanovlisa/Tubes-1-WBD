@@ -87,14 +87,14 @@ class FilmsModel
         ";
     
         $this->db->callQuery($sql);
-        $this->db->bind('film_id', $film_id);
         $this->db->bind('title', $data["title"]);
         $this->db->bind('description', $data["description"]);
         $this->db->bind('film_path', $data["film_path"]);
         $this->db->bind('film_poster', $data["film_poster"]);
         $this->db->bind('date_release', $data["date_release"]);
         $this->db->bind('duration', $data["duration"]);
-    
+        $this->db->bind('film_id', $film_id);
+        
         $this->db->execute();
     }
     
