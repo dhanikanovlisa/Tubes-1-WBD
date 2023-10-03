@@ -6,25 +6,17 @@ class HomePageController{
     private $filmModel;
     private $middleware;
     
+    private int $limit;
+    private int $page;
 
     public function __construct()
     {
         $this->filmModel = new FilmsModel();    
         $this->middleware = new AuthenticationMiddleware();
+        $this->page = isset($_GET['page']) && $_GET['page']>0 ? $_GET['page'] : 1;
+        $this->limit = isset($_GET['limit']) && $_GET['page']>0 ? $_GET['limit'] : 2;
     }
-
-    public function getAllFilm(){
-        $filmData = $this->filmModel->getAllFilm();
-        $result = [];
-        foreach($filmData as $film){
-            $data=[];
-            $data["film_id"] = $film['film_id'];
-            $data["title"] = $film['title'];
-            $data["film_poster"] = $film['film_poster'];
-            $result[] = $data;
-        }
-        return $result;
-    }
+    
     public function showHomePage(){
         if ($this->middleware->isAdmin()) {
             header("Location: /restrictAdmin");
@@ -33,5 +25,23 @@ class HomePageController{
         } else {
             header("Location: /login");
         }
+    }
+
+    public function generatePagination(){
+        $total_records = $this->filmModel->getFilmCount();
+        $items_per_page = 2;
+        $current_page = $this->page;
+
+        include(DIRECTORY . "/../component/template/pagination.php");
+    }
+
+    public function generateCards(){
+        $offset = ($this->page-1)*$this->limit;
+        $films = $this->filmModel->getFilm($this->limit, $offset);
+        foreach($films as $film){
+            // $film_id = $film['film_id'];
+            include(DIRECTORY . "/../component/template/cardMovie.php");
+        }
+        if (empty($films) && $this->page == 1) echo "No film currently available";
     }
 }

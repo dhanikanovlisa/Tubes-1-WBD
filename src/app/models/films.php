@@ -119,4 +119,15 @@ class FilmsModel
     {
         return $this->db->lastInsertID();
     }
+
+    public function getFilmCount(){
+        $this->db->callQuery('SELECT COUNT(film_id) FROM film');
+        return $this->db->fetchResult();
+    }
+
+    public function getFilm($limit, $offset){
+        $this->db->callQuery('SELECT * FROM film LIMIT ' . $limit . ' OFFSET ' . $offset);
+        return $this->db->fetchAllResult();
+    }
+
 }
