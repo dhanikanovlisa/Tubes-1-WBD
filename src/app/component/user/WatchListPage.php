@@ -13,7 +13,6 @@
         <link rel="stylesheet" type="text/css"href="styles/template/cardMovie.css">
         <link rel="stylesheet" type="text/css"href="styles/template/pagination.css">
         <!---Page specify CSS--->
-        <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
         <link rel="stylesheet" type="text/css"href="styles/user/watchlist.css">
 </head>
 

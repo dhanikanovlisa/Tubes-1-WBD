@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
     <!---Page specify CSS--->
-    <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/styles/user/profilesetting.css">
 </head>
 
