@@ -18,7 +18,7 @@ class HomePageController{
         $this->watchListModel = new WatchListModel();
         $this->middleware = new AuthenticationMiddleware();
         $this->page = isset($_GET['page']) && $_GET['page']>0 ? $_GET['page'] : 1;
-        $this->limit = isset($_GET['limit']) && $_GET['page']>0 ? $_GET['limit'] : 2;
+        $this->limit = isset($_GET['limit']) && $_GET['limit']>0 ? $_GET['limit'] : 2;
     }
 
     public function showHomePage(){

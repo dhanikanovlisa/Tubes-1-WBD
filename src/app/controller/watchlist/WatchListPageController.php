@@ -4,7 +4,7 @@ require_once DIRECTORY . '/../models/watchlist.php';
 require_once DIRECTORY . '/../models/films.php';
     
 class WatchListPageController{ 
-    private WatchListModel $watchListModel;
+    public WatchListModel $watchListModel;
     private FilmsModel $filmsModel;
     private $middleware;
     private int $userID;
@@ -17,7 +17,7 @@ class WatchListPageController{
         $this->middleware = new AuthenticationMiddleware();
         $this->filmsModel = new FilmsModel();
         $this->page = isset($_GET['page']) && $_GET['page']>0 ? $_GET['page'] : 1;
-        $this->limit = isset($_GET['limit']) && $_GET['page']>0 ? $_GET['limit'] : 15;
+        $this->limit = isset($_GET['limit']) && $_GET['limit']>0 ? $_GET['limit'] : 15;
     }
 
     public function setUserID(int $userID){
@@ -35,7 +35,7 @@ class WatchListPageController{
 
     public function generatePagination(){
         $total_records = $this->watchListModel->getWatchListFilmsCount($this->userID);
-        $items_per_page = 15;
+        $items_per_page = $this->limit;
         $current_page = $this->page;
 
         include(DIRECTORY . "/../component/template/pagination.php");
