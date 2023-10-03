@@ -43,7 +43,6 @@ class HomePageController{
         $offset = ($this->page-1)*$this->limit;
         $films = $this->filmModel->getFilm($this->limit, $offset);
         foreach($films as $film){
-            // $film_id = $film['film_id'];
             include(DIRECTORY . "/../component/template/cardMovie.php");
         }
         if (empty($films) && $this->page == 1) echo "No film currently available";
