@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="styles/template/Navbar.css">
     <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
     <!---Page specify CSS--->
-    <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
     <link rel="stylesheet" type="text/css" href="styles/film/manageFilm.css">
 </head>
 

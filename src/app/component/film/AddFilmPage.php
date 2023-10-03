@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/film/addFilm.css">
-    <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
     <script src="javascript/film/addFilm.js" defer></script>
 </head>
 

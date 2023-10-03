@@ -13,7 +13,6 @@
         <!---Page specify CSS--->
         <link rel="stylesheet" type="text/css" href="styles/user/login.css">
         <!--JS-->
-        <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
         <script type="text/javascript" src="javascript/user/login.js" defer></script>
         <script type="text/javascript" defer>
             let CSRF_TOKEN = "<?= $_SESSION['csrf_token'] ?? '' ?>";

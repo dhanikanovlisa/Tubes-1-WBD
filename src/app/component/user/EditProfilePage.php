@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/user/editprofile.css">
-    <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
     <script type="text/javascript" src="/javascript/user/editProfile.js" defer></script>
 </head>
 
