@@ -59,7 +59,6 @@ class Database
 
             $this->conn->exec(
                 "CREATE TABLE IF NOT EXISTS watchlist (
-                    watchlist_id SERIAL PRIMARY KEY,
                     user_id INTEGER,
                     film_id INTEGER,
                     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users (user_id),
