@@ -42,7 +42,7 @@ class FilmsModel
     /**Get Film by Name(String, Substring)*/
     public function getFilmByName($name)
     {
-        $this->db->callQuery('SELECT * FROM ' . $this->table . ' WHERE title LIKE "%' . $name . '%"');
+        $this->db->callQuery("SELECT * FROM " . $this->table . " WHERE title ILIKE '%" . $name . "%'");
         return $this->db->fetchResult();
     }
 
@@ -53,6 +53,23 @@ class FilmsModel
         FROM genre JOIN film_genre ON genre.genre_id = film_genre.genre_id
         JOIN film ON film_genre.film_id = film.film_id WHERE film.film_id = :filmid;");
         $this->db->bind('filmid', $id);
+        return $this->db->fetchAllResult();
+    }
+
+    /**Get Film by film(title), genre(name) and sort it ASC/DESC */
+    public function getFilms($film_title, $genre_name, $sort_direction, $limit, $offset)
+    {
+        $query = "SELECT DISTINCT film.film_id, title, film_poster
+                    FROM ".$this->table." INNER JOIN film_genre ON film.film_id=film_genre.film_id
+                    INNER JOIN genre ON film_genre.genre_id=genre.genre_id
+                WHERE title ILIKE '%".$film_title."%' ";
+        if($genre_name!=="") $query .= "AND LOWER(genre.name)=LOWER('".$genre_name."') ";
+        $query .= "ORDER BY title ".$sort_direction." ";
+        $query .= "LIMIT :limit OFFSET :offset";
+        $this->db->callQuery($query);
+        $this->db->bind('limit', $limit);
+        $this->db->bind('offset', $offset);
+
         return $this->db->fetchAllResult();
     }
 
