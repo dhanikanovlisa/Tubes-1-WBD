@@ -74,6 +74,32 @@ class UserController
         require_once dirname(dirname(__DIR__)) . "/component/user/EditProfilePage.php";
     }
 
+    public function editProfile(){
+        header('Content-Type: application/json');
+        http_response_code(200);
+
+        $existingUserData = $this->userModel->getUserById($_POST['user_id']);
+        $updateData = [];
+
+        $this->checkAndUpdateField('username', $updateData, $existingUserData);
+        $this->checkAndUpdateField('first_name', $updateData, $existingUserData);
+        $this->checkAndUpdateField('last_name', $updateData, $existingUserData);
+        $this->checkAndUpdateField('email', $updateData, $existingUserData);
+        $this->checkAndUpdateField('phone_number', $updateData, $existingUserData);
+    
+        $this->userModel->updateUserData($_POST['user_id'], $updateData);
+        echo json_encode(["redirect_url" => "/settings/" . $_POST['user_id']]);
+    }
+
+    private function checkAndUpdateField($fieldName, &$updateData, $existingData)
+    {
+        if (isset($_POST['user_id']) && isset($_POST[$fieldName]) && $_POST['user_id'] === $existingData['user_id'] && $_POST[$fieldName] !== $existingData[$fieldName]) {
+            $updateData[$fieldName] = $_POST[$fieldName];
+        } else {
+            $updateData[$fieldName] = $existingData[$fieldName];
+        }
+    }
+
     /**ADMIN */
     /**Manage ALL User */
     public function showManageUserPage()

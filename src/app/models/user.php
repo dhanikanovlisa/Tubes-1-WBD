@@ -38,6 +38,29 @@ class UserModel{
         $this->db->execute();
     }
 
+    /**Update User Data */
+    public function updateUserData($userID, $data){
+        $sql = "
+            UPDATE users
+            SET username = :username,
+                first_name = :first_name,
+                last_name = :last_name,
+                email = :email,
+                phone_number = :phone_number
+            WHERE user_id = :user_id
+        ";
+    
+        $this->db->callQuery($sql);
+        $this->db->bind('username', $data["username"]);
+        $this->db->bind('first_name', $data["first_name"]);
+        $this->db->bind('last_name', $data["last_name"]);
+        $this->db->bind('email', $data["email"]);
+        $this->db->bind('phone_number', $data["phone_number"]);
+        $this->db->bind('user_id', $userID);
+        
+        $this->db->execute();
+    }
+
     /**Delete user */
     public function deleteUser($id){
         /**Delete from watchlist */
