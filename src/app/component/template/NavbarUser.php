@@ -1,52 +1,51 @@
+<script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
 <nav class="navbar">
-    <script type="text/javascript" src="javascript/navbar/navbar.js" defer>
-    </script>
-    <a href="/home">
+    <?php require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
+    $authMiddleware = new AuthenticationMiddleware(); ?>
+    <a href="">
         <img src="/images/assets/logo_navbar.svg" class="logo">
     </a>
     <div class="navbar-link" id="navbar-link">
-        <?php
-            require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
-            $authMiddleware = new AuthenticationMiddleware();
-        ?>
-        <?php if (!$authMiddleware->isAuthenticated()): ?>
+        <?php if (!$authMiddleware->isAuthenticated()) : ?>
             <a href="/home">Home</a>
             <a href="/search">Search</a>
             <a href="/watchlist">Watchlist</a>
             <button class="button-red button-text" onClick="location.href='/login';">Login</button></a>
-        <?php elseif ($authMiddleware->isAdmin()): ?>
+        <?php elseif ($authMiddleware->isAdmin()) : ?>
             <a href="/manage-film">Manage Film</a>
             <a href="/manage-user">Manage User</a>
-            <img id="photo-profile" class="photo-profile" src="<?php 
-            require_once DIRECTORY . '/../controller/user/UserController.php';
-            $user = new UserController();
-            $user = $user->getUserByID($_SESSION["user_id"]);
-            if($user["photo_profile"] == null){
-                echo "/images/assets/profile-placeholder.png";} else {
-                    echo "/storage/profile/".$user["photo_profile"];
-                }
-            ?>" onClick="userMenu()"/>
+            <img id="photo-profile" class="photo-profile" src="<?php
+                                                                require_once DIRECTORY . '/../controller/user/UserController.php';
+                                                                $user = new UserController();
+                                                                $user = $user->getUserByID($_SESSION["user_id"]);
+                                                                if ($user["photo_profile"] == null) {
+                                                                    echo "/images/assets/profile-placeholder.png";
+                                                                } else {
+                                                                    echo "/storage/profile/" . $user["photo_profile"];
+                                                                }
+                                                                ?>" onClick="userMenu()" />
             <div class="user-menu" id="user-menu">
-                <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"]?>">Settings</a>
+                <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"] ?>">Settings</a>
                 <a class="hidden-link" onClick="logout()">Logout</a>
             </div>
-        <?php else: ?>
+        <?php else : ?>
             <a href="/home">Home</a>
             <a href="/search">Search</a>
             <a href="/watchlist">Watchlist</a>
-            <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"]?>">Settings</a>
+            <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"] ?>">Settings</a>
             <a class="hidden-link" onCLick="logout()">Logout</a>
-            <img id="photo-profile" class="photo-profile" src="<?php 
-            require_once DIRECTORY . '/../controller/user/UserController.php';
-            $user = new UserController();
-            $user = $user->getUserByID($_SESSION["user_id"]);
-            if($user["photo_profile"] == null){
-                echo "/images/assets/profile-placeholder.png";} else {
-                    echo "/storage/profile/".$user["photo_profile"];
-                }
-            ?>" onClick="userMenu()"/>
+            <img id="photo-profile" class="photo-profile" src="<?php
+                                                                require_once DIRECTORY . '/../controller/user/UserController.php';
+                                                                $user = new UserController();
+                                                                $user = $user->getUserByID($_SESSION["user_id"]);
+                                                                if ($user["photo_profile"] == null) {
+                                                                    echo "/images/assets/profile-placeholder.png";
+                                                                } else {
+                                                                    echo "/storage/profile/" . $user["photo_profile"];
+                                                                }
+                                                                ?>" onClick="userMenu()" />
             <div class="user-menu" id="user-menu">
-                <a class="hidden-link" href="/settings">Settings</a>
+            <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"] ?>">Settings</a>
                 <a class="hidden-link" onClick="logout()">Logout</a>
             </div>
         <?php endif; ?>
