@@ -36,4 +36,9 @@ class WatchListModel{
     public function deleteFilmFromWatchList($userID, $film_id){
         $this->db->callQuery('DELETE FROM '.$this->table.' WHERE user_id='.$userID.' AND film_id='.$film_id);
     }
+
+    public function isFilmOnWatchList($user_id, $film_id){
+        $this->db->callQuery('SELECT * FROM ' . $this->table . ' WHERE user_id=' . $user_id . ' AND film_id=' . $film_id);
+        return $this->db->fetchResult();
+    }
 }

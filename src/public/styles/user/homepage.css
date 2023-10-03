@@ -1,5 +1,4 @@
 .img-header{
-
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -42,9 +41,11 @@
 }
 
 .body-title{
+
     margin-bottom: 3rem;
 }
 
-.body .cards {
+.cards {
     margin-bottom: 3rem;
+    
 }

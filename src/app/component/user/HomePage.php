@@ -14,6 +14,7 @@
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/user/homepage.css">
     <link rel="stylesheet" type="text/css" href="styles/template/pagination.css">
+    <!-- JS --->
 </head>
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
@@ -24,11 +25,13 @@
     <div class="img-header">
         <?php
             $film_header = $home->generateFilmHeader()[0];
+            $film_id = $film_header['film_id'];
             $title = $film_header['title'];
             $date = date_create($film_header['date_release']);
             $release = date_format($date, "j M Y");
             $desc = $film_header['description'];
             $img_path = $film_header['film_poster'];
+            $isOnWatchList = $home->isFilmOnWatchList($_SESSION['user_id'], $film_id);
         ?>
         <img src=<?php echo '"storage/poster/'.$img_path.'"'?> />
         <div class="img-header-overlay"></div>
@@ -38,7 +41,15 @@
             <p><?php echo $desc?></p>
             <div>
                 <button class="button-white button-text">Watch Now</button>
-                <button class="button-white button-text">+</button>
+                <button class="button-white button-text" onClick="watchListButton()" id="watchlist">
+                    <?php
+                        if ($isOnWatchList){
+                            echo "✔";
+                        } else {
+                            echo "+";
+                        }
+                    ?>
+                </button>
             </div>
         </div>
     </div>
@@ -51,9 +62,9 @@
             <?php $home->generatePagination()?>
         </div>
     </div>
-    <script>
+    <!-- <script>
         const filmData = <?php echo json_encode($result); ?>;
-    </script>
+    </script> -->
 </body>
 
 </html>
