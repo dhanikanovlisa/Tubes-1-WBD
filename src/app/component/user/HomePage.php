@@ -18,8 +18,8 @@
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
     <?php
         require_once DIRECTORY . '/../controller/user/HomePageController.php';
-        $film = new HomePageController();
-        $result = $film->getAllFilm();
+        $home = new HomePageController();
+        // $result = $film->getAllFilm();
     ?>
     <div class="img-header">
         <img src="images/assets/movie-poster-sample.jpg" />
@@ -37,10 +37,11 @@
     <div class="body">
         <div class="body-title"><h2>What Do You Want to Watch Today?</h2></div>
         <div class="cards">
-            <?php foreach ($result as $film) {
-                include(DIRECTORY . "/../component/template/cardMovie.php");
-            } ?>
+            <?php  $home->generateCards()?>
         </div>
+    </div>
+    <div class="pagination">
+        <?php $home->generatePagination()?>
     </div>
     <script>
         const filmData = <?php echo json_encode($result); ?>;
