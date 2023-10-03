@@ -13,13 +13,13 @@
     <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/user/homepage.css">
+    <link rel="stylesheet" type="text/css" href="styles/template/pagination.css">
 </head>
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
     <?php
         require_once DIRECTORY . '/../controller/user/HomePageController.php';
         $home = new HomePageController();
-        // $result = $film->getAllFilm();
     ?>
     <div class="img-header">
         <img src="images/assets/movie-poster-sample.jpg" />
@@ -39,9 +39,9 @@
         <div class="cards">
             <?php  $home->generateCards()?>
         </div>
-    </div>
-    <div class="pagination">
-        <?php $home->generatePagination()?>
+        <div class="pagination">
+            <?php $home->generatePagination()?>
+        </div>
     </div>
     <script>
         const filmData = <?php echo json_encode($result); ?>;
