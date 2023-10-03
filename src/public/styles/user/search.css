@@ -1,0 +1,17 @@
+body {
+    padding: 100px 0;
+}
+
+section {
+    padding: 0 100px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.search-container div {
+    display: flex;
+    flex-direction: column;
+}
