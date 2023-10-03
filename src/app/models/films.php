@@ -31,11 +31,13 @@ class FilmsModel
     }
 
     /**Get Film by ID */
-    public function getFilmByID($id)
+    public function getFilmById($film_id)
     {
-        $this->db->callQuery('SELECT * FROM ' . $this->table . ' WHERE film_id = ' . $id);
-        return $this->db->fetchResult();
+        $this->db->callQuery("SELECT * FROM film WHERE film_id = :film_id");
+        $this->db->bind('film_id', $film_id);
+        return $this->db->fetchResult(); 
     }
+
 
     /**Get Film by Name(String, Substring)*/
     public function getFilmByName($name)
@@ -59,22 +61,44 @@ class FilmsModel
     {
         $this->db->callQuery("INSERT INTO film(title, description, film_path, film_poster, date_release, duration)
             VALUES (:title, :description, :film_path, :film_poster, :date_release, :duration);");
-        
+
         $this->db->bind('title', $title);
         $this->db->bind('description', $description);
         $this->db->bind('film_path', $film_path);
         $this->db->bind('film_poster', $film_poster);
         $this->db->bind('date_release', $date_release);
         $this->db->bind('duration', $duration);
-        
+
         $this->db->execute();
     }
 
     /**Update Film */
-    public function updateFilm(){
+    public function updateFilm($film_id, $data)
+    {
+        $sql = "
+            UPDATE film
+            SET title = :title,
+                description = :description,
+                film_path = :film_path,
+                film_poster = :film_poster,
+                date_release = :date_release,
+                duration = :duration
+            WHERE film_id = :film_id
+        ";
+    
+        $this->db->callQuery($sql);
+        $this->db->bind('title', $data["title"]);
+        $this->db->bind('description', $data["description"]);
+        $this->db->bind('film_path', $data["film_path"]);
+        $this->db->bind('film_poster', $data["film_poster"]);
+        $this->db->bind('date_release', $data["date_release"]);
+        $this->db->bind('duration', $data["duration"]);
+        $this->db->bind('film_id', $film_id);
         
+        $this->db->execute();
     }
     
+
 
     /**Delete Film */
     public function deleteFilm($id)
@@ -90,13 +114,9 @@ class FilmsModel
         $this->db->execute();
     }
 
-    /**Edit Film by IDFilm*/
-    public function editFilm($genre_id, $title, $description, $film_path, $film_poster, $date_release, $duration)
-    {
-      
-    }
 
-    public function getLastIDFilm(){
+    public function getLastIDFilm()
+    {
         return $this->db->lastInsertID();
     }
 }

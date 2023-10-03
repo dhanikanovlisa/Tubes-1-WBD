@@ -49,7 +49,7 @@ class WatchListPageController{
         } else if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/user/WatchListPage.php";
         } else {
-            header("Location: /page-not-found");
+            header("Location: /login");
         }
     }
 }

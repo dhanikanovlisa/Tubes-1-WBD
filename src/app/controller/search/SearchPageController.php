@@ -13,7 +13,7 @@ class SearchPageController{
         } else if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/user/SearchPage.php";
         } else {
-            header("Location: /page-not-found");
+            header("Location: /login");
         }
     }
 }

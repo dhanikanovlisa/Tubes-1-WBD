@@ -102,7 +102,7 @@ class UserController
         } else if ($this->middleware->isAuthenticated()) {
             header("Location: /restrict");
         } else {
-            header("Location: /page-not-found");
+            header("Location: /login");
         }
     }
 }
