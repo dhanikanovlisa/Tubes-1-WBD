@@ -25,6 +25,6 @@ class RegistrationController{
         header('Content-Type: application/json');
         http_response_code(200);
         echo json_encode(["redirect_url" => "/login"]);
-        $this->userModel->addUser($_POST['username'],$_POST['email'], $_POST['phone'],$_POST['firstName'], $_POST['lastName'], $_POST['password']);
+        $this->userModel->addUser($_POST['username'],$_POST['email'], $_POST['phone'],$_POST['firstName'], $_POST['lastName'], password_hash($_POST['password'], PASSWORD_DEFAULT));
     }
 }

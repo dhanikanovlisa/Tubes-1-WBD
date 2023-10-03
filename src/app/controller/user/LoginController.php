@@ -21,11 +21,10 @@ class LoginController{
         }
     }
     public function login(){
-        $login = $this->userModel->login($_POST['username'], $_POST['password']);
+        $user = $this->userModel->getUserByUsername($_POST['username']);
 
-        header('Content-Type: application/json');
-        if ($login) {
-            $user = $this->userModel->getUserByUsername($_POST['username']);
+        if ($user && password_verify($_POST['password'], $user['password'])){
+            header('Content-Type: application/json');
             $is_admin = $user['is_admin'];
             $_SESSION['user_id'] = $user['user_id'];
             http_response_code(200);
