@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/user/homepage.css">
+    <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
 </head>
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>

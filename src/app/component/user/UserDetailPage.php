@@ -13,6 +13,7 @@
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/admin/userDetail.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
+    <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
     <script type="text/javascript" src="/javascript/user/deleteUser.js" defer></script>
 </head>
 

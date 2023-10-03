@@ -1,6 +1,4 @@
 <nav class="navbar">
-    <script type="text/javascript" src="javascript/navbar/navbar.js" defer>
-    </script>
     <?php require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
     $authMiddleware = new AuthenticationMiddleware(); ?>
     <a href="">

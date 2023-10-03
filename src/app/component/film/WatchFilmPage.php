@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/admin/detailFilm.css">
+    <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
 </head>
 
 <body>
