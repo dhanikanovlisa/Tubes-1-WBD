@@ -73,12 +73,10 @@ class FilmController
         header('Content-Type: application/json');
         http_response_code(200);
     
-
-        $convert = turnIntoMinute($_POST['filmHourDuration'], $_POST['filmMinuteDuration']);
+        $convert = turnIntoMinute((int) ($_POST['filmHourDuration']), (int) ($_POST['filmMinuteDuration']));
         $existingFilmData = $this->filmModel->getFilmById($_POST['film_id']);
         $updateData = [];
     
-
         $this->checkAndUpdateField('title', $updateData, $existingFilmData);
         $this->checkAndUpdateField('description', $updateData, $existingFilmData);
         $this->checkAndUpdateField('date_release', $updateData, $existingFilmData);
@@ -86,20 +84,23 @@ class FilmController
         $this->checkAndUpdateField('film_path', $updateData, $existingFilmData);
         $this->checkAndUpdateField('film_poster', $updateData, $existingFilmData);
     
-
         $this->filmModel->updateFilm($_POST['film_id'], $updateData);
     
-        // Update film genre
-        $existingFilmGenre = $this->getFilmGenre($_POST['film_id']);
-        $updateGenre = ['filmGenre' => $_POST['filmGenre']];
-        if ($existingFilmGenre[0]['genre_id'] === $_POST['filmGenre']) {
-            $updateGenre['filmGenre'] = $existingFilmGenre[0]['genre_id'];
-        }
-        $this->filmGenreModel->updateFilmGenre($_POST['film_id'], $updateGenre['filmGenre']);
+        // // Update film genre
+        // $existingFilmGenre = $this->getFilmGenre($_POST['film_id']);
+        // $updateGenre = ['filmGenre' => isset($_POST['filmGenre']) ? $_POST['filmGenre'] : null];
     
-
+        // if (empty($updateGenre['filmGenre'])) {
+        //     $updateGenre['filmGenre'] = $existingFilmGenre[0]['genre_id'];
+        // } else {
+        //     if ($existingFilmGenre[0]['genre_id'] !== $updateGenre['filmGenre']) {
+        //         $updateGenre['filmGenre'] = $updateGenre['filmGenre'];
+        //     }
+        // }
+    
         echo json_encode(["redirect_url" => "/manage-film"]);
     }
+    
     
 
     private function checkAndUpdateField($fieldName, &$updateData, $existingData, $newValue = null)

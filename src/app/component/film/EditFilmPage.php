@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/editFilm.css">
-    <script src="javascript/film/editFilm.js" defer></script>
 </head>
 
 <body>
@@ -45,7 +44,7 @@
             exit;
         } else {
         ?>
-            <div class="title-container" id="<? echo $filmID?>">
+            <div class="title-container" >
                 <h2>Edit Film</h2>
             </div>
             <div class="whole-container">
@@ -143,7 +142,9 @@
         ?>
     </div>
     <script>
+        var filmID = <?php echo json_encode($filmID); ?>;
     </script>
+    <script src="/javascript/film/editFilm.js" defer></script>
 </body>
 
 
