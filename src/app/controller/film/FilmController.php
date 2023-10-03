@@ -132,7 +132,7 @@ class FilmController
         } else if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/film/WatchFilmPage.php";
         } else {
-            header("Location: /page-not-found");
+            header("Location: /login");
         }
     }
     public function showDetailFilmPage($params = [])
@@ -142,7 +142,7 @@ class FilmController
         } else if ($this->middleware->isAuthenticated()) {
             header("Location: /restrict");
         } else {
-            header("Location: /page-not-found");
+            header("Location: /login");
         }
     }
     public function showAddFilmPage()
@@ -152,7 +152,7 @@ class FilmController
         } else if ($this->middleware->isAuthenticated()) {
             header("Location: /restrict");
         } else {
-            header("Location: /page-not-found");
+            header("Location: /login");
         }
     }
 
@@ -163,7 +163,7 @@ class FilmController
         } else if ($this->middleware->isAuthenticated()) {
             header("Location: /restrict");
         } else {
-            header("Location: /page-not-found");
+            header("Location: /login");
         }
     }
     public function showManageFilmPage()

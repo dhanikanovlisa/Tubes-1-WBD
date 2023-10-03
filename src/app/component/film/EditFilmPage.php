@@ -33,8 +33,8 @@
     }
 
     $filmDetail = new FilmController();
-    $filmData = $filmDetail->getFilmData($filmID);
-    $filmGenre = $filmDetail->getFilmGenre($filmID);
+    $filmData = $filmDetail->getFilmData($filmID); //udh bener querynya
+    $filmGenre = $filmDetail->getFilmGenre($filmID); //udh bener querynya
     $hourFilm = turnToHourAndMinute($filmData["duration"]);
     $release = parseDate($filmData["date_release"]);
     $totalRow = count($filmData);
@@ -179,7 +179,7 @@
                                 <a href="/manage-film">
                                     <button id="cancel" type="submit" class="button-red button-text">Cancel</button>
                                 </a>
-                                <button type="submit" class="button-white button-text" onclick="editFilm(<?php echo $filmID?>)">Save</button>
+                                <button type="submit" class="button-white button-text" onclick="updateFilm(<?php echo json_encode($filmID)?>)">Save</button>
                             </div>
                         </div>
                     </form>
