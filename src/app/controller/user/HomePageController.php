@@ -30,10 +30,8 @@ class HomePageController{
             header("Location: /restrictAdmin");
         } else if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/user/HomePage.php";
-        }else if ($this->middleware->isAuthenticated()) {
-            header("Location: /login");
         } else {
-            header("Location: /page-not-found");
+            header("Location: /login");
         }
     }
 }
