@@ -42,7 +42,7 @@
             <h4><?php echo $release?></h4>
             <p><?php echo $desc?></p>
             <div class="buttons">
-                <button class="button-white button-text">Watch Now</button>
+                <a href=<?php echo "watch/" . $film_id?>><button class="button-white button-text">Watch Now</button></a>
                 <button class="button-white button-text watchlist" onClick="watchListButton()" id="watchlist">
                     <?php
                         if ($isOnWatchList){
