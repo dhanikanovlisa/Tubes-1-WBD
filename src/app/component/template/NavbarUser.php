@@ -3,15 +3,7 @@
     </script>
     <?php require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
     $authMiddleware = new AuthenticationMiddleware(); ?>
-    <a href="<?php
-                if ($authMiddleware->isAuthenticated()) {
-                    echo "/home";
-                } else if ($authMiddleware->isAdmin()) {
-                    echo "/manage-film";
-                } else {
-                    echo "/login";
-                }
-                ?>">
+    <a href="">
         <img src="/images/assets/logo_navbar.svg" class="logo">
     </a>
     <div class="navbar-link" id="navbar-link">
@@ -54,7 +46,7 @@
                                                                 }
                                                                 ?>" onClick="userMenu()" />
             <div class="user-menu" id="user-menu">
-                <a class="hidden-link" href="/settings">Settings</a>
+            <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"] ?>">Settings</a>
                 <a class="hidden-link" onClick="logout()">Logout</a>
             </div>
         <?php endif; ?>
