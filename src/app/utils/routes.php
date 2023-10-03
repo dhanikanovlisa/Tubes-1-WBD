@@ -11,6 +11,7 @@ $route = [
     
     '/settings/:id' => ["GET" => "user/UserController@showProfileSettingsPage"],
     '/edit-profile/:id' => ["GET" => "user/UserController@showEditProfilePage"],
+    '/update-profile' => ["POST" => "user/UserController@editProfile",],
 
     '/register/register' => ["POST" => "user/RegistrationController@register"],
     '/login/login' => ["POST" => "user/LoginController@login"],

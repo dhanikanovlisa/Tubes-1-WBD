@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/user/editprofile.css">
-    <script type="text/javascript" src="/javascript/user/editProfile.js" defer></script>
 </head>
 
 <body>
@@ -72,21 +71,21 @@
                                 </div>
                                 <div class="btn-contain">
                                     <div>
-                                    <button class="button-red button-text" onClick="popModal()">Cancel</button>
-                                    <div id="confModal" class="modal red-glow">
-                                        <div class="modal-content red-glow">
-                                            <div class="whole">
-                                                <div class="title-container">
-                                                    <h3 class="text-black" id="main-message">Are you sure you want to Delete This?</h3>
-                                                    <p class="text-black" id="description-message">This will be gone</p>
-                                                </div>
-                                                <div class="button-container">
-                                                    <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
-                                                    <button id="ok" class="button-green button-text" onClick="closePage(<?php echo $userData['user_id']; ?>)">OK</button>
+                                        <button class="button-red button-text" onClick="popModal()">Cancel</button>
+                                        <div id="confModal" class="modal red-glow">
+                                            <div class="modal-content red-glow">
+                                                <div class="whole">
+                                                    <div class="title-container">
+                                                        <h3 class="text-black" id="main-message">Are you sure you want to Delete This?</h3>
+                                                        <p class="text-black" id="description-message">This will be gone</p>
+                                                    </div>
+                                                    <div class="button-container">
+                                                        <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
+                                                        <button id="ok" class="button-green button-text" onClick="closePage(<?php echo $userData['user_id']; ?>)">OK</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     </div>
                                     <button class="button-white button-text">Save</button>
                                 </div>
@@ -98,6 +97,10 @@
     <?php
     }
     ?>
+<script>
+    var userID = <?php echo json_encode($id); ?>;
+</script>
+<script type="text/javascript" src="/javascript/user/editProfile.js" defer></script>
 </body>
 
 </html>
