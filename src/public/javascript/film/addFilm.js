@@ -22,6 +22,7 @@ let selectedGenres = [];
     });
 
 addFilmForm && addFilmForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/add-film/add-film');

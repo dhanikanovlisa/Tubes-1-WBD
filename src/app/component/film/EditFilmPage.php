@@ -10,10 +10,9 @@
     <!---Global CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
-    <link rel="stylesheet" type="text/css" href="/styles/template/cardMovie.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/editFilm.css">
-    <script type="text/javascript" src="/javascript/film/editFilm.js" defer></script>
+    <script src="javascript/film/editFilm.js" defer></script>
 </head>
 
 <body>
@@ -46,7 +45,7 @@
             exit;
         } else {
         ?>
-            <div class="title-container">
+            <div class="title-container" id="<? echo $filmID?>">
                 <h2>Edit Film</h2>
             </div>
             <div class="whole-container">
@@ -61,7 +60,7 @@
                     <button class="text-black button-text">Change Poster</button>
                 </div>
                 <div class="detail-container">
-                    <form id="addFilmForm">
+                    <form id="editFilmForm">
                         <div class="field-container">
                             <div class="input-container">
                                 <label for="filmName">Film Name<span class="req">*</span></label>
@@ -69,7 +68,7 @@
                                 <label for="filmPoster">Film Poster<span class="req">*</span></label>
                                 <input type="file" id="filmPoster" name="filmPoster" accept="image/*" />
                                 <label for="filmVideo">Film Video<span class="req">*</span></label>
-                                <input type="file" id="filmPoster" name="filmVideo" accept="video/*" />
+                                <input type="file" id="filmVideo" name="filmVideo" accept="video/*" />
                             </div>
                             <div class="input-container">
                                 <label for="filmDescriptsion">Description<span class="req">*</span></label>
@@ -127,59 +126,13 @@
                                 <div class="title-container">
                                     <h3>Release Date</h3>
                                 </div>
-                                <div class="border">
-                                    <div class="select-container">
-                                        <label for="date">Date<span class="req">*</span></label>
-                                        <div class="custom-select">
-                                            <select id="date" name="date">
-                                                <option value="" disabled selected><?php echo $release["date"] ?></option>
-                                                <?php
-                                                require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-                                                $date = listofDate();
-                                                foreach ($date as $d) {
-                                                ?>
-                                                    <option value="<?php echo $d; ?>"><?php echo $d; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="select-container">
-                                        <label for="month">Month<span class="req">*</span></label>
-                                        <div class="custom-select">
-                                            <select id="month" name="month">
-                                                <option value="" disabled selected><?php echo $release["month"] ?></option>
-                                                <?php
-                                                require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-                                                $month = listofMonth();
-                                                foreach ($month as $m) {
-                                                ?>
-                                                    <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="select-container">
-                                        <label for="year">Year<span class="req">*</span></label>
-                                        <div class="custom-select">
-                                            <select id="year" name="year">
-                                                <option value="" disabled selected><?php echo $release["year"] ?></option>
-                                                <?php
-                                                require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-                                                $year = listofYear();
-                                                foreach ($year as $y) {
-                                                ?>
-                                                    <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                <input type="date" id="filmDate" name="filmDate" value="" min="1950-01-01" max="2024-12-31" pattern="\d{4}-\d{2}-\d{2}" />
                             </div>
                             <div class="button-container">
                                 <a href="/manage-film">
                                     <button id="cancel" type="submit" class="button-red button-text">Cancel</button>
                                 </a>
-                                <button type="submit" class="button-white button-text" onclick="updateFilm(<?php echo json_encode($filmID)?>)">Save</button>
+                                <button type="submit" class="button-white button-text">Save</button>
                             </div>
                         </div>
                     </form>
