@@ -16,7 +16,7 @@ class HomePageController{
         $this->page = isset($_GET['page']) && $_GET['page']>0 ? $_GET['page'] : 1;
         $this->limit = isset($_GET['limit']) && $_GET['page']>0 ? $_GET['limit'] : 2;
     }
-    
+
     public function showHomePage(){
         if ($this->middleware->isAdmin()) {
             header("Location: /restrictAdmin");
@@ -43,5 +43,12 @@ class HomePageController{
             include(DIRECTORY . "/../component/template/cardMovie.php");
         }
         if (empty($films) && $this->page == 1) echo "No film currently available";
+    }
+
+    public function generateFilmHeader(){
+        $film_count =  $this->filmModel->getFilmCount()['count'];
+        $rand = rand(0, $film_count-1);
+        $film = $this->filmModel->getFilm(1, $rand);
+        return $film;
     }
 }

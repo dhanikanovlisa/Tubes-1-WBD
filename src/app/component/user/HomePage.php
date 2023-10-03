@@ -22,12 +22,20 @@
         $home = new HomePageController();
     ?>
     <div class="img-header">
-        <img src="images/assets/movie-poster-sample.jpg" />
+        <?php
+            $film_header = $home->generateFilmHeader()[0];
+            $title = $film_header['title'];
+            $date = date_create($film_header['date_release']);
+            $release = date_format($date, "j M Y");
+            $desc = $film_header['description'];
+            $img_path = $film_header['film_poster'];
+        ?>
+        <img src=<?php echo '"storage/poster/'.$img_path.'"'?> />
         <div class="img-header-overlay"></div>
         <div class="img-header-text">
-            <h1>Movie Title</h1>
-            <h4>20 January 2017</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sem nulla, malesuada a justo a, consequat fermentum eros. Etiam auctor accumsan enim eget molestie. In tellus sapien, pharetra eget dolor at, pretium placerat erat. Donec sed risus congue, varius velit quis, placerat arcu. Sed at fringilla ipsum. </p>
+            <h1><?php echo $title?></h1>
+            <h4><?php echo $release?></h4>
+            <p><?php echo $desc?></p>
             <div>
                 <button class="button-white button-text">Watch Now</button>
                 <button class="button-white button-text">+</button>
