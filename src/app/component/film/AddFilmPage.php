@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/film/addFilm.css">
-    <script src="javascript/film/addFilm.js" defer></script>
+    <script src="/javascript/film/addFilm.js" defer></script>
 </head>
 
 <body>
@@ -34,17 +34,11 @@
                     <div class="field-container">
                         <div class="input-container">
                             <!--Film Name-->
-                            <label for="filmName">Film Name<span class="req">*</span></label>
+                            <h3 for="filmName">Film Name<span class="req">*</span></h3>
                             <input type="text" id="filmName" name="filmName" placeholder="Title" required />
-                             <!--Film Poster-->
-                            <label for="filmPoster">Film Poster<span class="req">*</span></label>
-                            <input type="file" id="filmPoster" name="filmPoster" accept="image/*" required />
-                             <!--Film Video-->
-                            <label for="filmVideo">Film Video<span class="req">*</span></label>
-                            <input type="file" id="filmVideo" name="filmVideo" accept="video/*" required />
                         </div>
                         <div class="input-container">
-                            <label for="filmDescriptsion">Description<span class="req">*</span></label>
+                            <h3 for="filmDescriptsion">Description<span class="req">*</span></h3>
                             <textarea id="filmDescription" name="filmDescription" placeholder="Description" required></textarea>
                         </div>
                         <div class="input-container">
@@ -59,9 +53,11 @@
                                 <?php foreach ($result as $row) { ?>
                                     <div class="checkbox-item">
                                         <input type="checkbox" id="genre_<?php echo $row['genre_id']; ?>" name="filmGenre[]" value="<?php echo $row['genre_id']; ?>">
-                                        <label for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?></label>
+                                        <span class="custom-checkbox"></span>
+                                        <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
+                                        </label>
                                     </div>
-                                <?php } ?>
+                                    <?php } ?>
                             </div>
                         </div>
                         <div class="duration-select-container">
@@ -96,9 +92,28 @@
                         </div>
                         <div class="duration-select-container">
                             <div class="title-container">
-                                <h3>Release Date</h3>
+                                <h3>Release Date<span class="req">*</span></h3>
                             </div>
                             <input type="date" id="filmDate" name="filmDate" value="" min="1950-01-01" max="2024-12-31" pattern="\d{4}-\d{2}-\d{2}" />
+                        </div>
+                        <div class="upload-content">
+                            <!--Film Poster-->
+                            <div>
+                                <h3>Film Poster<span class="req">*</span></h3>
+                                <input type="file" id="filmPoster" name="filmPoster" accept="image/*" class="inputFile" required />
+                                <label for="filmPoster">
+                                    <p class="button-text file-style">Upload Film Poster</p>
+                                </label>
+                            </div>
+
+                            <!--Film Video-->
+                            <div>
+                                <h3>Film Video<span class="req">*</span></h3>
+                                <input type="file" id="filmVideo" name="filmVideo" accept="video/*" required />
+                                <label for="filmVideo">
+                                    <p class="button-text file-style">Upload Film Video</p>
+                                </label>
+                            </div>
                         </div>
                         <div class="button-container">
                             <a href="/manage-film">
@@ -112,14 +127,14 @@
         </div>
     </div>
     <script>
-        document.getElementById('cancel').addEventListener('click', function(event) {
-            if (document.getElementById('addFilmForm').checkValidity()) {
-                return confirm('Are you sure you want to cancel?');
-            }
-        });
-        window.addEventListener('beforeunload', function(event) {
-            event.returnValue = '';
-        });
+        // document.getElementById('cancel').addEventListener('click', function(event) {
+        //     if (document.getElementById('addFilmForm').checkValidity()) {
+        //         return confirm('Are you sure you want to cancel?');
+        //     }
+        // });
+        // window.addEventListener('beforeunload', function(event) {
+        //     event.returnValue = '';
+        // });
     </script>
 </body>
 
