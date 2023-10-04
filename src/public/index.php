@@ -14,9 +14,3 @@ $router = new parserrouting($route);
 $uri = $_SERVER["REQUEST_URI"];
 $method = $_SERVER["REQUEST_METHOD"];
 $router->call($uri, $method);
-
-$db = new Database;
-$db->callQuery("SELECT * FROM users");
-$db->execute();
-$res = $db->fetchAllResult();
-print_r($res);

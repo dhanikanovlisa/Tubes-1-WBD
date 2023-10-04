@@ -321,3 +321,15 @@ input[type="date"]{
     border-radius: 0.625rem;
     font-family: 'Inter', sans-serif;
 }
+
+.error{
+    color: var(--red);
+    font-size: 0.8rem;
+    text-align: left;
+    display: block;
+    width:100%;
+}
+
+.error-input {
+    border: 3px red solid;
+}

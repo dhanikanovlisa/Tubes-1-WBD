@@ -36,17 +36,6 @@ let emailValid = false;
 let passwordValid = false;
 let passwordConfirmedValid = false;
 
-function setErrorWarning(input, desc, message){
-    input.className += ' error-input';
-    desc.innerText = message;
-    desc.style.display = 'block';
-}
-
-function removeErrorWarning(input, desc){
-    input.className = '';
-    desc.innerText = '';
-    desc.style.display = 'none';
-}
 
 usernameInput && usernameInput.addEventListener('keyup', async(e) => {
     const username = usernameInput.value;
