@@ -33,17 +33,6 @@ input {
     margin-bottom: 0px;
 }
 
-.error{
-    color: var(--red);
-    font-size: 0.8rem;
-    text-align: left;
-    display: block;
-    width:100%;
-}
-
-.error-input {
-    border: 3px red solid;
-}
 
 p, a, button {
     letter-spacing: 0.05rem;

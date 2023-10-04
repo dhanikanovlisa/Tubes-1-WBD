@@ -1,3 +1,4 @@
+
 let filmName = document.getElementById('filmName');
 let filmDescription = document.getElementById('filmDescription');
 let filmPoster = document.getElementById('filmPoster');

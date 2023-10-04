@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!---Title--->
     <title>Notflix</title>
     <!---Icon--->
@@ -161,9 +162,9 @@
         //         return confirm('Are you sure you want to cancel?');
         //     }
         // });
-        // window.addEventListener('beforeunload', function(event) {
-        //     event.returnValue = '';
-        // });
+        window.addEventListener('beforeunload', function(event) {
+            event.returnValue = '';
+        });
     </script>
 </body>
 
