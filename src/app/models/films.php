@@ -49,12 +49,17 @@ class FilmsModel
     /**Get Film by Genre*/
     public function getFilmGenre($id)
     {
-        $this->db->callQuery("SELECT genre.name
-        FROM genre JOIN film_genre ON genre.genre_id = film_genre.genre_id
-        JOIN film ON film_genre.film_id = film.film_id WHERE film.film_id = :filmid;");
+        $this->db->callQuery("
+            SELECT genre.name
+            FROM genre
+            JOIN film_genre ON genre.genre_id = film_genre.genre_id
+            JOIN film ON film_genre.film_id = film.film_id
+            WHERE film.film_id = :filmid;
+        ");
         $this->db->bind('filmid', $id);
         return $this->db->fetchAllResult();
     }
+    
 
     /**Get Film by film(title), genre(name) and sort it ASC/DESC */
     public function getFilms($film_title, $genre_name, $sort_direction, $limit, $offset)
@@ -104,12 +109,12 @@ class FilmsModel
         ";
     
         $this->db->callQuery($sql);
-        $this->db->bind('title', $data["title"]);
-        $this->db->bind('description', $data["description"]);
-        $this->db->bind('film_path', $data["film_path"]);
-        $this->db->bind('film_poster', $data["film_poster"]);
-        $this->db->bind('date_release', $data["date_release"]);
-        $this->db->bind('duration', $data["duration"]);
+        $this->db->bind('title', $data['title']);
+        $this->db->bind('description', $data['description']);
+        $this->db->bind('film_path', $data['film_path']);
+        $this->db->bind('film_poster', $data['film_poster']);
+        $this->db->bind('date_release', $data['date_release']);
+        $this->db->bind('duration', $data['duration']);
         $this->db->bind('film_id', $film_id);
         
         $this->db->execute();

@@ -4,9 +4,9 @@ $authMiddleware = new AuthenticationMiddleware();
 
 $link = "/login"; // Default link
 
-if ($authMiddleware->isAuthenticated()) {
+if (!$authMiddleware->isAuthenticated()) {
     $link = "watch/{$film['film_id']}";
-} elseif (!$authMiddleware->isAuthenticated()) {
+} elseif ($authMiddleware->isAuthenticated()) {
     $link = "detail-film/{$film['film_id']}";
 }
 

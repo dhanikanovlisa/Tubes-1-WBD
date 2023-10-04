@@ -11,6 +11,7 @@
     <!---Global CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/editFilm.css">
 </head>
@@ -49,52 +50,44 @@
                 <h2>Edit Film</h2>
             </div>
             <div class="whole-container">
-                <div class="image-container">
-                    <div class="card">
-                        <?php
-                        $urlPhoto = "/storage/poster/" . $filmData["film_poster"];
-
-                        ?>
-                        <img src="<?php echo $urlPhoto; ?>" alt="Film Image" />
-                    </div>
-                    <button class="text-black button-text">Change Poster</button>
-                </div>
                 <div class="detail-container">
                     <form id="editFilmForm">
                         <div class="field-container">
-                            <div class="input-container">
-                                <!--Film Name-->
-                                <h3 for="filmName">Film Name<span class="req">*</span></h3>
-                                <input type="text" id="filmName" name="filmName" placeholder="Title" />
-                            </div>
-                            <div class="input-container">
-                                <h3 for="filmDescriptsion">Description<span class="req">*</span></h3>
-                                <textarea id="filmDescription" name="filmDescription" placeholder="Description"></textarea>
-                            </div>
+                            <div class="upper">
+                                <div>
+                                    <div class="input-container">
+                                        <!--Film Name-->
+                                        <h3 for="filmName">Film Name<span class="req">*</span></h3>
+                                        <input type="text" id="filmName" name="filmName" placeholder="<?php echo $filmData['title']?>" />
+                                    </div>
+                                    <div class="input-container">
+                                        <h3 for="filmDescriptsion">Description<span class="req">*</span></h3>
+                                        <textarea id="filmDescription" name="filmDescription" placeholder="<?php echo $filmData['description']?>"></textarea>
+                                    </div>
+                                </div>
 
-                            <div class="input-container">
-                                <h3>Genre<span class="req">*</span></h3>
-                                <?php
-                                require_once dirname(dirname(__DIR__)) . '/controller/film/GenreController.php';
-                                $genre = new GenreController();
-                                $result = $genre->getAllGenre();
-                                ?>
+                                <div class="input-container">
+                                    <h3>Genre<span class="req">*</span></h3>
+                                    <?php
+                                    require_once dirname(dirname(__DIR__)) . '/controller/film/GenreController.php';
+                                    $genre = new GenreController();
+                                    $result = $genre->getAllGenre();
+                                    ?>
 
-                                <div class="checkbox-container">
-                                    <?php foreach ($result as $row) { ?>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="genre_<?php echo $row['genre_id']; ?>" name="filmGenre[]" value="<?php echo $row['genre_id']; ?>">
-                                            <span class="custom-checkbox"></span>
-                                            <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
-                                            </label>
-                                        </div>
-                                    <?php } ?>
+                                    <div class="checkbox-container">
+                                        <?php foreach ($result as $row) { ?>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="genre_<?php echo $row['genre_id']; ?>" name="filmGenre[]" value="<?php echo $row['genre_id']; ?>">
+                                                <span class="custom-checkbox"></span>
+                                                <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
+                                                </label>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="duration-select-container">
-                                <div class="title-container">
-                                    <h3>Duration</h3>
-                                </div>
+                                <h3>Duration</h3>
                                 <div class="border">
                                     <div class="select-container">
                                         <label for="filmHourDuration">Hour<span class="req">*</span></label>
@@ -123,35 +116,35 @@
                                 </div>
                             </div>
                             <div class="duration-select-container">
-                                <div class="title-container">
-                                    <h3>Release Date</h3>
-                                </div>
+                                <h3>Release Date</h3>
                                 <input type="date" id="filmDate" name="filmDate" value="" min="1950-01-01" max="2024-12-31" pattern="\d{4}-\d{2}-\d{2}" />
                             </div>
                             <div class="upload-content">
                                 <!--Film Poster-->
                                 <div>
                                     <h3>Film Poster<span class="req">*</span></h3>
-                                    <input type="file" id="filmPoster" name="filmPoster" accept="image/*" class="inputFile" required />
+                                    <input type="file" id="filmPoster" name="filmPoster" accept="image/*" class="inputFile"  />
                                     <label for="filmPoster">
                                         <p class="button-text file-style">Upload Film Poster</p>
                                     </label>
+                                    <div class="file-name" id="display-filePoster-name"></div>
                                 </div>
 
                                 <!--Film Video-->
                                 <div>
                                     <h3>Film Video<span class="req">*</span></h3>
-                                    <input type="file" id="filmVideo" name="filmVideo" accept="video/*" required />
+                                    <input type="file" id="filmVideo" name="filmVideo" accept="video/*" />
                                     <label for="filmVideo">
                                         <p class="button-text file-style">Upload Film Video</p>
                                     </label>
+                                    <div class="file-name" id="display-fileVideo-name"></div>
                                 </div>
                             </div>
                             <div class="button-container">
                                 <a href="/manage-film">
                                     <button id="cancel" type="submit" class="button-red button-text">Cancel</button>
                                 </a>
-                                <button type="submit" class="button-white button-text">Save</button>
+                                <button id="saveButton" class="button-white button-text" onclick="succes()">Save</button>
                             </div>
                         </div>
                     </form>
@@ -165,6 +158,7 @@
         var filmID = <?php echo json_encode($filmID); ?>;
     </script>
     <script src="/javascript/film/editFilm.js" defer></script>
+    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
 </body>
 
 
