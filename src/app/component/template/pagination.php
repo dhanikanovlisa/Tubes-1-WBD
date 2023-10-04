@@ -5,7 +5,6 @@
 -->
 <div class='pagination'>
     <?php
-        if($total_records) $total_records=$total_records['count'];
         $totalpages = ceil($total_records/$items_per_page);
         $limitpage = $totalpages<5 ? $totalpages : 5;
         
