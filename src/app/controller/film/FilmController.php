@@ -45,10 +45,10 @@ class FilmController
 
     /**Check Film Name */
     public function checkFilmName($filmName){
-        $filmName = ltrim($filmName['filmName'], ':');
-        $filmName = $this->filmModel->getFilmByName($filmName);
+        $film_name = ltrim($filmName['filmname'], ':');
+        $film_name = $this->filmModel->getFilmByName($film_name);
         $isExist = false;
-        if ($filmName) {
+        if ($film_name) {
             $isExist = true;
         }
         header('Content-Type: application/json');

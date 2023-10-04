@@ -7,7 +7,7 @@ let filmHourDuration = document.getElementById('filmHourDuration');
 let filmMinuteDuration = document.getElementById('filmMinuteDuration');
 let date = document.getElementById('filmDate');
 
-const filmNameAlert = document.getElementById('filmNameAlert');
+const filmNameAlert = document.getElementById('filmName-alert');
 
 let selectedGenres = [];
 document.addEventListener('DOMContentLoaded', function () {
@@ -30,28 +30,27 @@ function setErrorWarning(input, desc, message) {
 }
 
 function removeErrorWarning(input, desc) {
-    input.className = '';
-    desc.innerText = '';
     desc.style.display = 'none';
 }
 
 filmName && filmName.addEventListener('keyup', async (e) => {
     const film_name = filmName.value;
     e.preventDefault();
-        const xhr_uname = new XMLHttpRequest();
-        xhr_uname.open('GET', '/check/filmname/:' + film_name);
-        
-        xhr_uname.send();
-        xhr_uname.onreadystatechange = () => {
-            if (xhr_uname.readyState === XMLHttpRequest.DONE){
-                const response = JSON.parse(xhr_uname.responseText);
-                if (response.isExist){
-                    setErrorWarning(usernameInput, usernameAlert, 'Film Name Already Exist');
-                    return;
-                }
+    const xhr_uname = new XMLHttpRequest();
+    xhr_uname.open('GET', '/check/filmname/:' + film_name);
+    
+    xhr_uname.send();
+    xhr_uname.onreadystatechange = () => {
+        if (xhr_uname.readyState === XMLHttpRequest.DONE) {
+            console.log(xhr_uname.responseText);
+            const response = JSON.parse(xhr_uname.responseText);
+            if (response.isExist) {
+                setErrorWarning(filmName, filmNameAlert, 'Film Name Already Exist');
+                return;
             }
         }
-        removeErrorWarning(filmName, filmNameAlert);
+    }
+    removeErrorWarning(filmName, filmNameAlert);
 });
 
 addFilmForm && addFilmForm.addEventListener('submit', async (e) => {
