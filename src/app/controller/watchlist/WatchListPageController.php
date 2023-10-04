@@ -35,6 +35,7 @@ class WatchListPageController{
 
     public function generatePagination(){
         $total_records = $this->watchListModel->getWatchListFilmsCount($this->userID);
+        if($total_records) $total_records=$total_records['count'];
         $items_per_page = $this->limit;
         $current_page = $this->page;
 

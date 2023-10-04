@@ -33,6 +33,7 @@ class HomePageController{
 
     public function generatePagination(){
         $total_records = $this->filmModel->getFilmCount();
+        if($total_records) $total_records=$total_records['count'];
         $items_per_page = 2;
         $current_page = $this->page;
 

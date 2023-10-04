@@ -6,6 +6,7 @@ $route = [
     '/registration' => ["GET" => "user/RegistrationController@showRegistrationPage"],
     '/home' => ["GET" => "user/HomePageController@showHomePage"],
     '/search' => ["GET" => "search/SearchPageController@showSearchPage"],
+    '/search/search' => ["GET" => "search/SearchPageController@fetchSearchResults"],
     '/watchlist' => ["GET" => "watchlist/WatchListPageController@showWatchListPage"],
     '/watch/:id' => ["GET" => "film/FilmController@showWatchFilmPage"],
     

@@ -2,6 +2,7 @@
 require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
 require_once DIRECTORY . '/../models/films.php';
 require_once DIRECTORY . '/../models/genre.php';
+require_once DIRECTORY . '/../models/filmGenre.php';
 
 class SearchPageController{ 
     private AuthenticationMiddleware $middleware;
@@ -12,6 +13,7 @@ class SearchPageController{
     private string $sort_direction;
     private int $page;
     private int $limit;
+    private int $items_count;
 
     public function __construct()
     {
@@ -20,22 +22,50 @@ class SearchPageController{
         $this->genreModel = new GenreModel();
         $this->title = isset($_GET['title']) ? $_GET['title'] : "";
         $this->genre = isset($_GET['genre']) ? $_GET['genre'] : "";
-        $this->sort_direction = isset($_GET['sort_direction']) ? $_GET['sort_direction'] : "asc";
+        $this->sort_direction = isset($_GET['orderby']) ? $_GET['orderby'] : "asc";
         $this->page = isset($_GET['page']) && $_GET['page']>0 ? $_GET['page'] : 1;
         $this->limit = isset($_GET['limit']) && $_GET['limit']>0 ? $_GET['limit'] : 15;
+        $this->items_count = 0;
     }
-    public function generateGenres(){
+    public function generateGenres(): void{
         $genres = $this->genreModel->getAllGenreSorted();
         foreach($genres as $genre){
             echo "<option value='".$genre["name"]."'>".$genre["name"]."</option>";
         }
     }
-    public function generateCards(){
+    public function generateCards(): void{
         $offset = ($this->page-1)*$this->limit;
+
         $lf =  $this->filmsModel->getFilms($this->title, $this->genre, $this->sort_direction, $this->limit, $offset);
         foreach($lf as $film){
             include(DIRECTORY . "/../component/template/cardMovie.php");
+            $this->items_count += 1;
         }
+    }
+    public function fetchSearchResults(): void{
+        // ngambil hasil kayak generate cards, pake file_get_contents
+        // terus kasih response htmlnya
+        $offset = ($this->page-1)*$this->limit;
+
+        $lf =  $this->filmsModel->getFilms($this->title, $this->genre, $this->sort_direction, $this->limit, $offset);
+        
+        ob_start();
+        foreach($lf as $film){
+            include(DIRECTORY . "/../component/template/cardMovie.php");
+        }
+        $response = ob_get_contents();
+        ob_end_clean();
+
+        header('Content-Type: text/html');
+        http_response_code(200);
+        echo $response;
+    }
+    public function generatePagination(){
+        $total_records = $this->items_count;
+        $items_per_page = $this->limit;
+        $current_page = $this->page;
+
+        include(DIRECTORY . "/../component/template/pagination.php");
     }
     public function showSearchPage(){
         if ($this->middleware->isAdmin()) {
