@@ -2,7 +2,7 @@
 <nav class="navbar">
     <?php require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
     $authMiddleware = new AuthenticationMiddleware(); ?>
-    <a href="">
+    <a href="/home">
         <img src="/images/assets/logo_navbar.svg" class="logo" alt="logo">
     </a>
     <div class="navbar-link" id="navbar-link">

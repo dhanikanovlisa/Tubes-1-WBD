@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +39,7 @@
             var user_id = <?php echo $_SESSION['user_id']?>;
             var film_id = <?php echo $film_id?>;
         </script>
-        <img src=<?php echo '"storage/poster/'.$img_path.'"'?> />
+        <img src=<?php echo '"storage/poster/'.$img_path.'"'?> alt="images/assets/image_header.jpg"/>
         <div class="img-header-overlay"></div>
         <div class="img-header-text">
             <h1><?php echo $title?></h1>
