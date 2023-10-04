@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!---Title--->
     <title>Notflix</title>
     <!---Icon--->
@@ -37,7 +38,13 @@
                 </div>
                 <div class="whole-container">
                     <div class="profile">
-                        <img src="/storage/profile/<?php echo $userData['photo_profile']?>" />
+                        <img src="<?php
+                                    if ($user["photo_profile"] == null) {
+                                        echo "/images/assets/profile-placeholder.png";
+                                    } else {
+                                        echo "/storage/profile/" . $user["photo_profile"];
+                                    }
+                                    ?>" alt="Profile Picture" />
                     </div>
 
                     <div class="detail-container">
@@ -48,7 +55,7 @@
                         </div>
                         <div class="field-container">
                             <h3>Name</h3>
-                            <p><?php echo $userData['first_name'] ." ".  $userData['last_name']; ?></p>
+                            <p><?php echo $userData['first_name'] . " " .  $userData['last_name']; ?></p>
                         </div>
                         <div class="field-container">
                             <h3>Email</h3>
@@ -56,10 +63,10 @@
                         </div>
                         <div class="field-container">
                             <h3>Phone Number</h3>
-                            <p><?php echo $userData['phone_number'] ?></p>
+                            <p>+<?php echo $userData['phone_number'] ?></p>
                         </div>
                         <div class="field-container">
-                            <a href="/edit-profile/<?php echo $id?>">
+                            <a href="/edit-profile/<?php echo $id ?>">
                                 <button class="button-white button-text">Edit Profile</button>
                             </a>
                         </div>

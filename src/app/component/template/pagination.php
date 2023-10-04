@@ -3,7 +3,7 @@
     @items_per_page
     @current_page
 -->
-<div class='pagination'>
+<div id='pagination-container' class='pagination'>
     <?php
         $totalpages = ceil($total_records/$items_per_page);
         $limitpage = $totalpages<5 ? $totalpages : 5;

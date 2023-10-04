@@ -1,9 +1,9 @@
-<script type="text/javascript" src="/javascript/navbar/navbar.js" defer></script>
+<script type="text/javascript" src="/javascript/navbar/navbar.js"></script>
 <nav class="navbar">
     <?php require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
     $authMiddleware = new AuthenticationMiddleware(); ?>
     <a href="">
-        <img src="/images/assets/logo_navbar.svg" class="logo">
+        <img src="/images/assets/logo_navbar.svg" class="logo" alt="logo">
     </a>
     <div class="navbar-link" id="navbar-link">
         <?php if (!$authMiddleware->isAuthenticated()) : ?>
@@ -23,7 +23,8 @@
                                                                 } else {
                                                                     echo "/storage/profile/" . $user["photo_profile"];
                                                                 }
-                                                                ?>" onClick="userMenu()" />
+                                                                ?>" onClick="userMenu()" 
+                                                                alt="profile picture"/>
             <div class="user-menu" id="user-menu">
                 <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"] ?>">Settings</a>
                 <a class="hidden-link" onClick="logout()">Logout</a>
@@ -43,7 +44,8 @@
                                                                 } else {
                                                                     echo "/storage/profile/" . $user["photo_profile"];
                                                                 }
-                                                                ?>" onClick="userMenu()" />
+                                                                ?>" onClick="userMenu()" 
+                                                                alt="profile picture"/>
             <div class="user-menu" id="user-menu">
             <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"] ?>">Settings</a>
                 <a class="hidden-link" onClick="logout()">Logout</a>
@@ -51,6 +53,6 @@
         <?php endif; ?>
     </div>
     <button class="burger-bar" onClick="navbar()">
-        <img class="burger-bar" src="images/assets/Burger bar.svg" />
+        <img class="burger-bar" src="images/assets/Burger bar.svg" alt="burger bar" />
     </button>
 </nav>
