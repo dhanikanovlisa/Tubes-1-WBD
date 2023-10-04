@@ -10,9 +10,9 @@
     <link rel="icon" href="images/icon/logo.ico">
     <!---Global CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
-    <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/navbar.css">
     <!---Page specify CSS--->
-    <link rel="stylesheet" type="text/css" href="/styles/admin/detailFilm.css">
+    <link rel="stylesheet" type="text/css" href="/styles/film/watchFilm.css">
 </head>
 
 <body>
@@ -26,8 +26,8 @@
         $filmID = $test[1];
     }
 
-    $filmDetail = new FilmController();
-    $filmData = $filmDetail->getFilmData($filmID);
+    $filmController = new FilmController();
+    $filmData = $filmController->getFilmData($filmID);
     $totalRow = count($filmData);
 
     if ($totalRow == 0) {
@@ -35,12 +35,44 @@
         exit;
     } else {
     ?>
-        <div class='outer-container'>
-            <h1><?php echo $filmID ?></h1>
-        </div>
     <?php
     }
     ?>
+    
+    <section>
+        <header>
+            <h1><?php echo htmlspecialchars($filmData['title']); ?></h1>
+        </header>
+        <video controls id='video-player' >
+            <source src='../storage/film/<?php echo htmlspecialchars($filmData['film_path']) ?>' type='video/mp4'>
+        </video>
+        <div id='details'>
+            <div id='description'>
+                <h2>Description</h2>
+                <p><?php echo htmlspecialchars($filmData['description']) ?></p>
+            </div>
+            <div id='genre'>
+                <h2>Genre</h2>
+                <p><?php
+                    $genres = $filmController->getFilmGenre($filmID);
+                    $response = array();
+                    foreach($genres as $genre){
+                        array_push($response, $genre['name']);
+                    }
+                    echo implode(', ', $response);
+                    ?>
+            </div>
+            <div id='release'>
+                <h2>Release</h2>
+                <p><?php echo htmlspecialchars($filmData['date_release']) ?></p>
+            </div>
+            <div id='duration'>
+                <h2>Duration</h2>
+                <p><?php echo htmlspecialchars($filmData['duration']) ?></p>
+            </div>
+        </div>
+    </section>
+
 </body>
 
 </html>

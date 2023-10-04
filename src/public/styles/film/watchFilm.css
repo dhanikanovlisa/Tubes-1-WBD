@@ -1,0 +1,11 @@
+body {
+    padding: 100px 0;
+}
+
+section {
+    padding: 0 100px;
+}
+
+#video-player {
+    width: 100%;
+}
