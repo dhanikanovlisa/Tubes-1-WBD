@@ -32,7 +32,6 @@
     $filmDetail = new FilmController();
     $filmData = $filmDetail->getFilmData($filmID);
     $filmGenre = $filmDetail->getFilmGenre($filmID);
-    // print_r($filmGenre);
     $totalRow = count($filmData);
     ?>
     <div id="" class='container'>
