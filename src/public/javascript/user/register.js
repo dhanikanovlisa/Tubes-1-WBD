@@ -142,7 +142,6 @@ confirmPasswordInput && confirmPasswordInput.addEventListener('keyup', () => {
 
 registrationForm && registrationForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    console.log('submit');
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/register/register');
 
@@ -157,7 +156,6 @@ registrationForm && registrationForm.addEventListener('submit', async (e) => {
     xhr.send(formData);
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
             location.replace(response.redirect_url);
         }

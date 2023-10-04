@@ -19,7 +19,6 @@ function logout(){
     xhr.open('GET', '/logout');
     xhr.send();
     xhr.onreadystatechange = () => {
-        console.log("logout");
         if (xhr.readyState === XMLHttpRequest.DONE){
             window.location.href = 'login';
         }

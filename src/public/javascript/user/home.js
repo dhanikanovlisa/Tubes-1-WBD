@@ -19,7 +19,6 @@ function watchListButton(){
                 xhr.send(form_data);
                 xhr.onreadystatechange = () => {
                     if (xhr.readyState === XMLHttpRequest.DONE){
-                        console.log(xhr.responseText);
                         response = JSON.parse(xhr.responseText);
                         image.src = "/images/assets/check.png";
                         message.className = "check";
@@ -36,7 +35,6 @@ function watchListButton(){
                 xhr.send(form_data);
                 xhr.onreadystatechange = () => {
                     if (xhr.readyState === XMLHttpRequest.DONE){
-                        console.log(xhr.responseText);
                         response = JSON.parse(xhr.responseText);
                         image.src = "/images/assets/cross.png";
                         message.className = "cross"
