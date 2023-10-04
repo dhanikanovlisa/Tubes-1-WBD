@@ -166,7 +166,6 @@ editProfile && editProfile.addEventListener('submit', async (e) => {
     formData.append('phone_number', phoneInput.value);
     if(profilePicture.files[0] != undefined){
         formData.append('photo_profile', profilePicture.files[0].name);
-        console.log(profilePicture.files[0].name);
     } else {
         formData.append('photo_profile', "");
     }
@@ -176,7 +175,7 @@ editProfile && editProfile.addEventListener('submit', async (e) => {
             const response = JSON.parse(xhr.responseText);
             setTimeout(() => {
                 location.replace(response.redirect_url);
-            }, 1500); // 5000 milliseconds (5 seconds) delay
+            }, 1500);
             
         }
     }

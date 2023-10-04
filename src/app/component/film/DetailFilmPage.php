@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!---Title--->
     <title>Notflix</title>
     <!---Icon--->
@@ -15,6 +15,7 @@
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/detailFilm.css">
     <script type="text/javascript" src="/javascript/film/deleteFilm.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
 </head>
 
 <body>
@@ -80,11 +81,11 @@
                             <div id="confModal" class="modal red-glow">
                                 <div class="modal-content red-glow">
                                     <div class="whole">
-                                        <div class="title-container">
+                                        <div class="title-modal-container">
                                             <h3 class="text-black" id="main-message">Are you sure you want to Delete This?</h3>
                                             <p class="text-black" id="description-message">This will be gone</p>
                                         </div>
-                                        <div class="button-container">
+                                        <div class="button-modal-container">
                                             <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
                                             <button id="ok" class="button-green button-text" onclick="deleteSong(<?php echo $filmID; ?>)">OK</button>
                                         </div>
@@ -103,6 +104,7 @@
         ?>
         
     </div>
+    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
 </body>
 
 

@@ -27,20 +27,34 @@ class FilmController
     public function getAllFilm()
     {
         $filmData = $this->filmModel->getAllFilm();
-        $result = [];
-        foreach ($filmData as $film) {
-            $data = [];
-            $data["film_id"] = $film['film_id'];
-            $data["title"] = $film['title'];
-            $data["film_poster"] = $film['film_poster'];
-            $result[] = $data;
-        }
-        return $result;
+        // $result = [];
+        // foreach ($filmData as $film) {
+        //     $data = [];
+        //     $data["film_id"] = $film['film_id'];
+        //     $data["title"] = $film['title'];
+        //     $data["film_poster"] = $film['film_poster'];
+        //     $result[] = $data;
+        // }
+        return $filmData;
     }
 
     public function getFilmGenre($param)
     {
         return $this->filmModel->getFilmGenre($param);
+    }
+
+    /**Check Film Name */
+    public function checkFilmName($filmName)
+    {
+        $film_name = ltrim($filmName['filmname'], ':');
+        $film_name = $this->filmModel->getFilmByName($film_name);
+        $isExist = false;
+        if ($film_name) {
+            $isExist = true;
+        }
+        header('Content-Type: application/json');
+        http_response_code(201);
+        echo json_encode(["isExist" => $isExist]);
     }
 
 
@@ -58,9 +72,9 @@ class FilmController
             $_POST['date_release'],
             $convert
         );
-        
+
         $filmID = $this->filmModel->getLastIDFilm();
-        
+
         foreach ($_POST['filmGenre'] as $genre) {
             $genre = intval($genre);
             $this->filmGenreModel->insertFilmGenre($filmID, $genre);
@@ -72,47 +86,65 @@ class FilmController
     {
         header('Content-Type: application/json');
         http_response_code(200);
-    
-        $convert = turnIntoMinute((int) ($_POST['filmHourDuration']), (int) ($_POST['filmMinuteDuration']));
+
+        if (empty($_POST['filmHourDuration']) && !empty($_POST['filmMinuteDuration'])) {
+            $convert = turnIntoMinute(0, (int)($_POST['filmMinuteDuration']));
+        } else if (empty($_POST['filmMinuteDuration']) && !empty($_POST['filmHourDuration'])) {
+            $convert = turnIntoMinute($_POST['filmHourDuration'], 0);
+        } else if (empty($_POST['filmHourDuration']) && empty($_POST['filmMinuteDuration'])) {
+            $convert = 0;
+        } else {
+            $convert = turnIntoMinute((int)$_POST['filmHourDuration'], (int)$_POST['filmMinuteDuration']);
+        }
+
         $existingFilmData = $this->filmModel->getFilmById($_POST['film_id']);
         $updateData = [];
-    
-        $this->checkAndUpdateField('title', $updateData, $existingFilmData);
-        $this->checkAndUpdateField('description', $updateData, $existingFilmData);
-        $this->checkAndUpdateField('date_release', $updateData, $existingFilmData);
-        $this->checkAndUpdateField('duration', $updateData, $existingFilmData, $convert);
-        $this->checkAndUpdateField('film_path', $updateData, $existingFilmData);
-        $this->checkAndUpdateField('film_poster', $updateData, $existingFilmData);
-    
-        $this->filmModel->updateFilm($_POST['film_id'], $updateData);
-    
-        // // Update film genre
-        // $existingFilmGenre = $this->getFilmGenre($_POST['film_id']);
-        // $updateGenre = ['filmGenre' => isset($_POST['filmGenre']) ? $_POST['filmGenre'] : null];
-    
-        // if (empty($updateGenre['filmGenre'])) {
-        //     $updateGenre['filmGenre'] = $existingFilmGenre[0]['genre_id'];
-        // } else {
-        //     if ($existingFilmGenre[0]['genre_id'] !== $updateGenre['filmGenre']) {
-        //         $updateGenre['filmGenre'] = $updateGenre['filmGenre'];
-        //     }
-        // }
-    
-        echo json_encode(["redirect_url" => "/manage-film"]);
-    }
-    
-    
 
-    private function checkAndUpdateField($fieldName, &$updateData, $existingData, $newValue = null)
+        $updateData['title'] = $this->checkAndUpdateField($_POST['title'], $existingFilmData['title']);
+        $updateData['description'] = $this->checkAndUpdateField($_POST['description'], $existingFilmData['description']);
+        $updateData['duration'] = $this->checkAndUpdateField($convert, $existingFilmData['duration']);
+        // $updateData['duration'] = 0;
+        $updateData['film_path'] = $this->checkAndUpdateField($_POST['film_path'], $existingFilmData['film_path']);
+        $updateData['film_poster'] = $this->checkAndUpdateField($_POST['film_poster'], $existingFilmData['film_poster']);
+        $updateData['date_release'] = $this->checkAndUpdateField($_POST['date_release'], $existingFilmData['date_release']);
+
+
+        $this->filmModel->updateFilm($_POST['film_id'], $updateData);
+
+        // Update film genre
+        if(!empty($_POST['filmGenre'])){
+            $this->filmGenreModel->deleteFilmGenre($_POST['film_id']);
+            foreach ($_POST['filmGenre'] as $update) {
+                $this->filmGenreModel->insertFilmGenre($_POST['film_id'], $update);
+            }
+        }
+        echo json_encode(["redirect_url" => "/detail-film/" . $_POST['film_id']]);
+    }
+
+
+
+    private function checkAndUpdateField($newData, $existingData)
     {
-        if (isset($_POST['film_id']) && isset($_POST[$fieldName]) && $_POST['film_id'] === $existingData['film_id'] && $_POST[$fieldName] !== $existingData[$fieldName]) {
-            $updateData[$fieldName] = $newValue ?? $_POST[$fieldName];
+        if (empty($newData)) {
+            return $existingData;
         } else {
-            $updateData[$fieldName] = $existingData[$fieldName];
+            if (is_string($newData)) {
+                if (strcmp($newData, $existingData) !== 0) {
+                    return $newData;
+                } else {
+                    return $existingData;
+                }
+            } else if (is_int($newData)) {
+                if ($newData != $existingData) {
+                    return $newData;
+                } else {
+                    return $existingData;
+                }
+            }
         }
     }
-    
-    
+
+
 
 
     /**Delete Film */
@@ -120,7 +152,7 @@ class FilmController
     {
         header('Content-Type: application/json');
         http_response_code(200);
-        
+
         $this->filmModel->deleteFilm($_POST['film_id']);
         echo json_encode(["redirect_url" => "/manage-film"]);
     }

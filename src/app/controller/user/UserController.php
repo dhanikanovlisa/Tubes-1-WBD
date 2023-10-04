@@ -30,6 +30,7 @@ class UserController
             $data["username"] = $user['username'];
             $data["name"] = $user['first_name'] . ' ' . $user['last_name'];
             $data["role"] = $user['is_admin'] ? 'Admin' : 'User';
+            $data["photo_profile"] = $user['photo_profile'];
             $result[] = $data;
         }
         return $result;
@@ -127,6 +128,21 @@ class UserController
         
         $this->userModel->deleteUser($_POST['user_id']);
         echo json_encode(["redirect_url" => "/manage-user"]);
+    }
+
+    public function changeToAdmin(){
+        header('Content-Type: application/json');
+        http_response_code(200);
+        
+        $this->userModel->changeToAdmin($_POST['user_id']);
+        echo json_encode(["redirect_url" => "/user-detail/" . $_POST['user_id']]);
+    }
+    public function changeToUser(){
+        header('Content-Type: application/json');
+        http_response_code(200);
+        
+        $this->userModel->changeToUser($_POST['user_id']);
+        echo json_encode(["redirect_url" => "/user-detail/" . $_POST['user_id']]);
     }
 
     public function showUserDetailPage($params = []){

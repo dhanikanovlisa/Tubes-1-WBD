@@ -10,6 +10,22 @@ function popModal() {
 function closeModal() {
     modal.style.display = "none";
 }
+const toast = document.getElementById("toast");
+const image = document.getElementById("toast-img");
+const message = document.getElementById("toast-msg");
+const deleteButton = document.querySelector("#ok");
+
+function succes() {
+    if (deleteButton.innerHTML == "OK") {
+        image.src = "/images/assets/check.png";
+        message.className = "check";
+        message.innerHTML = "Succesfully deleted user";
+        toast.className = "show";
+    }
+
+    setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 1700);
+}
+
 const deleteUser = (id) => {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/delete-user');
@@ -23,7 +39,11 @@ const deleteUser = (id) => {
         if (xhr.readyState === 4 && xhr.status === 200) {
             console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
-            location.replace(response.redirect_url);
+            setTimeout(() => {
+                location.replace(response.redirect_url);
+            }, 1000);
+            modal.style.display = "none";
+            succes();
         }
     }
 }
