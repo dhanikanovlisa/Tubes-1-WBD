@@ -39,7 +39,7 @@ const fetchResults = ()=>{
             }
 
             paginationContainer.innerHTML = pagination.outerHTML;
-            window.history.replaceState(null, document.title, '/search?'+params.toString());
+            // window.history.replaceState(null, document.title, '/search?'+params.toString());
         }
     }
 }
