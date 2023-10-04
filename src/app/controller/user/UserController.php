@@ -30,6 +30,7 @@ class UserController
             $data["username"] = $user['username'];
             $data["name"] = $user['first_name'] . ' ' . $user['last_name'];
             $data["role"] = $user['is_admin'] ? 'Admin' : 'User';
+            $data["photo_profile"] = $user['photo_profile'];
             $result[] = $data;
         }
         return $result;
