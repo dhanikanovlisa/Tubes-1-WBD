@@ -14,6 +14,8 @@ const nameAlert = document.getElementById('name-alert');
 const passwordAlert = document.getElementById('password-alert');
 const confirmPasswordAlert = document.getElementById('confirm-password-alert');
 
+const toast= document.getElementById("toast");
+
 function setErrorWarning(input, desc, message){
     input.className += ' error-input';
     desc.innerText = message;
@@ -24,6 +26,16 @@ function removeErrorWarning(input, desc){
     input.className = '';
     desc.innerText = '';
     desc.style.display = 'none';
+}
+
+function popUpToast(){
+    const image = document.getElementById("toast-img");
+    const message = document.getElementById("toast-msg");
+
+    image.src = "/images/assets/check.png";
+    message.className = "check";
+    message.innerHTML = "Registration success, redirecting to login page...";
+    toast.className = "show";
 }
 
 const usernameRegex = /^[a-z0-9_\.]+$/;
@@ -142,7 +154,6 @@ confirmPasswordInput && confirmPasswordInput.addEventListener('keyup', () => {
 
 registrationForm && registrationForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    console.log('submit');
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/register/register');
 
@@ -157,9 +168,14 @@ registrationForm && registrationForm.addEventListener('submit', async (e) => {
     xhr.send(formData);
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
-            location.replace(response.redirect_url);
+            popUpToast();
+            setTimeout(function(){ 
+                toast.className = toast.className.replace("show", ""); 
+            }, 1700);
+            setTimeout(function(){ 
+                location.replace(response.redirect_url);
+            }, 1700);
         }
     }
 });

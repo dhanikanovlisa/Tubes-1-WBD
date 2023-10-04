@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +35,11 @@
             $img_path = $film_header['film_poster'];
             $isOnWatchList = $home->isFilmOnWatchList($_SESSION['user_id'], $film_id);
         ?>
-        <img src=<?php echo '"storage/poster/'.$img_path.'"'?> />
+        <script type="text/javascript">
+            var user_id = <?php echo $_SESSION['user_id']?>;
+            var film_id = <?php echo $film_id?>;
+        </script>
+        <img src=<?php echo '"storage/poster/'.$img_path.'"'?> alt="images/assets/image_header.jpg"/>
         <div class="img-header-overlay"></div>
         <div class="img-header-text">
             <h1><?php echo $title?></h1>
@@ -45,13 +48,6 @@
             <div class="buttons">
                 <a href=<?php echo "watch/" . $film_id?>><button class="button-white button-text">Watch Now</button></a>
                 <button class="button-white button-text watchlist" onClick="watchListButton()" id="watchlist">
-                    <?php
-                        if ($isOnWatchList){
-                            echo "&#10004";
-                        } else {
-                            echo "+";
-                        }
-                    ?>
                 </button>
             </div>
         </div>

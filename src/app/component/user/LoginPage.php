@@ -34,7 +34,7 @@
                 <div class="error login" id="login-alert"></div>
 
                 <div class="submit">
-                    <button class="button-red red-glow button-text" type="submit" name="login"><h4>Login<h4></button>
+                    <button class="button-red red-glow button-text" type="submit" name="login">Login</button>
                 </div>
             </div>
             <div class="small-text">Already have an account? <a href="/registration">Register</a></p></div>
