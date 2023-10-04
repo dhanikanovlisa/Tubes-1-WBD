@@ -43,7 +43,7 @@
             <div>
                 <label for='genre' class='white-text'>Genre</label>
                 <select name='genre' id='genre'>
-                    <option value='' selected disabled>Filter genre</option>
+                    <option value='' selected></option>
                     <?php $searchPageController->generateGenres(); ?>
                 </select>
             </div>
