@@ -11,6 +11,7 @@
         <!---Global CSS--->
         <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
         <link rel="stylesheet" type="text/css"href="/styles/template/navbar.css">
+        <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
         <!---Page specify CSS--->
         <link rel="stylesheet" type="text/css" href="/styles/user/login.css">
         <!---JS--->
@@ -63,6 +64,7 @@
         </form>
         <div class="small-text">Already have an account? <a href="/login">Login</a></div>
     </div>
+    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
 </body>
 
 </html>
