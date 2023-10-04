@@ -30,8 +30,8 @@
     
         <form class='search-container'>
             <div>
-                <label for='search' class='white-text'>Search</label>
-                <input name='search' id='search' type='text' placeholder='Search...'>
+                <label for='title' class='white-text'>Search</label>
+                <input name='title' id='search' type='text' placeholder='Search...'>
             </div>
             <div>
                 <label for='orderby' class='white-text'>Name</label>
@@ -43,6 +43,7 @@
             <div>
                 <label for='genre' class='white-text'>Genre</label>
                 <select name='genre' id='genre'>
+                    <option value='' selected disabled>Filter genre</option>
                     <?php $searchPageController->generateGenres(); ?>
                 </select>
             </div>
@@ -50,6 +51,8 @@
         <div class="cards">
             <?php $searchPageController->generateCards(); ?>
         </div>
+
+        <?php $searchPageController->generatePagination(); ?>
     </section>
     
 </body>
