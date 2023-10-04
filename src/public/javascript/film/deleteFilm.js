@@ -41,7 +41,7 @@ const deleteSong = (id) => {
             const response = JSON.parse(xhr.responseText);
             setTimeout(() => {
                 location.replace(response.redirect_url);
-            }, 1500);
+            }, 1000);
             modal.style.display = "none";
             succes();
         }

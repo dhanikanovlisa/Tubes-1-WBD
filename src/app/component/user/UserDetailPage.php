@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/admin/userDetail.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <script type="text/javascript" src="/javascript/user/deleteUser.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
 </head>
 
 <body>
@@ -90,8 +91,8 @@
                                             <p class="text-black" id="description-message">This will be gone</p>
                                         </div>
                                         <div class="button-modal-container">
-                                            <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
-                                            <button id="ok" class="button-green button-text" onclick="deleteSong(<?php echo $filmID; ?>)">OK</button>
+                                            <button id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
+                                            <button id="ok" class="button-green button-text" onclick="deleteUser(<?php echo $id; ?>)">OK</button>
                                         </div>
                                     </div>
                                 </div>
@@ -105,6 +106,7 @@
     <?php
     }
     ?>
+    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
 </body>
 
 </html>
