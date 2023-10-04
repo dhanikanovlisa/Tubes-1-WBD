@@ -44,17 +44,27 @@ const fetchResults = ()=>{
     }
 }
 
-search.addEventListener('input', async (ev)=>{
+let timeoutId = null;
+const debounce = (func, delay) => {
+    return async ()=>{
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => func(), delay);
+    }
+}
+
+const searchDebounce = debounce(fetchResults, 500);
+
+search.addEventListener('input', (ev)=>{
     ev.preventDefault();
-    fetchResults();
+    searchDebounce();
 });
 
-orderby.addEventListener('change', async (ev)=>{
+orderby.addEventListener('change', (ev)=>{
     ev.preventDefault();
-    fetchResults();
+    searchDebounce();
 });
 
-genre.addEventListener('change', async (ev)=>{
+genre.addEventListener('change', (ev)=>{
     ev.preventDefault();
-    fetchResults();
+    searchDebounce();
 });
