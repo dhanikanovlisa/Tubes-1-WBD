@@ -4,7 +4,7 @@ const GETParams = new URLSearchParams(window.location.search);
 const search = form.elements['title'];
 search.value = GETParams.get('title');
 const orderby = form.elements['orderby'];
-orderby.value = GETParams.get('orderby');
+orderby.value = GETParams.get('orderby') ? GETParams.get('orderby') : orderby.value;
 const genre = form.elements['genre'];
 genre.value = GETParams.get('genre');
 
@@ -44,17 +44,27 @@ const fetchResults = ()=>{
     }
 }
 
-search.addEventListener('input', async (ev)=>{
+let timeoutId = null;
+const debounce = (func, delay) => {
+    return async ()=>{
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => func(), delay);
+    }
+}
+
+const searchDebounce = debounce(fetchResults, 500);
+
+search.addEventListener('input', (ev)=>{
     ev.preventDefault();
-    fetchResults();
+    searchDebounce();
 });
 
-orderby.addEventListener('change', async (ev)=>{
+orderby.addEventListener('change', (ev)=>{
     ev.preventDefault();
-    fetchResults();
+    searchDebounce();
 });
 
-genre.addEventListener('change', async (ev)=>{
+genre.addEventListener('change', (ev)=>{
     ev.preventDefault();
-    fetchResults();
+    searchDebounce();
 });

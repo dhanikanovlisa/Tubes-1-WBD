@@ -20,11 +20,11 @@ class SearchPageController{
         $this->middleware = new AuthenticationMiddleware();
         $this->filmsModel = new FilmsModel();
         $this->genreModel = new GenreModel();
-        $this->title = isset($_GET['title']) ? $_GET['title'] : "";
-        $this->genre = isset($_GET['genre']) ? $_GET['genre'] : "";
-        $this->sort_direction = isset($_GET['orderby']) ? $_GET['orderby'] : "asc";
-        $this->page = isset($_GET['page']) && $_GET['page']>0 ? $_GET['page'] : 1;
-        $this->limit = isset($_GET['limit']) && $_GET['limit']>0 ? $_GET['limit'] : 15;
+        $this->title = isset($_GET['title']) ? htmlentities($_GET['title']) : "";
+        $this->genre = isset($_GET['genre']) ? htmlentities($_GET['genre']) : "";
+        $this->sort_direction = isset($_GET['orderby']) ? htmlentities($_GET['orderby']) : "asc";
+        $this->page = isset($_GET['page']) && $_GET['page']>0 ? htmlentities($_GET['page']) : 1;
+        $this->limit = isset($_GET['limit']) && $_GET['limit']>0 ? htmlentities($_GET['limit']) : 15;
         $this->items_count = 0;
     }
     public function generateGenres(): void{
