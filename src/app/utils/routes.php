@@ -23,6 +23,8 @@ $route = [
     '/manage-user' => ["GET" => "user/UserController@showManageUserPage"],
     '/user-detail/:id' => ["GET" => "user/UserController@showUserDetailPage"],
     '/delete-user' => ["POST" => "user/UserController@deleteUser"],
+    '/change-to-admin/:id' => ["POST" => "user/UserController@changeToAdmin"],
+    '/change-to-user/:id' => ["POST" => "user/UserController@changeToUser"],
     
     '/manage-film' => ["GET" => "film/FilmController@showManageFilmPage"],
     '/detail-film/:id' => ["GET" => "film/FilmController@showDetailFilmPage"],

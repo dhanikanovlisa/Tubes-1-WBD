@@ -130,6 +130,21 @@ class UserController
         echo json_encode(["redirect_url" => "/manage-user"]);
     }
 
+    public function changeToAdmin(){
+        header('Content-Type: application/json');
+        http_response_code(200);
+        
+        $this->userModel->changeToAdmin($_POST['user_id']);
+        echo json_encode(["redirect_url" => "/user-detail/" . $_POST['user_id']]);
+    }
+    public function changeToUser(){
+        header('Content-Type: application/json');
+        http_response_code(200);
+        
+        $this->userModel->changeToUser($_POST['user_id']);
+        echo json_encode(["redirect_url" => "/user-detail/" . $_POST['user_id']]);
+    }
+
     public function showUserDetailPage($params = []){
         if ($this->middleware->isAdmin()) {
             require_once dirname(dirname(__DIR__)) . "/component/user/UserDetailPage.php";

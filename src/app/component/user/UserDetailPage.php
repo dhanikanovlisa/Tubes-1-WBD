@@ -11,11 +11,12 @@
     <!---Global CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/admin/userDetail.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <script type="text/javascript" src="/javascript/user/deleteUser.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
+    <script type="text/javascript" src="/javascript/user/changeStatus.js" defer></script>
 </head>
 
 <body>
@@ -44,7 +45,7 @@
                 </div>
                 <div class="whole-container">
                     <div class="profile">
-                    <img src="<?php
+                        <img src="<?php
                                     if ($user["photo_profile"] == null) {
                                         echo "/images/assets/profile-placeholder.png";
                                     } else {
@@ -73,17 +74,17 @@
                         </div>
                         <div class="field-container">
                             <h3>Admin</h3>
-                            <p><?php 
-                            if($userData['is_admin']){
-                                echo "Yes";
-                            } else if(!$userData['is_admin']){
-                                echo "No";
-                            }
-                            ?></p>
+                            <p><?php
+                                if ($userData['is_admin']) {
+                                    echo "Yes";
+                                } else if (!$userData['is_admin']) {
+                                    echo "No";
+                                }
+                                ?></p>
                         </div>
                         <div class="field-container">
-                                <button class="button-white button-text" onClick="popModal()">Delete Account</button>
-                                <div id="confModal" class="modal red-glow">
+                            <button class="button-red button-text" onClick="popModal()">Delete Account</button>
+                            <div id="confModal" class="modal red-glow">
                                 <div class="modal-content red-glow">
                                     <div class="whole">
                                         <div class="title-modal-container">
@@ -97,12 +98,20 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <?php
+                            if (!$userData['is_admin']) {
+                                echo "<button id='change' class='button-white button-text' onclick = 'changeToAdmin($id)'>Change To Admin</button>";
+                            } else {
+                                echo "<button id='change' class='button-white button-text' onclick = 'changeToUser($id)'>Change To User</button>";
+                            }
+                            ?>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     <?php
     }
     ?>
