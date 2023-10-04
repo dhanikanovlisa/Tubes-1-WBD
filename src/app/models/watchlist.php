@@ -35,6 +35,7 @@ class WatchListModel{
     /**Delete/remove film in watchlist */
     public function deleteFilmFromWatchList($userID, $film_id){
         $this->db->callQuery('DELETE FROM '.$this->table.' WHERE user_id='.$userID.' AND film_id='.$film_id);
+        return $this->db->execute();
     }
 
     public function isFilmOnWatchList($user_id, $film_id){

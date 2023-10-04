@@ -58,10 +58,10 @@ class WatchListPageController{
         $film = $this->watchListModel->isFilmOnWatchList($_SESSION['user_id'], $film_id['film_id']);
         header('Content-Type: application/json');
         http_response_code(200);
-        if (!$film){
-            echo json_encode(["isExist" => false]);
-        } else {
+        if ($film){
             echo json_encode(["isExist" => true]);
+        } else {
+            echo json_encode(["isExist" => false]);
         }
     }
 
@@ -73,6 +73,7 @@ class WatchListPageController{
     }
 
     public function removeFromWatchList(){
+        // print_r($_POST['film_id']);
         $this->watchListModel->deleteFilmFromWatchList($_SESSION['user_id'], $_POST['film_id']);
         header('Content-Type: application/json');
         http_response_code(200);

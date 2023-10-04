@@ -35,6 +35,8 @@
             $desc = $film_header['description'];
             $img_path = $film_header['film_poster'];
             $isOnWatchList = $home->isFilmOnWatchList($_SESSION['user_id'], $film_id);
+            print_r($film_id);
+            print_r($isOnWatchList);
         ?>
         <script type="text/javascript">
             var user_id = <?php echo $_SESSION['user_id']?>;
@@ -49,13 +51,13 @@
             <div class="buttons">
                 <a href=<?php echo "watch/" . $film_id?>><button class="button-white button-text">Watch Now</button></a>
                 <button class="button-white button-text watchlist" onClick="watchListButton()" id="watchlist">
-                    <?php
-                        if ($isOnWatchList){
-                            echo "&#10004";
-                        } else {
+                    <!-- <?php
+                        if (!$isOnWatchList){
                             echo "+";
+                        } else {
+                            echo "&#10004";
                         }
-                    ?>
+                    ?> -->
                 </button>
             </div>
         </div>

@@ -3,31 +3,16 @@ const image = document.getElementById("toast-img");
 const message = document.getElementById("toast-msg");
 const watchlist = document.querySelector("#watchlist");
 
-// function checkWatchList(){
-//     const xhr = new XMLHttpRequest();
-//     xhr.open('GET', '/check-watchlist/' + film_id);
-
-//     xhr.send();
-//     xhr.onreadystatechange = () => {
-//         if (xhr.readyState === XMLHttpRequest.DONE){
-//             var response = JSON.parse(xhr.responseText);
-//             return 
-//         } else {
-//             return;
-//         }
-//     }
-// }
-
 function watchListButton(){
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '/check-watchlist/' + film_id);
 
     xhr.send();
-    xhr.onreadystatechange = () => {
+    xhr.onreadystatechange = async () => {
         if (xhr.readyState === XMLHttpRequest.DONE){
-            console.log(xhr.responseText);
             var response = JSON.parse(xhr.responseText);
             if (!response.isExist){
+                const xhr = new XMLHttpRequest();
                 xhr.open('POST', '/add-watchlist');
                 const form_data = new FormData();
                 form_data.append('film_id', film_id);
@@ -44,6 +29,7 @@ function watchListButton(){
                     }
                 }
             } else {
+                const xhr = new XMLHttpRequest();
                 xhr.open('POST', '/delete-watchlist');
                 const form_data = new FormData();
                 form_data.append('film_id', film_id);
@@ -60,9 +46,25 @@ function watchListButton(){
                     }
                 }
             }
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 1700);
         }
     }
+    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 1700);
 }
 
-window.onload
+
+document.addEventListener('DOMContentLoaded', async function () {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/check-watchlist/' + film_id);
+
+    xhr.send();
+    xhr.onreadystatechange = async () => {
+        if (xhr.readyState === XMLHttpRequest.DONE){
+            var response = JSON.parse(xhr.responseText);
+            if (response.isExist){
+                watchlist.innerHTML = "✔";
+            } else {
+                watchlist.innerHTML = "+";
+            }
+        }
+    }
+});
