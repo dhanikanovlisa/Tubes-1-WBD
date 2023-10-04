@@ -83,19 +83,19 @@
                         <div class="field-container">
                                 <button class="button-white button-text" onClick="popModal()">Delete Account</button>
                                 <div id="confModal" class="modal red-glow">
-                                    <div class="modal-content red-glow">
-                                        <div class="whole">
-                                            <div class="title-container">
-                                                <h3 class="text-black" id="main-message">Are you sure you want to Delete This User?</h3>
-                                                <p class="text-black" id="description-message">This will be gone</p>
-                                            </div>
-                                            <div class="button-container">
-                                                <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
-                                                <button id="ok" class="button-green button-text" onclick="deleteUser(<?php echo $id; ?>)">OK</button>
-                                            </div>
+                                <div class="modal-content red-glow">
+                                    <div class="whole">
+                                        <div class="title-modal-container">
+                                            <h3 class="text-black" id="main-message">Are you sure you want to Delete This?</h3>
+                                            <p class="text-black" id="description-message">This will be gone</p>
+                                        </div>
+                                        <div class="button-modal-container">
+                                            <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
+                                            <button id="ok" class="button-green button-text" onclick="deleteSong(<?php echo $filmID; ?>)">OK</button>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
 
                     </div>
