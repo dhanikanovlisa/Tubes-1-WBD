@@ -53,4 +53,31 @@ class WatchListPageController{
             header("Location: /login");
         }
     }
+
+    public function isFilmOnWatchList($film_id){
+        $film = $this->watchListModel->isFilmOnWatchList($_SESSION['user_id'], $film_id['film_id']);
+        header('Content-Type: application/json');
+        http_response_code(200);
+        if (!$film){
+            echo json_encode(["isExist" => false]);
+        } else {
+            echo json_encode(["isExist" => true]);
+        }
+    }
+
+    public function addToWatchList(){
+        $this->watchListModel->addFilmToWatchList($_SESSION['user_id'], $_POST['film_id']);
+        header('Content-Type: application/json');
+        http_response_code(200);
+        echo json_encode(["message" => "Movie added to watchlist"]);
+    }
+
+    public function removeFromWatchList(){
+        $this->watchListModel->deleteFilmFromWatchList($_SESSION['user_id'], $_POST['film_id']);
+        header('Content-Type: application/json');
+        http_response_code(200);
+        echo json_encode(["message" => "Movie removed from watchlist"]);
+    }
+
+
 }

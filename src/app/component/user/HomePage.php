@@ -36,6 +36,10 @@
             $img_path = $film_header['film_poster'];
             $isOnWatchList = $home->isFilmOnWatchList($_SESSION['user_id'], $film_id);
         ?>
+        <script type="text/javascript">
+            var user_id = <?php echo $_SESSION['user_id']?>;
+            var film_id = <?php echo $film_id?>;
+        </script>
         <img src=<?php echo '"storage/poster/'.$img_path.'"'?> />
         <div class="img-header-overlay"></div>
         <div class="img-header-text">

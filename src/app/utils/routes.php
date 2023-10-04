@@ -37,4 +37,8 @@ $route = [
     '/page-not-found' => ["GET" => "conditional/NotFoundController@showNotFoundPage"],
     '/restrict' => ["GET" => "conditional/RestrictedController@showRestrictedPage"],
     '/restrictAdmin' => ["GET" => "conditional/RestrictedController@showAdminModePage"],
+
+    '/check-watchlist/:film_id' => ["GET" => "watchlist/WatchListPageController@isFilmOnWatchList"],
+    '/add-watchlist' => ["POST" => "watchlist/WatchListPageController@addToWatchList"],
+    '/delete-watchlist' => ["POST" => "watchlist/WatchListPageController@removeFromWatchList"],
 ];
