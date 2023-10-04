@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/user/editprofile.css">
 </head>
@@ -43,29 +44,36 @@
                             <div class="container">
                                 <div class="field-contain">
                                     <label class="one" for="username">Username</label>
-                                    <input class="one" type="text" name="username" id="username" placeholder="<?php echo $userData["username"] ?>" />
+                                    <input class="one" type="text" name="username" id="username" placeholder="<?php echo $userData["username"] ?>" autocomplete="off" />
+                                    <div class="error" id="username-alert"></div>
                                 </div>
 
                                 <div class="half-container">
                                     <div class="one-half">
                                         <label for="first-name">First Name</label>
-                                        <input type="text" name="first-name" id="first-name" placeholder="<?php echo $userData["first_name"] ?>" />
+                                        <input type="text" name="first-name" id="first-name" placeholder="<?php echo $userData["first_name"] ?>" autocomplete="off" />
                                     </div>
 
                                     <div class="two-half">
                                         <label for="last-name">Last Name</label>
                                         <input type="text" name="last-name" id="last-name" placeholder="<?php echo $userData["last_name"] ?>" />
+                                        
                                     </div>
                                 </div>
+                                <div class="error" id="name-alert"></div>
+
+
 
                                 <div class="field-contain">
                                     <label for="email">Email</label>
-                                    <input type="text" name="email" id="email" placeholder="<?php echo $userData["email"] ?>" />
+                                    <input type="text" name="email" id="email" placeholder="<?php echo $userData["email"] ?>" autocomplete="off"/>
+                                    <div class="error" id="email-alert"></div>
                                 </div>
 
                                 <div class="field-contain">
                                     <label for="phone-number">Phone Number</label>
                                     <input type="text" name="phone-number" id="phone-number" placeholder="<?php echo $userData["phone_number"] ?>" />
+                                    <div class="error" id="phone-alert"></div>
                                 </div>
                                 <div>
                                     <p>Profile Photo</p>
@@ -83,26 +91,27 @@
                                             <p class="button-text">Upload Profile Photo</p>
                                         </div>
                                     </label>
+                                    <div class="file-name" id="display-file-name"></div>
                                 </div>
                                 <div class="btn-contain">
                                     <div>
-                                        <button class="button-red button-text" onClick="popModal()">Cancel</button>
+                                        <button class="button-red button-text" onclick="popModal()">Cancel</button>
                                         <div id="confModal" class="modal red-glow">
                                             <div class="modal-content red-glow">
                                                 <div class="whole">
                                                     <div class="title-container">
-                                                        <h3 class="text-black" id="main-message">Are you sure you want to Delete This?</h3>
-                                                        <p class="text-black" id="description-message">This will be gone</p>
+                                                        <h3 class="text-black" id="main-message">Are you sure?</h3>
+                                                        <p class="text-black" id="description-message">Canceling will delete all your progress</p>
                                                     </div>
                                                     <div class="button-container">
-                                                        <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
-                                                        <button id="ok" class="button-green button-text" onClick="closePage(<?php echo $userData['user_id']; ?>)">OK</button>
+                                                        <button id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
+                                                        <button id="ok" class="button-green button-text" onclick="closePage(<?php echo $userData['user_id']; ?>)">OK</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="button-white button-text">Save</button>
+                                    <button id="saveButton"class="button-white button-text" onclick="succes()">Save</button>
                                 </div>
                         </form>
                     </div>
@@ -116,6 +125,7 @@
         var userID = <?php echo json_encode($id); ?>;
     </script>
     <script type="text/javascript" src="/javascript/user/editProfile.js" defer></script>
+    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
 </body>
 
 </html>

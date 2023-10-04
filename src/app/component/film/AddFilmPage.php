@@ -161,9 +161,9 @@
         //         return confirm('Are you sure you want to cancel?');
         //     }
         // });
-        // window.addEventListener('beforeunload', function(event) {
-        //     event.returnValue = '';
-        // });
+        window.addEventListener('beforeunload', function(event) {
+            event.returnValue = '';
+        });
     </script>
 </body>
 

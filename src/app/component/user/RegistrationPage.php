@@ -9,12 +9,12 @@
         <!---Icon--->
         <link rel="icon" href="images/icon/logo.ico">
         <!---Global CSS--->
-        <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
-        <link rel="stylesheet" type="text/css"href="styles/template/navbar.css">
+        <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
+        <link rel="stylesheet" type="text/css"href="/styles/template/navbar.css">
         <!---Page specify CSS--->
-        <link rel="stylesheet" type="text/css" href="styles/user/login.css">
+        <link rel="stylesheet" type="text/css" href="/styles/user/login.css">
         <!---JS--->
-        <script type="text/javascript" src="javascript/user/register.js" defer></script>
+        <script type="text/javascript" src="/javascript/user/register.js" defer></script>
 </head>
 
 <body>
