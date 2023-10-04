@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css"href="styles/template/pagination.css">
         <!---Page specify CSS--->
         <script type="text/javascript" src="javascript/navbar/navbar.js" defer></script>
+        <script type="text/javascript" src="javascript/user/search.js" defer></script>
         <link rel="stylesheet" type="text/css"href="styles/user/search.css">
 </head>
 
@@ -28,10 +29,10 @@
             <h2>Search</h2>
         </header>
     
-        <form class='search-container'>
+        <form name='search-film' class='search-container'>
             <div>
                 <label for='title' class='white-text'>Search</label>
-                <input name='title' id='search' type='text' placeholder='Search...'>
+                <input name='title' id='title' type='text' placeholder='Search...'>
             </div>
             <div>
                 <label for='orderby' class='white-text'>Name</label>
@@ -48,7 +49,7 @@
                 </select>
             </div>
         </form>
-        <div class="cards">
+        <div id='result-container' class="cards">
             <?php $searchPageController->generateCards(); ?>
         </div>
 

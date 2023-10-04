@@ -42,6 +42,24 @@ class SearchPageController{
             $this->items_count += 1;
         }
     }
+    public function fetchSearchResults(): void{
+        // ngambil hasil kayak generate cards, pake file_get_contents
+        // terus kasih response htmlnya
+        $offset = ($this->page-1)*$this->limit;
+
+        $lf =  $this->filmsModel->getFilms($this->title, $this->genre, $this->sort_direction, $this->limit, $offset);
+        
+        ob_start();
+        foreach($lf as $film){
+            include(DIRECTORY . "/../component/template/cardMovie.php");
+        }
+        $response = ob_get_contents();
+        ob_end_clean();
+
+        header('Content-Type: text/html');
+        http_response_code(200);
+        echo $response;
+    }
     public function generatePagination(){
         $total_records = $this->items_count;
         $items_per_page = $this->limit;
