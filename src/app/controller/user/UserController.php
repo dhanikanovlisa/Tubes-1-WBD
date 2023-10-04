@@ -74,31 +74,38 @@ class UserController
         require_once dirname(dirname(__DIR__)) . "/component/user/EditProfilePage.php";
     }
 
-    public function editProfile(){
+    public function editProfile()
+    {
         header('Content-Type: application/json');
         http_response_code(200);
-
+    
         $existingUserData = $this->userModel->getUserById($_POST['user_id']);
         $updateData = [];
 
-        $this->checkAndUpdateField('username', $updateData, $existingUserData);
-        $this->checkAndUpdateField('first_name', $updateData, $existingUserData);
-        $this->checkAndUpdateField('last_name', $updateData, $existingUserData);
-        $this->checkAndUpdateField('email', $updateData, $existingUserData);
-        $this->checkAndUpdateField('phone_number', $updateData, $existingUserData);
-    
+        $updateData['username'] = $this->checkAndUpdateField($_POST['username'], $existingUserData['username']);
+        $updateData['first_name'] = $this->checkAndUpdateField($_POST['first_name'], $existingUserData['first_name']);
+        $updateData['last_name'] = $this->checkAndUpdateField($_POST['last_name'], $existingUserData['last_name']);
+        $updateData['email'] = $this->checkAndUpdateField($_POST['email'], $existingUserData['email']);
+        $updateData['phone_number'] = $this->checkAndUpdateField($_POST['phone_number'], $existingUserData['phone_number']);
+        $updateData['photo_profile'] = $this->checkAndUpdateField($_POST['photo_profile'], $existingUserData['photo_profile']);
         $this->userModel->updateUserData($_POST['user_id'], $updateData);
+        //  print_r($updateData);
         echo json_encode(["redirect_url" => "/settings/" . $_POST['user_id']]);
     }
-
-    private function checkAndUpdateField($fieldName, &$updateData, $existingData)
+    
+    private function checkAndUpdateField($newData, $existingData)
     {
-        if (isset($_POST['user_id']) && isset($_POST[$fieldName]) && $_POST['user_id'] === $existingData['user_id'] && $_POST[$fieldName] !== $existingData[$fieldName]) {
-            $updateData[$fieldName] = $_POST[$fieldName];
+        if(empty($newData)){
+            return $existingData;
         } else {
-            $updateData[$fieldName] = $existingData[$fieldName];
+            if (strcmp($newData, $existingData) !== 0) {
+                return $newData;
+            } else {
+                return $existingData;
+            }
         }
     }
+    
 
     /**ADMIN */
     /**Manage ALL User */
