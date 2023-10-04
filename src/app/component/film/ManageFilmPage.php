@@ -9,11 +9,11 @@
     <!---Icon--->
     <link rel="icon" href="images/icon/logo.ico">
     <!---Global CSS--->
-    <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
-    <link rel="stylesheet" type="text/css" href="styles/template/Navbar.css">
-    <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/cardMovie.css">
     <!---Page specify CSS--->
-    <link rel="stylesheet" type="text/css" href="styles/film/manageFilm.css">
+    <link rel="stylesheet" type="text/css" href="/styles/film/manageFilm.css">
 </head>
 
 <body>
