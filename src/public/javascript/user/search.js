@@ -1,43 +1,60 @@
 const form = document.forms['search-film'];
+const GETParams = new URLSearchParams(window.location.search);
 
 const search = form.elements['title'];
+search.value = GETParams.get('title');
 const orderby = form.elements['orderby'];
+orderby.value = GETParams.get('orderby');
 const genre = form.elements['genre'];
+genre.value = GETParams.get('genre');
 
-const resultContainer = document.getElementById('result-container');
-const paginationContainer = document.getElementById('pagination-container');
+const fetchResults = ()=>{
+    const xhr = new XMLHttpRequest();
+    const params = new URLSearchParams();
+    params.set('title', search.value);
+    params.set('orderby', orderby.value);
+    params.set('genre', genre.value);
 
-const fetchResults = (search_title=null, search_orderby=null, search_genre=null)=>{
-    const xhr_film = new XMLHttpRequest();
-    const xhr_pagination = new XMLHttpRequest();
-    const params = new URLSearchParams(window.location.search);
-
-    if(search_title){
-        params.set('title', search_title);
-    }
-    if(search_orderby){
-        params.set('orderby', search_orderby);
-    }
-    if(search_genre){
-        params.set('genre',search_genre);
-    }
     const location = '/search/search?'+params.toString();
-    xhr_film.open('GET', location, true);
-    xhr_film.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr_film.send();
+    xhr.open('GET', location, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
 
-    xhr_film.onload = (ev)=>{
-        if(xhr_film.readyState !== XMLHttpRequest.DONE) return;
-        if(xhr_film.status==200){
-            resultContainer.innerHTML = xhr_film.responseText;
+    xhr.onload = async (ev)=>{
+        if(xhr.readyState !== XMLHttpRequest.DONE) return;
+        if(xhr.status==200){
+            const resultContainer = document.getElementById('result-container');
+            const paginationContainer = document.getElementById('pagination-container');
+            const doc = new DOMParser().parseFromString(xhr.responseText, 'text/html');
+            const films = doc.getElementById('cards-container').children;
+
+            const pagination = doc.getElementById('pagination-container');
+
+            resultContainer.innerHTML = '';
+            for(film of films){
+                resultContainer.innerHTML += film.outerHTML;
+            }
+            if(!resultContainer.innerHTML){
+                resultContainer.innerHTML = 'Movie not found';
+            }
+
+            paginationContainer.innerHTML = pagination.outerHTML;
             // window.history.replaceState(null, document.title, '/search?'+params.toString());
         }
     }
-
-    //TODO: handle pagination
 }
 
 search.addEventListener('input', async (ev)=>{
     ev.preventDefault();
-    fetchResults(search_title=ev.target.value);
-})
+    fetchResults();
+});
+
+orderby.addEventListener('change', async (ev)=>{
+    ev.preventDefault();
+    fetchResults();
+});
+
+genre.addEventListener('change', async (ev)=>{
+    ev.preventDefault();
+    fetchResults();
+});
