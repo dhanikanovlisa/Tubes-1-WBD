@@ -3,10 +3,6 @@
     padding-left: 4rem;
     padding-right: 4rem;
 }
-.title-container{
-    padding-bottom:1rem;
-}
-
 .whole-container{
     display: flex;
     align-items: flex-start;
@@ -18,6 +14,18 @@
     justify-content: center;
     align-items: center;
     gap:3rem;
+}
+.upper{
+    display: flex;
+    gap:5rem;
+    justify-content: space-between;
+    padding-bottom:2rem;
+}
+
+.lower{
+    display: flex;
+    gap:2rem;
+    align-items: center;
 }
 .input-container{
     display: flex;
@@ -48,7 +56,7 @@
 .duration-select-container{
     display:flex;
     flex-direction: column;
-    gap:0.5rem;
+    padding-bottom: 2rem;
 }
 
 .border{
@@ -58,7 +66,7 @@
 
 .upload-content{
     display: flex;
-    gap: 5rem;
+    gap: 8rem;
 }
 .select-container{
     display: flex;

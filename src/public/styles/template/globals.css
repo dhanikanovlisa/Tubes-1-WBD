@@ -145,7 +145,7 @@ input{
 
 textarea {
     width: 30rem;
-    height: 10rem;
+    height: 16rem;
     padding:1rem;
     border-radius: 0.625rem;
     background-color: var(--white);
@@ -288,15 +288,29 @@ input[type="file"]{
   }
 
 .file-style {
-    width:15rem;
+    width: 20rem;
     display: block;
-    background-color: var(--blue);
+    background-color: #760A0A;
+    margin: auto;
     cursor: pointer;
     text-align: center;
-    padding: 0.625rem 0.3rem;
-    border-radius: 0.625rem;
+    padding: 4rem;
+    border-radius: 1rem;
+    border: 2px dashed #FFD7D7;
+    align-items: center;
+    justify-content: center;
 }
 
+.file-style:hover {
+    background-color: #FB7070;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:2rem;
+}
 input[type="date"]{
     background-color:var(--white);
     padding: 0.2rem;
