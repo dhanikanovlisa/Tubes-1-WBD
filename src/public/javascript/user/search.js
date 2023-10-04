@@ -4,7 +4,7 @@ const GETParams = new URLSearchParams(window.location.search);
 const search = form.elements['title'];
 search.value = GETParams.get('title');
 const orderby = form.elements['orderby'];
-orderby.value = GETParams.get('orderby');
+orderby.value = GETParams.get('orderby') ? GETParams.get('orderby') : orderby.value;
 const genre = form.elements['genre'];
 genre.value = GETParams.get('genre');
 
@@ -39,7 +39,7 @@ const fetchResults = ()=>{
             }
 
             paginationContainer.innerHTML = pagination.outerHTML;
-            // window.history.replaceState(null, document.title, '/search?'+params.toString());
+            window.history.replaceState(null, document.title, '/search?'+params.toString());
         }
     }
 }
