@@ -44,7 +44,7 @@
             exit;
         } else {
         ?>
-            <div class="title-container" >
+            <div class="title-container">
                 <h2>Edit Film</h2>
             </div>
             <div class="whole-container">
@@ -62,17 +62,15 @@
                     <form id="editFilmForm">
                         <div class="field-container">
                             <div class="input-container">
-                                <label for="filmName">Film Name<span class="req">*</span></label>
-                                <input type="text" id="filmName" name="filmName" placeholder="<?php echo $filmData["title"] ?>" />
-                                <label for="filmPoster">Film Poster<span class="req">*</span></label>
-                                <input type="file" id="filmPoster" name="filmPoster" accept="image/*" />
-                                <label for="filmVideo">Film Video<span class="req">*</span></label>
-                                <input type="file" id="filmVideo" name="filmVideo" accept="video/*" />
+                                <!--Film Name-->
+                                <h3 for="filmName">Film Name<span class="req">*</span></h3>
+                                <input type="text" id="filmName" name="filmName" placeholder="Title" />
                             </div>
                             <div class="input-container">
-                                <label for="filmDescriptsion">Description<span class="req">*</span></label>
-                                <textarea id="filmDescription" name="filmDescription" placeholder="<?php echo $filmData["description"] ?>"></textarea>
+                                <h3 for="filmDescriptsion">Description<span class="req">*</span></h3>
+                                <textarea id="filmDescription" name="filmDescription" placeholder="Description"></textarea>
                             </div>
+
                             <div class="input-container">
                                 <h3>Genre<span class="req">*</span></h3>
                                 <?php
@@ -85,7 +83,9 @@
                                     <?php foreach ($result as $row) { ?>
                                         <div class="checkbox-item">
                                             <input type="checkbox" id="genre_<?php echo $row['genre_id']; ?>" name="filmGenre[]" value="<?php echo $row['genre_id']; ?>">
-                                            <label for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?></label>
+                                            <span class="custom-checkbox"></span>
+                                            <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
+                                            </label>
                                         </div>
                                     <?php } ?>
                                 </div>
@@ -126,6 +126,25 @@
                                     <h3>Release Date</h3>
                                 </div>
                                 <input type="date" id="filmDate" name="filmDate" value="" min="1950-01-01" max="2024-12-31" pattern="\d{4}-\d{2}-\d{2}" />
+                            </div>
+                            <div class="upload-content">
+                                <!--Film Poster-->
+                                <div>
+                                    <h3>Film Poster<span class="req">*</span></h3>
+                                    <input type="file" id="filmPoster" name="filmPoster" accept="image/*" class="inputFile" required />
+                                    <label for="filmPoster">
+                                        <p class="button-text file-style">Upload Film Poster</p>
+                                    </label>
+                                </div>
+
+                                <!--Film Video-->
+                                <div>
+                                    <h3>Film Video<span class="req">*</span></h3>
+                                    <input type="file" id="filmVideo" name="filmVideo" accept="video/*" required />
+                                    <label for="filmVideo">
+                                        <p class="button-text file-style">Upload Film Video</p>
+                                    </label>
+                                </div>
                             </div>
                             <div class="button-container">
                                 <a href="/manage-film">

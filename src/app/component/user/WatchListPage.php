@@ -24,18 +24,20 @@
         // $_SESSION['user_id']=5;
         $watchListPageController->setUserID($_SESSION['user_id']);
     ?>
-    <header>
-        <h2>Your Watchlist</h2>
-    </header>
-    <section class='cards'>
+    <section>
+        <header>
+            <h2>Your Watchlist</h2>
+        </header>
+        <div class='cards'>
+            <?php 
+                $watchListPageController->generateCards();
+            ?>
+        </div>
+
         <?php 
-            $watchListPageController->generateCards();
+            $watchListPageController->generatePagination();
         ?>
     </section>
-
-    <?php 
-        $watchListPageController->generatePagination();
-    ?>
 </body>
 
 </html>

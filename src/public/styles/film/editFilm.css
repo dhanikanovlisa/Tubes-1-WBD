@@ -84,3 +84,8 @@
     object-fit: fill;
     border-radius: 4px;
 }  
+
+.upload-content{
+    display: flex;
+    gap: 5rem;
+}

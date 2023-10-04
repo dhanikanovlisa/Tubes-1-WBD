@@ -25,7 +25,7 @@
             if($target==$current_page) $is_active=true;
             include(DIRECTORY . "/../component/template/paginationButton.php");
         }
-        if($current_page!=$totalpages){
+        if($current_page!=$totalpages && $total_records>0){
             $target = '>';
             include (DIRECTORY . "/../component/template/paginationButton.php");
         }?>

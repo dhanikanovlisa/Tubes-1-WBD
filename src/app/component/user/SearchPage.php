@@ -21,7 +21,7 @@
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php");?>
     <?php
         require_once(DIRECTORY . '/../controller/search/SearchPageController.php');
-        $SearchPageController = new SearchPageController();
+        $searchPageController = new SearchPageController();
     ?>
     <section>
         <header>
@@ -36,17 +36,20 @@
             <div>
                 <label for='orderby' class='white-text'>Name</label>
                 <select name='orderby' id='orderby'>
-                    <option value='ASC'>Ascending</option>
-                    <option value='DESC'>Descending</option>
+                    <option value='ASC'>Ascending (A-Z)</option>
+                    <option value='DESC'>Descending (Z-A)</option>
                 </select>
             </div>
             <div>
                 <label for='genre' class='white-text'>Genre</label>
                 <select name='genre' id='genre'>
-                    <?php /**generate genres*/ ?>
+                    <?php $searchPageController->generateGenres(); ?>
                 </select>
             </div>
         </form>
+        <div class="cards">
+            <?php $searchPageController->generateCards(); ?>
+        </div>
     </section>
     
 </body>
