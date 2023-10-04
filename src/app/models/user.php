@@ -46,16 +46,18 @@ class UserModel{
                 first_name = :first_name,
                 last_name = :last_name,
                 email = :email,
-                phone_number = :phone_number
+                phone_number = :phone_number,
+                photo_profile = :photo_profile
             WHERE user_id = :user_id
         ";
     
         $this->db->callQuery($sql);
-        $this->db->bind('username', $data["username"]);
-        $this->db->bind('first_name', $data["first_name"]);
-        $this->db->bind('last_name', $data["last_name"]);
-        $this->db->bind('email', $data["email"]);
-        $this->db->bind('phone_number', $data["phone_number"]);
+        $this->db->bind('username', $data['username']);
+        $this->db->bind('first_name', $data['first_name']);
+        $this->db->bind('last_name', $data['last_name']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('phone_number', $data['phone_number']);
+        $this->db->bind('photo_profile', $data['photo_profile']);
         $this->db->bind('user_id', $userID);
         
         $this->db->execute();
