@@ -38,7 +38,7 @@
             <div>
                 <label for='orderby' class='white-text'>Name</label>
                 <select name='orderby' id='orderby'>
-                    <option value='ASC'>Ascending (A-Z)</option>
+                    <option value='ASC' selected>Ascending (A-Z)</option>
                     <option value='DESC'>Descending (Z-A)</option>
                 </select>
             </div>

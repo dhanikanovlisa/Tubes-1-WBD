@@ -20,11 +20,11 @@ class SearchPageController{
         $this->middleware = new AuthenticationMiddleware();
         $this->filmsModel = new FilmsModel();
         $this->genreModel = new GenreModel();
-        $this->title = isset($_GET['title']) ? $_GET['title'] : "";
-        $this->genre = isset($_GET['genre']) ? $_GET['genre'] : "";
-        $this->sort_direction = isset($_GET['orderby']) ? $_GET['orderby'] : "asc";
-        $this->page = isset($_GET['page']) && $_GET['page']>0 ? $_GET['page'] : 1;
-        $this->limit = isset($_GET['limit']) && $_GET['limit']>0 ? $_GET['limit'] : 15;
+        $this->title = isset($_GET['title']) ? htmlentities($_GET['title']) : "";
+        $this->genre = isset($_GET['genre']) ? htmlentities($_GET['genre']) : "";
+        $this->sort_direction = isset($_GET['orderby']) ? htmlentities($_GET['orderby']) : "asc";
+        $this->page = isset($_GET['page']) && $_GET['page']>0 ? htmlentities($_GET['page']) : 1;
+        $this->limit = isset($_GET['limit']) && $_GET['limit']>0 ? htmlentities($_GET['limit']) : 15;
         $this->items_count = 0;
     }
     public function generateGenres(): void{
@@ -37,35 +37,34 @@ class SearchPageController{
         $offset = ($this->page-1)*$this->limit;
 
         $lf =  $this->filmsModel->getFilms($this->title, $this->genre, $this->sort_direction, $this->limit, $offset);
-        foreach($lf as $film){
-            include(DIRECTORY . "/../component/template/cardMovie.php");
-            $this->items_count += 1;
-        }
-    }
-    public function fetchSearchResults(): void{
-        // ngambil hasil kayak generate cards, pake file_get_contents
-        // terus kasih response htmlnya
-        $offset = ($this->page-1)*$this->limit;
-
-        $lf =  $this->filmsModel->getFilms($this->title, $this->genre, $this->sort_direction, $this->limit, $offset);
         
         ob_start();
         foreach($lf as $film){
             include(DIRECTORY . "/../component/template/cardMovie.php");
+            $this->items_count += 1;
         }
         $response = ob_get_contents();
         ob_end_clean();
 
-        header('Content-Type: text/html');
-        http_response_code(200);
         echo $response;
     }
     public function generatePagination(){
         $total_records = $this->items_count;
         $items_per_page = $this->limit;
         $current_page = $this->page;
-
+        
+        ob_start();
         include(DIRECTORY . "/../component/template/pagination.php");
+        $response = ob_get_contents();
+        ob_end_clean();
+
+        echo $response;
+    }
+    public function fetchSearchResults(): void{
+        echo "<div id='cards-container'>";
+        $this->generateCards();
+        echo "</div>";
+        $this->generatePagination();
     }
     public function showSearchPage(){
         if ($this->middleware->isAdmin()) {
