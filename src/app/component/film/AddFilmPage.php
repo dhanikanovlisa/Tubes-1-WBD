@@ -38,6 +38,7 @@
                                     <!--Film Name-->
                                     <h3 for="filmName">Film Name<span class="req">*</span></h3>
                                     <input type="text" id="filmName" name="filmName" placeholder="Title" required />
+                                    <div class="error" id="filmName-alert"></div>
                                 </div>
                                 <div class="input-container">
                                     <h3 for="filmDescriptsion">Description<span class="req">*</span></h3>

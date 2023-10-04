@@ -43,6 +43,19 @@ class FilmController
         return $this->filmModel->getFilmGenre($param);
     }
 
+    /**Check Film Name */
+    public function checkFilmName($filmName){
+        $filmName = ltrim($filmName['filmName'], ':');
+        $filmName = $this->filmModel->getFilmByName($filmName);
+        $isExist = false;
+        if ($filmName) {
+            $isExist = true;
+        }
+        header('Content-Type: application/json');
+        http_response_code(201);
+        echo json_encode(["isExist" => $isExist]);
+    }
+
 
     /**Add Film */
     public function addFilm()

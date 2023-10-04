@@ -42,7 +42,7 @@ class FilmsModel
     /**Get Film by Name(String, Substring)*/
     public function getFilmByName($name)
     {
-        $this->db->callQuery("SELECT * FROM " . $this->table . " WHERE title ILIKE '%" . $name . "%'");
+        $this->db->callQuery("SELECT * FROM " . $this->table . " WHERE title LIKE '%" . $name . "%'");
         return $this->db->fetchResult();
     }
 
