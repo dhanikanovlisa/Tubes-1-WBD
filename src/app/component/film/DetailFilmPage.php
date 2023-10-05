@@ -82,7 +82,7 @@
                                 <div class="modal-content red-glow">
                                     <div class="whole">
                                         <div class="title-modal-container">
-                                            <h3 class="text-black" id="main-message">Are you sure you want to Delete This?</h3>
+                                            <h3 class="text-black" id="main-message">Are you sure you want to delete <?php echo $filmData['title']?>?</h3>
                                             <p class="text-black" id="description-message">This will be gone</p>
                                         </div>
                                         <div class="button-modal-container">
