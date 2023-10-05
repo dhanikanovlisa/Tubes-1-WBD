@@ -59,8 +59,10 @@
                                     <?php foreach ($result as $row) { ?>
                                         <div class="checkbox-item">
                                             <input type="checkbox" id="genre_<?php echo $row['genre_id']; ?>" name="filmGenre[]" value="<?php echo $row['genre_id']; ?>">
-                                            <span class="custom-checkbox"></span>
-                                            <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
+                                            <div class="checkbox-contain">
+                                                <span class="custom-checkbox"></span>
+                                                <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
+                                            </div>
                                             </label>
                                         </div>
                                     <?php } ?>
