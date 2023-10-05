@@ -15,3 +15,11 @@ section {
     display: flex;
     flex-direction: column;
 }
+
+select {
+    width: 15rem;
+}
+
+.search-container > div {
+    margin-right: 2rem;
+}
