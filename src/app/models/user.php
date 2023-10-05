@@ -63,6 +63,18 @@ class UserModel{
         $this->db->execute();
     }
 
+    public function changeToAdmin($userID){
+        $this->db->callQuery("UPDATE users SET is_admin = TRUE WHERE user_id = :user_id");
+        $this->db->bind('user_id', $userID);
+        $this->db->execute();
+    }
+
+    public function changeToUser($userID){
+        $this->db->callQuery("UPDATE users SET is_admin = FALSE WHERE user_id = :user_id");
+        $this->db->bind('user_id', $userID);
+        $this->db->execute();
+    }
+
     /**Delete user */
     public function deleteUser($id){
         /**Delete from watchlist */

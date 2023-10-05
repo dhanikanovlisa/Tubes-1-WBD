@@ -11,10 +11,12 @@
     <!---Global CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/admin/userDetail.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <script type="text/javascript" src="/javascript/user/deleteUser.js" defer></script>
+    <script type="text/javascript" src="/javascript/user/changeStatus.js" defer></script>
 </head>
 
 <body>
@@ -43,7 +45,13 @@
                 </div>
                 <div class="whole-container">
                     <div class="profile">
-                        <img src="/images/assets/profile-placeholder.png" />
+                        <img src="<?php
+                                    if ($user["photo_profile"] == null) {
+                                        echo "/images/assets/profile-placeholder.png";
+                                    } else {
+                                        echo "/storage/profile/" . $user["photo_profile"];
+                                    }
+                                    ?>" alt="Profile Picture" />
                     </div>
 
                     <div class="detail-container">
@@ -66,39 +74,48 @@
                         </div>
                         <div class="field-container">
                             <h3>Admin</h3>
-                            <p><?php 
-                            if($userData['is_admin']){
-                                echo "Yes";
-                            } else if(!$userData['is_admin']){
-                                echo "No";
-                            }
-                            ?></p>
+                            <p><?php
+                                if ($userData['is_admin']) {
+                                    echo "Yes";
+                                } else if (!$userData['is_admin']) {
+                                    echo "No";
+                                }
+                                ?></p>
                         </div>
                         <div class="field-container">
-                                <button class="button-white button-text" onClick="popModal()">Delete Account</button>
-                                <div id="confModal" class="modal red-glow">
-                                    <div class="modal-content red-glow">
-                                        <div class="whole">
-                                            <div class="title-container">
-                                                <h3 class="text-black" id="main-message">Are you sure you want to Delete This User?</h3>
-                                                <p class="text-black" id="description-message">This will be gone</p>
-                                            </div>
-                                            <div class="button-container">
-                                                <button id="cancel" class="button-red button-text" onClick="closeModal()">Cancel</button>
-                                                <button id="ok" class="button-green button-text" onclick="deleteUser(<?php echo $id; ?>)">OK</button>
-                                            </div>
+                            <button class="button-red button-text" onClick="popModal()">Delete Account</button>
+                            <div id="confModal" class="modal red-glow">
+                                <div class="modal-content red-glow">
+                                    <div class="whole">
+                                        <div class="title-modal-container">
+                                            <h3 class="text-black" id="main-message">Are you sure you want to Delete This?</h3>
+                                            <p class="text-black" id="description-message">This will be gone</p>
+                                        </div>
+                                        <div class="button-modal-container">
+                                            <button id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
+                                            <button id="ok" class="button-green button-text" onclick="deleteUser(<?php echo $id; ?>)">OK</button>
                                         </div>
                                     </div>
                                 </div>
-                        </div>
+                            </div>
+                            <?php
+                            if (!$userData['is_admin']) {
+                                echo "<button id='change' class='button-white button-text' onclick = 'changeToAdmin($id)'>Change To Admin</button>";
+                            } else {
+                                echo "<button id='change' class='button-white button-text' onclick = 'changeToUser($id)'>Change To User</button>";
+                            }
+                            ?>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     <?php
     }
     ?>
+    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
 </body>
 
 </html>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="styles/template/Navbar.css">
     <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/film/addFilm.css">
     <script src="/javascript/film/addFilm.js" defer></script>
@@ -39,6 +40,7 @@
                                     <!--Film Name-->
                                     <h3 for="filmName">Film Name<span class="req">*</span></h3>
                                     <input type="text" id="filmName" name="filmName" placeholder="Title" required />
+                                    <div class="error" id="filmName-alert"></div>
                                 </div>
                                 <div class="input-container">
                                     <h3 for="filmDescriptsion">Description<span class="req">*</span></h3>
@@ -62,6 +64,7 @@
                                             </label>
                                         </div>
                                     <?php } ?>
+                                    <div id="checkbox-alert"></div>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +113,7 @@
 
                                 <h3>Film Poster<span class="req">*</span></h3>
                                 <input type="file" id="filmPoster" name="filmPoster" accept="image/*" class="inputFile" required />
-                                <label for="filmVideo" class="file-style">
+                                <label for="filmPoster" class="file-style">
                                     <div class="centered">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
                                             <style>
@@ -123,6 +126,7 @@
                                         <p class="button-text">Upload Film Poster</p>
                                     </div>
                                 </label>
+                                <div class="file-name" id="display-filePoster-name"></div>
                             </div>
 
                             <!--Film Video-->
@@ -142,13 +146,14 @@
                                         <p class="button-text">Upload Film Video</p>
                                     </div>
                                 </label>
+                                <div class="file-name" id="display-fileVideo-name"></div>
                             </div>
                         </div>
                         <div class="button-container">
                             <a href="/manage-film">
                                 <button id="cancel" type="submit" class="button-red button-text">Cancel</button>
                             </a>
-                            <button type="submit" class="button-white button-text">Save</button>
+                            <button id="saveButton" class="button-white button-text" onclick="succes()">Save</button>
                         </div>
                     </div>
                 </form>
@@ -156,15 +161,8 @@
         </div>
     </div>
     <script>
-        // document.getElementById('cancel').addEventListener('click', function(event) {
-        //     if (document.getElementById('addFilmForm').checkValidity()) {
-        //         return confirm('Are you sure you want to cancel?');
-        //     }
-        // });
-        window.addEventListener('beforeunload', function(event) {
-            event.returnValue = '';
-        });
     </script>
+    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
 </body>
 
 </html>

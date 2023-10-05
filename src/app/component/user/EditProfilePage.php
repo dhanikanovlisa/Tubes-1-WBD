@@ -111,7 +111,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button id="saveButton"class="button-white button-text" onclick="succes()">Save</button>
+                                    <button id="saveButton" class="button-white button-text" onclick="succes()">Save</button>
                                 </div>
                         </form>
                     </div>

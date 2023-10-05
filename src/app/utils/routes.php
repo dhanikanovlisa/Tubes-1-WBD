@@ -23,12 +23,15 @@ $route = [
     '/manage-user' => ["GET" => "user/UserController@showManageUserPage"],
     '/user-detail/:id' => ["GET" => "user/UserController@showUserDetailPage"],
     '/delete-user' => ["POST" => "user/UserController@deleteUser"],
+    '/change-to-admin/:id' => ["POST" => "user/UserController@changeToAdmin"],
+    '/change-to-user/:id' => ["POST" => "user/UserController@changeToUser"],
     
     '/manage-film' => ["GET" => "film/FilmController@showManageFilmPage"],
     '/detail-film/:id' => ["GET" => "film/FilmController@showDetailFilmPage"],
     
     '/add-film/add-film' => ["POST" => "film/FilmController@addFilm"],
     '/add-film' => ["GET" => "film/FilmController@showAddFilmPage"],
+    '/check/filmname/:filmname' => ["GET" => "film/FilmController@checkFilmName"],
 
     '/edit-film/:id' => ["GET" => "film/FilmController@showEditFilmPage"],
     '/delete-film' => ["POST" => "film/FilmController@deleteFilm"],
