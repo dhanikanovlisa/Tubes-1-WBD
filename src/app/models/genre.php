@@ -15,6 +15,11 @@ class GenreModel{
         $this->db->callQuery('SELECT * FROM ' . $this->table);
         return $this->db->fetchAllResult();
     }
+    /**Get All Genre sorted ascending */
+    public function getAllGenreSorted(){
+        $this->db->callQuery('SELECT * FROM '. $this->table .' GROUP BY genre_id ORDER BY name ASC');
+        return $this->db->fetchAllResult();
+    }
     /**Get genre by Name*/
     public function getGenreByName($name){
         $this->db->callQuery('SELECT * FROM genre WHERE name = :name');
