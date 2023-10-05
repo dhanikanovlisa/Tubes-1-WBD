@@ -52,6 +52,7 @@ class Database
                     description TEXT,
                     film_path VARCHAR(256) NOT NULL,
                     film_poster VARCHAR(256) NOT NULL,
+                    film_header VARCHAR(256) NOT NULL,
                     date_release DATE NOT NULL,
                     duration INTEGER NOT NULL
                 );"

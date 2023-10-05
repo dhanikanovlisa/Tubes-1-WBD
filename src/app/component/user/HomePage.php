@@ -8,15 +8,15 @@
     <!---Icon--->
     <link rel="icon" href="images/icon/logo.ico">
     <!---Global CSS--->
-    <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
-    <link rel="stylesheet" type="text/css" href="styles/template/navbar.css">
-    <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
-    <link rel="stylesheet" type="text/css" href="styles/template/toast.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/cardMovie.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
     <!---Page specify CSS--->
-    <link rel="stylesheet" type="text/css" href="styles/user/homepage.css">
-    <link rel="stylesheet" type="text/css" href="styles/template/pagination.css">
+    <link rel="stylesheet" type="text/css" href="/styles/user/homepage.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/pagination.css">
     <!-- JS --->
-    <script type="text/javascript" src="javascript/user/home.js" defer></script>
+    <script type="text/javascript" src="/javascript/user/home.js" defer></script>
 </head>
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
@@ -32,14 +32,14 @@
             $date = date_create($film_header['date_release']);
             $release = date_format($date, "j M Y");
             $desc = $film_header['description'];
-            $img_path = $film_header['film_poster'];
+            $img_path = $film_header['film_header'];
             $isOnWatchList = $home->isFilmOnWatchList($_SESSION['user_id'], $film_id);
         ?>
         <script type="text/javascript">
             var user_id = <?php echo $_SESSION['user_id']?>;
             var film_id = <?php echo $film_id?>;
         </script>
-        <img src=<?php echo '"storage/poster/'.$img_path.'"'?> alt="images/assets/image_header.jpg"/>
+        <img src=<?php echo '"storage/header/'.$img_path.'"'?> alt="/images/assets/image_header.jpg"/>
         <div class="img-header-overlay"></div>
         <div class="img-header-text">
             <h1><?php echo $title?></h1>

@@ -69,6 +69,7 @@ class FilmController
             $_POST['description'],
             $_POST['film_path'],
             $_POST['film_poster'],
+            $_POST['film_header'],
             $_POST['date_release'],
             $convert
         );
@@ -162,7 +163,7 @@ class FilmController
     {
         if ($this->middleware->isAdmin()) {
             header("Location: /restrictAdmin");
-        } else if ($this->middleware->isAuthenticated()) {
+        } else if (!$this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/film/WatchFilmPage.php";
         } else {
             header("Location: /login");

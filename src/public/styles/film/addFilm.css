@@ -65,9 +65,13 @@
 }
 
 .upload-content{
-    display: flex;
-    gap: 8rem;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 5rem;
+    padding-left: 7rem;
 }
+
 .select-container{
     display: flex;
     flex-direction: column;
