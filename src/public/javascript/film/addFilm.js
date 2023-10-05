@@ -3,11 +3,13 @@ let filmName = document.getElementById('filmName');
 let filmDescription = document.getElementById('filmDescription');
 let filmPoster = document.getElementById('filmPoster');
 let filmVideo = document.getElementById('filmVideo');
+let filmHeader = document.getElementById('filmHeader');
 let filmHourDuration = document.getElementById('filmHourDuration');
 let filmMinuteDuration = document.getElementById('filmMinuteDuration');
 let date = document.getElementById('filmDate');
 let filePosterName = document.getElementById('display-filePoster-name');
 let fileVideoName = document.getElementById('display-fileVideo-name');
+let fileHeaderName = document.getElementById('display-fileHeader-name');
 const filmNameAlert = document.getElementById('filmName-alert');
 
 const toast = document.getElementById("toast");
@@ -71,6 +73,12 @@ filmPoster.addEventListener('change', () => {
 filmVideo.addEventListener('change', () => {
     fileVideoName.textContent = "File Name: " + filmVideo.files[0].name;
 });
+
+filmHeader.addEventListener('change', () => {
+    fileHeaderName.textContent = "File Name: " + filmHeader.files[0].name;
+});
+
+
 function setErrorWarning(input, desc, message) {
     input.className += ' error-input';
     desc.innerText = message;
@@ -120,6 +128,7 @@ addFilmForm && addFilmForm.addEventListener('submit', async (e) => {
         formData.append('filmMinuteDuration', filmMinuteDuration.value);
         formData.append('film_poster', filmPoster.files[0].name);
         formData.append('film_path', filmVideo.files[0].name);
+        formData.append('film_header', filmHeader.files[0].name);
         formData.append('date_release', date.value);
 
         xhr.onreadystatechange = () => {

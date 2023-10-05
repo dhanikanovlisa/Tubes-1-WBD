@@ -57,17 +57,17 @@
                                 <div>
                                     <div class="input-container">
                                         <!--Film Name-->
-                                        <h3 for="filmName">Film Name<span class="req">*</span></h3>
-                                        <input type="text" id="filmName" name="filmName" placeholder="<?php echo $filmData['title']?>" />
+                                        <h3 for="filmName">Film Name</h3>
+                                        <input type="text" id="filmName" name="filmName" placeholder="<?php echo $filmData['title'] ?>" />
                                     </div>
                                     <div class="input-container">
-                                        <h3 for="filmDescriptsion">Description<span class="req">*</span></h3>
-                                        <textarea id="filmDescription" name="filmDescription" placeholder="<?php echo $filmData['description']?>"></textarea>
+                                        <h3 for="filmDescriptsion">Description</h3>
+                                        <textarea id="filmDescription" name="filmDescription" placeholder="<?php echo $filmData['description'] ?>"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="input-container">
-                                    <h3>Genre<span class="req">*</span></h3>
+                                    <h3>Genre</h3>
                                     <?php
                                     require_once dirname(dirname(__DIR__)) . '/controller/film/GenreController.php';
                                     $genre = new GenreController();
@@ -78,8 +78,10 @@
                                         <?php foreach ($result as $row) { ?>
                                             <div class="checkbox-item">
                                                 <input type="checkbox" id="genre_<?php echo $row['genre_id']; ?>" name="filmGenre[]" value="<?php echo $row['genre_id']; ?>">
-                                                <span class="custom-checkbox"></span>
-                                                <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
+                                                <div class="checkbox-contain">
+                                                    <span class="custom-checkbox"></span>
+                                                    <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
+                                                </div>
                                                 </label>
                                             </div>
                                         <?php } ?>
@@ -90,7 +92,7 @@
                                 <h3>Duration</h3>
                                 <div class="border">
                                     <div class="select-container">
-                                        <label for="filmHourDuration">Hour<span class="req">*</span></label>
+                                        <label for="filmHourDuration">Hour</label>
                                         <select id="filmHourDuration" name="filmHourDuration">
                                             <option value="" disabled selected><?php echo $hourFilm["hour"] ?></option>
                                             <?php
@@ -102,7 +104,7 @@
                                         </select>
                                     </div>
                                     <div class="select-container">
-                                        <label for="filmMinuteDuration">Minute<span class="req">*</span></label>
+                                        <label for="filmMinuteDuration">Minute</label>
                                         <select id="filmMinuteDuration" name="filmMinuteDuration">
                                             <option value="" disabled selected><?php echo $hourFilm["minute"] ?></option>
                                             <?php
@@ -122,22 +124,60 @@
                             <div class="upload-content">
                                 <!--Film Poster-->
                                 <div>
-                                    <h3>Film Poster<span class="req">*</span></h3>
-                                    <input type="file" id="filmPoster" name="filmPoster" accept="image/*" class="inputFile"  />
-                                    <label for="filmPoster">
-                                        <p class="button-text file-style">Upload Film Poster</p>
+                                    <h3>Film Poster</h3>
+                                    <input type="file" id="filmPoster" name="filmPoster" accept="image/*" class="inputFile" />
+                                    <label for="filmPoster" class="file-style">
+                                    <div class="centered">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
+                                            <style>
+                                                svg {
+                                                    fill: #fff5f6
+                                                }
+                                            </style>
+                                            <path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 53 43 96 96 96H352c53 0 96-43 96-96V352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V352z" />
+                                        </svg>
+                                        <p class="button-text">Upload Film Poster</p>
+                                    </div>
                                     </label>
                                     <div class="file-name" id="display-filePoster-name"></div>
                                 </div>
 
                                 <!--Film Video-->
                                 <div>
-                                    <h3>Film Video<span class="req">*</span></h3>
+                                    <h3>Film Video</h3>
                                     <input type="file" id="filmVideo" name="filmVideo" accept="video/*" />
-                                    <label for="filmVideo">
-                                        <p class="button-text file-style">Upload Film Video</p>
+                                    <label for="filmVideo" class="file-style">
+                                        <div class="centered">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
+                                                <style>
+                                                    svg {
+                                                        fill: #fff5f6
+                                                    }
+                                                </style>
+                                                <path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 53 43 96 96 96H352c53 0 96-43 96-96V352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V352z" />
+                                            </svg>
+                                            <p class="button-text">Upload Film Video</p>
+                                        </div>
                                     </label>
                                     <div class="file-name" id="display-fileVideo-name"></div>
+                                </div>
+                                <div>
+                                    <h3>Film Header</h3>
+                                    <input type="file" id="filmHeader" name="filmHeader" accept="image/*" />
+                                    <label for="filmHeader" class="file-style">
+                                        <div class="centered">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
+                                                <style>
+                                                    svg {
+                                                        fill: #fff5f6
+                                                    }
+                                                </style>
+                                                <path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 53 43 96 96 96H352c53 0 96-43 96-96V352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V352z" />
+                                            </svg>
+                                            <p class="button-text">Upload Film Header</p>
+                                        </div>
+                                    </label>
+                                    <div class="file-name" id="display-fileHeader-name"></div>
                                 </div>
                             </div>
                             <div class="button-container">

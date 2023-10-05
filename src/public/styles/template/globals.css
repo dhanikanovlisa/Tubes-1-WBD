@@ -203,6 +203,7 @@ input[type="checkbox"] {
     height: 1.15rem; 
 }
 .checkbox-label {
+    margin-left:8px;
     position: relative;
     padding-left: 30px;
     cursor: pointer;
@@ -291,7 +292,6 @@ input[type="file"]{
     width: 20rem;
     display: block;
     background-color: #760A0A;
-    margin: auto;
     cursor: pointer;
     text-align: center;
     padding: 4rem;
