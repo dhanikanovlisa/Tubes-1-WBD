@@ -36,8 +36,8 @@ $route = [
     '/manage-genre' => ["GET" => "film/GenreController@showManageGenrePage"],
     '/add-genre' => ["GET" => "film/GenreController@addGenrePage"],
     '/add-genre/add-genre' => ["POST" => "film/GenreController@addGenre"],
-    '/check-genre/:id' => ["POST" => "film/GenreController@checkGenre"],
-    '/delete-genre' => ["POST" => "film/GenreController@deleteGenre"],
+    '/check-genre/:genre' => ["GET" => "film/GenreController@checkGenre"],
+    '/delete-genre/:id' => ["POST" => "film/GenreController@deleteGenre"],
 
     '/edit-film/:id' => ["GET" => "film/FilmController@showEditFilmPage"],
     '/delete-film' => ["POST" => "film/FilmController@deleteFilm"],

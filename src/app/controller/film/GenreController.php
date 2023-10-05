@@ -19,6 +19,18 @@ class GenreController
         return $this->genreModel->getAllGenre();
     }
 
+    public function checkGenre($genreName){
+        $genreName = ltrim($genreName['genre'], ':');
+
+        $genre = $this->genreModel->getGenreByName($genreName);
+        $isExist = false;
+        if ($genre) {
+            $isExist = true;
+        }
+        header('Content-Type: application/json');
+        http_response_code(201);
+        echo json_encode(["isExist" => $isExist]);
+    }
     public function addGenre()
     {
         header('Content-Type: application/json');

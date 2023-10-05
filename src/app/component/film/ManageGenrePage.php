@@ -13,6 +13,10 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/manageGenre.css">
+    <link rel="stylesheet" type="text/css" href="/styles/film/cardGenre.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
+
+    <script type="text/javascript" src="/javascript/film/deleteGenre.js" defer></script>
 </head>
 
 <body>
@@ -23,13 +27,15 @@
     $result = $genre->getAllGenre();
     ?>
     <div class='container'>
+        <div class='upper-container'>
         <h2>Genre</h2>
-        <div>
-            <div class="upper-container">
-                <a href='/add-genre'>
-                    <button class="button-white button-text">Add New Genre</button>
-                </a>
-            </div>
+
+<div class="upper-container">
+    <a href='/add-genre'>
+        <button class="button-white button-text">Add New Genre</button>
+    </a>
+</div>
+        </div>
             <div class="cards-genre">
                 <?php foreach ($result as $genre) {
                     include(DIRECTORY . "/../component/template/cardGenre.php");
@@ -37,6 +43,7 @@
             </div>
         </div>
     </div>
+    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
 </body>
 
 </html>

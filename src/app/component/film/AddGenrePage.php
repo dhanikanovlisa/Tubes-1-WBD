@@ -24,9 +24,16 @@
         <h2>Add Genre</h2>
         <div>
             <form id="addGenreForm">
-                <label for="genre">Genre Name</label>
-                <input type="text" id="genre" placeholder="Genre Name">
-                <button id="submitButton" class="button-red button-text">Submit</button>
+                <div class="formcontain">
+                    <div class="field-container">
+                        <label for="genre">Genre Name</label>
+                        <input type="text" id="genre" placeholder="Genre Name">
+                        <div class="error" id="genre-alert"></div>
+                    </div>
+                    <div class="button-contain">
+                        <button id="submitButton" class="button-red button-text">Submit</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

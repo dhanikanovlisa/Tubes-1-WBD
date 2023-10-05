@@ -17,7 +17,8 @@ class GenreModel{
     }
     /**Get genre by Name*/
     public function getGenreByName($name){
-        $this->db->callQuery('SELECT * FROM ' . $this->table . ' WHERE name = ' . $name);
+        $this->db->callQuery('SELECT * FROM genre WHERE name = :name');
+        $this->db->bind('name', $name);
         return $this->db->fetchAllResult();
     }
     /**Insert new genre*/
