@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/cardMovie.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/manageFilm.css">
+    <script type="text/javascript" src="javascript/user/search.js" defer></script>
+    <link rel="stylesheet" type="text/css"href="styles/user/search.css">
 </head>
 
 <body>
@@ -27,7 +29,9 @@
         <h2>Film</h2>
         <div>
             <div class="upper-container">
-                <input type="text" placeholder="Search Movie">
+                <div>
+                    <input name='title' id='title' type='text' placeholder='Search...'>
+                </div>
                 <a href='/add-film'>
                     <button class="button-white button-text">Add New Movie</button>
                 </a>

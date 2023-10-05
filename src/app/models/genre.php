@@ -17,11 +17,21 @@ class GenreModel{
     }
     /**Get genre by Name*/
     public function getGenreByName($name){
-        $this->db->callQuery('SELECT * FROM ' . $this->table . ' WHERE name = ' . $name);
+        $this->db->callQuery('SELECT * FROM genre WHERE name = :name');
+        $this->db->bind('name', $name);
         return $this->db->fetchAllResult();
     }
     /**Insert new genre*/
     public function addGenre($name){
+        $this->db->callQuery('INSERT INTO genre (name) VALUES (:name)');
+        $this->db->bind('name', $name);
+        $this->db->execute();
 
+    }
+    /**Delete genre*/
+    public function deleteGenre($genre_id){
+        $this->db->callQuery('DELETE FROM genre WHERE genre_id = :genre_id');
+        $this->db->bind('genre_id', $genre_id);
+        $this->db->execute();
     }
 }
