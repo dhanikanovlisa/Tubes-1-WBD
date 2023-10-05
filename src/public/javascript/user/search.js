@@ -20,7 +20,7 @@ const fetchResults = ()=>{
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send();
 
-    xhr.onload = async (ev)=>{
+    xhr.onreadystatechange = async (ev)=>{
         if(xhr.readyState !== XMLHttpRequest.DONE) return;
         if(xhr.status==200){
             const resultContainer = document.getElementById('result-container');
