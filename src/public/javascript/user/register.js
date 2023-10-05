@@ -66,7 +66,7 @@ usernameInput && usernameInput.addEventListener('keyup', async(e) => {
             if (xhr_uname.readyState === XMLHttpRequest.DONE){
                 const response = JSON.parse(xhr_uname.responseText);
                 if (response.isExist){
-                    setErrorWarning(usernameInput, usernameAlert, 'Username is not available');
+                    setErrorWarning(usernameInput, usernameAlert, 'Username is already registered');
                     return;
                 }
             }

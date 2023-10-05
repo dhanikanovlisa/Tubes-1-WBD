@@ -24,7 +24,7 @@ loginForm && loginForm.addEventListener('submit', async (e) => {
         if (xhr_uname.readyState === XMLHttpRequest.DONE){
             const response = JSON.parse(xhr_uname.responseText);
             if (!response.isExist){
-                setErrorWarning(loginAlert, 'Username is not available');
+                setErrorWarning(loginAlert, 'Username does not exist');
                 return;
             } else {
                 const xhr_pass = new XMLHttpRequest();
