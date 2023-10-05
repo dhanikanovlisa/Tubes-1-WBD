@@ -47,28 +47,30 @@
             <source src='../storage/film/<?php echo htmlspecialchars($filmData['film_path']) ?>' type='video/mp4'>
         </video>
         <div id='details'>
-            <div id='description'>
-                <h2>Description</h2>
-                <p><?php echo htmlspecialchars($filmData['description']) ?></p>
+            <div id='left-details'>
+                <div id='description' class='film-detail'>
+                    <h2>Description</h2>
+                    <p><?php echo htmlspecialchars($filmData['description']) ?></p>
+                </div>
+                <div id='genre' class='film-detail'>
+                    <h2>Genre</h2>
+                    <p><?php
+                        $genres = $filmController->getFilmGenre($filmID);
+                        $response = array();
+                        foreach($genres as $genre){
+                            array_push($response, $genre['name']);
+                        }
+                        echo implode(', ', $response);
+                        ?>
+                </div>
             </div>
-            <div id='genre'>
-                <h2>Genre</h2>
-                <p><?php
-                    $genres = $filmController->getFilmGenre($filmID);
-                    $response = array();
-                    foreach($genres as $genre){
-                        array_push($response, $genre['name']);
-                    }
-                    echo implode(', ', $response);
-                    ?>
-            </div>
-            <div id='release'>
+            <div id='release' class='film-detail'>
                 <h2>Release</h2>
                 <p><?php echo htmlspecialchars($filmData['date_release']) ?></p>
             </div>
-            <div id='duration'>
+            <div id='duration' class='film-detail'>
                 <h2>Duration</h2>
-                <p><?php echo htmlspecialchars($filmData['duration']) ?></p>
+                <p><?php echo htmlspecialchars($filmData['duration']) ?> minutes</p>
             </div>
         </div>
     </section>
