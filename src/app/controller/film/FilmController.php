@@ -145,8 +145,15 @@ class FilmController
         http_response_code(200);
     }
 
-    public function initWatchlistButton($filmID){
-        echo ($this->watchlistModel->isFilmOnWatchList($_SESSION['user_id'],$filmID)) ? "remove'>Remove from Watchlist":"add'>Add to Watchlist";
+    public function generateWatchlistButton($filmID){
+        $add = "<button id='watchlist-button' class='text-black' value='add'>Add to Watchlist";
+        $remove = "<button id='watchlist-button' class='text-black' value='remove'>Remove from Watchlist";
+        echo ($this->watchlistModel->isFilmOnWatchList($_SESSION['user_id'],$filmID)) ? $remove:$add;
+    }
+
+    public function generateFilm($filmPath, $startTime){
+        $response = "<source src='../storage/film/" . htmlspecialchars($filmPath) . '#t=' . $startTime . "' type='video/mp4'>";
+        echo $response;
     }
 
 

@@ -51,10 +51,10 @@
     <section>
         <header>
             <h1><?php echo htmlspecialchars($filmData['title']); ?></h1>
-            <button id='watchlist-button' class='text-black' value='<?php $filmController->initWatchlistButton($filmID);?></button>
+            <?php $filmController->generateWatchlistButton($filmID)?>
         </header>
         <video controls id='video-player' >
-            <source src='../storage/film/<?php echo htmlspecialchars($filmData['film_path']) . '#t=' . $lastPlayedTime ?>' type='video/mp4'>
+            <?php $filmController->generateFilm($filmData['film_path'], $lastPlayedTime); ?>
         </video>
         <div id='details'>
             <div id='description' class='film-detail'>
@@ -79,6 +79,7 @@
                     }
                     echo implode(', ', $response);
                     ?>
+                </p>
             </div>
         </div>
     </section>
