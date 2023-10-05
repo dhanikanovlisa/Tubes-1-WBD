@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/navbar.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/watchFilm.css">
+    <script type="text/javascript" src="/javascript/film/watchFilm.js" defer></script>
 </head>
 
 <body>
@@ -29,6 +30,13 @@
     $filmController = new FilmController();
     $filmData = $filmController->getFilmData($filmID);
     $totalRow = count($filmData);
+    // print_r($_SESSION['watch_log']);
+    $watchLog = isset($_SESSION['watch_log']) && isset($_SESSION['watch_log'][$filmID]) ? $_SESSION['watch_log'][$filmID] : null;
+    if($watchLog && isset($watchLog['last_played_time']))
+        $lastPlayedTime = $watchLog['last_played_time'];
+    else{
+        $lastPlayedTime = 0;
+    }
 
     if ($totalRow == 0) {
         require_once  dirname(dirname(__DIR__)) . '/component/conditional/NotFound.php';
@@ -44,7 +52,7 @@
             <h1><?php echo htmlspecialchars($filmData['title']); ?></h1>
         </header>
         <video controls id='video-player' >
-            <source src='../storage/film/<?php echo htmlspecialchars($filmData['film_path']) ?>' type='video/mp4'>
+            <source src='../storage/film/<?php echo htmlspecialchars($filmData['film_path']) . '#t=' . $lastPlayedTime ?>' type='video/mp4'>
         </video>
         <div id='details'>
             <div id='description' class='film-detail'>
