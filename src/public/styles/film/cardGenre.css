@@ -16,7 +16,13 @@
     justify-content: center;
     align-items:center;
 }
+.trash-button{
+  background-color: transparent;
+}
 
+.text-contain{
+  width:10rem;
+}
 
 .modal {
     display: none; 

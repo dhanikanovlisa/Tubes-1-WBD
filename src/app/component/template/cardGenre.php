@@ -1,7 +1,7 @@
 
 <div class="card-genre">
     <div class="genre-name">
-        <p><?php echo $genre['name'] ?></p>
+        <p class="text-contain"><?php echo $genre['name'] ?></p>
     </div>
     <button class="trash-button" onclick="popModal()">
         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
