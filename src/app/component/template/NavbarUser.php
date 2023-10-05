@@ -54,6 +54,6 @@
         <?php endif; ?>
     </div>
     <button class="burger-bar" onClick="navbar()">
-        <img class="burger-bar" src="images/assets/Burger bar.svg" alt="burger bar" />
+        <img class="burger-bar" src="/images/assets/Burger bar.svg" alt="burger bar" />
     </button>
 </nav>

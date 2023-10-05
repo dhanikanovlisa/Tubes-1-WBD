@@ -44,10 +44,11 @@ const deleteGenre = (id) => {
 
     const formData = new FormData();
     formData.append('genre_id', id);
-   
+    
     
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
             succes();
             setTimeout(() => {

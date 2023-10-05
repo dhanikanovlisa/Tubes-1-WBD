@@ -2,15 +2,18 @@
 
 require_once  DIRECTORY . '/../utils/database.php';
 require_once  DIRECTORY . '/../models/genre.php';
+require_once  DIRECTORY . '/../models/filmGenre.php';
 require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
 class GenreController
 {
     private $genreModel;
+    private $filmGenreModel;
     private $middleware;
 
     public function __construct()
     {
         $this->genreModel = new GenreModel();
+        $this->filmGenreModel = new FilmGenreModel();
         $this->middleware = new AuthenticationMiddleware();
     }
 
@@ -45,6 +48,12 @@ class GenreController
         header('Content-Type: application/json');
         http_response_code(200);
         $genre_id = $_POST['genre_id'];
+
+        /**Delete genre from all film */
+        $filmsWithDeletedGenre = $this->filmGenreModel->getFilmByGenreId($genre_id);
+        foreach ($filmsWithDeletedGenre as $film) {
+            $this->filmGenreModel->deleteFilmGenre($film['film_id']);
+        }
         $this->genreModel->deleteGenre($genre_id);
         echo json_encode(["redirect_url" => "/manage-genre"]);
     }
