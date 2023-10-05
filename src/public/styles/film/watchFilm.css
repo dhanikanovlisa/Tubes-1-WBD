@@ -6,6 +6,29 @@ section {
     padding: 0 100px;
 }
 
+h2 {
+    padding: 10px 10px 10px 0;
+}
+
 #video-player {
     width: 100%;
+}
+
+#details {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#details-bound {
+    flex-basis: 10%;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.film-detail {
+    flex-basis: 10%;
+    padding: 30px;
+}
+#description {
+    flex-basis: 50%;
+    flex-shrink: 1;
 }
