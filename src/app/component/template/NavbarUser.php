@@ -14,6 +14,7 @@
         <?php elseif ($authMiddleware->isAdmin()) : ?>
             <a href="/manage-film">Manage Film</a>
             <a href="/manage-user">Manage User</a>
+            <a href="/manage-genre">Manage Genre</a>
             <img id="photo-profile" class="photo-profile" src="<?php
                                                                 require_once DIRECTORY . '/../controller/user/UserController.php';
                                                                 $user = new UserController();
@@ -53,6 +54,6 @@
         <?php endif; ?>
     </div>
     <button class="burger-bar" onClick="navbar()">
-        <img class="burger-bar" src="images/assets/Burger bar.svg" alt="burger bar" />
+        <img class="burger-bar" src="/images/assets/Burger bar.svg" alt="burger bar" />
     </button>
 </nav>
