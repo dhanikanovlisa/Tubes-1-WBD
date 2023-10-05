@@ -14,8 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/template/cardMovie.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/manageFilm.css">
-    <script type="text/javascript" src="javascript/user/search.js" defer></script>
-    <link rel="stylesheet" type="text/css"href="styles/user/search.css">
+    <link rel="stylesheet" type="text/css" href="styles/user/search.css">
 </head>
 
 <body>
@@ -26,21 +25,16 @@
     $result = $film->getAllFilm();
     ?>
     <div class='container'>
-        <h2>Film</h2>
-        <div>
-            <div class="upper-container">
-                <div>
-                    <input name='title' id='title' type='text' placeholder='Search...'>
-                </div>
-                <a href='/add-film'>
-                    <button class="button-white button-text">Add New Movie</button>
-                </a>
-            </div>
-            <div class="cards">
-                <?php foreach ($result as $film) {
-                    include(DIRECTORY . "/../component/template/cardMovie.php");
-                } ?>
-            </div>
+        <div class="upper-container">
+            <h2>Film</h2>
+            <a href='/add-film'>
+                <button class="button-white button-text">Add New Movie</button>
+            </a>
+        </div>
+        <div class="cards">
+            <?php foreach ($result as $film) {
+                include(DIRECTORY . "/../component/template/cardMovie.php");
+            } ?>
         </div>
     </div>
 </body>
