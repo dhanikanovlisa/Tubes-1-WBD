@@ -4,17 +4,20 @@ require_once  DIRECTORY . '/../utils/database.php';
 require_once  DIRECTORY . '/../models/films.php';
 require_once  DIRECTORY . '/../utils/duration.php';
 require_once  DIRECTORY . '/../models/filmGenre.php';
+require_once  DIRECTORY . '/../models/watchlist.php';
 require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
 class FilmController
 {
     private $filmModel;
     private $filmGenreModel;
+    private $watchlistModel;
     private $middleware;
 
     public function __construct()
     {
         $this->filmModel = new FilmsModel();
         $this->filmGenreModel = new FilmGenreModel();
+        $this->watchlistModel = new WatchListModel();
         $this->middleware = new AuthenticationMiddleware();
     }
 
@@ -142,6 +145,10 @@ class FilmController
         http_response_code(200);
     }
 
+    public function initWatchlistButton($filmID){
+        echo ($this->watchlistModel->isFilmOnWatchList($_SESSION['user_id'],$filmID)) ? "remove'>Remove from Watchlist":"add'>Add to Watchlist";
+    }
+
 
     private function checkAndUpdateField($newData, $existingData)
     {
@@ -183,7 +190,7 @@ class FilmController
     {
         if ($this->middleware->isAdmin()) {
             header("Location: /restrictAdmin");
-        } else if (!$this->middleware->isAuthenticated()) {
+        } else if ($this->middleware->isAuthenticated()) {
             require_once DIRECTORY . "/../component/film/WatchFilmPage.php";
         } else {
             header("Location: /login");

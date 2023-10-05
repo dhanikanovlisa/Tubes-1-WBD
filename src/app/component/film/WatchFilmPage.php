@@ -28,6 +28,7 @@
     }
 
     $filmController = new FilmController();
+    $watchlistModel = new WatchListModel();
     $filmData = $filmController->getFilmData($filmID);
     $totalRow = count($filmData);
     // print_r($_SESSION['watch_log']);
@@ -50,6 +51,7 @@
     <section>
         <header>
             <h1><?php echo htmlspecialchars($filmData['title']); ?></h1>
+            <button id='watchlist-button' class='text-black' value='<?php $filmController->initWatchlistButton($filmID);?></button>
         </header>
         <video controls id='video-player' >
             <source src='../storage/film/<?php echo htmlspecialchars($filmData['film_path']) . '#t=' . $lastPlayedTime ?>' type='video/mp4'>
@@ -59,7 +61,6 @@
                 <h2>Description</h2>
                 <p><?php echo htmlspecialchars($filmData['description']) ?></p>
             </div>
-            <div id='details-bound'></div>
             <div id='release' class='film-detail'>
                 <h2>Release</h2>
                 <p><?php echo htmlspecialchars($filmData['date_release']) ?></p>
