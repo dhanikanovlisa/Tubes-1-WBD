@@ -67,6 +67,18 @@ h2 {
     }
 }
 
+@media only screen and (max-width: 650px){
+    header{
+        flex-direction: column;
+        align-content: flex-start;
+        align-items: center;
+    }
+    button{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
 @media only screen and (max-width: 460px){
     .film-detail{
         padding: 0 15px;
