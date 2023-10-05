@@ -14,6 +14,7 @@
         <?php elseif ($authMiddleware->isAdmin()) : ?>
             <a href="/manage-film">Manage Film</a>
             <a href="/manage-user">Manage User</a>
+            <a href="/manage-genre">Manage Genre</a>
             <img id="photo-profile" class="photo-profile" src="<?php
                                                                 require_once DIRECTORY . '/../controller/user/UserController.php';
                                                                 $user = new UserController();

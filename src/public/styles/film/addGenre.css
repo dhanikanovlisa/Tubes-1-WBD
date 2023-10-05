@@ -1,0 +1,10 @@
+.container{
+    padding-top:7rem ;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+.whole-container{
+    display: flex;
+    align-items: flex-start;
+    gap:2rem;
+}

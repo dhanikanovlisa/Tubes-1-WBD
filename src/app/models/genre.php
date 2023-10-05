@@ -22,6 +22,15 @@ class GenreModel{
     }
     /**Insert new genre*/
     public function addGenre($name){
+        $this->db->callQuery('INSERT INTO genre (name) VALUES (:name)');
+        $this->db->bind('name', $name);
+        $this->db->execute();
 
+    }
+    /**Delete genre*/
+    public function deleteGenre($genre_id){
+        $this->db->callQuery('DELETE FROM genre WHERE genre_id = :genre_id');
+        $this->db->bind('genre_id', $genre_id);
+        $this->db->execute();
     }
 }

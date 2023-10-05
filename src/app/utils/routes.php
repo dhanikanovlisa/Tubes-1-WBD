@@ -29,9 +29,15 @@ $route = [
     '/manage-film' => ["GET" => "film/FilmController@showManageFilmPage"],
     '/detail-film/:id' => ["GET" => "film/FilmController@showDetailFilmPage"],
     
-    '/add-film/add-film' => ["POST" => "film/FilmController@addFilm"],
     '/add-film' => ["GET" => "film/FilmController@showAddFilmPage"],
+    '/add-film/add-film' => ["POST" => "film/FilmController@addFilm"],
     '/check/filmname/:filmname' => ["GET" => "film/FilmController@checkFilmName"],
+
+    '/manage-genre' => ["GET" => "film/GenreController@showManageGenrePage"],
+    '/add-genre' => ["GET" => "film/GenreController@addGenrePage"],
+    '/add-genre/add-genre' => ["POST" => "film/GenreController@addGenre"],
+    '/check-genre/:id' => ["POST" => "film/GenreController@checkGenre"],
+    '/delete-genre' => ["POST" => "film/GenreController@deleteGenre"],
 
     '/edit-film/:id' => ["GET" => "film/FilmController@showEditFilmPage"],
     '/delete-film' => ["POST" => "film/FilmController@deleteFilm"],
