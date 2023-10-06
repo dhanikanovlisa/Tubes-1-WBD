@@ -10,7 +10,7 @@
         <link rel="icon" href="images/icon/logo.ico">
         <!---Global CSS--->
         <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
-        <link rel="stylesheet" type="text/css"href="styles/template/Navbar.css">
+        <link rel="stylesheet" type="text/css" href="/styles/template/navbar.css">
         <link rel="stylesheet" type="text/css"href="styles/template/cardMovie.css">
         <link rel="stylesheet" type="text/css"href="styles/template/pagination.css">
         <!---Page specify CSS--->
@@ -27,27 +27,36 @@
     ?>
     <section>
         <header>
-            <h2>Search</h2>
+            <h1>Search Film</h1>
         </header>
     
         <form name='search-film' class='search-container'>
-            <div>
+            <div id='search-title-container'>
                 <label for='title' class='white-text'>Search</label>
-                <input name='title' id='title' type='text' placeholder='Search...'>
+                <div class='icon-container'>
+                    <i class='icon search-icon'></i>
+                    <input name='title' id='title' type='text' placeholder='Search...'>
+                </div>
             </div>
-            <div>
+            <div id='search-orderby-container'>
                 <label for='orderby' class='white-text'>Name</label>
-                <select name='orderby' id='orderby'>
-                    <option value='ASC' selected>Ascending (A-Z)</option>
-                    <option value='DESC'>Descending (Z-A)</option>
-                </select>
+                <div class='icon-container'>
+                    <i class='icon dropdown-icon'></i>
+                    <select name='orderby' id='orderby'>
+                        <option value='ASC' selected>Ascending (A-Z)</option>
+                        <option value='DESC'>Descending (Z-A)</option>
+                    </select>
+                </div>
             </div>
-            <div>
+            <div id='search-genre-container'>
                 <label for='genre' class='white-text'>Genre</label>
-                <select name='genre' id='genre'>
-                    <option value='' selected></option>
-                    <?php $searchPageController->generateGenres(); ?>
-                </select>
+                <div class='icon-container'>
+                    <i class='icon dropdown-icon'></i>
+                    <select name='genre' id='genre'>
+                        <option value='' selected></option>
+                        <?php $searchPageController->generateGenres(); ?>
+                    </select>
+                </div>
             </div>
         </form>
         <div id='result-container' class="cards">
