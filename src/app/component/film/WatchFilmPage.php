@@ -32,12 +32,7 @@
     $filmData = $filmController->getFilmData($filmID);
     $totalRow = count($filmData);
     // print_r($_SESSION['watch_log']);
-    $watchLog = isset($_SESSION['watch_log']) && isset($_SESSION['watch_log'][$filmID]) ? $_SESSION['watch_log'][$filmID] : null;
-    if($watchLog && isset($watchLog['last_played_time']))
-        $lastPlayedTime = $watchLog['last_played_time'];
-    else{
-        $lastPlayedTime = 0;
-    }
+    $startTime = isset($_COOKIE['lastPlayedTime/'.$filmID]) ? $_COOKIE['lastPlayedTime/'.$filmID] : 0;
 
     if ($totalRow == 0) {
         require_once  dirname(dirname(__DIR__)) . '/component/conditional/NotFound.php';
@@ -54,7 +49,7 @@
             <?php $filmController->generateWatchlistButton($filmID)?>
         </header>
         <video controls id='video-player' >
-            <?php $filmController->generateFilm($filmData['film_path'], $lastPlayedTime); ?>
+            <?php $filmController->generateFilm($filmData['film_path'], $startTime); ?>
         </video>
         <div id='details'>
             <div id='description' class='film-detail'>

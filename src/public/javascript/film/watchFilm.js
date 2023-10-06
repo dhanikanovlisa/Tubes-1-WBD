@@ -4,13 +4,7 @@ const pathname = window.location.pathname.split('/');
 const filmID = pathname[pathname.length-1];
 
 const updateTime = () => {
-    const xhr = new XMLHttpRequest();
-
-    xhr.open('POST', '/watch', true);
-    const formData = new FormData();
-    formData.append('film_id', filmID);
-    formData.append('last_played_time', videoPlayer.currentTime);
-    xhr.send(formData);
+    document.cookie = 'lastPlayedTime/'+filmID+'='+videoPlayer.currentTime;
 }
 
 let timeoutId = null;

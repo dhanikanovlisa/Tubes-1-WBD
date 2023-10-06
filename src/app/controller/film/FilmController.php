@@ -124,26 +124,6 @@ class FilmController
         }
         echo json_encode(["redirect_url" => "/detail-film/" . $_POST['film_id']]);
     }
-    
-    public function updateWatchLog(){
-        if(!isset($_POST['film_id'])){
-            http_response_code(400);
-            return;
-        }
-        $filmID = $_POST['film_id'];
-        echo $filmID;
-
-        if(!isset($_SESSION['watch_log'])){
-            $_SESSION['watch_log'] = array();
-        }
-        if(!isset($_SESSION['watch_log'][$filmID])){
-            $_SESSION['watch_log'][$filmID] = array();
-        }
-
-        if(isset($_POST['last_played_time'])) $_SESSION['watch_log'][$filmID]['last_played_time'] = $_POST['last_played_time'];
-
-        http_response_code(200);
-    }
 
     public function generateWatchlistButton($filmID){
         $add = "<button id='watchlist-button' class='text-black' value='add'>Add to Watchlist";

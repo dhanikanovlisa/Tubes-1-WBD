@@ -9,7 +9,6 @@ $route = [
     '/search/search' => ["GET" => "search/SearchPageController@fetchSearchResults"],
     '/watchlist' => ["GET" => "watchlist/WatchListPageController@showWatchListPage"],
     '/watch/:id' => ["GET" => "film/FilmController@showWatchFilmPage"],
-    '/watch' => ["POST" => "film/FilmController@updateWatchLog"],
     
     '/settings/:id' => ["GET" => "user/UserController@showProfileSettingsPage"],
     '/edit-profile/:id' => ["GET" => "user/UserController@showEditProfilePage"],
