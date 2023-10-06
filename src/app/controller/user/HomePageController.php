@@ -49,6 +49,10 @@ class HomePageController{
         if (empty($films) && $this->page == 1) echo "No film currently available";
     }
 
+    public function filmCount(){
+        return $this->filmModel->getFilmCount()['count'];
+    }
+    
     public function generateFilmHeader(){
         $film_count =  $this->filmModel->getFilmCount()['count'];
         $rand = rand(0, $film_count-1);
