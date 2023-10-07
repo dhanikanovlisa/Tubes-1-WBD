@@ -46,10 +46,11 @@
                 <div class="whole-container">
                     <div class="profile">
                         <img src="<?php
-                                    if ($user["photo_profile"] == null) {
+                                        
+                                    if ($userData["photo_profile"] == null) {
                                         echo "/images/assets/profile-placeholder.png";
                                     } else {
-                                        echo "/storage/profile/" . $user["photo_profile"];
+                                        echo "/storage/profile/" . $userData["photo_profile"];
                                     }
                                     ?>" alt="Profile Picture" />
                     </div>
