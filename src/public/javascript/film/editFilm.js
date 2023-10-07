@@ -31,6 +31,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+var modal = document.getElementById("confModal");
+var btn = document.getElementById("deleteButton");
+var span = document.getElementsByClassName("close")[0];
+var closeButton = document.getElementById("cancel");
+var okButton = document.getElementById("ok");
+
+function popModal() {
+    modal.style.display = "block";
+}
+function closeModal() {
+    modal.style.display = "none";
+}
+
 filmPoster.addEventListener('change', () => {
     filePosterName.textContent = "File Name: " + filmPoster.files[0].name;
 });
@@ -76,6 +89,10 @@ filmName && filmName.addEventListener('keyup', async (e) => {
     }
     removeErrorWarning(filmName, filmNameAlert);
 });
+
+function closePage(){
+    location.replace('/manage-film');
+}
 
 editFilmForm && editFilmForm.addEventListener('submit', async (e) => {
     e.preventDefault();

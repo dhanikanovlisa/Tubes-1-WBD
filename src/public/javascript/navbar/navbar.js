@@ -20,7 +20,7 @@ function logout(){
     xhr.send();
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE){
-            window.location.href = 'login';
+            location.replace('/login');
         }
     }
 }

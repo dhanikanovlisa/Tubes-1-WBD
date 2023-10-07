@@ -11,6 +11,7 @@
     <!---Global CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/film/editFilm.css">
@@ -20,7 +21,6 @@
     <?php
     include(dirname(__DIR__) . "/template/NavbarUser.php");
     require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
-    require_once dirname(dirname(__DIR__)) . '/utils/date.php';
     $hours = listofHour();
     $minutes = listofMinutes();
 
@@ -33,10 +33,9 @@
     }
 
     $filmDetail = new FilmController();
-    $filmData = $filmDetail->getFilmData($filmID); //udh bener querynya
-    $filmGenre = $filmDetail->getFilmGenre($filmID); //udh bener querynya
+    $filmData = $filmDetail->getFilmData($filmID);
+    $filmGenre = $filmDetail->getFilmGenre($filmID);
     $hourFilm = turnToHourAndMinute($filmData["duration"]);
-    $release = parseDate($filmData["date_release"]);
     $totalRow = count($filmData);
     ?>
     <div class='container'>
@@ -119,6 +118,7 @@
                             </div>
                             <div class="duration-select-container">
                                 <h3>Release Date</h3>
+
                                 <input type="date" id="filmDate" name="filmDate" value="" min="1950-01-01" max="2024-12-31" pattern="\d{4}-\d{2}-\d{2}" />
                             </div>
                             <div class="upload-content">
@@ -127,17 +127,17 @@
                                     <h3>Film Poster</h3>
                                     <input type="file" id="filmPoster" name="filmPoster" accept="image/*" class="inputFile" />
                                     <label for="filmPoster" class="file-style">
-                                    <div class="centered">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
-                                            <style>
-                                                svg {
-                                                    fill: #fff5f6
-                                                }
-                                            </style>
-                                            <path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 53 43 96 96 96H352c53 0 96-43 96-96V352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V352z" />
-                                        </svg>
-                                        <p class="button-text">Upload Film Poster</p>
-                                    </div>
+                                        <div class="centered">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
+                                                <style>
+                                                    svg {
+                                                        fill: #fff5f6
+                                                    }
+                                                </style>
+                                                <path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 53 43 96 96 96H352c53 0 96-43 96-96V352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V352z" />
+                                            </svg>
+                                            <p class="button-text">Upload Film Poster</p>
+                                        </div>
                                     </label>
                                     <div class="file-name" id="display-filePoster-name"></div>
                                 </div>
@@ -181,9 +181,21 @@
                                 </div>
                             </div>
                             <div class="button-container">
-                                <a href="/manage-film">
-                                    <button id="cancel" type="submit" class="button-red button-text">Cancel</button>
-                                </a>
+                                <button type="button" id="cancel" type="submit" class="button-red button-text" onclick="popModal()">Cancel</button>
+                                <div id="confModal" class="modal red-glow">
+                                    <div class="modal-content red-glow">
+                                        <div class="whole">
+                                            <div class="title-container">
+                                                <h3 class="text-black" id="main-message">Are you sure?</h3>
+                                                <p class="text-black" id="description-message">Canceling will delete all your progress</p>
+                                            </div>
+                                            <div class="button-container">
+                                                <button type="button" id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
+                                                <button type="button" id="ok" class="button-green button-text" onclick="closePage()">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <button id="saveButton" class="button-white button-text" onclick="succes()">Save</button>
                             </div>
                         </div>

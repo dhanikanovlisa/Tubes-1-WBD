@@ -17,6 +17,19 @@ const image = document.getElementById("toast-img");
 const message = document.getElementById("toast-msg");
 const saveButton = document.querySelector("#saveButton");
 
+var modal = document.getElementById("confModal");
+var btn = document.getElementById("deleteButton");
+var span = document.getElementsByClassName("close")[0];
+var closeButton = document.getElementById("cancel");
+var okButton = document.getElementById("ok");
+
+function popModal() {
+    modal.style.display = "block";
+}
+function closeModal() {
+    modal.style.display = "none";
+}
+
 let selectedGenres = [];
 document.addEventListener('DOMContentLoaded', function () {
     let genreCheckboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]');
@@ -31,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
 
 
 function succes() {
@@ -79,6 +94,7 @@ filmHeader.addEventListener('change', () => {
 });
 
 
+
 function setErrorWarning(input, desc, message) {
     input.className += ' error-input';
     desc.innerText = message;
@@ -87,6 +103,10 @@ function setErrorWarning(input, desc, message) {
 
 function removeErrorWarning(input, desc) {
     desc.style.display = 'none';
+}
+
+function closePage(){
+    location.replace('/manage-film');
 }
 
 filmName && filmName.addEventListener('keyup', async (e) => {
