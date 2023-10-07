@@ -34,7 +34,7 @@ class HomePageController{
     public function generatePagination(){
         $total_records = $this->filmModel->getFilmCount();
         if($total_records) $total_records=$total_records['count'];
-        $items_per_page = 2;
+        $items_per_page = 16;
         $current_page = $this->page;
 
         include(DIRECTORY . "/../component/template/pagination.php");
