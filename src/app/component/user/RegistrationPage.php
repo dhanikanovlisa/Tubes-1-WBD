@@ -25,26 +25,26 @@
         <form id="registration-form">
             <div class="container">
                 <label class="one" for="username">Username</label>
-                <input class="one" type="text" name="username" id="username" required/>
+                <input class="one" type="text" name="username" id="username" placeholder="john_doe" required/>
                 <div class="error" id="username-alert"></div>
 
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email" required/>
+                <input type="text" name="email" id="email" placeholder="johndoe@example.com" required/>
                 <div class="error" id="email-alert"></div>
 
                 <label for="phone-number">Phone Number</label>
-                <input type="text" name="phone-number" id="phone-number" required/>
+                <input type="text" name="phone-number" id="phone-number" placeholder="+6212345678900"required/>
                 <div class="error" id="phone-alert"></div>
 
                 <div class="half-container">
                     <div class="one-half">
                     <label for="first-name">First Name</label>
-                    <input type="text" name="first-name" id="first-name" required/>
+                    <input type="text" name="first-name" id="first-name" placeholder="John" required/>
                     </div>
 
                     <div class="two-half">
                     <label for="last-name">Last Name</label>
-                    <input type="text" name="last-name" id="last-name" required/>
+                    <input type="text" name="last-name" id="last-name" placeholder="Doe" required/>
                     </div>
                 </div>
                 <div class="error" id="name-alert"></div>
