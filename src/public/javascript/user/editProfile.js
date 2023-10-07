@@ -64,7 +64,7 @@ const closePage = (id) => {
 
 const usernameRegex = /^[a-z0-9_\.]+$/;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const phoneRegex = /^[0-9]+$/;
+const phoneRegex = /^\+[0-9]{7,14}$/;
 const nameRegex = /^[a-z ,.'-]+$/i;
 
 let usernameValid = false;

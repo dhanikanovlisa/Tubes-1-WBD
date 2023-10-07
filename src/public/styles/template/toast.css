@@ -1,13 +1,12 @@
-/* The snackbar - position it at the bottom and in the middle of the screen */
 #toast {
     visibility: hidden;
-    background-color: var(--white);
+    background-color: var(--red);
     border-radius: 10px; 
     padding: 20px 30px; 
     position: fixed;
     z-index: 4;
-    right: 3vw;
-    bottom: 3vw;
+    top: 3vw;
+    left: 50vw;
 
     display: flex;
     column-gap: 20px;
@@ -21,23 +20,23 @@
   }
   
   @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 3vw; opacity: 1;}
+    from {top: 0; opacity: 0;}
+    to {top: 3vw; opacity: 1;}
   }
   
   @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 3vw; opacity: 1;}
+    from {top: 0; opacity: 0;}
+    to {top: 3vw; opacity: 1;}
   }
   
   @-webkit-keyframes fadeout {
-    from {bottom: 3vw; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+    from {top: 3vw; opacity: 1;}
+    to {top: 0; opacity: 0;}
   }
   
   @keyframes fadeout {
-    from {bottom: 3vw; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+    from {top: 3vw; opacity: 1;}
+    to {top: 0; opacity: 0;}
   }
 
 .toast-img {

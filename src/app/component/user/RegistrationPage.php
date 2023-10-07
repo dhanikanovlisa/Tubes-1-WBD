@@ -28,7 +28,7 @@
                 <input class="one" type="text" name="username" id="username" placeholder="john_doe" required/>
                 <div class="error" id="username-alert"></div>
 
-                <label for="email">Email</label>
+                <label for="email">Email<span class="req">*</span></label>
                 <input type="text" name="email" id="email" placeholder="johndoe@example.com" required/>
                 <div class="error" id="email-alert"></div>
 
