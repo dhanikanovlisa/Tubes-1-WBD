@@ -19,9 +19,10 @@
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
     <?php
     require_once DIRECTORY . '/../controller/user/UserController.php';
-    $id = $_SESSION["user_id"];
-    /**IF someone tries to access URL */
 
+    
+    $id = $params["id"];
+    /**IF someone tries to access URL */
     $userDetail = new UserController();
     $userData = $userDetail->getUserByID($id);
     $totalRow = count($userData);

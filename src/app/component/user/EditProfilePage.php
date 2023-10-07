@@ -21,7 +21,7 @@
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
     <?php
     require_once DIRECTORY . '/../controller/user/UserController.php';
-    $id = $_SESSION["user_id"];
+    $id = $params["id"];
     /**IF someone tries to access URL */
 
     $userDetail = new UserController();

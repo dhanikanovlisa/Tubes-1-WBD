@@ -18,16 +18,19 @@
             <img id="photo-profile" class="photo-profile" src="<?php
                                                                 require_once DIRECTORY . '/../controller/user/UserController.php';
                                                                 $user = new UserController();
-                                                                $user = $user->getUserByID($_SESSION["user_id"]);
-                                                                if ($user["photo_profile"] == null) {
-                                                                    echo "/images/assets/profile-placeholder.png";
-                                                                } else {
-                                                                    echo "/storage/profile/" . $user["photo_profile"];
+                                                                if (isset($_SESSION["user_id"])) {
+                                                                    $user = $user->getUserByID($_SESSION["user_id"]);
+                                                                    if ($user["photo_profile"] == null) {
+                                                                        echo "/images/assets/profile-placeholder.png";
+                                                                    } else {
+                                                                        echo "/storage/profile/" . $user["photo_profile"];
+                                                                    }
                                                                 }
-                                                                ?>" onClick="userMenu()" 
-                                                                alt="profile picture"/>
+                                                                ?>" onClick="userMenu()" alt="profile picture" />
             <div class="user-menu" id="user-menu">
-                <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"] ?>">Settings</a>
+                <a class="hidden-link" href="/settings/<?php if (isset($_SESSION["user_id"])) {
+                                                            echo $_SESSION["user_id"];
+                                                        } ?>">Settings</a>
                 <a class="hidden-link" onClick="logout()">Logout</a>
             </div>
         <?php else : ?>
@@ -39,17 +42,22 @@
             <img id="photo-profile" class="photo-profile" src="<?php
                                                                 require_once DIRECTORY . '/../controller/user/UserController.php';
                                                                 $user = new UserController();
-                                                                $user = $user->getUserByID($_SESSION["user_id"]);
-                                                                if ($user["photo_profile"] == null) {
-                                                                    echo "/images/assets/profile-placeholder.png";
-                                                                } else {
-                                                                    echo "/storage/profile/" . $user["photo_profile"];
+                                                                if (isset($_SESSION["user_id"])) {
+                                                                    $user = $user->getUserByID($_SESSION["user_id"]);
+                                                                    if ($user["photo_profile"] == null) {
+                                                                        echo "/images/assets/profile-placeholder.png";
+                                                                    } else {
+                                                                        echo "/storage/profile/" . $user["photo_profile"];
+                                                                    }
                                                                 }
-                                                                ?>" onClick="userMenu()" 
-                                                                alt="profile picture"/>
+                                                                ?>" onclick="userMenu()" alt="profile picture" />
             <div class="user-menu" id="user-menu">
-            <a class="hidden-link" href="/settings/<?php echo $_SESSION["user_id"] ?>">Settings</a>
-                <a class="hidden-link" onClick="logout()">Logout</a>
+                <a class="hidden-link" href="/settings/<?php
+                                                        if (isset($_SESSION["user_id"])) {
+                                                            echo $_SESSION["user_id"];
+                                                        }
+                                                        ?>">Settings</a>
+                <a class="hidden-link" onclick="logout()">Logout</a>
             </div>
         <?php endif; ?>
     </div>
