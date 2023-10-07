@@ -19,6 +19,19 @@ const image = document.getElementById("toast-img");
 const message = document.getElementById("toast-msg");
 const saveButton = document.querySelector("#saveButton");
 
+var modal = document.getElementById("confModal");
+var btn = document.getElementById("deleteButton");
+var span = document.getElementsByClassName("close")[0];
+var closeButton = document.getElementById("cancel");
+var okButton = document.getElementById("ok");
+
+function popModal() {
+    modal.style.display = "block";
+}
+function closeModal() {
+    modal.style.display = "none";
+}
+
 function setErrorWarning(input, desc, message){
     input.className += ' error-input';
     desc.innerText = message;
@@ -46,7 +59,7 @@ function closeModal() {
     modal.style.display = "none";
 }
 const closePage = (id) => {
-    location.replace('/settings' + id);
+    location.replace('/settings/' + id);
 }
 
 const usernameRegex = /^[a-z0-9_\.]+$/;
@@ -153,9 +166,8 @@ function succes(){
 }
 
 editProfile && editProfile.addEventListener('submit', async (e) => {
-    e.preventDefault(userID);
+    e.preventDefault();
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', '/update-profile');
     const formData = new FormData();
     formData.append('user_id', userID);
     formData.append('username', usernameInput.value);
@@ -169,9 +181,9 @@ editProfile && editProfile.addEventListener('submit', async (e) => {
     } else {
         formData.append('photo_profile', "");
     }
+    xhr.open('POST', '/update-profile');
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
             setTimeout(() => {
                 location.replace(response.redirect_url);

@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="btn-contain">
                                     <div>
-                                        <button class="button-red button-text" onclick="popModal()">Cancel</button>
+                                        <button type="button" class="button-red button-text" onclick="popModal()">Cancel</button>
                                         <div id="confModal" class="modal red-glow">
                                             <div class="modal-content red-glow">
                                                 <div class="whole">
