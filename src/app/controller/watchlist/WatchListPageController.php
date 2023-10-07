@@ -73,7 +73,6 @@ class WatchListPageController{
     }
 
     public function removeFromWatchList(){
-        // print_r($_POST['film_id']);
         $this->watchListModel->deleteFilmFromWatchList($_SESSION['user_id'], $_POST['film_id']);
         header('Content-Type: application/json');
         http_response_code(200);

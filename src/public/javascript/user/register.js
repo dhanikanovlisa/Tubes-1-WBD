@@ -14,6 +14,14 @@ const nameAlert = document.getElementById('name-alert');
 const passwordAlert = document.getElementById('password-alert');
 const confirmPasswordAlert = document.getElementById('confirm-password-alert');
 
+let isUsernameValid = false;
+let isEmailValid = false;
+let isPhoneValid = false;
+let isFirstNameValid = false;
+let isLastNameValid = false;
+let isPasswordValid = false;
+let isConfirmPasswordValid = false;
+
 const toast= document.getElementById("toast");
 
 function setErrorWarning(input, desc, message){
@@ -28,7 +36,7 @@ function removeErrorWarning(input, desc){
     desc.style.display = 'none';
 }
 
-function popUpToast(){
+function registrationSuccessToast(){
     const image = document.getElementById("toast-img");
     const message = document.getElementById("toast-msg");
 
@@ -38,15 +46,21 @@ function popUpToast(){
     toast.className = "show";
 }
 
+function registrationFailedToast(){
+    const image = document.getElementById("toast-img");
+    const message = document.getElementById("toast-msg");
+
+    image.src = "/images/assets/cross.png";
+    message.className = "cross";
+    message.innerHTML = "Invalid input, please check your input again";
+    toast.className = "show";
+}
+
+
 const usernameRegex = /^[a-z0-9_\.]+$/;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const phoneRegex = /^[0-9]+$/;
 const nameRegex = /^[a-z ,.'-]+$/i;
-
-let usernameValid = false;
-let emailValid = false;
-let passwordValid = false;
-let passwordConfirmedValid = false;
 
 
 usernameInput && usernameInput.addEventListener('keyup', async(e) => {
@@ -68,6 +82,8 @@ usernameInput && usernameInput.addEventListener('keyup', async(e) => {
                 if (response.isExist){
                     setErrorWarning(usernameInput, usernameAlert, 'Username is already registered');
                     return;
+                } else {
+                    isUsernameValid = true;
                 }
             }
         }
@@ -93,6 +109,8 @@ emailInput && emailInput.addEventListener('keyup', async (e) => {
                 if (response.isExist){
                     setErrorWarning(emailInput, emailAlert, 'Email is already registered');
                     return;
+                } else {
+                    isEmailValid = true;
                 }
             }
         }
@@ -104,9 +122,11 @@ phoneInput && phoneInput.addEventListener('keyup', () => {
     const phone = phoneInput.value;
     if (!phoneRegex.test(phone)) {
         setErrorWarning(phoneInput, phoneAlert, 'Phone number format is incorrect');
+        isPhoneValid = false;
     }
     else {
         removeErrorWarning(phoneInput, phoneAlert);
+        isPhoneValid = true;
     }
 });
 
@@ -114,9 +134,11 @@ firstNameInput && firstNameInput.addEventListener('keyup', () => {
     const firstName = firstNameInput.value;
     if (!nameRegex.test(firstName)) {
         setErrorWarning(firstNameInput, nameAlert, 'First name format is incorrect');
+        isFirstNameValid = false;
     }
     else {
         removeErrorWarning(firstNameInput, nameAlert);
+        isFirstNameValid = true;
     }
 });
 
@@ -124,9 +146,11 @@ lastNameInput && lastNameInput.addEventListener('keyup', () => {
     const lastName = lastNameInput.value;
     if (!nameRegex.test(lastName)) {
         setErrorWarning(lastNameInput, nameAlert, 'Last name format is incorrect');
+        isLastNameValid = false;
     }
     else {
         removeErrorWarning(lastNameInput, nameAlert);
+        isLastNameValid = true;
     }
 });
 
@@ -134,9 +158,10 @@ passwordInput && passwordInput.addEventListener('keyup', () => {
     const password = passwordInput.value;
     if (password.length < 6) {
         setErrorWarning(passwordInput, passwordAlert, 'Password must be at least 6 characters');
+        isPasswordValid = false;
     }
     else {
-        passwordValid = true;
+        isPasswordValid = true;
         removeErrorWarning(passwordInput, passwordAlert);
     }
 });
@@ -145,37 +170,47 @@ confirmPasswordInput && confirmPasswordInput.addEventListener('keyup', () => {
     const confirmPassword = confirmPasswordInput.value;
     if (confirmPassword !== passwordInput.value) {
         setErrorWarning(confirmPasswordInput, confirmPasswordAlert, 'Password does not match');
+        isConfirmPasswordValid = false;
     }
     else {
-        passwordConfirmedValid = true;
+        isConfirmPasswordValid = true;
         removeErrorWarning(confirmPasswordInput, confirmPasswordAlert);
     }
 });
 
 registrationForm && registrationForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/register/register');
+    if (isUsernameValid && isEmailValid && isPhoneValid && isFirstNameValid && isLastNameValid && isPasswordValid && isConfirmPasswordValid) {
+        e.preventDefault();
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/register/register');
 
-    const formData = new FormData();
-    formData.append('username', usernameInput.value);
-    formData.append('email', emailInput.value);
-    formData.append('phone', phoneInput.value);
-    formData.append('firstName', firstNameInput.value);
-    formData.append('lastName', lastNameInput.value);
-    formData.append('password', passwordInput.value);
+        const formData = new FormData();
+        formData.append('username', usernameInput.value);
+        formData.append('email', emailInput.value);
+        formData.append('phone', phoneInput.value);
+        formData.append('firstName', firstNameInput.value);
+        formData.append('lastName', lastNameInput.value);
+        formData.append('password', passwordInput.value);
 
-    xhr.send(formData);
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            popUpToast();
-            setTimeout(function(){ 
-                toast.className = toast.className.replace("show", ""); 
-            }, 1700);
-            setTimeout(function(){ 
-                location.replace(response.redirect_url);
-            }, 1700);
+        xhr.send(formData);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+                const response = JSON.parse(xhr.responseText);
+                registrationSuccessToast();
+                setTimeout(function(){ 
+                    toast.className = toast.className.replace("show", ""); 
+                }, 1700);
+                setTimeout(function(){ 
+                    location.replace(response.redirect_url);
+                }, 1700);
+            }
         }
+    } else {
+        registrationFailedToast();
+        setTimeout(function(){ 
+            toast.className = toast.className.replace("show", ""); 
+        }, 1700);
+        e.preventDefault();
     }
 });
