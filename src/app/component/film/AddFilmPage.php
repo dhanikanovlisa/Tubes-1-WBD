@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
     <link rel="stylesheet" type="text/css" href="styles/template/Navbar.css">
     <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="styles/film/addFilm.css">
@@ -20,13 +21,6 @@
 
 <body>
     <?php include(dirname(__DIR__) . "/template/NavbarUser.php");
-    require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
-    require_once dirname(dirname(__DIR__)) . '/utils/date.php';
-    $year = listofYear();
-    $month = listofMonth();
-    $date = listofDate();
-    $minutes = listofMinutes();
-    $hours = listofHour();
     ?>
     <div class='container'>
         <h2>Add Film</h2>
@@ -66,7 +60,6 @@
                                             </label>
                                         </div>
                                     <?php } ?>
-                                    <div id="checkbox-alert"></div>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +85,7 @@
                                             <select id="filmMinuteDuration" name="filmMinuteDuration">
                                                 <option value="" disabled selected>MM</option>
                                                 <?php
-    
+
                                                 foreach ($minutes as $m) {
                                                 ?>
                                                     <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
@@ -170,9 +163,22 @@
                             </div>
                         </div>
                         <div class="button-container">
-                            <a href="/manage-film">
-                                <button id="cancel" type="submit" class="button-red button-text">Cancel</button>
-                            </a>
+
+                            <button type="button" id="cancel" type="submit" class="button-red button-text">Cancel</button>
+                            <div id="confModal" class="modal red-glow">
+                                <div class="modal-content red-glow">
+                                    <div class="whole">
+                                        <div class="title-container">
+                                            <h3 class="text-black" id="main-message">Are you sure?</h3>
+                                            <p class="text-black" id="description-message">Canceling will delete all your progress</p>
+                                        </div>
+                                        <div class="button-container">
+                                            <button type="button" id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
+                                            <button type="button" id="ok" class="button-green button-text" onclick="closePage()">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <button id="saveButton" class="button-white button-text" onclick="succes()">Save</button>
                         </div>
                     </div>
