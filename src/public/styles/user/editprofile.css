@@ -92,3 +92,9 @@
 .small-text {
     font-size: 0.8rem;
 }
+
+.container{
+    display:flex;
+    flex-direction: column;
+    gap:1rem;
+}

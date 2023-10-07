@@ -104,8 +104,8 @@
                                                         <p class="text-black" id="description-message">Canceling will delete all your progress</p>
                                                     </div>
                                                     <div class="button-container">
-                                                        <button id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
-                                                        <button id="ok" class="button-green button-text" onclick="closePage(<?php echo $userData['user_id']; ?>)">OK</button>
+                                                        <button type="button" id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
+                                                        <button type="button" id="ok" class="button-green button-text" onclick="closePage(<?php echo $userData['user_id']; ?>)">OK</button>
                                                     </div>
                                                 </div>
                                             </div>
