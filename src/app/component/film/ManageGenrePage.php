@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
+    <?php include (DIRECTORY. "/../component/template/NavbarUser.php"); ?>
     <?php
     require_once DIRECTORY . '/../controller/film/GenreController.php';
     $genre = new GenreController();
@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
+    <?php include(DIRECTORY. "/../component/template/toast.php"); ?>
 </body>
 
 </html>

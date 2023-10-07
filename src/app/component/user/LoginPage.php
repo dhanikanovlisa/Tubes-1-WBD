@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <?php include(dirname(__DIR__) . "/template/NavbarUser.php");?>
+    <?php include (DIRECTORY. "/../component/template/NavbarUser.php");?>
     <div class="auth-page">
         <h1>Login</h1>
         <form id="login-form">

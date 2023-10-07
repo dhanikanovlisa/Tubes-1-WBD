@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
+    <?php include (DIRECTORY. "/../component/template/NavbarUser.php"); ?>
     <?php
     require_once DIRECTORY . '/../controller/user/UserController.php';
     $id = $params["id"];
@@ -125,7 +125,7 @@
         var userID = <?php echo json_encode($id); ?>;
     </script>
     <script type="text/javascript" src="/javascript/user/editProfile.js" defer></script>
-    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
+    <?php include(DIRECTORY. "/../component/template/toast.php"); ?>
 </body>
 
 </html>

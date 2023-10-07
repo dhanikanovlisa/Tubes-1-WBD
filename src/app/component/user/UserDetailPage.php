@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
+    <?php include (DIRECTORY. "/../component/template/NavbarUser.php"); ?>
     <?php
     $id = $params['id'];
     /**IF someone tries to access URL */
@@ -34,7 +34,7 @@
     $userData = $userDetail->getUserBYID($id);
     $totalRow = count($userData);
     if ($totalRow == 0) {
-        require_once  dirname(dirname(__DIR__)) . '/component/conditional/NotFound.php';
+        require_once  DIRECTORY . '/../component/conditional/NotFound.php';
         exit;
     } else {
     ?>
@@ -116,7 +116,7 @@
     <?php
     }
     ?>
-    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
+    <?php include(DIRECTORY. "/../component/template/toast.php"); ?>
 </body>
 
 </html>

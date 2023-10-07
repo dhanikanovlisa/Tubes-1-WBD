@@ -19,8 +19,8 @@
 
 <body>
     <?php
-    include(dirname(__DIR__) . "/template/NavbarUser.php");
-    require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
+    include (DIRECTORY. "/../component/template/NavbarUser.php");
+    require_once DIRECTORY . '/../utils/duration.php';
     $hours = listofHour();
     $minutes = listofMinutes();
 
@@ -41,7 +41,7 @@
     <div class='container'>
         <?php
         if ($totalRow == 0) {
-            require_once dirname(dirname(__DIR__)) . '/component/conditional/NotFound.php';
+            require_once DIRECTORY . '/../component/conditional/NotFound.php';
             exit;
         } else {
         ?>
@@ -68,7 +68,7 @@
                                 <div class="input-container">
                                     <h3>Genre</h3>
                                     <?php
-                                    require_once dirname(dirname(__DIR__)) . '/controller/film/GenreController.php';
+                                    require_once DIRECTORY . '/../controller/film/GenreController.php';
                                     $genre = new GenreController();
                                     $result = $genre->getAllGenre();
                                     ?>
@@ -210,7 +210,7 @@
         var filmID = <?php echo json_encode($filmID); ?>;
     </script>
     <script src="/javascript/film/editFilm.js" defer></script>
-    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
+    <?php include(DIRECTORY. "/../component/template/toast.php"); ?>
 </body>
 
 

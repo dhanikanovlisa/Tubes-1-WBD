@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<?php include (dirname(__DIR__) . "/template/NavbarUser.php"); ?>
+<?php include (DIRECTORY. "/../component/template/NavbarUser.php"); ?>
     <?php
     require_once DIRECTORY . '/../controller/user/UserController.php';
     $user = new UserController();

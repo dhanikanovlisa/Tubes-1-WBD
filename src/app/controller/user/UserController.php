@@ -67,12 +67,12 @@ class UserController
     /**USER */
     public function showProfileSettingsPage($params = [])
     {
-        require_once dirname(dirname(__DIR__)) . "/component/user/ProfileSettingsPage.php";
+        require_once DIRECTORY . "/../component/user/ProfileSettingsPage.php";
     }
 
         public function showEditProfilePage($params = [])
     {
-        require_once dirname(dirname(__DIR__)) . "/component/user/EditProfilePage.php";
+        require_once DIRECTORY . "/../component/user/EditProfilePage.php";
     }
 
     public function editProfile()
@@ -147,7 +147,7 @@ class UserController
 
     public function showUserDetailPage($params = []){
         if ($this->middleware->isAdmin()) {
-            require_once dirname(dirname(__DIR__)) . "/component/user/UserDetailPage.php";
+            require_once DIRECTORY . "/../component/user/UserDetailPage.php";
         } else if ($this->middleware->isAuthenticated()) {
             header("Location: /restrict");
         } else {
