@@ -189,7 +189,7 @@
                                                 <h3 class="text-black" id="main-message">Are you sure?</h3>
                                                 <p class="text-black" id="description-message">Canceling will delete all your progress</p>
                                             </div>
-                                            <div class="button-container">
+                                            <div class="button-modal-container">
                                                 <button type="button" id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
                                                 <button type="button" id="ok" class="button-green button-text" onclick="closePage()">OK</button>
                                             </div>

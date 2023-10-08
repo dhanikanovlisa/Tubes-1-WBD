@@ -21,6 +21,10 @@
 
 <body>
     <?php include(DIRECTORY . "/../component/template/NavbarUser.php");
+    require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
+    $minutes = listofMinutes();
+    $hours = listofHour();
+
     ?>
     <div class='container'>
         <h2>Add Film</h2>
@@ -60,10 +64,12 @@
                                             </label>
                                         </div>
                                     <?php } ?>
+                                    <div id="checkbox-alert"></div>
                                 </div>
+
                             </div>
                         </div>
-                        <div class=:>
+                        <div>
 
                             <div>
                                 <div class="duration-select-container">
@@ -172,7 +178,7 @@
                                             <h3 class="text-black" id="main-message">Are you sure?</h3>
                                             <p class="text-black" id="description-message">Canceling will delete all your progress</p>
                                         </div>
-                                        <div class="button-container">
+                                        <div class="button-modal-container">
                                             <button type="button" id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
                                             <button type="button" id="ok" class="button-green button-text" onclick="closePage()">OK</button>
                                         </div>
