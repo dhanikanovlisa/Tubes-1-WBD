@@ -32,7 +32,7 @@ function closeModal() {
 
 let selectedGenres = [];
 document.addEventListener('DOMContentLoaded', function () {
-    let genreCheckboxes = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
+    let genreCheckboxes = document.querySelectorAll('.check-container input[type="checkbox"]');
     genreCheckboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
             if (this.checked) {
@@ -112,15 +112,18 @@ function closePage(){
 filmName && filmName.addEventListener('keyup', async (e) => {
     const film_name = filmName.value;
     e.preventDefault();
-    try {
-        const response = await fetch(`/check/filmname/:${film_name}`);
-        const data = await response.json();
-        if (data.isExist) {
-            setErrorWarning(filmName, filmNameAlert, 'Film Name Already Exist');
-            return;
+    var xhr_uname = new XMLHttpRequest();
+    xhr_uname.open('GET', '/check/filmname/:' + film_name);
+
+    xhr_uname.send();
+    xhr_uname.onreadystatechange = () => {
+        if (xhr_uname.readyState === XMLHttpRequest.DONE) {
+            const response = JSON.parse(xhr_uname.responseText);
+            if (response.isExist) {
+                setErrorWarning(filmName, filmNameAlert, 'Film Name Already Exist');
+                return;
+            }
         }
-    } catch (error) {
-        console.error(error);
     }
     removeErrorWarning(filmName, filmNameAlert);
 });
