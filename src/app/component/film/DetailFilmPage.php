@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <?php include(dirname(__DIR__) . "/template/NavbarUser.php"); ?>
+    <?php include(DIRECTORY. "/../component/template/NavbarUser.php"); ?>
     <?php
 
     $filmID = $params['id'];
@@ -38,7 +38,7 @@
     <div id="" class='container'>
         <?php
         if ($totalRow == 0) {
-            require_once dirname(dirname(__DIR__)) . '/component/conditional/NotFound.php';
+            require_once DIRECTORY . '/../component/conditional/NotFound.php';
             exit;
         } else {
         ?>
@@ -70,7 +70,7 @@
                             <p><?php echo $filmData["date_release"] ?></p>
                             <h3>Duration</h3>
                             <?php
-                            require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
+                            require_once DIRECTORY . '/../utils/duration.php';
                             $result = turnToHourAndMinute($filmData["duration"]);
                             echo "<p>" . $result["hour"] . " hour " . $result["minute"] . " minute </p>";
                             ?>
@@ -104,7 +104,7 @@
         ?>
         
     </div>
-    <?php include(dirname(__DIR__) . "/template/toast.php"); ?>
+    <?php include(DIRECTORY. "/../component/template/toast.php"); ?>
 </body>
 
 
