@@ -174,7 +174,7 @@ editProfile && editProfile.addEventListener('submit', async (e) => {
     formData.append('first_name', firstNameInput.value);
     formData.append('last_name', lastNameInput.value);
     formData.append('email', emailInput.value);
-    console.log(typeof phoneInput.value);
+
     formData.append('phone_number', phoneInput.value);
     if(profilePicture.files[0] != undefined){
         formData.append('photo_profile', profilePicture.files[0].name);

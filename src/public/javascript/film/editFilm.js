@@ -18,7 +18,7 @@ const saveButton = document.querySelector("#saveButton");
 
 let selectedGenres = [];
 document.addEventListener('DOMContentLoaded', function () {
-    let genreCheckboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]');
+    let genreCheckboxes = document.querySelectorAll('.check-container input[type="checkbox"]');
     genreCheckboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
             if (this.checked) {
@@ -79,7 +79,6 @@ filmName && filmName.addEventListener('keyup', async (e) => {
     xhr_uname.send();
     xhr_uname.onreadystatechange = () => {
         if (xhr_uname.readyState === XMLHttpRequest.DONE) {
-            console.log(xhr_uname.responseText);
             const response = JSON.parse(xhr_uname.responseText);
             if (response.isExist) {
                 setErrorWarning(filmName, filmNameAlert, 'Film Name Already Exist');
@@ -98,8 +97,7 @@ editFilmForm && editFilmForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/update-film');
-    console.log(filmHourDuration.value);
-    console.log(filmMinuteDuration.value);
+
     const formData = new FormData();
     formData.append('film_id', filmID);
     formData.append('title', filmName.value);
@@ -131,7 +129,6 @@ editFilmForm && editFilmForm.addEventListener('submit', async (e) => {
 
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
             setTimeout(() => {
                 location.replace(response.redirect_url);

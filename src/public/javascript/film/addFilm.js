@@ -32,7 +32,7 @@ function closeModal() {
 
 let selectedGenres = [];
 document.addEventListener('DOMContentLoaded', function () {
-    let genreCheckboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]');
+    let genreCheckboxes = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
     genreCheckboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
             if (this.checked) {
@@ -58,7 +58,7 @@ function succes() {
         if (saveButton.innerHTML == "Save") {
             image.src = "/images/assets/check.png";
             message.className = "check";
-            message.innerHTML = "Succesfully updated film";
+            message.innerHTML = "Succesfully added film";
             toast.className = "show";
         }
     }
@@ -112,13 +112,12 @@ function closePage(){
 filmName && filmName.addEventListener('keyup', async (e) => {
     const film_name = filmName.value;
     e.preventDefault();
-    const xhr_uname = new XMLHttpRequest();
+    var xhr_uname = new XMLHttpRequest();
     xhr_uname.open('GET', '/check/filmname/:' + film_name);
 
     xhr_uname.send();
     xhr_uname.onreadystatechange = () => {
         if (xhr_uname.readyState === XMLHttpRequest.DONE) {
-            console.log(xhr_uname.responseText);
             const response = JSON.parse(xhr_uname.responseText);
             if (response.isExist) {
                 setErrorWarning(filmName, filmNameAlert, 'Film Name Already Exist');
@@ -153,7 +152,7 @@ addFilmForm && addFilmForm.addEventListener('submit', async (e) => {
 
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(xhr.responseText);
+
                 let response = JSON.parse(xhr.responseText);
                 setTimeout(() => {
                     location.replace(response.redirect_url);

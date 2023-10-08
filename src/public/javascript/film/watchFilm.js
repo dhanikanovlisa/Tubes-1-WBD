@@ -38,7 +38,7 @@ buttonWatchlist && buttonWatchlist.addEventListener('click', ()=>{
             if(xhr.status === 200){
                 buttonWatchlist.innerText = 'Remove from watchlist';
                 buttonWatchlist.setAttribute('value', 'remove');
-                console.log('added');
+                
             }
         }
     }
@@ -51,7 +51,7 @@ buttonWatchlist && buttonWatchlist.addEventListener('click', ()=>{
             if(xhr.status === 200){
                 buttonWatchlist.innerText = 'Add to Watchlist';
                 buttonWatchlist.setAttribute('value', 'add');
-                console.log('removed');
+
             }
         }
     }

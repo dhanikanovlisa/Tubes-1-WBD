@@ -16,7 +16,9 @@ Aplikasi ini dibangun menggunakan vanilla PHP, Javascript, HTML dan CSS dengan m
 11. User List
 12. Delete User
 13. Change User Status
-
+14. Add Genre
+15. Delete Genre
+16. Edit profile
 
 # Cara instalasi
 1. Clone repository ini dengan perintah `git clone https://gitlab.informatika.org/if3110-2023-01-34/tugas-besar-1.git`
@@ -37,6 +39,29 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 3. Pastikan jika ingin mengupload profile picture, subtitle tersebut berada pada folder `storage/profile`
 
 # Screenshot Aplikasi
+![image](screenshots/login.jpg)
+![image](screenshots/registration.jpg)
+![image](screenshots/homepage.jpg)
+![image](screenshots/search.jpg)
+![image](screenshots/watch.jpg)
+![image](screenshots/watchlist.jpg)
+![image](screenshots/manage_film.jpg)
+![image](screenshots/add_film.jpg)
+![image](screenshots/add_film_2.jpg)
+![image](screenshots/add_film_3.jpg)
+![image](screenshots/detail_film.jpg)
+![image](screenshots/edit_film.jpg)
+![image](screenshots/delete_film.jpg)
+![image](screenshots/manage_genre.jpg)
+![image](screenshots/add_genre.jpg)
+![image](screenshots/delete_genre.jpg)
+![image](screenshots/edit_profile.jpg)
+![image](screenshots/edit_profile_2.jpg)
+![image](screenshots/edit_profile_3.jpg)
+![image](screenshots/manage_user.jpg)
+![image](screenshots/manage_profile_user_by_admin.jpg)
+![image](screenshots/404.jpg)
+![image](screenshots/admin_mode.jpg)
 
 # Pembagian Tugas
 ## Server Side
@@ -58,7 +83,7 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 | **Change User Status** | 13521132  |
 | **Add Genre**       | 13521132     |
 | **Delete Genre**    | 13521132     |
-
+| **Edit Profile**    | 13521132     |
 
 
 
@@ -81,4 +106,4 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 | **Change User Status** | 13521132  |
 | **Add Genre**       | 13521132     |
 | **Delete Genre**    | 13521132     |
-
+| **Edit Profile**    | 13521132     |

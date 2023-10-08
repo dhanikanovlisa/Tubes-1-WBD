@@ -27,7 +27,7 @@
     ?>
     <section>
         <header>
-            <h2>Your Watchlist</h2>
+            <h1>Your Watchlist</h1>
         </header>
         <div class='cards'>
             <?php 

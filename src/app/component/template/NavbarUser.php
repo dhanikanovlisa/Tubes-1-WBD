@@ -2,7 +2,15 @@
 <nav class="navbar">
     <?php require_once  DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
     $authMiddleware = new AuthenticationMiddleware(); ?>
-    <a href="/home">
+    <a href="<?php 
+        if (!$authMiddleware->isAuthenticated()) {
+            echo "/home";
+        } elseif ($authMiddleware->isAdmin()){
+            echo "/manage-film";
+        } else {
+            echo "/login";
+        }
+    ?>">
         <img src="/images/assets/logo_navbar.svg" class="logo" alt="logo">
     </a>
     <div class="navbar-link" id="navbar-link">
