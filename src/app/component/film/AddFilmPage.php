@@ -103,7 +103,7 @@
                         <div class="duration-select-container">
 
                             <h3>Release Date<span class="req">*</span></h3>
-
+                            <label for="filmDate">Release Date</label>
                             <input type="date" id="filmDate" name="filmDate" value="" min="1950-01-01" max="2024-12-31" pattern="\d{4}-\d{2}-\d{2}" />
                         </div>
                         <div class="upload-content">
@@ -167,7 +167,7 @@
                             </div>
                         </div>
                         <div class="button-container">
-                            <button type="button" id="cancel" type="submit" class="button-red button-text">Cancel</button>
+                            <button type="button" id="cancel" type="submit" class="button-red button-text" onclick="popModal()" aria-label="Cancel adding film">Cancel</button>
                             <div id="confModal" class="modal red-glow">
                                 <div class="modal-content red-glow">
                                     <div class="whole">
@@ -176,13 +176,13 @@
                                             <p class="text-black" id="description-message">Canceling will delete all your progress</p>
                                         </div>
                                         <div class="button-modal-container">
-                                            <button type="button" id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
-                                            <button type="button" id="ok" class="button-green button-text" onclick="closePage()">OK</button>
+                                            <button type="button" id="cancel-modal" class="button-red button-text" onclick="closeModal()" aria-label="Cancel modal">Cancel</button>
+                                            <button type="button" id="ok" class="button-green button-text" onclick="closePage()" aria-label="Ok modal">OK</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button id="saveButton" class="button-white button-text" onclick="succes()">Save</button>
+                            <button id="saveButton" class="button-white button-text" onclick="succes()" aria-label="Saving Add Film">Save</button>
                         </div>
                     </div>
                 </form>

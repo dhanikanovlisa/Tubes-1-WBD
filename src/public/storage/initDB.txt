@@ -21,6 +21,7 @@ $db->callQuery("INSERT INTO users (
     'profile1.jpg',
     true
 );");
+$db->execute();
 $db->callQuery("INSERT INTO users (
     username,
     first_name,

@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!---Title--->
     <title>Notflix</title>
     <!---Icon--->
@@ -39,7 +40,7 @@
         }
         ?>
         <a href="<?php echo $link; ?>">
-            <button class="button-red button-text red-glow">Back to Home</button>
+            <button class="button-red button-text red-glow"aria-label="Back To Home">Back to Home</button>
         </a>
     </div>
 </body>

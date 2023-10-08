@@ -63,6 +63,25 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 ![image](screenshots/404.jpg)
 ![image](screenshots/admin_mode.jpg)
 
+# Lighthouse
+![image](screenshots/lighthouse/login.jpg)
+![image](screenshots/lighthouse/registration.jpg)  
+![image](screenshots/lighthouse/homepage.jpg)
+![image](screenshots/lighthouse/search.jpg)
+![image](screenshots/lighthouse/watch.jpg)
+![image](screenshots/lighthouse/watchlist.jpg)
+![image](screenshots/lighthouse/add_film.jpg)
+![image](screenshots/lighthouse/detail_film.jpg)
+![image](screenshots/lighthouse/edit_film.jpg)
+![image](screenshots/lighthouse/manage_film.jpg)
+![image](screenshots/lighthouse/manage_genre.jpg)
+![image](screenshots/lighthouse/manage_user.jpg)
+![image](screenshots/lighthouse/detail_user.jpg)
+![image](screenshots/lighthouse/profile_settings.jpg)
+![image](screenshots/lighthouse/404.jpg)
+![image](screenshots/lighthouse/restrict.jpg)
+
+
 # Pembagian Tugas
 ## Server Side
 | Feature             | NIM          |

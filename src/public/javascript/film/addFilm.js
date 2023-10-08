@@ -20,7 +20,7 @@ const saveButton = document.querySelector("#saveButton");
 var modal = document.getElementById("confModal");
 var btn = document.getElementById("deleteButton");
 var span = document.getElementsByClassName("close")[0];
-var closeButton = document.getElementById("cancel");
+var closeButton = document.getElementById("cancel-modal");
 var okButton = document.getElementById("ok");
 
 function popModal() {
@@ -112,18 +112,15 @@ function closePage(){
 filmName && filmName.addEventListener('keyup', async (e) => {
     const film_name = filmName.value;
     e.preventDefault();
-    var xhr_uname = new XMLHttpRequest();
-    xhr_uname.open('GET', '/check/filmname/:' + film_name);
-
-    xhr_uname.send();
-    xhr_uname.onreadystatechange = () => {
-        if (xhr_uname.readyState === XMLHttpRequest.DONE) {
-            const response = JSON.parse(xhr_uname.responseText);
-            if (response.isExist) {
-                setErrorWarning(filmName, filmNameAlert, 'Film Name Already Exist');
-                return;
-            }
+    try {
+        const response = await fetch(`/check/filmname/:${film_name}`);
+        const data = await response.json();
+        if (data.isExist) {
+            setErrorWarning(filmName, filmNameAlert, 'Film Name Already Exist');
+            return;
         }
+    } catch (error) {
+        console.error(error);
     }
     removeErrorWarning(filmName, filmNameAlert);
 });
@@ -152,7 +149,7 @@ addFilmForm && addFilmForm.addEventListener('submit', async (e) => {
 
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
-
+                console.log(xhr.responseText);
                 let response = JSON.parse(xhr.responseText);
                 setTimeout(() => {
                     location.replace(response.redirect_url);

@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!---Title--->
         <title>Notflix</title>
         <!---Icon--->
@@ -19,7 +20,7 @@
         <h1 class="text-red">Oops!</h1>
         <h2>You Do Not Have Access</h2>
         <a href="/home">
-            <button class="button-red button-text red">Back to Home</button>
+            <button class="button-red button-text red" aria-label="Back To Home">Back to Home</button>
         </a>
     </div>
 </body>
