@@ -67,6 +67,7 @@ usernameInput && usernameInput.addEventListener('keyup', async(e) => {
 
     if (!usernameRegex.test(username)) {
         setErrorWarning(usernameInput, usernameAlert, 'Username format is incorrect');
+        isUsernameValid = false;
         return;
     }
     else {
@@ -80,6 +81,7 @@ usernameInput && usernameInput.addEventListener('keyup', async(e) => {
                 const response = JSON.parse(xhr_uname.responseText);
                 if (response.isExist){
                     setErrorWarning(usernameInput, usernameAlert, 'Username is already registered');
+                    isUsernameValid = false;
                     return;
                 } else {
                     isUsernameValid = true;
@@ -94,6 +96,7 @@ emailInput && emailInput.addEventListener('keyup', async (e) => {
     const email = emailInput.value;
     if (!emailRegex.test(email)) {
         setErrorWarning(emailInput, emailAlert, 'Email format is incorrect');
+        isEmailValid = false;
         return;
     }
     else {
@@ -107,6 +110,7 @@ emailInput && emailInput.addEventListener('keyup', async (e) => {
                 const response = JSON.parse(xhr.responseText);
                 if (response.isExist){
                     setErrorWarning(emailInput, emailAlert, 'Email is already registered');
+                    isEmailValid = false;
                     return;
                 } else {
                     isEmailValid = true;
