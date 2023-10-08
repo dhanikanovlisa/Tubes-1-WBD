@@ -16,6 +16,7 @@
         }
         if($current_page!=1){
             $target = '<';
+            $is_active = false;
             include (DIRECTORY . "/../component/template/paginationButton.php");
         }
         for($i=$start; $i<=$bound; $i++){
@@ -26,6 +27,7 @@
         }
         if($current_page!=$totalpages && $total_records>0){
             $target = '>';
+            $is_active = false;
             include (DIRECTORY . "/../component/template/paginationButton.php");
         }?>
 </div>
