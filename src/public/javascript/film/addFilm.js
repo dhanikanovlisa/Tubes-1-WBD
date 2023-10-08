@@ -118,7 +118,6 @@ filmName && filmName.addEventListener('keyup', async (e) => {
     xhr_uname.send();
     xhr_uname.onreadystatechange = () => {
         if (xhr_uname.readyState === XMLHttpRequest.DONE) {
-            console.log(xhr_uname.responseText);
             const response = JSON.parse(xhr_uname.responseText);
             if (response.isExist) {
                 setErrorWarning(filmName, filmNameAlert, 'Film Name Already Exist');
@@ -153,7 +152,7 @@ addFilmForm && addFilmForm.addEventListener('submit', async (e) => {
 
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(xhr.responseText);
+
                 let response = JSON.parse(xhr.responseText);
                 setTimeout(() => {
                     location.replace(response.redirect_url);

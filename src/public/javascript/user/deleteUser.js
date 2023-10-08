@@ -37,7 +37,6 @@ const deleteUser = (id) => {
 
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
             setTimeout(() => {
                 location.replace(response.redirect_url);

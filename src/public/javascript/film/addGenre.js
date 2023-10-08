@@ -40,7 +40,6 @@ genreName && genreName.addEventListener('keyup', async(e) => {
         xhr.send();
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE){
-                console.log(xhr.responseText);
                 const response = JSON.parse(xhr.responseText);
                 if (response.isExist){
                     setErrorWarning(genreName, genreAlert, 'Genre already exists');
@@ -64,7 +63,6 @@ addGenreForm && addGenreForm.addEventListener('submit', async (e) => {
 
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText);
             let response = JSON.parse(xhr.responseText);
             succes();
             setTimeout(() => {
