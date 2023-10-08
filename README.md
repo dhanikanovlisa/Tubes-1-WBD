@@ -61,7 +61,7 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 ![image](screenshots/manage_user.jpg)
 ![image](screenshots/manage_profile_user_by_admin.jpg)
 ![image](screenshots/404.jpg)
-![image](screenshots/admin mode.jpg)
+![image](screenshots/admin_mode.jpg)
 
 # Pembagian Tugas
 ## Server Side
