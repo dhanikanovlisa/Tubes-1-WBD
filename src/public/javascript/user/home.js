@@ -22,7 +22,7 @@ function watchListButton(){
                         response = JSON.parse(xhr.responseText);
                         image.src = "/images/assets/check.png";
                         message.className = "check";
-                        message.innerHTML = response.message + "efsgtrhyjhgrefwrhjhgeftryjhgfeefethryjgrf";
+                        message.innerHTML = response.message;
                         toast.className = "show";
                         watchlist.innerHTML = "✔";
                     }
