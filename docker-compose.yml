@@ -6,8 +6,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./src/app:/var/www/app
-      - ./src/public:/var/www/html
+      - ./src:/var/www/html
   postgres:
     image: postgres:latest
     env_file: .env
