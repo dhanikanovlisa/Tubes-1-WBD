@@ -236,8 +236,6 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
     display: none;
 }
 
-
-
 select {
     appearance: none;
     outline: 10px red;
