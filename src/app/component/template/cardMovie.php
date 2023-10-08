@@ -1,15 +1,22 @@
 <?php
-require_once DIRECTORY . '/../middlewares/AuthenticationMiddleware.php';
-$authMiddleware = new AuthenticationMiddleware();
+require_once  DIRECTORY . '/../controller/user/UserController.php';
 
-$link = "/login"; // Default link
+$link = '';
 
-if ($authMiddleware->isAuthenticated()) {
-    $link = "watch/{$film['film_id']}";
-} elseif ($authMiddleware->isAdmin()) {
-    $link = "detail-film/{$film['film_id']}";
+if (isset($_SESSION['user_id'])) {
+    $id = $_SESSION['user_id'];
+    $userDetail = new UserController();
+    $userData = $userDetail->getUserBYID($id);
+    if ($userData['is_admin'] == 1) {
+        $link = '/detail-film/' . $film['film_id'];
+    } elseif ($userData['is_admin'] == 0) {
+        $link = '/watch/' . $film['film_id'];
+    } else {
+        $link = '/login';
+    }
+} else {
+    $link = '/login';
 }
-
 ?>
 
 <a href="<?php echo $link; ?>">
