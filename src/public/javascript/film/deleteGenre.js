@@ -1,13 +1,15 @@
-var modal = document.getElementById("confModal");
 var btn = document.getElementById("deleteButton");
 var span = document.getElementsByClassName("close")[0];
 var closeButton = document.getElementById("cancel");
 var okButton = document.getElementById("ok");
 
-function popModal() {
+function popModal(genreId) {
+    var modal = document.getElementById('confModal_' + genreId);
     modal.style.display = "block";
 }
-function closeModal() {
+
+function closeModal(genreId) {
+    var modal = document.getElementById('confModal_' + genreId);
     modal.style.display = "none";
 }
 
@@ -16,13 +18,13 @@ const image = document.getElementById("toast-img");
 const message = document.getElementById("toast-msg");
 const deleteButton = document.querySelector("#ok");
 
-function succes() {
+function success() {
     if (deleteButton.innerHTML == "OK") {
         image.src = "/images/assets/check.png";
         message.className = "check";
-        message.innerHTML = "Succesfully deleted film";
+        message.innerHTML = "Successfully deleted genre";
         toast.className = "show";
-    } 
+    }
 
     setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 1700);
 }
@@ -33,7 +35,7 @@ function fail() {
         message.className = "cross";
         message.innerHTML = "Cannot delete genre";
         toast.className = "show";
-    } 
+    }
 
     setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 1700);
 }
@@ -44,20 +46,19 @@ const deleteGenre = (id) => {
 
     const formData = new FormData();
     formData.append('genre_id', id);
-    
-    
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
 
-            const response = JSON.parse(xhr.responseText);
-            succes();
-            setTimeout(() => {
-                location.replace(response.redirect_url);
-            }, 1000);
-            modal.style.display = "none";
-            succes();
-        } else {
-            fail();
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                success();
+                setTimeout(() => {
+                    location.replace(response.redirect_url);
+                }, 1000);
+                closeModal(id); // Close modal by passing the genreId
+            } else {
+                fail();
+            }
         }
     }
     xhr.send(formData);
