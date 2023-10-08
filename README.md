@@ -1,20 +1,128 @@
-## Panduan Pengerjaan
-Berikut adalah hal yang harus diperhatikan untuk pengumpulan tugas ini:
-1. Buatlah grup pada Gitlab dengan format "IF3110-2023-01-XX", dengan XX adalah nomor kelompok (untuk K1 dan K2) atau kode kelompok (untuk K3).
-2. Tambahkan anggota tim pada grup anda.
-3. **Fork** pada repository ini dengan organisasi yang telah dibuat.
-4. Ubah hak akses repository hasil Fork anda menjadi **private**.
-5. Hal-hal yang harus diperhatikan.
-    * Silakan commit pada repository anda (hasil fork)
-    * Lakukan beberapa commit dengan pesan yang bermakna, contoh: “add register form”, “fix logout bug”, jangan seperti “final”, “benerin dikit”, “fix bug”.
-    * Disarankan untuk tidak melakukan commit dengan perubahan yang besar karena akan mempengaruhi penilaian (contoh: hanya melakukan satu commit kemudian dikumpulkan).
-    * Commit dari setiap anggota tim akan mempengaruhi penilaian.
-    * Jadi, setiap anggota tim harus melakukan commit yang berpengaruh terhadap proses pembuatan aplikasi.
-    * Sebagai panduan bisa mengikuti [semantic commit](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716).
-6. Buatlah file README yang berisi:
-    * Deskripsi aplikasi web
-    * Daftar requirement
-    * Cara instalasi
-    * Cara menjalankan server
-    * Screenshot tampilan aplikasi (tidak perlu semua kasus, minimal 1 per halaman), dan 
-    * Penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian pembagian tugas).
+# Deskripsi aplikasi web
+Aplikasi web Notflix adalah aplikasi web sederhana yang menyediakan berbagai macam film untuk ditonton dan dapat menambahkan film tersebut ke dalam watchlist user!
+Aplikasi ini dibangun menggunakan vanilla PHP, Javascript, HTML dan CSS dengan menggunakan basis data PostgreSQL. 
+
+# Daftar requirement
+1. Login
+2. Regitrasi
+3. Home
+4. Search, sort, and filter film
+5. Watchlist
+6. Watch film
+7. Add film
+8. Detail film
+9. Edit film
+10. Delete film
+11. User List
+12. Delete User
+13. Change User Status
+14. Add Genre
+15. Delete Genre
+16. Edit profile
+
+# Cara instalasi
+1. Clone repository ini dengan perintah `git clone https://gitlab.informatika.org/if3110-2023-01-34/tugas-besar-1.git`
+atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
+2. Pastikan komputer anda sudah menginstall PHP, PostgreSQL, Apache, serta Docker
+3. Pastikan komputer anda sudah menjalankan aplikasi Docker
+4. Lakukan pembuatan image Docker yang akan digunakan oleh aplikasi ini dengan menjalankan perintah docker `build -t tubes-1:latest .` pada terminal directory aplikasi web.
+5. Buatlah file .env mengikuti .env.example yang disediakan
+
+# Cara menjalankan server
+1. Jalankan perintah `docker-compose up` pada terminal directory aplikasi web
+2. Aplikasi web dapat diakses pada `localhost:8080`
+3. Aplikasi web dapat dihentikan dengan perintah `docker-compose down` pada terminal directory aplikasi web
+
+# Cara Menggunakan Aplikasi
+1. Pastikan jika ingin mengupload gambar poster film, gambar tersebut berada pada folder `storage/poster`
+2. Pastikan jika ingin mengupload video film, video tersebut berada pada folder `storage/video`
+3. Pastikan jika ingin mengupload profile picture, subtitle tersebut berada pada folder `storage/profile`
+
+# Screenshot Aplikasi
+![image](screenshots/login.jpg)
+![image](screenshots/registration.jpg)
+![image](screenshots/homepage.jpg)
+![image](screenshots/search.jpg)
+![image](screenshots/watch.jpg)
+![image](screenshots/watchlist.jpg)
+![image](screenshots/manage_film.jpg)
+![image](screenshots/add_film.jpg)
+![image](screenshots/add_film_2.jpg)
+![image](screenshots/add_film_3.jpg)
+![image](screenshots/detail_film.jpg)
+![image](screenshots/edit_film.jpg)
+![image](screenshots/delete_film.jpg)
+![image](screenshots/manage_genre.jpg)
+![image](screenshots/add_genre.jpg)
+![image](screenshots/delete_genre.jpg)
+![image](screenshots/edit_profile.jpg)
+![image](screenshots/edit_profile_2.jpg)
+![image](screenshots/edit_profile_3.jpg)
+![image](screenshots/manage_user.jpg)
+![image](screenshots/manage_profile_user_by_admin.jpg)
+![image](screenshots/404.jpg)
+![image](screenshots/admin_mode.jpg)
+
+# Lighthouse
+![image](screenshots/lighthouse/login.jpg)
+![image](screenshots/lighthouse/registration.jpg)  
+![image](screenshots/lighthouse/homepage.jpg)
+![image](screenshots/lighthouse/search.jpg)
+![image](screenshots/lighthouse/watch.jpg)
+![image](screenshots/lighthouse/watchlist.jpg)
+![image](screenshots/lighthouse/add_film.jpg)
+![image](screenshots/lighthouse/detail_film.jpg)
+![image](screenshots/lighthouse/edit_film.jpg)
+![image](screenshots/lighthouse/manage_film.jpg)
+![image](screenshots/lighthouse/manage_genre.jpg)
+![image](screenshots/lighthouse/manage_user.jpg)
+![image](screenshots/lighthouse/detail_user.jpg)
+![image](screenshots/lighthouse/profile_settings.jpg)
+![image](screenshots/lighthouse/404.jpg)
+![image](screenshots/lighthouse/restrict.jpg)
+
+
+# Pembagian Tugas
+## Server Side
+| Feature             | NIM          |
+|---------------------|--------------|
+| **Login**           | 13521130     |
+| **Registration**    | 13521130     |
+| **Home**            | 13521130     |
+| **Toast**            | 13521130     |
+| **Search, Sort & Filter** | 13521165     |
+| **Watchlist**       | 13521165     |
+| **Watch Film**      | 13521165     |
+| **Add Film**        | 13521132     |
+| **Film Details**    | 13521132     |
+| **Edit Film**       | 13521132     |
+| **Delete Film**     | 13521132     |
+| **User List**       | 13521132     |
+| **Delete User**     | 13521132     |
+| **Change User Status** | 13521132  |
+| **Add Genre**       | 13521132     |
+| **Delete Genre**    | 13521132     |
+| **Edit Profile**    | 13521132     |
+
+
+
+## Client Side
+| Feature             | NIM          |
+|---------------------|--------------|
+| **Login**           | 13521130     |
+| **Registration**    | 13521130     |
+| **Home**            | 13521130     |
+| **Toast**            | 13521130     |
+| **Search, Sort & Filter** | 13521165     |
+| **Watchlist**       | 13521165     |
+| **Watch Film**      | 13521165     |
+| **Add Film**        | 13521132     |
+| **Film Details**    | 13521132     |
+| **Edit Film**       | 13521132     |
+| **Delete Film**     | 13521132     |
+| **User List**       | 13521132     |
+| **Delete User**     | 13521132     |
+| **Change User Status** | 13521132  |
+| **Add Genre**       | 13521132     |
+| **Delete Genre**    | 13521132     |
+| **Edit Profile**    | 13521132     |
