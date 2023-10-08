@@ -9,9 +9,9 @@
     <!---Icon--->
     <link rel="icon" href="images/icon/logo.ico">
     <!---Global CSS--->
-    <link rel="stylesheet" type="text/css" href="styles/template/globals.css">
-    <link rel="stylesheet" type="text/css" href="styles/template/Navbar.css">
-    <link rel="stylesheet" type="text/css" href="styles/template/cardMovie.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/globals.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/template/cardMovie.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/toast.css">
     <!---Page specify CSS--->
@@ -21,7 +21,7 @@
 
 <body>
     <?php include(DIRECTORY . "/../component/template/NavbarUser.php");
-    require_once dirname(dirname(__DIR__)) . '/utils/duration.php';
+    require_once DIRECTORY . '/../utils/duration.php';
     $minutes = listofMinutes();
     $hours = listofHour();
 
@@ -53,19 +53,17 @@
                                 $result = $genre->getAllGenre();
                                 ?>
 
-                                <div class="checkbox-container">
+                                <div class="grid-checkbox">
+
                                     <?php foreach ($result as $row) { ?>
-                                        <div class="checkbox-item">
+                                        <label class="check-container" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
                                             <input type="checkbox" id="genre_<?php echo $row['genre_id']; ?>" name="filmGenre[]" value="<?php echo $row['genre_id']; ?>">
-                                            <div class="checkbox-contain">
-                                                <span class="custom-checkbox"></span>
-                                                <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
-                                            </div>
-                                            </label>
-                                        </div>
+                                            <span class="checkmark"></span>
+    
+                                        </label>
                                     <?php } ?>
-                                    <div id="checkbox-alert"></div>
                                 </div>
+
 
                             </div>
                         </div>
@@ -169,7 +167,6 @@
                             </div>
                         </div>
                         <div class="button-container">
-
                             <button type="button" id="cancel" type="submit" class="button-red button-text">Cancel</button>
                             <div id="confModal" class="modal red-glow">
                                 <div class="modal-content red-glow">

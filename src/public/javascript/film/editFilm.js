@@ -18,7 +18,7 @@ const saveButton = document.querySelector("#saveButton");
 
 let selectedGenres = [];
 document.addEventListener('DOMContentLoaded', function () {
-    let genreCheckboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]');
+    let genreCheckboxes = document.querySelectorAll('.check-container input[type="checkbox"]');
     genreCheckboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
             if (this.checked) {

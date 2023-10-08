@@ -19,7 +19,7 @@
 
 <body>
     <?php
-    include (DIRECTORY. "/../component/template/NavbarUser.php");
+    include(DIRECTORY . "/../component/template/NavbarUser.php");
     require_once DIRECTORY . '/../utils/duration.php';
     $hours = listofHour();
     $minutes = listofMinutes();
@@ -73,16 +73,16 @@
                                     $result = $genre->getAllGenre();
                                     ?>
 
-                                    <div class="checkbox-container">
+                                    <div class="grid-checkbox">
+
                                         <?php foreach ($result as $row) { ?>
-                                            <div class="checkbox-item">
+
+                                            <label class="check-container" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
                                                 <input type="checkbox" id="genre_<?php echo $row['genre_id']; ?>" name="filmGenre[]" value="<?php echo $row['genre_id']; ?>">
-                                                <div class="checkbox-contain">
-                                                    <span class="custom-checkbox"></span>
-                                                    <label class="chekbox-label" for="genre_<?php echo $row['genre_id']; ?>"><?php echo $row['name']; ?>
-                                                </div>
-                                                </label>
-                                            </div>
+                                                <span class="checkmark"></span>
+
+                                            </label>
+
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -210,7 +210,7 @@
         var filmID = <?php echo json_encode($filmID); ?>;
     </script>
     <script src="/javascript/film/editFilm.js" defer></script>
-    <?php include(DIRECTORY. "/../component/template/toast.php"); ?>
+    <?php include(DIRECTORY . "/../component/template/toast.php"); ?>
 </body>
 
 
