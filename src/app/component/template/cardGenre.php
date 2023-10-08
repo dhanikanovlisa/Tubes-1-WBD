@@ -3,7 +3,7 @@
     <div class="genre-name">
         <p class="text-contain"><?php echo $genre['name'] ?></p>
     </div>
-    <button class="trash-button" onclick="popModal()">
+    <button class="trash-button" onclick="popModal()" aria-label="trash button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
             <style>
                 svg {
