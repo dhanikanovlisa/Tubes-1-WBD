@@ -34,6 +34,8 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 3. Aplikasi web dapat dihentikan dengan perintah `docker-compose down` pada terminal directory aplikasi web
 
 # Cara Menggunakan Aplikasi
+1. Karena data masih kosong ketika pertama kali dijalankan, masukkan query pada `public/storage/initDB.txt` ke dalam file
+`index.php` lalu save
 1. Pastikan jika ingin mengupload gambar poster film, gambar tersebut berada pada folder `storage/poster`
 2. Pastikan jika ingin mengupload video film, video tersebut berada pada folder `storage/video`
 3. Pastikan jika ingin mengupload profile picture, subtitle tersebut berada pada folder `storage/profile`
@@ -89,7 +91,6 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 | **Login**           | 13521130     |
 | **Registration**    | 13521130     |
 | **Home**            | 13521130     |
-| **Toast**            | 13521130     |
 | **Search, Sort & Filter** | 13521165     |
 | **Watchlist**       | 13521165     |
 | **Watch Film**      | 13521165     |
@@ -112,7 +113,6 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 | **Login**           | 13521130     |
 | **Registration**    | 13521130     |
 | **Home**            | 13521130     |
-| **Toast**            | 13521130     |
 | **Search, Sort & Filter** | 13521165     |
 | **Watchlist**       | 13521165     |
 | **Watch Film**      | 13521165     |
