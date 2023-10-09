@@ -15,8 +15,7 @@
     <!---Page specify CSS--->
     <link rel="stylesheet" type="text/css" href="/styles/admin/userDetail.css">
     <link rel="stylesheet" type="text/css" href="/styles/template/confirmationModal.css">
-    <script type="text/javascript" src="/javascript/user/deleteUser.js" defer></script>
-    <script type="text/javascript" src="/javascript/user/changeStatus.js" defer></script>
+    <script type="text/javascript" src="/javascript/user/detailProfile.js" defer></script>
 </head>
 
 <body>
@@ -84,7 +83,7 @@
                                 ?></p>
                         </div>
                         <div class="field-container">
-                            <button class="button-red button-text" onClick="popModal()">Delete Account</button>
+                            <button type="button" class="button-red button-text" onclick="popModal()">Delete Account</button>
                             <div id="confModal" class="modal red-glow">
                                 <div class="modal-content red-glow">
                                     <div class="whole">
@@ -94,16 +93,16 @@
                                         </div>
                                         <div class="button-modal-container">
                                             <button id="cancel" class="button-red button-text" onclick="closeModal()">Cancel</button>
-                                            <button id="ok" class="button-green button-text" onclick="deleteUser(<?php echo $id; ?>)">OK</button>
+                                            <button type="button" id="ok" class="button-green button-text" onclick="deleteUser(<?php echo $id; ?>)">OK</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <?php
                             if (!$userData['is_admin']) {
-                                echo "<button id='change' class='button-white button-text' onclick = 'changeToAdmin($id)'>Change To Admin</button>";
+                                echo "<button type='button' id='change' class='button-white button-text' onclick = 'changeToAdmin($id)'>Change To Admin</button>";
                             } else {
-                                echo "<button id='change' class='button-white button-text' onclick = 'changeToUser($id)'>Change To User</button>";
+                                echo "<button type='button' id='change' class='button-white button-text' onclick = 'changeToUser($id)'>Change To User</button>";
                             }
                             ?>
 
