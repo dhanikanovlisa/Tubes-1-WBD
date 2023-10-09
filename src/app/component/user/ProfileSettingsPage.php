@@ -64,7 +64,7 @@
                         </div>
                         <div class="field-container">
                             <h3>Phone Number</h3>
-                            <p>+<?php echo $userData['phone_number'] ?></p>
+                            <p><?php echo $userData['phone_number'] ?></p>
                         </div>
                         <div class="field-container">
                             <a href="/edit-profile/<?php echo $id ?>">
