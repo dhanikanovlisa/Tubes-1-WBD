@@ -91,7 +91,6 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 | **Login**           | 13521130     |
 | **Registration**    | 13521130     |
 | **Home**            | 13521130     |
-| **Toast**            | 13521130     |
 | **Search, Sort & Filter** | 13521165     |
 | **Watchlist**       | 13521165     |
 | **Watch Film**      | 13521165     |
@@ -114,7 +113,6 @@ atau dari github `git clone https://github.com/dhanikanovlisa/Tubes-1-WBD.git`
 | **Login**           | 13521130     |
 | **Registration**    | 13521130     |
 | **Home**            | 13521130     |
-| **Toast**            | 13521130     |
 | **Search, Sort & Filter** | 13521165     |
 | **Watchlist**       | 13521165     |
 | **Watch Film**      | 13521165     |
